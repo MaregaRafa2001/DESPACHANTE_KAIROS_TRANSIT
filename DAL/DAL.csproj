@@ -41,8 +41,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOLETO_CHEQUE_DAL.cs" />
     <Compile Include="CLIENTE_DAL.cs" />
+    <Compile Include="CONSULTOR_DAL.cs" />
+    <Compile Include="CONTRATO_DAL.cs" />
+    <Compile Include="FASE_FINANCEIRO_DAL.cs" />
+    <Compile Include="FINANCEIRO_DAL.cs" />
+    <Compile Include="FORMA_PAGAMENTO_DAL.cs" />
+    <Compile Include="GRUPO_ACESSO_DAL.cs" />
+    <Compile Include="INDICACAO_DAL.cs" />
+    <Compile Include="LOGIN_DAL.cs" />
+    <Compile Include="PesquisaGeralDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RELATORIOS_DAL.cs" />
+    <Compile Include="SERVICO_DAL.cs" />
+    <Compile Include="STATUS_FINANCEIRO_DAL.cs" />
+    <Compile Include="SysDAL.cs" />
+    <Compile Include="SYS_MENU_DAL.cs" />
+    <Compile Include="SYS_PERFIL_DAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{efbb3f0a-7057-473c-8d15-9b2678e08dbc}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

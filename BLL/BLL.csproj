@@ -41,8 +41,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOLETO_CHEQUE_BLL.cs" />
     <Compile Include="CLIENTE_BLL.cs" />
+    <Compile Include="CONSULTOR_BLL.cs" />
+    <Compile Include="CONTRATO_BLL.cs" />
+    <Compile Include="FASE_FINANCEIRO_BLL.cs" />
+    <Compile Include="FINANCEIRO_BLL.cs" />
+    <Compile Include="FORMA_PAGAMENTO_BLL.cs" />
+    <Compile Include="GLOBAL_BLL.cs" />
+    <Compile Include="GRUPO_ACESSO_BLL.cs" />
+    <Compile Include="INDICACAO_BLL.cs" />
+    <Compile Include="LOGIN_BLL.cs" />
+    <Compile Include="PesquisaGeralBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RELATORIOS_BLL.cs" />
+    <Compile Include="SERVICO_BLL.cs" />
+    <Compile Include="STATUS_FINANCEIRO_BLL.cs" />
+    <Compile Include="SysBLL.cs" />
+    <Compile Include="SYS_MENU_BLL.cs" />
+    <Compile Include="SYS_PERFIL_BLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{5f6143a5-2a0a-40e6-8c89-60476cdbd47b}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{efbb3f0a-7057-473c-8d15-9b2678e08dbc}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
