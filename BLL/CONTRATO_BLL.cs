@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ namespace BLL
     public class CONTRATO_BLL
     {
         public string strConnection;
-        CONTRATO_DAO DAO = null;
+        CONTRATO_DAL DAO = null;
 
         public CONTRATO_BLL(string cn)
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            DAO = new CONTRATO_DAO(strConnection);
+            DAO = new CONTRATO_DAL(strConnection);
         }
 
         public int? Set_Contrato(CONTRATO_DTO DTO)

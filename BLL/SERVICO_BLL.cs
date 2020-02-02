@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ namespace BLL
     public class SERVICO_BLL
     {
         public string strConnection;
-        SERVICO_DAO DAO = null;
+        SERVICO_DAL DAO = null;
 
-        public SERVICO_BLL(string cn)
+        public SERVICO_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            DAO = new SERVICO_DAO(strConnection);
+            DAO = new SERVICO_DAL(strConnection);
         }
 
         public int? Set_Servico(SERVICO_DTO DTO)

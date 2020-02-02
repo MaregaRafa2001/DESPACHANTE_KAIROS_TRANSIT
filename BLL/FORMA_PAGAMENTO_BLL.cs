@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ namespace BLL
     public class FORMA_PAGAMENTO_BLL
     {
         public string strConnection;
-        FORMA_PAGAMENTO_DAO DAO = null;
+        FORMA_PAGAMENTO_DAL DAO = null;
 
-        public FORMA_PAGAMENTO_BLL(string cn)
+        public FORMA_PAGAMENTO_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            DAO = new FORMA_PAGAMENTO_DAO(strConnection);
+            DAO = new FORMA_PAGAMENTO_DAL(strConnection);
         }
 
         public List<FORMA_PAGAMENTO_DTO> Lista_Forma_Pagamento()

@@ -19,7 +19,8 @@ namespace DTO
         public int? PARCELA { get; set; }
         public DateTime? DATA_VENCTO { get; set; }
         public string FORMA_PAGAMENTO { get; set; }
-        public int? STATUS_PAGAMENTO { get; set; }
+        public string STATUS_PAGAMENTO { get; set; }
+        public int? ID_STATUS_PAGAMENTO { get; set; }
         public bool? ATIVO { get; set; }
         public SysDTO.Operacoes Operacao { get; set; }
 

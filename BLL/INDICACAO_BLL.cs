@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ namespace BLL
     public class INDICACAO_BLL
     {
         public string strConnection;
-        INDICACAO_DAO DAO = null;
+        INDICACAO_DAL DAO = null;
 
-        public INDICACAO_BLL(string cn)
+        public INDICACAO_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            DAO = new INDICACAO_DAO(strConnection);
+            DAO = new INDICACAO_DAL(strConnection);
         }
 
         public List<INDICACAO_DTO> Lista_indicacao()

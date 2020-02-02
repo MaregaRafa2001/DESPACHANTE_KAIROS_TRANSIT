@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOLETO_CHEQUE_DTO.cs" />
+    <Compile Include="CAMPOS_LOCALIZAR_DTO.cs" />
     <Compile Include="CLIENTE_DTO.cs" />
     <Compile Include="CONSULTOR_DTO.cs" />
     <Compile Include="CONTRATO_DTO.cs" />

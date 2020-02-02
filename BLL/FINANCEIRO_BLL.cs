@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace BLL
     public class FINANCEIRO_BLL
     {
         public string strConnection;
-        FINANCEIRO_DAO DAO = null;
+        FINANCEIRO_DAL DAO = null;
         public Func<string> get_Connection;
 
         public FINANCEIRO_BLL(string cn = "")
@@ -23,7 +23,7 @@ namespace BLL
                     cn = SysBLL.strConexao;
                 this.strConnection = cn;
 
-                DAO = new FINANCEIRO_DAO(strConnection);
+                DAO = new FINANCEIRO_DAL(strConnection);
             }
             catch (Exception ex)
             {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAO;
+using DAL;
 using DTO;
 
 namespace BLL
@@ -11,14 +11,14 @@ namespace BLL
     public class GRUPO_ACESSO_BLL
     {
         public string strConnection;
-        GRUPO_ACESSO_DAO DAO = null;
+        GRUPO_ACESSO_DAL DAO = null;
 
         public GRUPO_ACESSO_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            DAO = new GRUPO_ACESSO_DAO(strConnection);
+            DAO = new GRUPO_ACESSO_DAL(strConnection);
         }
 
         public GRUPO_ACESSO_DTO Listar(int ID_PERFIL)

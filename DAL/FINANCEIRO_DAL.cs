@@ -408,7 +408,9 @@ namespace DAL
                     sb.Append(" A.ID AS ID_CLIENTE,");
                     sb.Append(" A.NOME_COMPLETO,");
                     sb.Append(" A.EMAIL,");
+                    sb.Append(" A.PORTARIA, ");
                     sb.Append(" A.CPF, ");
+                    sb.Append(" A.TELEFONE, ");
                     sb.Append(" A.RG,");
                     sb.Append(" A.CNH,");
                     sb.Append(" A.CNH_PONTUACAO,");
@@ -471,6 +473,7 @@ namespace DAL
                         Financeiro.CLIENTE.CPF = dtr["CPF"].ToString();
                         Financeiro.CLIENTE.RG = dtr["RG"].ToString();
                         Financeiro.CLIENTE.CNH = dtr["CNH"].ToString();
+                        Financeiro.CLIENTE.TELEFONE = dtr["TELEFONE"].ToString();
                         Financeiro.CLIENTE.CNH_PONTUACAO = dtr["CNH_PONTUACAO"] == DBNull.Value? 0 : Convert.ToInt32(dtr["CNH_PONTUACAO"].ToString());
                         Financeiro.STATUS.ID = dtr["ID_STATUS"] == DBNull.Value? 0 : Convert.ToInt32(dtr["ID_STATUS"].ToString());
                         Financeiro.STATUS.DESCRICAO = dtr["DESCRICAO_STATUS"].ToString();

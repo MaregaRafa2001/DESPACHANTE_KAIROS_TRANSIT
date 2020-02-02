@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOLETO_CHEQUE_DAL.cs" />
+    <Compile Include="CAMPOS_LOCALIZAR_DAL.cs" />
     <Compile Include="CLIENTE_DAL.cs" />
     <Compile Include="CONSULTOR_DAL.cs" />
     <Compile Include="CONTRATO_DAL.cs" />

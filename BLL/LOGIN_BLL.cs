@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAO;
+using DAL;
 using DTO;
 
 namespace BLL
@@ -11,14 +11,14 @@ namespace BLL
     public class LOGIN_BLL
     {
         public string strConnection;
-        LOGIN_DAO DAO = null;
+        LOGIN_DAL DAO = null;
 
-        public LOGIN_BLL(string cn)
+        public LOGIN_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            DAO = new LOGIN_DAO(strConnection);
+            DAO = new LOGIN_DAL(strConnection);
         }
 
         public LOGIN_DTO Get_User_By_Login(LOGIN_DTO DTO)

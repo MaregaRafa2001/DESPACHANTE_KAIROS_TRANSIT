@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ namespace BLL
     public class SYS_MENU_BLL
     {
         public string strConnection;
-        SYS_MENU_DAO uDAO = null;
+        SYS_MENU_DAL uDAO = null;
 
         public SYS_MENU_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            uDAO = new SYS_MENU_DAO(strConnection);
+            uDAO = new SYS_MENU_DAL(strConnection);
         }
 
         public List<SYS_MENU_DTO> Listar()

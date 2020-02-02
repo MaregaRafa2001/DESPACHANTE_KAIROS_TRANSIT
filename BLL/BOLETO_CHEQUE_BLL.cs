@@ -13,7 +13,7 @@ namespace BLL
         public string strConnection;
         BOLETO_CHEQUE_DAL DAO = null;
 
-        public BOLETO_CHEQUE_BLL(string cn)
+        public BOLETO_CHEQUE_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;

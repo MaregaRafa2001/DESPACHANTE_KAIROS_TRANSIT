@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ namespace BLL
     public class RELATORIOS_BLL
     {
         public string strConnection;
-        RELATORIOS_DAO DAO = null;
+        RELATORIOS_DAL DAO = null;
 
-        public RELATORIOS_BLL(string cn)
+        public RELATORIOS_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            DAO = new RELATORIOS_DAO(strConnection);
+            DAO = new RELATORIOS_DAL(strConnection);
         }
 
         public int Registrar(RELATORIOS_DTO DTO)

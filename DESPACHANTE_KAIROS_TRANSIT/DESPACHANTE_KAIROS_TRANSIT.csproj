@@ -46,6 +46,117 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
+    <Compile Include="FormFuncoes.cs" />
+    <Compile Include="frmBoletoCheque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBoletoCheque.Designer.cs">
+      <DependentUpon>frmBoletoCheque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCad_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Cliente.Designer.cs">
+      <DependentUpon>frmCad_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCad_Financeiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Financeiro.Designer.cs">
+      <DependentUpon>frmCad_Financeiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCad_Administracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Administracao.Designer.cs">
+      <DependentUpon>frmCad_Administracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCad_Administracao_Fases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Administracao_Fases.Designer.cs">
+      <DependentUpon>frmCad_Administracao_Fases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCad_Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Usuario.Designer.cs">
+      <DependentUpon>frmCad_Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCliente.Designer.cs">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFinanceiro.Designer.cs">
+      <DependentUpon>frmFinanceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracao.Designer.cs">
+      <DependentUpon>frmAdministracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputBox.designer.cs">
+      <DependentUpon>frmInputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLocalizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLocalizar.Designer.cs">
+      <DependentUpon>frmLocalizar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPermissoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPermissoes.Designer.cs">
+      <DependentUpon>frmPermissoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPesquisar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPesquisar.Designer.cs">
+      <DependentUpon>frmPesquisar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPesquisarConsultor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPesquisarConsultor.Designer.cs">
+      <DependentUpon>frmPesquisarConsultor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelatorioPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorioPesquisa.designer.cs">
+      <DependentUpon>frmRelatorioPesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorios.Designer.cs">
+      <DependentUpon>frmRelatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GLOBAL_FORMS.cs" />
     <Compile Include="mdi_principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +165,63 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBoletoCheque.resx">
+      <DependentUpon>frmBoletoCheque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Cliente.resx">
+      <DependentUpon>frmCad_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Financeiro.resx">
+      <DependentUpon>frmCad_Financeiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Administracao.resx">
+      <DependentUpon>frmCad_Administracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Administracao_Fases.resx">
+      <DependentUpon>frmCad_Administracao_Fases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Usuario.resx">
+      <DependentUpon>frmCad_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCliente.resx">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFinanceiro.resx">
+      <DependentUpon>frmFinanceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracao.resx">
+      <DependentUpon>frmAdministracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputBox.resx">
+      <DependentUpon>frmInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLocalizar.resx">
+      <DependentUpon>frmLocalizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPermissoes.resx">
+      <DependentUpon>frmPermissoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesquisar.resx">
+      <DependentUpon>frmPesquisar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesquisarConsultor.resx">
+      <DependentUpon>frmPesquisarConsultor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorioPesquisa.resx">
+      <DependentUpon>frmRelatorioPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorios.resx">
+      <DependentUpon>frmRelatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdi_principal.resx">
+      <DependentUpon>mdi_principal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +231,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\DESPACHANTE_KAIROS_TRANSIT.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\DESPACHANTE_KAIROS_TRANSIT.csprojAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +257,11 @@
       <Project>{efbb3f0a-7057-473c-8d15-9b2678e08dbc}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
