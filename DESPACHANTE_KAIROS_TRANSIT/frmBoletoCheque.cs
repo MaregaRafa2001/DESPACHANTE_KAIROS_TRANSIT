@@ -33,12 +33,15 @@ namespace APP_UI
         {
             try
             {
-                List<ComboItemDTO> Lista_Status = new STATUS_FINANCEIRO_BLL().Lista_Status();
+                List<ComboItemDTO> Lista_Status = new List<ComboItemDTO>();
+                Lista_Status.Add(new ComboItemDTO() { Text = "Pendente", Value = "Pendente" });
+                Lista_Status.Add(new ComboItemDTO() { Text = "Atrasado", Value = "Atrasado" });
+                Lista_Status.Add(new ComboItemDTO() { Text = "Pago", Value = "Pago" });
 
                 cboStatusPagamento.ValueMember = "value";
                 cboStatusPagamento.DisplayMember = "text";
                 cboStatusPagamento.DataSource = Lista_Status;
-                cboStatusPagamento.SelectedIndex = -1;
+                cboStatusPagamento.SelectedIndex = 0;
 
             }
             catch (Exception ex)
@@ -51,11 +54,11 @@ namespace APP_UI
         void PopularDados()
         {
             txtParcela.Text = boleto_cheque.PARCELA.ToString();
-            //if (boleto_cheque.DATA_VENCTO != null)
+            mskDataVencimento.Text = (boleto_cheque.DATA_VENCTO == null ? "" : boleto_cheque.DATA_VENCTO.Value.ToShortDateString());
             mskDataVencimento.Text = DateTime.Now.ToShortDateString();
-            cboStatusPagamento.SelectedValue = boleto_cheque.ID_STATUS_PAGAMENTO == null? 0 : boleto_cheque.ID_STATUS_PAGAMENTO;
+            cboStatusPagamento.Text = boleto_cheque.STATUS_PAGAMENTO;
             txtNumBolChe.Text = boleto_cheque.NUMERO;
-
+            txtValor.Text = boleto_cheque.VALOR.ToString();
         }
 
 
@@ -80,8 +83,8 @@ namespace APP_UI
 
             boleto_cheque.DATA_VENCTO = FormFuncoes.IsDate(mskDataVencimento.Text) ? Convert.ToDateTime(mskDataVencimento.Text) : (DateTime?)null;
             boleto_cheque.STATUS_PAGAMENTO = Convert.ToString(cboStatusPagamento.Text);
-            boleto_cheque.ID_STATUS_PAGAMENTO = Convert.ToInt32(cboStatusPagamento.SelectedValue);
             boleto_cheque.NUMERO = txtNumBolChe.Text;
+            boleto_cheque.VALOR = Convert.ToDecimal(txtValor.Text);
         }
 
         void ValidarDados()
@@ -96,6 +99,16 @@ namespace APP_UI
                 throw new CustomException("Favor informe o status de pagamento", "Dados incorretos");
         }
 
-
+        private void TxtValor_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.Moeda(ref txtValor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

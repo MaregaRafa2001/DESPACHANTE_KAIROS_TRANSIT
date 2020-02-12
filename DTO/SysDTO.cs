@@ -127,36 +127,5 @@ namespace DTO
             this.Atributo = Atributo;
             this.Valor = Valor;
         }
-    }
-
-    public static class ExtractIcon
-    {
-        // Constants that we need in the function call
-        public const int SHGFI_ICON = 0x100;
-        public const int SHGFI_SMALLICON = 0x1;
-        public const int SHGFI_LARGEICON = 0x0;
-
-        // This structure will contain information about the file
-        public struct SHFILEINFO
-        {
-            // Handle to the icon representing the file
-            public IntPtr hIcon;
-            // Index of the icon within the image list
-            public int iIcon;
-            // Various attributes of the file
-            public uint dwAttributes;
-            // Path to the file
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string szDisplayName;
-            // File type
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
-            public string szTypeName;
-        };
-
-        // The signature of SHGetFileInfo (located in Shell32.dll)
-        [DllImport("Shell32.dll")]
-        public static extern IntPtr SHGetFileInfo(string pszPath, uint dwFileAttributes, ref SHFILEINFO psfi, int cbFileInfo, uint uFlags);
-    }
-
-    
+    }    
 }

@@ -9,6 +9,29 @@ namespace APP_UI
 {
     public static class GLOBAL_FORMS
     {
+        public static void Moeda(ref TextBox textbox)
+        {
+            String numero = String.Empty;
+            Double valor = 0;
+            try
+            {
+                numero = textbox.Text.Replace(",", "").Replace(".", "");
+                if (numero.Equals(""))
+                    numero = "";
+                numero = numero.PadLeft(3, '0');
+
+                if (numero.Length > 3 & numero.Substring(0, 1) == "0") numero = numero.Substring(1, numero.Length - 1);
+                valor = Convert.ToDouble(numero) / 100;
+                textbox.Text = String.Format("{0:N}", valor);
+                textbox.SelectionStart = textbox.Text.Length;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static void AjustaGrid(DataGridView dtg)
         {
             try

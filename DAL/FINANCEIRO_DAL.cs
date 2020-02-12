@@ -53,7 +53,7 @@ namespace DAL
                     SQL_.Append("MOTOBOY_OS, ");
                     SQL_.Append("VALOR_BRUTO, ");
                     SQL_.Append("VALOR_LIQUIDO, ");
-                    
+
                     SQL_.Append("BANCO_OS ");
                     SQL_.Append(") ");
                     SQL_.Append("VALUES ");
@@ -318,7 +318,7 @@ namespace DAL
             _DTO.OBSERVACAO = dtr["OBSERVACAO"].ToString();
             _DTO.ID_CLIENTE = Convert.ToInt32(dtr["ID_CLIENTE"]);
             _DTO.ID_SERVICO = Convert.ToInt32(dtr["ID_SERVICO"]);
-            _DTO.ID_FASE = dtr["ID_FASE"] == DBNull.Value? 0 : Convert.ToInt32(dtr["ID_FASE"]);
+            _DTO.ID_FASE = dtr["ID_FASE"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_FASE"]);
             _DTO.VALOR = Convert.ToDecimal(dtr["VALOR"]);
             _DTO.VALOR_OS = Convert.ToDecimal(dtr["VALOR_OS"]);
             _DTO.LOCAL_OS = dtr["LOCAL_OS"].ToString();
@@ -453,15 +453,15 @@ namespace DAL
                         Financeiro.PARCELAS = Convert.ToInt32(dtr["PARCELAS"]);
                         Financeiro.CONSULTOR = dtr["CONSULTOR"].ToString();
                         Financeiro.OBSERVACAO = dtr["OBSERVACAO"].ToString();
-                        Financeiro.ID_CLIENTE = dtr["ID_CLIENTE"] == DBNull.Value? 0 : Convert.ToInt32(dtr["ID_CLIENTE"]);
-                        Financeiro.ID_SERVICO = dtr["ID_SERVICO"] == DBNull.Value? 0 : Convert.ToInt32(dtr["ID_SERVICO"]);
-                        Financeiro.ID_FASE = dtr["ID_FASE"] == DBNull.Value? 0 : Convert.ToInt32(dtr["ID_FASE"]);
-                        Financeiro.VALOR = dtr["VALOR"] == DBNull.Value? 0 : Convert.ToDecimal(dtr["VALOR"]);
-                        Financeiro.VALOR_OS = dtr["VALOR_OS"] == DBNull.Value? 0 : Convert.ToDecimal(dtr["VALOR_OS"]);
+                        Financeiro.ID_CLIENTE = dtr["ID_CLIENTE"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_CLIENTE"]);
+                        Financeiro.ID_SERVICO = dtr["ID_SERVICO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_SERVICO"]);
+                        Financeiro.ID_FASE = dtr["ID_FASE"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_FASE"]);
+                        Financeiro.VALOR = dtr["VALOR"] == DBNull.Value ? 0 : Convert.ToDecimal(dtr["VALOR"]);
+                        Financeiro.VALOR_OS = dtr["VALOR_OS"] == DBNull.Value ? 0 : Convert.ToDecimal(dtr["VALOR_OS"]);
                         Financeiro.LOCAL_OS = dtr["LOCAL_OS"].ToString();
-                        Financeiro.ID_STATUS = dtr["ID_STATUS"] == DBNull.Value? 0 : Convert.ToInt32(dtr["ID_STATUS"]);
-                        Financeiro.DATA_ALTERACAO = dtr["DATA_ALTERACAO"] ==  DBNull.Value? (DateTime?)null : Convert.ToDateTime(dtr["DATA_ALTERACAO"]);
-                        Financeiro.DATA_CRIACAO = dtr["DATA_CRIACAO"] ==  DBNull.Value? (DateTime?)null : Convert.ToDateTime(dtr["DATA_CRIACAO"]);
+                        Financeiro.ID_STATUS = dtr["ID_STATUS"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_STATUS"]);
+                        Financeiro.DATA_ALTERACAO = dtr["DATA_ALTERACAO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_ALTERACAO"]);
+                        Financeiro.DATA_CRIACAO = dtr["DATA_CRIACAO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_CRIACAO"]);
                         Financeiro.MOTOBOY_OS = dtr["MOTOBOY_OS"].ToString();
                         Financeiro.BANCO_OS = dtr["BANCO_OS"].ToString();
                         Financeiro.DATA = dtr["DATA"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA"]);
@@ -474,10 +474,10 @@ namespace DAL
                         Financeiro.CLIENTE.RG = dtr["RG"].ToString();
                         Financeiro.CLIENTE.CNH = dtr["CNH"].ToString();
                         Financeiro.CLIENTE.TELEFONE = dtr["TELEFONE"].ToString();
-                        Financeiro.CLIENTE.CNH_PONTUACAO = dtr["CNH_PONTUACAO"] == DBNull.Value? 0 : Convert.ToInt32(dtr["CNH_PONTUACAO"].ToString());
-                        Financeiro.STATUS.ID = dtr["ID_STATUS"] == DBNull.Value? 0 : Convert.ToInt32(dtr["ID_STATUS"].ToString());
+                        Financeiro.CLIENTE.CNH_PONTUACAO = dtr["CNH_PONTUACAO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["CNH_PONTUACAO"].ToString());
+                        Financeiro.STATUS.ID = dtr["ID_STATUS"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_STATUS"].ToString());
                         Financeiro.STATUS.DESCRICAO = dtr["DESCRICAO_STATUS"].ToString();
-                        Financeiro.SERVICO.ID = dtr["ID_SERVICO"] == DBNull.Value ? 0 :  Convert.ToInt32(dtr["ID_SERVICO"]);
+                        Financeiro.SERVICO.ID = dtr["ID_SERVICO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_SERVICO"]);
                         Financeiro.SERVICO.NOME = dtr["NOME_SERVICO"].ToString();
                     }
 
@@ -491,7 +491,25 @@ namespace DAL
                             fase_financeiro.ID_FINANCEIRO = dtr["ID_FINANCEIRO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_FINANCEIRO"]);
                             fase_financeiro.FASE = dtr["FASE"].ToString();
                             fase_financeiro.OBSERVACAO = dtr["OBSERVACAO"].ToString();
+                            fase_financeiro.DATA_RECEBIMENTO_CONTRATO = dtr["DATA_RECEBIMENTO_CONTRATO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_RECEBIMENTO_CONTRATO"]);
+                            fase_financeiro.DATA_ENTREGA_DOCUMENTO = dtr["DATA_ENTREGA_DOCUMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_ENTREGA_DOCUMENTO"]);
+                            fase_financeiro.DATA_VENCIMENTO_DOCUMENTO = dtr["DATA_VENCIMENTO_DOCUMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_VENCIMENTO_DOCUMENTO"]);
+                            fase_financeiro.DATA_MONTAGEM_PROCESSO = dtr["DATA_MONTAGEM_PROCESSO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_MONTAGEM_PROCESSO"]);
+                            fase_financeiro.DATA_IDA_DETRAN = dtr["DATA_IDA_DETRAN"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_IDA_DETRAN"]);
+                            fase_financeiro.DATA_RETORNO_DETRAN = dtr["DATA_RETORNO_DETRAN"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_RETORNO_DETRAN"]);
+                            fase_financeiro.PROCURADOR = dtr["PROCURADOR"] == DBNull.Value ? (string)null : Convert.ToString(dtr["PROCURADOR"]);
+                            fase_financeiro.PENALIDADE = dtr["PENALIDADE"] == DBNull.Value ? (string)null : Convert.ToString(dtr["PENALIDADE"]);
+                            fase_financeiro.DATA_FECHAMENTO_CURSO = dtr["DATA_FECHAMENTO_CURSO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_FECHAMENTO_CURSO"]);
+                            fase_financeiro.RECEBIMENTO_AUTO = dtr["RECEBIMENTO_AUTO"] == DBNull.Value ? (bool?)null : Convert.ToBoolean(dtr["RECEBIMENTO_AUTO"]);
+                            fase_financeiro.CURSO_FORA = dtr["CURSO_FORA"] == DBNull.Value ? (bool?)null : Convert.ToBoolean(dtr["CURSO_FORA"]);
+                            fase_financeiro.DATA_DIGITAL_1 = dtr["DATA_DIGITAL_1"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_DIGITAL_1"]);
+                            fase_financeiro.DATA_DIGITAL_2 = dtr["DATA_DIGITAL_2"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_DIGITAL_2"]);
+                            fase_financeiro.DATA_RECEBIMENTO_CERTIFICADO = dtr["DATA_RECEBIMENTO_CERTIFICADO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_RECEBIMENTO_CERTIFICADO"]);
+
+
                             fase_financeiro.Operacao = SysDTO.Operacoes.Leitura;
+
+
                             Financeiro.FASE_FINANCEIRO.Add(fase_financeiro);
                         }
                     }
@@ -531,17 +549,47 @@ namespace DAL
                             SqlDataReader dr = null;
 
                             StringBuilder SQL_ = new StringBuilder();
-                            SQL_.Append("INSERT INTO [dbo].[FASE_FINANCEIRO]   ");
-                            SQL_.Append("           ([ID_FINANCEIRO]           ");
-                            SQL_.Append("           ,[FASE]                    ");
-                            SQL_.Append("           ,[DATA]                    ");
-                            SQL_.Append("           ,[OBSERVACAO])             ");
-                            SQL_.Append("     VALUES                           ");
-                            SQL_.Append("           (@ID_FINANCEIRO            ");
-                            SQL_.Append("           ,@FASE                     ");
-                            SQL_.Append("           ,@DATA                     ");
-                            SQL_.Append("           ,@OBSERVACAO)              ");
-                            SQL_.Append("SELECT SCOPE_IDENTITY();              ");
+                            SQL_.Append("INSERT INTO [dbo].[FASE_FINANCEIRO]        ");
+                            SQL_.Append("           ([ID_FINANCEIRO]                ");
+                            SQL_.Append("           ,[FASE]                         ");
+                            SQL_.Append("           ,[DATA]                         ");
+                            SQL_.Append("           ,[OBSERVACAO]                   ");
+                            SQL_.Append("           ,[DATA_RECEBIMENTO_CONTRATO]    ");
+                            SQL_.Append("           ,[DATA_ENTREGA_DOCUMENTO]       ");
+                            SQL_.Append("           ,[DATA_VENCIMENTO_DOCUMENTO]    ");
+                            SQL_.Append("           ,[DATA_MONTAGEM_PROCESSO]       ");
+                            SQL_.Append("           ,[DATA_IDA_DETRAN]              ");
+                            SQL_.Append("           ,[DATA_RETORNO_DETRAN]          ");
+                            SQL_.Append("           ,[PROCURADOR]                   ");
+                            SQL_.Append("           ,[PENALIDADE]                   ");
+                            SQL_.Append("           ,[DATA_FECHAMENTO_CURSO]        ");
+                            SQL_.Append("           ,[RECEBIMENTO_AUTO]             ");
+                            SQL_.Append("           ,[CURSO_FORA]                   ");
+                            SQL_.Append("           ,[DATA_DIGITAL_1]               ");
+                            SQL_.Append("           ,[DATA_DIGITAL_2]               ");
+                            SQL_.Append("           ,[DATA_RECEBIMENTO_CERTIFICADO] ");
+                            SQL_.Append("           )                               ");
+                            SQL_.Append("     VALUES                                ");
+                            SQL_.Append("           (@ID_FINANCEIRO                 ");
+                            SQL_.Append("           ,@FASE                          ");
+                            SQL_.Append("           ,@DATA                          ");
+                            SQL_.Append("           ,@OBSERVACAO                    ");
+                            SQL_.Append("           ,@DATA_RECEBIMENTO_CONTRATO     ");
+                            SQL_.Append("           ,@DATA_ENTREGA_DOCUMENTO        ");
+                            SQL_.Append("           ,@DATA_VENCIMENTO_DOCUMENTO     ");
+                            SQL_.Append("           ,@DATA_MONTAGEM_PROCESSO        ");
+                            SQL_.Append("           ,@DATA_IDA_DETRAN               ");
+                            SQL_.Append("           ,@DATA_RETORNO_DETRAN           ");
+                            SQL_.Append("           ,@PROCURADOR                    ");
+                            SQL_.Append("           ,@PENALIDADE                    ");
+                            SQL_.Append("           ,@DATA_FECHAMENTO_CURSO         ");
+                            SQL_.Append("           ,@RECEBIMENTO_AUTO              ");
+                            SQL_.Append("           ,@CURSO_FORA                    ");
+                            SQL_.Append("           ,@DATA_DIGITAL_1                ");
+                            SQL_.Append("           ,@DATA_DIGITAL_2                ");
+                            SQL_.Append("           ,@DATA_RECEBIMENTO_CERTIFICADO  ");
+                            SQL_.Append("           )                               ");
+                            SQL_.Append("SELECT SCOPE_IDENTITY();                   ");
 
                             cn.Open();
 
@@ -577,13 +625,33 @@ namespace DAL
 
                             StringBuilder SQL_ = new StringBuilder();
 
-                            SQL_.Append("UPDATE [dbo].[FASE_FINANCEIRO]           ");
-                            SQL_.Append("   SET [ID_FINANCEIRO] = @ID_FINANCEIRO  ");
-                            SQL_.Append("      ,[FASE] = @FASE                    ");
-                            SQL_.Append("      ,[DATA] = @DATA                    ");
-                            SQL_.Append("      ,[OBSERVACAO] = @OBSERVACAO        ");
+                            SQL_.Append("UPDATE FASE_FINANCEIRO                                             ");
+                            SQL_.Append("   SET                                                             ");
+                            SQL_.Append("       ID_FINANCEIRO = @ID_FINANCEIRO                              ");
+                            SQL_.Append("      ,FASE = @FASE                                                ");
+                            SQL_.Append("      ,DATA = @DATA                                                ");
+                            SQL_.Append("      ,OBSERVACAO = @OBSERVACAO                                    ");
+                            SQL_.Append("      ,FASE = @FASE                                                ");
+                            SQL_.Append("      ,DATA = @DATA                                                ");
+                            SQL_.Append("      ,OBSERVACAO = @OBSERVACAO                                    ");
+                            SQL_.Append("      ,DATA_RECEBIMENTO_CONTRATO = @DATA_RECEBIMENTO_CONTRATO      ");
+                            SQL_.Append("      ,DATA_ENTREGA_DOCUMENTO = @DATA_ENTREGA_DOCUMENTO            ");
+                            SQL_.Append("      ,DATA_VENCIMENTO_DOCUMENTO = @DATA_VENCIMENTO_DOCUMENTO      ");
+                            SQL_.Append("      ,DATA_MONTAGEM_PROCESSO = @DATA_MONTAGEM_PROCESSO            ");
+                            SQL_.Append("      ,DATA_IDA_DETRAN = @DATA_IDA_DETRAN                          ");
+                            SQL_.Append("      ,DATA_RETORNO_DETRAN = @DATA_RETORNO_DETRAN                  ");
+                            SQL_.Append("      ,PROCURADOR = @PROCURADOR                                    ");
+                            SQL_.Append("      ,PENALIDADE = @PENALIDADE                                    ");
+                            SQL_.Append("      ,DATA_FECHAMENTO_CURSO = @DATA_FECHAMENTO_CURSO              ");
+                            SQL_.Append("      ,RECEBIMENTO_AUTO = @RECEBIMENTO_AUTO                        ");
+                            SQL_.Append("      ,CURSO_FORA = @CURSO_FORA                                    ");
+                            SQL_.Append("      ,DATA_DIGITAL_1 = @DATA_DIGITAL_1                            ");
+                            SQL_.Append("      ,DATA_DIGITAL_2 = @DATA_DIGITAL_2                            ");
+                            SQL_.Append("      ,DATA_RECEBIMENTO_CERTIFICADO = @DATA_RECEBIMENTO_CERTIFICADO");
                             SQL_.Append(" WHERE ID = @ID                          ");
+
                             cn.Open();
+
 
                             SqlCommand cmd = new SqlCommand(SQL_.ToString(), cn);
 
@@ -641,6 +709,20 @@ namespace DAL
             cmd.Parameters.AddWithValue("@FASE", fase.FASE);
             cmd.Parameters.AddWithValue("@ID_FINANCEIRO", fase.ID_FINANCEIRO);
             cmd.Parameters.AddWithValue("@OBSERVACAO", fase.OBSERVACAO);
+            cmd.Parameters.AddWithValue("@DATA_RECEBIMENTO_CONTRATO", fase.DATA_RECEBIMENTO_CONTRATO);
+            cmd.Parameters.AddWithValue("@DATA_ENTREGA_DOCUMENTO", fase.DATA_ENTREGA_DOCUMENTO);
+            cmd.Parameters.AddWithValue("@DATA_VENCIMENTO_DOCUMENTO", fase.DATA_VENCIMENTO_DOCUMENTO);
+            cmd.Parameters.AddWithValue("@DATA_MONTAGEM_PROCESSO", fase.DATA_MONTAGEM_PROCESSO);
+            cmd.Parameters.AddWithValue("@DATA_IDA_DETRAN", fase.DATA_IDA_DETRAN);
+            cmd.Parameters.AddWithValue("@DATA_RETORNO_DETRAN", fase.DATA_RETORNO_DETRAN);
+            cmd.Parameters.AddWithValue("@PROCURADOR", fase.PROCURADOR);
+            cmd.Parameters.AddWithValue("@PENALIDADE", fase.PENALIDADE);
+            cmd.Parameters.AddWithValue("@DATA_FECHAMENTO_CURSO", fase.DATA_FECHAMENTO_CURSO);
+            cmd.Parameters.AddWithValue("@RECEBIMENTO_AUTO", fase.RECEBIMENTO_AUTO);
+            cmd.Parameters.AddWithValue("@CURSO_FORA", fase.CURSO_FORA);
+            cmd.Parameters.AddWithValue("@DATA_DIGITAL_1", fase.DATA_DIGITAL_1);
+            cmd.Parameters.AddWithValue("@DATA_DIGITAL_2", fase.DATA_DIGITAL_2);
+            cmd.Parameters.AddWithValue("@DATA_RECEBIMENTO_CERTIFICADO", fase.DATA_RECEBIMENTO_CERTIFICADO);
 
             //Substitui o null por DBnull
             foreach (SqlParameter Parameter in cmd.Parameters)

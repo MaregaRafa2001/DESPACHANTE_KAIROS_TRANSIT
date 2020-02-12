@@ -52,6 +52,7 @@
     <Compile Include="GRUPO_ACESSO_DAL.cs" />
     <Compile Include="INDICACAO_DAL.cs" />
     <Compile Include="LOGIN_DAL.cs" />
+    <Compile Include="LOG_SISTEMA_DAL.cs" />
     <Compile Include="PesquisaGeralDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RELATORIOS_DAL.cs" />

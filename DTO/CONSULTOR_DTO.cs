@@ -12,5 +12,7 @@ namespace DTO
         public string NOME { get; set; }
         public string TELEFONE { get; set; }
         public string EMAIL { get; set; }
+
+
     }
 }

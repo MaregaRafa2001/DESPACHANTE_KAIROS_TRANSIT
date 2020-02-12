@@ -38,6 +38,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.mskDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNumBolChe
@@ -45,7 +47,7 @@
             this.txtNumBolChe.Location = new System.Drawing.Point(10, 83);
             this.txtNumBolChe.Multiline = true;
             this.txtNumBolChe.Name = "txtNumBolChe";
-            this.txtNumBolChe.Size = new System.Drawing.Size(350, 102);
+            this.txtNumBolChe.Size = new System.Drawing.Size(418, 102);
             this.txtNumBolChe.TabIndex = 10;
             // 
             // lblBoletoCheque
@@ -53,9 +55,9 @@
             this.lblBoletoCheque.AutoSize = true;
             this.lblBoletoCheque.Location = new System.Drawing.Point(10, 66);
             this.lblBoletoCheque.Name = "lblBoletoCheque";
-            this.lblBoletoCheque.Size = new System.Drawing.Size(119, 13);
+            this.lblBoletoCheque.Size = new System.Drawing.Size(73, 13);
             this.lblBoletoCheque.TabIndex = 479;
-            this.lblBoletoCheque.Text = "Número Boleto/Cheque";
+            this.lblBoletoCheque.Text = "Observações:";
             // 
             // cboStatusPagamento
             // 
@@ -64,9 +66,8 @@
             this.cboStatusPagamento.Location = new System.Drawing.Point(73, 32);
             this.cboStatusPagamento.Margin = new System.Windows.Forms.Padding(2);
             this.cboStatusPagamento.Name = "cboStatusPagamento";
-            this.cboStatusPagamento.Size = new System.Drawing.Size(181, 21);
+            this.cboStatusPagamento.Size = new System.Drawing.Size(166, 21);
             this.cboStatusPagamento.TabIndex = 523;
-            
             // 
             // label1
             // 
@@ -97,7 +98,8 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(194, 190);
+            this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegistrar.Location = new System.Drawing.Point(264, 190);
             this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(80, 32);
@@ -108,7 +110,8 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(279, 190);
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Location = new System.Drawing.Point(349, 190);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 32);
@@ -118,7 +121,7 @@
             // 
             // mskDataVencimento
             // 
-            this.mskDataVencimento.Location = new System.Drawing.Point(257, 34);
+            this.mskDataVencimento.Location = new System.Drawing.Point(243, 33);
             this.mskDataVencimento.Margin = new System.Windows.Forms.Padding(2);
             this.mskDataVencimento.Mask = "00/00/0000";
             this.mskDataVencimento.Name = "mskDataVencimento";
@@ -130,17 +133,37 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(257, 18);
+            this.label19.Location = new System.Drawing.Point(243, 17);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(106, 13);
+            this.label19.Size = new System.Drawing.Size(66, 13);
             this.label19.TabIndex = 529;
-            this.label19.Text = "Data de vencimento:";
+            this.label19.Text = "Vencimento:";
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(351, 33);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(80, 20);
+            this.txtValor.TabIndex = 531;
+            this.txtValor.Text = "0.00";
+            this.txtValor.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(348, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 532;
+            this.label3.Text = "Valor:";
             // 
             // frmBoletoCheque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 234);
+            this.ClientSize = new System.Drawing.Size(440, 234);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.mskDataVencimento);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.btnCancelar);
@@ -156,7 +179,6 @@
             this.Name = "frmBoletoCheque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dados da prestação";
-            
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +196,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.MaskedTextBox mskDataVencimento;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label3;
     }
 }

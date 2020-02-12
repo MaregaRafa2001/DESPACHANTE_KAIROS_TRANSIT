@@ -36,6 +36,9 @@ namespace DAL
                     SQL_.Append("NUMERO, ");
                     SQL_.Append("PARCELA, ");
                     SQL_.Append("FORMA_PAGAMENTO, ");
+                    SQL_.Append("VALOR, ");
+                    SQL_.Append("DATA_VENCTO, ");
+                    SQL_.Append("STATUS_PAGAMENTO, ");
                     SQL_.Append("ATIVO ");
 
                     SQL_.Append(") ");
@@ -46,6 +49,9 @@ namespace DAL
                     SQL_.Append("@NUMERO, ");
                     SQL_.Append("@PARCELA, ");
                     SQL_.Append("@FORMA_PAGAMENTO, ");
+                    SQL_.Append("@VALOR, ");
+                    SQL_.Append("@DATA_VENCTO, ");
+                    SQL_.Append("@STATUS_PAGAMENTO, ");
                     SQL_.Append("1 ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
@@ -95,6 +101,9 @@ namespace DAL
                     SQL_.Append("NUMERO = @NUMERO, ");
                     SQL_.Append("PARCELA = @PARCELA, ");
                     SQL_.Append("FORMA_PAGAMENTO = @FORMA_PAGAMENTO, ");
+                    SQL_.Append("VALOR = @VALOR, ");
+                    SQL_.Append("DATA_VENCTO = @DATA_VENCTO, ");
+                    SQL_.Append("STATUS_PAGAMENTO = @STATUS_PAGAMENTO, ");
                     SQL_.Append("ATIVO = @ATIVO ");
 
                     SQL_.Append("WHERE ID = @ID ");
@@ -153,6 +162,12 @@ namespace DAL
             cmd.Parameters.AddWithValue("@NUMERO", DTO.NUMERO);
             cmd.Parameters.AddWithValue("@PARCELA", DTO.PARCELA);
             cmd.Parameters.AddWithValue("@FORMA_PAGAMENTO", DTO.FORMA_PAGAMENTO);
+            cmd.Parameters.AddWithValue("@VALOR", DTO.VALOR);
+            cmd.Parameters.AddWithValue("@DATA_VENCTO", DTO.DATA_VENCTO);
+            cmd.Parameters.AddWithValue("@STATUS_PAGAMENTO", DTO.STATUS_PAGAMENTO);
+            cmd.Parameters.AddWithValue("@VALOR", DTO.VALOR);
+            cmd.Parameters.AddWithValue("@DATA_VENCTO", DTO.DATA_VENCTO);
+            cmd.Parameters.AddWithValue("@STATUS_PAGAMENTO", DTO.STATUS_PAGAMENTO);
             cmd.Parameters.AddWithValue("@ATIVO", DTO.ATIVO);
 
 
@@ -216,6 +231,9 @@ namespace DAL
                 DTO.NUMERO = dtr["NUMERO"].ToString();
                 DTO.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
                 DTO.PARCELA = Convert.ToInt32(dtr["PARCELA"]);
+                DTO.VALOR = dtr["VALOR"] == DBNull.Value? (decimal?)null : Convert.ToDecimal(dtr["VALOR"]);
+                DTO.DATA_VENCTO = dtr["DATA_VENCTO"] == DBNull.Value? (DateTime?)null : Convert.ToDateTime(dtr["DATA_VENCTO"]);
+                DTO.STATUS_PAGAMENTO = dtr["STATUS_PAGAMENTO"] == DBNull.Value? "" : Convert.ToString(dtr["STATUS_PAGAMENTO"]);
                 DTO.ATIVO = Convert.ToBoolean(dtr["ATIVO"]);
             }
             catch (Exception ex)

@@ -12,6 +12,7 @@ namespace DTO
         public FINANCEIRO_DTO()
         {
             Operacao = SysDTO.Operacoes.Inclusao;
+            LOG_SISTEMA.TABELA = "FINANCEIRO";
         }
         public int? ID { get; set; }
 
@@ -77,8 +78,13 @@ namespace DTO
             set { F_DTO = value; }
         }
 
+
+        //LOG DO SISTEMA
+        private LOG_SISTEMA_DTO L_DTO = new LOG_SISTEMA_DTO();
+        public LOG_SISTEMA_DTO LOG_SISTEMA
+        {
+            get { return L_DTO; }
+            set { L_DTO = value; }
+        }
     }
-
-
-
 }

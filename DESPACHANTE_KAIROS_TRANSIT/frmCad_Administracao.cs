@@ -67,9 +67,12 @@ namespace APP_UI
                 dtgDados.DataSource = null;
                 dtgDados.DataSource = dtt;
                 dtgDados.ClearSelection();
-                dtgDados.Columns["ID"].Visible = false;
-                dtgDados.Columns["ID_FINANCEIRO"].Visible = false;
-                dtgDados.Columns["Operacao"].Visible = false;
+                foreach (DataGridViewColumn column in dtgDados.Columns)
+                {
+                    column.Visible = false;
+                }
+                dtgDados.Columns["DATA"].Visible = true;
+                dtgDados.Columns["FASE"].Visible = true;
                 GLOBAL_FORMS.AjustaGrid(dtgDados);
             }
             catch (Exception ex)
