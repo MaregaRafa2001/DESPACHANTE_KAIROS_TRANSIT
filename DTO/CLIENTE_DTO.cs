@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class CLIENTE_DTO
+    public class CLIENTE_DTO : IDTO
     {
         public CLIENTE_DTO()
         {
-            Operacao = SysDTO.Operacoes.Inclusao;
-            LOG_SISTEMA.TABELA = "CLIENTE";
+            OPERACAO = SysDTO.Operacoes.Inclusao;
+            this.NOME_TABELA = "CLIENTE";
+            this.ID_CLASSE = this.GetHashCode();
         }
 
         public int? ID { get; set; }
@@ -29,7 +30,6 @@ namespace DTO
         public string CEP { get; set; }
         public string COMPLEMENTO { get; set; }
         public string BAIRRO { get; set; }
-        public string UF { get; set; }
         public string MUNICIPIO { get; set; }
         public string NUMERO_RES { get; set; }
         //CONTATO
@@ -41,15 +41,14 @@ namespace DTO
         public string OBSERVACAO { get; set; }
         public bool PORTARIA { get; set; }
 
-        public SysDTO.Operacoes Operacao { get; set; }
-
-
-        //LOG DO SISTEMA
-        private LOG_SISTEMA_DTO L_DTO = new LOG_SISTEMA_DTO();
-        public LOG_SISTEMA_DTO LOG_SISTEMA
+        public SysDTO.Operacoes OPERACAO { get; set; }
+        public string USUARIO { get; set; }
+        public DateTime? ULT_ATUAL { get; set; }
+        public int ID_CLASSE { get; set; }
+        public string NOME_TABELA { get; set; }
+        public object Clone()
         {
-            get { return L_DTO; }
-            set { L_DTO = value; }
+            return this.MemberwiseClone();
         }
     }
 }

@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.mskData = new System.Windows.Forms.MaskedTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPortaria = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
@@ -47,23 +54,26 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnFinanceiro = new System.Windows.Forms.Button();
+            this.btnCliente = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dtgDados = new System.Windows.Forms.DataGridView();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnFinanceiro = new System.Windows.Forms.Button();
-            this.btnCliente = new System.Windows.Forms.Button();
-            this.txtStatus = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.mskData = new System.Windows.Forms.MaskedTextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.tabHistórico = new System.Windows.Forms.TabPage();
+            this.grpMaisDetalhes = new System.Windows.Forms.GroupBox();
+            this.txtMaisDetalhes = new System.Windows.Forms.TextBox();
+            this.dtgHistorico = new System.Windows.Forms.DataGridView();
             this.gpbDados.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDados)).BeginInit();
+            this.tabHistórico.SuspendLayout();
+            this.grpMaisDetalhes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgHistorico)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbDados
@@ -96,10 +106,71 @@
             this.gpbDados.Margin = new System.Windows.Forms.Padding(2);
             this.gpbDados.Name = "gpbDados";
             this.gpbDados.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbDados.Size = new System.Drawing.Size(731, 158);
+            this.gpbDados.Size = new System.Drawing.Size(760, 158);
             this.gpbDados.TabIndex = 1;
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Dados";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.Location = new System.Drawing.Point(8, 83);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(321, 20);
+            this.txtEmail.TabIndex = 551;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 550;
+            this.label7.Text = "Email:";
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStatus.Location = new System.Drawing.Point(425, 83);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(329, 20);
+            this.txtStatus.TabIndex = 549;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(332, 67);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 13);
+            this.label12.TabIndex = 548;
+            this.label12.Text = "Data:";
+            // 
+            // mskData
+            // 
+            this.mskData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskData.Location = new System.Drawing.Point(335, 83);
+            this.mskData.Margin = new System.Windows.Forms.Padding(2);
+            this.mskData.Mask = "00/00/0000";
+            this.mskData.Name = "mskData";
+            this.mskData.ReadOnly = true;
+            this.mskData.Size = new System.Drawing.Size(85, 20);
+            this.mskData.TabIndex = 547;
+            this.mskData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskData.ValidatingType = typeof(System.DateTime);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(423, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 546;
+            this.label11.Text = "Status:";
             // 
             // label8
             // 
@@ -117,7 +188,7 @@
             this.txtPortaria.Location = new System.Drawing.Point(661, 43);
             this.txtPortaria.Name = "txtPortaria";
             this.txtPortaria.ReadOnly = true;
-            this.txtPortaria.Size = new System.Drawing.Size(64, 20);
+            this.txtPortaria.Size = new System.Drawing.Size(94, 20);
             this.txtPortaria.TabIndex = 544;
             // 
             // txtTelefone
@@ -165,7 +236,7 @@
             this.txtNParcelas.Location = new System.Drawing.Point(629, 123);
             this.txtNParcelas.Name = "txtNParcelas";
             this.txtNParcelas.ReadOnly = true;
-            this.txtNParcelas.Size = new System.Drawing.Size(98, 20);
+            this.txtNParcelas.Size = new System.Drawing.Size(125, 20);
             this.txtNParcelas.TabIndex = 535;
             // 
             // txtFormaPagamento
@@ -257,7 +328,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(654, 509);
+            this.btnCancelar.Location = new System.Drawing.Point(683, 564);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 34);
             this.btnCancelar.TabIndex = 4;
@@ -268,7 +339,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistrar.Location = new System.Drawing.Point(561, 509);
+            this.btnRegistrar.Location = new System.Drawing.Point(590, 564);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(87, 34);
             this.btnRegistrar.TabIndex = 3;
@@ -276,32 +347,72 @@
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
             // 
-            // groupBox1
+            // lblTitulo
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnRemover);
-            this.groupBox1.Controls.Add(this.btnAlterar);
-            this.groupBox1.Controls.Add(this.btnAdicionar);
-            this.groupBox1.Controls.Add(this.dtgDados);
-            this.groupBox1.Location = new System.Drawing.Point(11, 214);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(731, 290);
-            this.groupBox1.TabIndex = 463;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Fases";
+            this.lblTitulo.BackColor = System.Drawing.Color.Black;
+            this.lblTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Padding = new System.Windows.Forms.Padding(5, 12, 0, 0);
+            this.lblTitulo.Size = new System.Drawing.Size(782, 50);
+            this.lblTitulo.TabIndex = 464;
+            this.lblTitulo.Text = "Administração";
+            // 
+            // btnFinanceiro
+            // 
+            this.btnFinanceiro.Location = new System.Drawing.Point(695, 12);
+            this.btnFinanceiro.Name = "btnFinanceiro";
+            this.btnFinanceiro.Size = new System.Drawing.Size(75, 23);
+            this.btnFinanceiro.TabIndex = 465;
+            this.btnFinanceiro.Text = "Financeiro";
+            this.btnFinanceiro.UseVisualStyleBackColor = true;
+            this.btnFinanceiro.Click += new System.EventHandler(this.BtnFinanceiro_Click);
+            // 
+            // btnCliente
+            // 
+            this.btnCliente.Location = new System.Drawing.Point(614, 12);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnCliente.TabIndex = 466;
+            this.btnCliente.Text = "Cliente";
+            this.btnCliente.UseVisualStyleBackColor = true;
+            this.btnCliente.Click += new System.EventHandler(this.BtnCliente_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabHistórico);
+            this.tabControl1.Location = new System.Drawing.Point(11, 216);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(759, 342);
+            this.tabControl1.TabIndex = 467;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btnRemover);
+            this.tabPage1.Controls.Add(this.btnAlterar);
+            this.tabPage1.Controls.Add(this.btnAdicionar);
+            this.tabPage1.Controls.Add(this.dtgDados);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(751, 316);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Fase";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnRemover
             // 
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRemover.Location = new System.Drawing.Point(138, 18);
+            this.btnRemover.Location = new System.Drawing.Point(139, 6);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(62, 23);
-            this.btnRemover.TabIndex = 467;
+            this.btnRemover.TabIndex = 471;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
@@ -309,11 +420,11 @@
             // btnAlterar
             // 
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAlterar.Location = new System.Drawing.Point(71, 18);
+            this.btnAlterar.Location = new System.Drawing.Point(72, 6);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(62, 23);
-            this.btnAlterar.TabIndex = 466;
+            this.btnAlterar.TabIndex = 470;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
@@ -321,11 +432,11 @@
             // btnAdicionar
             // 
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdicionar.Location = new System.Drawing.Point(4, 17);
+            this.btnAdicionar.Location = new System.Drawing.Point(5, 5);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(62, 23);
-            this.btnAdicionar.TabIndex = 465;
+            this.btnAdicionar.TabIndex = 469;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
@@ -339,120 +450,85 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgDados.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtgDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDados.Location = new System.Drawing.Point(5, 46);
+            this.dtgDados.Location = new System.Drawing.Point(6, 34);
             this.dtgDados.MultiSelect = false;
             this.dtgDados.Name = "dtgDados";
             this.dtgDados.ReadOnly = true;
             this.dtgDados.RowHeadersWidth = 51;
             this.dtgDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgDados.Size = new System.Drawing.Size(720, 238);
-            this.dtgDados.TabIndex = 464;
-            this.dtgDados.DoubleClick += new System.EventHandler(this.DtgDados_DoubleClick);
+            this.dtgDados.Size = new System.Drawing.Size(739, 279);
+            this.dtgDados.TabIndex = 468;
+            this.dtgDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgDados_CellDoubleClick);
             // 
-            // lblTitulo
+            // tabHistórico
             // 
-            this.lblTitulo.BackColor = System.Drawing.Color.Black;
-            this.lblTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Padding = new System.Windows.Forms.Padding(5, 12, 0, 0);
-            this.lblTitulo.Size = new System.Drawing.Size(753, 50);
-            this.lblTitulo.TabIndex = 464;
-            this.lblTitulo.Text = "Administração";
+            this.tabHistórico.Controls.Add(this.grpMaisDetalhes);
+            this.tabHistórico.Controls.Add(this.dtgHistorico);
+            this.tabHistórico.Location = new System.Drawing.Point(4, 22);
+            this.tabHistórico.Name = "tabHistórico";
+            this.tabHistórico.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHistórico.Size = new System.Drawing.Size(751, 316);
+            this.tabHistórico.TabIndex = 1;
+            this.tabHistórico.Text = "Histórico";
+            this.tabHistórico.UseVisualStyleBackColor = true;
             // 
-            // btnFinanceiro
+            // grpMaisDetalhes
             // 
-            this.btnFinanceiro.Location = new System.Drawing.Point(666, 12);
-            this.btnFinanceiro.Name = "btnFinanceiro";
-            this.btnFinanceiro.Size = new System.Drawing.Size(75, 23);
-            this.btnFinanceiro.TabIndex = 465;
-            this.btnFinanceiro.Text = "Financeiro";
-            this.btnFinanceiro.UseVisualStyleBackColor = true;
-            this.btnFinanceiro.Click += new System.EventHandler(this.BtnFinanceiro_Click);
+            this.grpMaisDetalhes.Controls.Add(this.txtMaisDetalhes);
+            this.grpMaisDetalhes.Location = new System.Drawing.Point(4, 133);
+            this.grpMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
+            this.grpMaisDetalhes.Name = "grpMaisDetalhes";
+            this.grpMaisDetalhes.Padding = new System.Windows.Forms.Padding(4);
+            this.grpMaisDetalhes.Size = new System.Drawing.Size(741, 176);
+            this.grpMaisDetalhes.TabIndex = 362;
+            this.grpMaisDetalhes.TabStop = false;
+            this.grpMaisDetalhes.Text = "Mais detalhes:";
             // 
-            // btnCliente
+            // txtMaisDetalhes
             // 
-            this.btnCliente.Location = new System.Drawing.Point(585, 12);
-            this.btnCliente.Name = "btnCliente";
-            this.btnCliente.Size = new System.Drawing.Size(75, 23);
-            this.btnCliente.TabIndex = 466;
-            this.btnCliente.Text = "Cliente";
-            this.btnCliente.UseVisualStyleBackColor = true;
-            this.btnCliente.Click += new System.EventHandler(this.BtnCliente_Click);
+            this.txtMaisDetalhes.BackColor = System.Drawing.SystemColors.Window;
+            this.txtMaisDetalhes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaisDetalhes.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaisDetalhes.Location = new System.Drawing.Point(8, 23);
+            this.txtMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaisDetalhes.Multiline = true;
+            this.txtMaisDetalhes.Name = "txtMaisDetalhes";
+            this.txtMaisDetalhes.ReadOnly = true;
+            this.txtMaisDetalhes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMaisDetalhes.Size = new System.Drawing.Size(725, 145);
+            this.txtMaisDetalhes.TabIndex = 11;
             // 
-            // txtStatus
+            // dtgHistorico
             // 
-            this.txtStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dtgHistorico.AllowUserToAddRows = false;
+            this.dtgHistorico.AllowUserToDeleteRows = false;
+            this.dtgHistorico.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStatus.Location = new System.Drawing.Point(425, 83);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.ReadOnly = true;
-            this.txtStatus.Size = new System.Drawing.Size(302, 20);
-            this.txtStatus.TabIndex = 549;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(332, 67);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(33, 13);
-            this.label12.TabIndex = 548;
-            this.label12.Text = "Data:";
-            // 
-            // mskData
-            // 
-            this.mskData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mskData.Location = new System.Drawing.Point(335, 83);
-            this.mskData.Margin = new System.Windows.Forms.Padding(2);
-            this.mskData.Mask = "00/00/0000";
-            this.mskData.Name = "mskData";
-            this.mskData.ReadOnly = true;
-            this.mskData.Size = new System.Drawing.Size(85, 20);
-            this.mskData.TabIndex = 547;
-            this.mskData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mskData.ValidatingType = typeof(System.DateTime);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(423, 66);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 13);
-            this.label11.TabIndex = 546;
-            this.label11.Text = "Status:";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(8, 83);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(321, 20);
-            this.txtEmail.TabIndex = 551;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 550;
-            this.label7.Text = "Email:";
+            this.dtgHistorico.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dtgHistorico.ColumnHeadersHeight = 29;
+            this.dtgHistorico.Location = new System.Drawing.Point(4, 7);
+            this.dtgHistorico.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgHistorico.Name = "dtgHistorico";
+            this.dtgHistorico.ReadOnly = true;
+            this.dtgHistorico.RowHeadersWidth = 51;
+            this.dtgHistorico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgHistorico.Size = new System.Drawing.Size(739, 118);
+            this.dtgHistorico.TabIndex = 361;
+            this.dtgHistorico.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgHistorico_CellClick);
             // 
             // frmCad_Administracao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 555);
+            this.ClientSize = new System.Drawing.Size(782, 610);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCliente);
             this.Controls.Add(this.btnFinanceiro);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.gpbDados);
@@ -463,8 +539,13 @@
             this.Load += new System.EventHandler(this.FrmCad_FinanceiroV2_Load);
             this.gpbDados.ResumeLayout(false);
             this.gpbDados.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgDados)).EndInit();
+            this.tabHistórico.ResumeLayout(false);
+            this.grpMaisDetalhes.ResumeLayout(false);
+            this.grpMaisDetalhes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgHistorico)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -484,11 +565,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnRegistrar;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.DataGridView dtgDados;
-        private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPortaria;
         private System.Windows.Forms.TextBox txtTelefone;
@@ -504,5 +580,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.MaskedTextBox mskData;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btnRemover;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.DataGridView dtgDados;
+        private System.Windows.Forms.TabPage tabHistórico;
+        private System.Windows.Forms.GroupBox grpMaisDetalhes;
+        private System.Windows.Forms.TextBox txtMaisDetalhes;
+        private System.Windows.Forms.DataGridView dtgHistorico;
     }
 }

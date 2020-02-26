@@ -11,8 +11,8 @@ namespace DAL
 {
     public class SysDAL
     {
-        //Uma lista que será populada com um objeto Sys_DicionarioDTO que contém um dicionário das colunas da tabela na classe DTO.
         public static List<Sys_DicionarioDTO> ListaSysDicionario = new List<Sys_DicionarioDTO>();
+
         /// <summary>
         /// Método para gravar o histórico de alterações realizadas pelos usuários do sistema nas tabelas do banco de dados.
         /// </summary>
@@ -20,7 +20,7 @@ namespace DAL
         /// <param name="Conexao">Uma string de conexão com o bando de dados</param>
         /// <returns>Retorna true caso o histórico seja gravado com sucesso,e false caso ocorra algum problema durante a gravação do histórico.</returns>
         /// <remarks>Este método só aceita classes que implementaram a Interface IDTO.</remarks>
-        public static bool Grava_Historico(IDTO ClasseDTO, string Conexao, string Usuario, string CamposAdcionais = null, bool Backup = false, SqlCommand scm = null)
+        public static bool Grava_Historico(IDTO ClasseDTO, string Conexao, string USUARIO, string CamposAdcionais = null, bool Backup = false, SqlCommand scm = null)
         {
             try
             {
@@ -35,10 +35,10 @@ namespace DAL
 
                 Object backupDTO = null;
 
-                if (SysDTO.BackupsDTO.Exists(s => s.IdClasse == ClasseDTO.IdClasse & s.NomeModulo == ClasseDTO.NomeModulo) == true)
+                if (SysDTO.BackupsDTO.Exists(s => s.ID_CLASSE == ClasseDTO.ID_CLASSE) == true)
                 {
                     //Recupera a classe DTO que foi copiada,essa classe contém os dados originais da tabela antes de serem alterados.
-                    backupDTO = SysDTO.BackupsDTO.Single(s => s.IdClasse == ClasseDTO.IdClasse & s.NomeModulo == ClasseDTO.NomeModulo);
+                    backupDTO = SysDTO.BackupsDTO.Single(s => s.ID_CLASSE == ClasseDTO.ID_CLASSE);
                 }
                 else
                 {
@@ -50,10 +50,10 @@ namespace DAL
                 //Cria um objeto HistoricoDTO que será populado com os dados da classe DTO copiada.
                 HistoricoDTO dtoHistorico = new HistoricoDTO();
 
-                dtoHistorico.Tabela = ClasseDTO.NomeTabela;
+                dtoHistorico.TABELA = ClasseDTO.NOME_TABELA;
 
                 //Lista o dicionário de campos,se já existir na lista não faz consulta no banco de dados.
-                Listar_Dicionario(Conexao, ClasseDTO.NomeTabela);
+                Listar_Dicionario(Conexao, ClasseDTO.NOME_TABELA);
 
                 string strUsuarioAnterior = "";
                 DateTime dtDataAnterior = DateTime.Today;
@@ -67,7 +67,7 @@ namespace DAL
                     //Recupera o Id referente ao campo chave primária definido na tabela.
                     if (propinfo.Name.ToUpper() == "ID")
                     {
-                        dtoHistorico.Id_Registro = Convert.ToInt32(propinfo.GetValue(backupDTO, null));
+                        dtoHistorico.ID_REGISTRO = Convert.ToInt32(propinfo.GetValue(backupDTO, null));
                     }
 
                     //Data da última alteração realizada na tabela antes de ser alterada.
@@ -79,7 +79,7 @@ namespace DAL
                     if (propinfo.Name.ToUpper() == "USUARIO")
                     {
 
-                        dtoHistorico.Usuario = Usuario;
+                        dtoHistorico.USUARIO = USUARIO;
                         //Usuário Anterior.
                         strUsuarioAnterior = propinfo.GetValue(backupDTO, null).ToString().Trim();
                     }
@@ -113,9 +113,9 @@ namespace DAL
                                     }
                                     else
                                     {
-                                        Grava_Historico((IDTO)obj, Conexao, Usuario);
+                                        Grava_Historico((IDTO)obj, Conexao, USUARIO);
                                     }
-                                    if (((IDTO)obj).Operacao != SysDTO.Operacoes.Leitura)
+                                    if (((IDTO)obj).OPERACAO != SysDTO.Operacoes.Leitura)
                                     {
                                         Alterou_Filha = true;
                                     }
@@ -193,10 +193,10 @@ namespace DAL
                         //Os campos da classe DTO: OPERACAO,ULT_ATUAL e USUARIO não serão gravados no histórico.
                         if (propinfo.Name.ToUpper() != "OPERACAO" & propinfo.Name.ToUpper() != "ULT_ATUAL" & propinfo.Name.ToUpper() != "USUARIO")
                         {
-                            if (ListaSysDicionario.Exists(s => s.Nome_Tabela == ClasseDTO.NomeTabela & s.Nome_Coluna.ToUpper() == propinfo.Name.ToUpper()))
+                            if (ListaSysDicionario.Exists(s => s.Nome_Tabela == ClasseDTO.NOME_TABELA & s.Nome_Coluna.ToUpper() == propinfo.Name.ToUpper()))
                             {
                                 //Recupera a descrição da coluna no dicionário.
-                                Sys_DicionarioDTO sysdicionarioDTO = ListaSysDicionario.Single(s => s.Nome_Tabela == ClasseDTO.NomeTabela & s.Nome_Coluna.ToUpper() == propinfo.Name.ToUpper());
+                                Sys_DicionarioDTO sysdicionarioDTO = ListaSysDicionario.Single(s => s.Nome_Tabela == ClasseDTO.NOME_TABELA & s.Nome_Coluna.ToUpper() == propinfo.Name.ToUpper());
                                 //Adciona na StringBuilder a descrição da coluna e o valor anterior do campo alterado.
                                 sbHistorico.Append(sysdicionarioDTO.Descricao_Coluna + " = " + strValorAnterior.Replace("|", ":") + "|");
                             }
@@ -215,10 +215,10 @@ namespace DAL
                 //Se não houve alteração nos dados
                 if (intContagem == 0)
                 {
-                    dtoHistorico.Assunto = "Dados registrados sem alteração.";
+                    dtoHistorico.ASSUNTO = "Dados registrados sem alteração.";
 
                     //Não grava histórico das classes filhas que não foram alteradas
-                    if (ClasseDTO.Operacao == SysDTO.Operacoes.Leitura)
+                    if (ClasseDTO.OPERACAO == SysDTO.Operacoes.Leitura)
                     {
                         return false;
                     }
@@ -232,27 +232,27 @@ namespace DAL
                 {
                     if (Backup == true)
                     {
-                        dtoHistorico.Assunto = CamposAdcionais;
+                        dtoHistorico.ASSUNTO = CamposAdcionais;
                     }
                     else
                     {
                         if (intContagem == 1)
                         {
-                            dtoHistorico.Assunto = intContagem + " registro alterado.";
+                            dtoHistorico.ASSUNTO = intContagem + " registro alterado.";
                         }
                         else
                         {
-                            dtoHistorico.Assunto = intContagem + " registros alterados.";
+                            dtoHistorico.ASSUNTO = intContagem + " registros alterados.";
                         }
                     }
                 }
 
                 //Grava o usuário e a data anterior às alterações.
-                sbHistorico.Append("Usuario Anterior=" + strUsuarioAnterior + "|");
+                sbHistorico.Append("USUARIO Anterior=" + strUsuarioAnterior + "|");
                 sbHistorico.Append("Data Anterior=" + dtDataAnterior.ToString("dd/MM/yyyy HH:mm:ss") + "|");
 
                 //Seta os campos que foram alterados.
-                dtoHistorico.Historico = sbHistorico.ToString();
+                dtoHistorico.HISTORICO = sbHistorico.ToString();
 
                 //Grava no banco de dados o histórico dos campos que foram alterados.
                 using (SqlConnection scn = new SqlConnection(Conexao))
@@ -260,8 +260,8 @@ namespace DAL
                     try
                     {
                         StringBuilder sb = new StringBuilder();
-                        sb.Append("INSERT INTO [Asp_Sys_Historico]([ID_REGISTRO],[ASSUNTO],[HISTORICO],[USUARIO],[DATAHORA],[REP],[TABELA],[MODULO])");
-                        sb.Append(" VALUES (@ID_REGISTRO,@ASSUNTO,@HISTORICO,@USUARIO,GETDATE(), @REP, @TABELA, @MODULO);SELECT SCOPE_IDENTITY();");
+                        sb.Append("INSERT INTO [LOG_SISTEMA]([ID_REGISTRO],[ASSUNTO],[HISTORICO],[USUARIO],[DATAHORA],[TABELA])");
+                        sb.Append(" VALUES (@ID_REGISTRO,@ASSUNTO,@HISTORICO,@USUARIO,GETDATE(), @TABELA);SELECT SCOPE_IDENTITY();");
 
                         //No caso de um comando não fazer parte de uma begin transaction abre uma nova conexão
                         if (scm == null)
@@ -270,15 +270,13 @@ namespace DAL
                             scn.Open();
                         }
 
-                        scm.Parameters.AddWithValue("@ID_REGISTRO", dtoHistorico.Id_Registro);
-                        scm.Parameters.AddWithValue("@ASSUNTO", dtoHistorico.Assunto);
-                        scm.Parameters.AddWithValue("@HISTORICO", dtoHistorico.Historico);
-                        scm.Parameters.AddWithValue("@USUARIO", dtoHistorico.Usuario);
-                        scm.Parameters.AddWithValue("@REP", "N");
-                        scm.Parameters.AddWithValue("@TABELA", dtoHistorico.Tabela);
-                        scm.Parameters.AddWithValue("@MODULO", dtoHistorico.NomeModulo);
+                        scm.Parameters.AddWithValue("@ID_REGISTRO", dtoHistorico.ID_REGISTRO);
+                        scm.Parameters.AddWithValue("@ASSUNTO", dtoHistorico.ASSUNTO);
+                        scm.Parameters.AddWithValue("@HISTORICO", dtoHistorico.HISTORICO);
+                        scm.Parameters.AddWithValue("@USUARIO", dtoHistorico.USUARIO);
+                        scm.Parameters.AddWithValue("@TABELA", dtoHistorico.TABELA);
 
-                        dtoHistorico.Id = Convert.ToInt32(scm.ExecuteScalar());
+                        dtoHistorico.ID = Convert.ToInt32(scm.ExecuteScalar());
                     }
                     catch (SqlException ex)
                     {
@@ -316,11 +314,11 @@ namespace DAL
             }
         }
 
-        public static void Listar_Dicionario(string Conexao, string Tabela)
+        public static void Listar_Dicionario(string Conexao, string TABELA)
         {
             try
             {
-                if (SysDAL.ListaSysDicionario.Exists(s => s.Nome_Tabela == Tabela))
+                if (SysDAL.ListaSysDicionario.Exists(s => s.Nome_Tabela == TABELA))
                 {
                     return;
                 }
@@ -333,16 +331,16 @@ namespace DAL
                         try
                         {
                             scn.Open();
-                            string sql = "SELECT id, nome_tabela, nome_coluna, descricao_coluna FROM Asp_Sys_Dicionario WHERE  (nome_tabela = '" + Tabela + "')";
+                            string sql = "SELECT ID, NOME_TABELA, NOME_COLUNA, DESCRICAO_COLUNA FROM SYS_DICIONARIO WHERE  (NOME_TABELA = '" + TABELA + "')";
                             SqlCommand scm = new SqlCommand(sql, scn);
                             dtr = scm.ExecuteReader();
 
                             while (dtr.Read())
                             {
                                 Sys_DicionarioDTO sysdicionarioDTO = new Sys_DicionarioDTO();
-                                sysdicionarioDTO.Descricao_Coluna = dtr["Descricao_Coluna"].ToString();
-                                sysdicionarioDTO.Nome_Coluna = dtr["Nome_Coluna"].ToString();
-                                sysdicionarioDTO.Nome_Tabela = dtr["Nome_Tabela"].ToString();
+                                sysdicionarioDTO.Descricao_Coluna = dtr["DESCRICAO_COLUNA"].ToString();
+                                sysdicionarioDTO.Nome_Coluna = dtr["NOME_COLUNA"].ToString();
+                                sysdicionarioDTO.Nome_Tabela = dtr["NOME_TABELA"].ToString();
                                 sysdicionarioDTO.Id = Convert.ToInt32(dtr["id"]);
 
                                 SysDAL.ListaSysDicionario.Add(sysdicionarioDTO);

@@ -71,16 +71,16 @@ namespace APP_UI
             {
                 AtualizaDTO();
                 if (AlterarRegistro)
-                    relatorios.Operacao = SysDTO.Operacoes.Alteracao;
+                    relatorios.OPERACAO = SysDTO.Operacoes.Alteracao;
                 int result = RELATORIOS_BLL.Registrar(relatorios);
-                if (relatorios.Operacao == SysDTO.Operacoes.Inclusao)
+                if (relatorios.OPERACAO == SysDTO.Operacoes.Inclusao)
                 {
                     if (result > 0)
                         MessageBox.Show("Relatório incluído com sucesso", "Registro incluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         MessageBox.Show("Não foi possível incluir o relatório", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (relatorios.Operacao == SysDTO.Operacoes.Alteracao)
+                else if (relatorios.OPERACAO == SysDTO.Operacoes.Alteracao)
                 {
                     if (result > 0)
                         MessageBox.Show("Relatório alterado com sucesso", "Registro alterado", MessageBoxButtons.OK, MessageBoxIcon.Information);

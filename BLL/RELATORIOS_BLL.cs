@@ -25,11 +25,11 @@ namespace BLL
         {
             try
             {
-                if (DTO.Operacao == SysDTO.Operacoes.Inclusao)
+                if (DTO.OPERACAO == SysDTO.Operacoes.Inclusao)
                 {
                     return DAO.Inserir(DTO);
                 }
-                else if (DTO.Operacao == SysDTO.Operacoes.Alteracao)
+                else if (DTO.OPERACAO == SysDTO.Operacoes.Alteracao)
                 {
                     return DAO.Alterar(DTO);
                 }

@@ -32,6 +32,7 @@ namespace BLL
         }
         public bool Alterar(BOLETO_CHEQUE_DTO DTO)
         {
+            SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
             return DAO.Alterar(DTO);
         }
 

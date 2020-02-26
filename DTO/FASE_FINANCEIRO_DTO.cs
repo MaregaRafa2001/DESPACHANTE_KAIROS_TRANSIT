@@ -10,7 +10,7 @@ namespace DTO
     {
         public FASE_FINANCEIRO_DTO()
         {
-            Operacao = SysDTO.Operacoes.Inclusao;
+            OPERACAO = SysDTO.Operacoes.Inclusao;
         }
 
         public int? ID { get; set; }
@@ -41,6 +41,6 @@ namespace DTO
         public DateTime? DATA_RECEBIMENTO_CERTIFICADO { get; set; }
 
         //EXTRAS
-        public SysDTO.Operacoes Operacao { get; set; }
+        public SysDTO.Operacoes OPERACAO { get; set; }
     }
 }

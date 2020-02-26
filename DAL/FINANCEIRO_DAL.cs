@@ -53,7 +53,8 @@ namespace DAL
                     SQL_.Append("MOTOBOY_OS, ");
                     SQL_.Append("VALOR_BRUTO, ");
                     SQL_.Append("VALOR_LIQUIDO, ");
-
+                    SQL_.Append("USUARIO, ");
+                    SQL_.Append("ULT_ATUAL, ");
                     SQL_.Append("BANCO_OS ");
                     SQL_.Append(") ");
                     SQL_.Append("VALUES ");
@@ -77,6 +78,8 @@ namespace DAL
                     SQL_.Append("@MOTOBOY_OS, ");
                     SQL_.Append("@VALOR_BRUTO, ");
                     SQL_.Append("@VALOR_LIQUIDO, ");
+                    SQL_.Append("@USUARIO, ");
+                    SQL_.Append("GETDATE(), ");
                     SQL_.Append("@BANCO_OS ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
@@ -158,11 +161,13 @@ namespace DAL
                     SQL_.Append("ID_STATUS = @ID_STATUS, ");
                     SQL_.Append("INDICACAO = @INDICACAO, ");
                     SQL_.Append("DATA_ALTERACAO = GETDATE(), ");
-                    SQL_.Append("DATA = DATA, ");
+                    SQL_.Append("DATA = @DATA, ");
                     SQL_.Append("DIA_VENCIMENTO = @DIA_VENCIMENTO, ");
                     SQL_.Append("MOTOBOY_OS = @MOTOBOY_OS, ");
                     SQL_.Append("VALOR_BRUTO = @VALOR_BRUTO, ");
                     SQL_.Append("VALOR_LIQUIDO = @VALOR_LIQUIDO, ");
+                    SQL_.Append("USUARIO = @USUARIO, ");
+                    SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
                     SQL_.Append("BANCO_OS = @BANCO_OS ");
                     SQL_.Append("WHERE ID = @ID ");
                     cn.Open();
@@ -214,6 +219,8 @@ namespace DAL
             cmd.Parameters.AddWithValue("@BANCO_OS", DTO.BANCO_OS);
             cmd.Parameters.AddWithValue("@VALOR_BRUTO", DTO.VALOR_BRUTO);
             cmd.Parameters.AddWithValue("@VALOR_LIQUIDO", DTO.VALOR_LIQUIDO);
+            cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
+            cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
             //cmd.Parameters.AddWithValue("@DATA_ALTERACAO", DTO.DATA_ALTERACAO);
 
             //Substitui o null por DBnull
@@ -232,7 +239,7 @@ namespace DAL
             using (SqlConnection scn = new SqlConnection(this.strConnection))
             {
                 SqlDataReader dtr = null;
-                FINANCEIRO_DTO Financeiro = new FINANCEIRO_DTO();
+                FINANCEIRO_DTO DTO = new FINANCEIRO_DTO();
 
                 try
                 {
@@ -245,10 +252,11 @@ namespace DAL
 
                     if (dtr.Read())
                     {
-                        PopularDados(dtr, Financeiro);
+                        PopularDados(dtr, DTO);
+                        SysDAL.GuardarDTO((IDTO)DTO.Clone());
                     }
 
-                    return Financeiro;
+                    return DTO;
                 }
 
                 catch (SqlException ex)
@@ -329,6 +337,10 @@ namespace DAL
             _DTO.DATA = Convert.ToDateTime(dtr["DATA"]);
             _DTO.MOTOBOY_OS = dtr["MOTOBOY_OS"].ToString();
             _DTO.BANCO_OS = dtr["BANCO_OS"].ToString();
+            _DTO.BANCO_OS = dtr["BANCO_OS"].ToString();
+            _DTO.USUARIO = dtr["USUARIO"].ToString();
+            _DTO.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
+
             _DTO.VALOR_BRUTO = dtr["VALOR_BRUTO"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dtr["VALOR_BRUTO"]);
             _DTO.VALOR_LIQUIDO = dtr["VALOR_LIQUIDO"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dtr["VALOR_LIQUIDO"]);
         }
@@ -351,9 +363,10 @@ namespace DAL
 
                     while (dtr.Read())
                     {
-                        FINANCEIRO_DTO dTO = new FINANCEIRO_DTO();
-                        PopularDados(dtr, dTO);
-                        Financeiro.Add(dTO);
+                        FINANCEIRO_DTO DTO = new FINANCEIRO_DTO();
+                        PopularDados(dtr, DTO);
+                        SysDAL.GuardarDTO((IDTO)DTO.Clone());
+                        Financeiro.Add(DTO);
                     }
                     return Financeiro;
                 }
@@ -403,6 +416,8 @@ namespace DAL
                     sb.Append(" X.MOTOBOY_OS, ");
                     sb.Append(" X.BANCO_OS,");
                     sb.Append(" X.DATA,");
+                    sb.Append(" X.USUARIO,");
+                    sb.Append(" X.ULT_ATUAL,");
                     sb.Append(" X.DIA_VENCIMENTO,");
                     sb.Append(" X.INDICACAO,");
                     sb.Append(" A.ID AS ID_CLIENTE,");
@@ -479,6 +494,9 @@ namespace DAL
                         Financeiro.STATUS.DESCRICAO = dtr["DESCRICAO_STATUS"].ToString();
                         Financeiro.SERVICO.ID = dtr["ID_SERVICO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_SERVICO"]);
                         Financeiro.SERVICO.NOME = dtr["NOME_SERVICO"].ToString();
+                        Financeiro.USUARIO = dtr["USUARIO"].ToString();
+                        Financeiro.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
+
                     }
 
                     if (dtr.NextResult())
@@ -507,12 +525,11 @@ namespace DAL
                             fase_financeiro.DATA_RECEBIMENTO_CERTIFICADO = dtr["DATA_RECEBIMENTO_CERTIFICADO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_RECEBIMENTO_CERTIFICADO"]);
 
 
-                            fase_financeiro.Operacao = SysDTO.Operacoes.Leitura;
-
-
+                            fase_financeiro.OPERACAO = SysDTO.Operacoes.Leitura;
                             Financeiro.FASE_FINANCEIRO.Add(fase_financeiro);
                         }
                     }
+                    Financeiro.Clone();
                     return Financeiro;
                 }
 
@@ -542,7 +559,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(strConnection))
                 {
-                    if (DTO.Operacao == SysDTO.Operacoes.Inclusao)
+                    if (DTO.OPERACAO == SysDTO.Operacoes.Inclusao)
                     {
                         try
                         {
@@ -616,7 +633,7 @@ namespace DAL
                             cn.Close();
                         }
                     }
-                    else if (DTO.Operacao == SysDTO.Operacoes.Alteracao)
+                    else if (DTO.OPERACAO == SysDTO.Operacoes.Alteracao)
                     {
 
                         try

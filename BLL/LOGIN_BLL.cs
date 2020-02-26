@@ -28,6 +28,7 @@ namespace BLL
 
         public int? Set_Login(LOGIN_DTO DTO)
         {
+            SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
             return DAO.Set_Login(DTO);
         }
 
@@ -37,6 +38,7 @@ namespace BLL
         }
         public bool Update_Login(LOGIN_DTO DTO)
         {
+            SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
             return DAO.Update_Login(DTO);
         }
 

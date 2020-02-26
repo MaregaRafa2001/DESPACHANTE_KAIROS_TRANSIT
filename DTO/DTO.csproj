@@ -54,7 +54,6 @@
     <Compile Include="GRUPO_ACESSO_DTO.cs" />
     <Compile Include="INDICACAO_DTO.cs" />
     <Compile Include="LOGIN_DTO.cs" />
-    <Compile Include="LOG_SISTEMA_DTO.cs" />
     <Compile Include="PesquisaGeralDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RELATORIOS_DTO.cs" />

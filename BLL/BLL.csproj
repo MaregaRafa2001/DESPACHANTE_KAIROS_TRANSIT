@@ -56,7 +56,6 @@
     <Compile Include="GRUPO_ACESSO_BLL.cs" />
     <Compile Include="INDICACAO_BLL.cs" />
     <Compile Include="LOGIN_BLL.cs" />
-    <Compile Include="LOG_SISTEMA_BLL.cs" />
     <Compile Include="PesquisaGeralBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RELATORIOS_BLL.cs" />

@@ -91,8 +91,8 @@ namespace APP_UI
                 if (result == DialogResult.OK)
                 {
                     fase_financeiro = frmCad_Financeiro_Fases.fase_financeiro_dto;
-                    fase_financeiro.ID_FINANCEIRO = financeiro_dto.ID == null? 0 : (int)financeiro_dto.ID;
-                    fase_financeiro.Operacao = SysDTO.Operacoes.Inclusao;
+                    fase_financeiro.ID_FINANCEIRO = financeiro_dto.ID == null ? 0 : (int)financeiro_dto.ID;
+                    fase_financeiro.OPERACAO = SysDTO.Operacoes.Inclusao;
                     list_fase_financeiro_dto.Add(fase_financeiro);
                     PopularGrid();
                 }
@@ -146,8 +146,8 @@ namespace APP_UI
                             fASE_FINANCEIRO.FASE = fase.FASE;
                             fASE_FINANCEIRO.OBSERVACAO = fASE_FINANCEIRO.OBSERVACAO;
                             fASE_FINANCEIRO.ID_FINANCEIRO = financeiro_dto.ID == null ? 0 : (int)financeiro_dto.ID;
-                            if (fASE_FINANCEIRO.Operacao != SysDTO.Operacoes.Inclusao)
-                                fASE_FINANCEIRO.Operacao = SysDTO.Operacoes.Alteracao;
+                            if (fASE_FINANCEIRO.OPERACAO != SysDTO.Operacoes.Inclusao)
+                                fASE_FINANCEIRO.OPERACAO = SysDTO.Operacoes.Alteracao;
                         }
                         PopularGrid();
                     }
@@ -178,7 +178,7 @@ namespace APP_UI
                 if (list_fase_financeiro_dto.Exists(x => x.ID.ToString() == Id))
                 {
                     FASE_FINANCEIRO_DTO fase_financeiro = list_fase_financeiro_dto.Find(x => x.ID.ToString() == Id);
-                    if (fase_financeiro.Operacao != SysDTO.Operacoes.Inclusao)
+                    if (fase_financeiro.OPERACAO != SysDTO.Operacoes.Inclusao)
                         new FINANCEIRO_BLL().Excluir_FaseFinanceiro((int)fase_financeiro.ID);
                     list_fase_financeiro_dto.Remove(fase_financeiro);
                     PopularGrid();
@@ -213,14 +213,34 @@ namespace APP_UI
             }
         }
 
-        private void DtgDados_DoubleClick(object sender, EventArgs e)
-        {
-            BtnAlterar_Click(sender, e);
-        }
-
         private void FrmCad_FinanceiroV2_Load(object sender, EventArgs e)
         {
             PopularGrid();
+
+            if (financeiro_dto.ID != null)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("SELECT TOP (100) PERCENT ID, DATAHORA AS 'Data', USUARIO AS Usuário, ASSUNTO, HISTORICO,ID_REGISTRO ");
+                sb.Append(" FROM LOG_SISTEMA WHERE (TABELA = N'FINANCEIRO') ");
+                sb.Append(" and (id_registro = " + financeiro_dto.ID + ")");
+                //Carregando o Histórico
+                if (financeiro_dto.ID != 0)
+                {
+                    DataTable dtt = new PesquisaGeralBLL().Pesquisa(sb.ToString());
+
+                    dtt.DefaultView.Sort = "Data Desc";
+                    dtgHistorico.DataSource = dtt;
+                    dtgHistorico.Columns["Historico"].Visible = false;
+                    dtgHistorico.RowHeadersVisible = false;
+                    dtgHistorico.Columns["id_registro"].Visible = false;
+                    dtgHistorico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                }
+            }
+            else
+            {
+                tabControl1.TabPages.Remove(tabHistórico);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -274,6 +294,39 @@ namespace APP_UI
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void DtgHistorico_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dtgHistorico.Rows.Count != 0)
+                {
+                    string strAssunto = dtgHistorico.CurrentRow.Cells["Assunto"].Value.ToString();
+                    StringBuilder stbDetalhes = new StringBuilder();
+                    stbDetalhes.Append(strAssunto + "\r\n");
+                    stbDetalhes.Append(string.Join("", Enumerable.Repeat("-", strAssunto.Length)) + "\r\n");
+                    stbDetalhes.Append("Id do Registro: " + dtgHistorico.CurrentRow.Cells["ID_REGISTRO"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("Usuário: " + dtgHistorico.CurrentRow.Cells["Usuário"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("Data: " + dtgHistorico.CurrentRow.Cells["Data"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("\r\n");
+                    stbDetalhes.Append("---------- Dados" + (dtgHistorico.CurrentRow.Cells["Assunto"].Value.ToString() != "Criação" ? " Anteriores" : "") + ": ----------\r\n");
+                    stbDetalhes.Append(dtgHistorico.CurrentRow.Cells["historico"].Value.ToString().Replace("|", "\r\n"));
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    txtMaisDetalhes.Text = stbDetalhes.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao mostrar detalhes do Histórico!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DtgDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BtnAlterar_Click(sender, e);
         }
     }
 }

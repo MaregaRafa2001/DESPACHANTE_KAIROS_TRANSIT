@@ -44,7 +44,6 @@ namespace DAL
                     SQL_.Append("CEP, ");
                     SQL_.Append("BAIRRO, ");
                     SQL_.Append("LOGRADOURO, ");
-                    //SQL_.Append("UF, ");
                     SQL_.Append("MUNICIPIO, ");
                     SQL_.Append("COMPLEMENTO, ");
                     SQL_.Append("NUMERO_RES,    ");
@@ -54,6 +53,8 @@ namespace DAL
                     SQL_.Append("CELULAR, ");
                     SQL_.Append("TELEFONE, ");
                     SQL_.Append("PORTARIA, ");
+                    SQL_.Append("USUARIO, ");
+                    SQL_.Append("ULT_ATUAL, ");
                     SQL_.Append("OBSERVACAO ");
 
                     SQL_.Append(") ");
@@ -82,7 +83,9 @@ namespace DAL
                     SQL_.Append("@EMAIL2, ");
                     SQL_.Append("@CELULAR, ");
                     SQL_.Append("@TELEFONE, ");
-                    SQL_.Append("@PORTARIA ");
+                    SQL_.Append("@PORTARIA, ");
+                    SQL_.Append("@USUARIO, ");
+                    SQL_.Append("@ULT_ATUAL, ");
                     SQL_.Append("@OBSERVACAO ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
@@ -140,7 +143,6 @@ namespace DAL
                     SQL_.Append("CEP = @CEP, ");
                     SQL_.Append("BAIRRO = @BAIRRO, ");
                     SQL_.Append("LOGRADOURO = @LOGRADOURO, ");
-                    //SQL_.Append("UF = @UF, ");
                     SQL_.Append("MUNICIPIO = @MUNICIPIO, ");
                     SQL_.Append("COMPLEMENTO = @COMPLEMENTO, ");
                     SQL_.Append("NUMERO_RES = @NUMERO_RES, ");
@@ -150,6 +152,8 @@ namespace DAL
                     SQL_.Append("CELULAR = @CELULAR, ");
                     SQL_.Append("TELEFONE = @TELEFONE, ");
                     SQL_.Append("PORTARIA = @PORTARIA, ");
+                    SQL_.Append("USUARIO = @USUARIO, ");
+                    SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
                     SQL_.Append("OBSERVACAO = @OBSERVACAO ");
 
                     SQL_.Append("WHERE ID = @ID ");
@@ -218,7 +222,6 @@ namespace DAL
             cmd.Parameters.AddWithValue("@CEP", DTO.CEP.Replace("-", ""));
             cmd.Parameters.AddWithValue("@BAIRRO", DTO.BAIRRO);
             cmd.Parameters.AddWithValue("@LOGRADOURO", DTO.LOGRADOURO);
-            //cmd.Parameters.AddWithValue("@UF", DTO.UF);
             cmd.Parameters.AddWithValue("@MUNICIPIO", DTO.MUNICIPIO);
             cmd.Parameters.AddWithValue("@COMPLEMENTO", DTO.COMPLEMENTO);
             cmd.Parameters.AddWithValue("@NUMERO_RES", DTO.NUMERO_RES);
@@ -228,6 +231,8 @@ namespace DAL
             cmd.Parameters.AddWithValue("@CELULAR", DTO.CELULAR);
             cmd.Parameters.AddWithValue("@TELEFONE", DTO.TELEFONE);
             cmd.Parameters.AddWithValue("@PORTARIA", DTO.PORTARIA);
+            cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
+            cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
             cmd.Parameters.AddWithValue("@OBSERVACAO", DTO.OBSERVACAO);
 
             //Substitui o null por DBnull
@@ -246,7 +251,7 @@ namespace DAL
             using (SqlConnection scn = new SqlConnection(this.strConnection))
             {
                 SqlDataReader dtr = null;
-                CLIENTE_DTO Cliente = new CLIENTE_DTO();
+                CLIENTE_DTO DTO = new CLIENTE_DTO();
 
                 try
                 {
@@ -259,10 +264,11 @@ namespace DAL
 
                     if (dtr.Read())
                     {
-                        PopularDados(dtr, Cliente);
+                        PopularDados(dtr, DTO);
+                        SysDAL.GuardarDTO((IDTO)DTO.Clone());
                     }
 
-                    return Cliente;
+                    return DTO;
                 }
                 catch (SqlException ex)
                 {
@@ -288,6 +294,8 @@ namespace DAL
             Cliente.CPF = dtr["CPF"].ToString();
             Cliente.RG = dtr["RG"].ToString();
             Cliente.DATA_NASCIMENTO = dtr["DATA_NASCIMENTO"].ToString();
+            if (!string.IsNullOrEmpty(Cliente.DATA_NASCIMENTO) && Cliente.DATA_NASCIMENTO.Length > 10)
+                Cliente.DATA_NASCIMENTO = Cliente.DATA_NASCIMENTO.Substring(0, 10);
             Cliente.CNH = Convert.ToString(dtr["CNH"]);
             Cliente.CNH_UF = dtr["CNH_UF"].ToString();
             Cliente.CNH_PONTUACAO = Convert.ToInt32(dtr["CNH_PONTUACAO"]);
@@ -305,6 +313,8 @@ namespace DAL
             Cliente.EMAIL2 = dtr["EMAIL2"].ToString();
             Cliente.CELULAR = dtr["CELULAR"].ToString();
             Cliente.TELEFONE = dtr["TELEFONE"].ToString();
+            Cliente.USUARIO = dtr["USUARIO"].ToString();
+            Cliente.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
             Cliente.PORTARIA = dtr["PORTARIA"] == DBNull.Value? false : Convert.ToBoolean(dtr["PORTARIA"]);
             Cliente.OBSERVACAO = dtr["OBSERVACAO"].ToString();
         }

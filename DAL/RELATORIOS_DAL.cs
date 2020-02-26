@@ -69,7 +69,7 @@ namespace DAL
         {
             using (SqlConnection cn = new SqlConnection(strConnection))
             {
-                RELATORIOS_DTO relatorios = new RELATORIOS_DTO();
+                RELATORIOS_DTO DTO = new RELATORIOS_DTO();
 
                 try
                 {
@@ -91,10 +91,11 @@ namespace DAL
 
                     if (dr.Read())
                     {
-                        PopularDados(dr, relatorios);
+                        PopularDados(dr, DTO);
+                        SysDAL.GuardarDTO((IDTO)DTO.Clone());
                     }
 
-                    return relatorios;
+                    return DTO;
                 }
                 catch (SqlException ex)
                 {
@@ -132,6 +133,8 @@ namespace DAL
                     SQL_.Append("LISTAHTML1, ");
                     SQL_.Append("LISTAHTML2, ");
                     SQL_.Append("COLUNAS_GROUP, ");
+                    SQL_.Append("USUARIO, ");
+                    SQL_.Append("ULT_ATUAL, ");
                     SQL_.Append("QUERY ");
 
                     SQL_.Append(") ");
@@ -143,6 +146,8 @@ namespace DAL
                     SQL_.Append("@LISTAHTML1, ");
                     SQL_.Append("@LISTAHTML2, ");
                     SQL_.Append("@COLUNAS_GROUP, ");
+                    SQL_.Append("@USUARIO, ");
+                    SQL_.Append("@ULT_ATUAL, ");
                     SQL_.Append("@QUERY ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
@@ -193,6 +198,8 @@ namespace DAL
                     SQL_.Append("LISTAHTML1 = @LISTAHTML1, ");
                     SQL_.Append("LISTAHTML2 = @LISTAHTML2, ");
                     SQL_.Append("COLUNAS_GROUP = @COLUNAS_GROUP, ");
+                    SQL_.Append("USUARIO = @USUARIO, ");
+                    SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
                     SQL_.Append("QUERY = @QUERY ");
 
                     SQL_.Append("WHERE ID = @ID ");
@@ -255,6 +262,8 @@ namespace DAL
                 DTO.LISTAHTML2 = dtr["LISTAHTML2"].ToString();
                 DTO.QUERY = dtr["QUERY"].ToString();
                 DTO.COLUNAS_GROUP = dtr["COLUNAS_GROUP"].ToString();
+                DTO.USUARIO = dtr["USUARIO"].ToString();
+                DTO.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
                 DTO.GERARHTML = Convert.ToBoolean(dtr["GERARHTML"]);
             }
             catch (Exception ex)
@@ -271,6 +280,8 @@ namespace DAL
             cmd.Parameters.AddWithValue("@LISTAHTML2", DTO.LISTAHTML2);
             cmd.Parameters.AddWithValue("@COLUNAS_GROUP", DTO.COLUNAS_GROUP);
             cmd.Parameters.AddWithValue("@QUERY", DTO.QUERY);
+            cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
+            cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
             cmd.Parameters.AddWithValue("@GERARHTML", DTO.GERARHTML);
 
 
@@ -284,8 +295,5 @@ namespace DAL
             }
 
         }
-
-
-
     }
 }

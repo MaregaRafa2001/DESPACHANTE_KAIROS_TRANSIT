@@ -36,12 +36,11 @@ namespace DTO
 
     public interface IDTO : ICloneable
     {
-        SysDTO.Operacoes Operacao { get; set; }
-        string Usuario { get; set; }
-        DateTime? Ult_Atual { get; set; }
-        int IdClasse { get; set; }
-        string NomeTabela { get; set; }
-        string NomeModulo { get; set; }
+        SysDTO.Operacoes OPERACAO { get; set; }
+        string USUARIO { get; set; }
+        DateTime? ULT_ATUAL { get; set; }
+        int ID_CLASSE { get; set; }
+        string NOME_TABELA { get; set; }
     }
 
 
@@ -83,22 +82,20 @@ namespace DTO
     {
         public HistoricoDTO()
         {
-            this.Operacao = SysDTO.Operacoes.Inclusao;
-            this.NomeTabela = "Asp_Sys_Historico";
-            this.NomeModulo = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+            this.OPERACAO = SysDTO.Operacoes.Inclusao;
+            this.NOME_TABELA = "LOG_SISTEMA";
         }
 
-        public int Id { get; set; }
-        public int Id_Registro { get; set; }
-        public string Assunto { get; set; }
-        public string NomeTabela { get; set; }
-        public string Historico { get; set; }
-        public string Tabela { get; set; }
-        public string NomeModulo { get; set; }
-        public SysDTO.Operacoes Operacao { get; set; }
-        public int IdClasse { get; set; }
-        public string Usuario { get; set; }
-        public DateTime? Ult_Atual { get; set; }
+        public int ID { get; set; }
+        public int ID_REGISTRO { get; set; }
+        public string ASSUNTO { get; set; }
+        public string NOME_TABELA { get; set; }
+        public string HISTORICO { get; set; }
+        public string TABELA { get; set; }
+        public SysDTO.Operacoes OPERACAO { get; set; }
+        public int ID_CLASSE { get; set; }
+        public string USUARIO { get; set; }
+        public DateTime? ULT_ATUAL { get; set; }
         public string Rep { get; set; }
 
         public object Clone()

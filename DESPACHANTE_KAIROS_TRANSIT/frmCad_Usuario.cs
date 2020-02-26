@@ -29,7 +29,7 @@ namespace APP_UI
             {
                 usuario = login_bll.Selecione(ID);
                 PopularDados();
-                usuario.Operacao = SysDTO.Operacoes.Alteracao;
+                usuario.OPERACAO = SysDTO.Operacoes.Alteracao;
             }
 
         }
@@ -89,7 +89,7 @@ namespace APP_UI
                     return;
                 }
 
-                if (usuario.Operacao == SysDTO.Operacoes.Inclusao)
+                if (usuario.OPERACAO == SysDTO.Operacoes.Inclusao)
                 {
                     int? result = login_bll.Set_Login(usuario);
                     if (result > 0)
@@ -103,7 +103,7 @@ namespace APP_UI
                         MessageBox.Show("Não foi possível incluir o registro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else if (usuario.Operacao == SysDTO.Operacoes.Alteracao)
+                else if (usuario.OPERACAO == SysDTO.Operacoes.Alteracao)
                 {
                     bool result = login_bll.Update_Login(usuario);
                     if (result)

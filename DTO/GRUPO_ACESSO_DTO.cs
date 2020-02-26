@@ -8,6 +8,12 @@ namespace DTO
 {
     public class GRUPO_ACESSO_DTO
     {
+        public GRUPO_ACESSO_DTO()
+        {
+            this.OPERACAO = SysDTO.Operacoes.Inclusao;
+            this.NOME_TABELA = "GRUPO_ACESSO";
+            this.ID_CLASSE = this.GetHashCode();
+        }
         public int ID { get; set; }
         public int ID_PERFIL { get; set; }
         public int ID_SYS_MENU { get; set; }
@@ -19,13 +25,14 @@ namespace DTO
             set { SYS_MENU_ = value; }
         }
 
-
-        //LOG DO SISTEMA
-        private LOG_SISTEMA_DTO L_DTO = new LOG_SISTEMA_DTO();
-        public LOG_SISTEMA_DTO LOG_SISTEMA
+        public SysDTO.Operacoes OPERACAO { get; set; }
+        public string USUARIO { get; set; }
+        public DateTime? ULT_ATUAL { get; set; }
+        public int ID_CLASSE { get; set; }
+        public string NOME_TABELA { get; set; }
+        public object Clone()
         {
-            get { return L_DTO; }
-            set { L_DTO = value; }
+            return this.MemberwiseClone();
         }
     }
 }

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class FINANCEIRO_DTO
+    public class FINANCEIRO_DTO : IDTO
     {
         public FINANCEIRO_DTO()
         {
-            Operacao = SysDTO.Operacoes.Inclusao;
-            LOG_SISTEMA.TABELA = "FINANCEIRO";
+            OPERACAO = SysDTO.Operacoes.Inclusao;
+            this.NOME_TABELA = "FINANCEIRO";
+            this.ID_CLASSE = this.GetHashCode();
         }
         public int? ID { get; set; }
-
         public string FORMA_PAGAMENTO { get; set; }
         public int PARCELAS { get; set; }
         public string CONSULTOR { get; set; }
@@ -24,8 +24,6 @@ namespace DTO
         public string INDICACAO { get; set; }
         public int ID_SERVICO { get; set; }
         public decimal VALOR { get; set; }
-
-    //  public decimal PRECO { get; set; }
 
         public decimal? VALOR_OS { get; set; }
         public decimal? VALOR_BRUTO { get; set; }
@@ -41,7 +39,6 @@ namespace DTO
         public string NUMBOLCHE { get; set; }
         public DateTime? DATA { get; set; }
         public int DIA_VENCIMENTO { get; set; }
-        public SysDTO.Operacoes Operacao { get; set; }
 
         private SERVICO_DTO S_DTO = new SERVICO_DTO();
         public SERVICO_DTO SERVICO
@@ -79,12 +76,15 @@ namespace DTO
         }
 
 
-        //LOG DO SISTEMA
-        private LOG_SISTEMA_DTO L_DTO = new LOG_SISTEMA_DTO();
-        public LOG_SISTEMA_DTO LOG_SISTEMA
+
+        public SysDTO.Operacoes OPERACAO { get; set; }
+        public string USUARIO { get; set; }
+        public DateTime? ULT_ATUAL { get; set; }
+        public int ID_CLASSE { get; set; }
+        public string NOME_TABELA { get; set; }
+        public object Clone()
         {
-            get { return L_DTO; }
-            set { L_DTO = value; }
+            return this.MemberwiseClone();
         }
     }
 }

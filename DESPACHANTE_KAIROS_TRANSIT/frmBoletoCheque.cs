@@ -17,12 +17,15 @@ namespace APP_UI
 
 
         public BOLETO_CHEQUE_DTO boleto_cheque = new BOLETO_CHEQUE_DTO();
+        decimal ValorDisponivel;
 
-        public frmBoletoCheque(BOLETO_CHEQUE_DTO boleto_cheque)
+        public frmBoletoCheque(BOLETO_CHEQUE_DTO boleto_cheque, decimal ValorDisponivel, bool LastParcela)
         {
             InitializeComponent();
-
+            this.ValorDisponivel = ValorDisponivel;
             this.boleto_cheque = boleto_cheque;
+            if (LastParcela)
+                txtValor.ReadOnly = true;
             PopularCombos();
             PopularDados();
         }
@@ -55,7 +58,6 @@ namespace APP_UI
         {
             txtParcela.Text = boleto_cheque.PARCELA.ToString();
             mskDataVencimento.Text = (boleto_cheque.DATA_VENCTO == null ? "" : boleto_cheque.DATA_VENCTO.Value.ToShortDateString());
-            mskDataVencimento.Text = DateTime.Now.ToShortDateString();
             cboStatusPagamento.Text = boleto_cheque.STATUS_PAGAMENTO;
             txtNumBolChe.Text = boleto_cheque.NUMERO;
             txtValor.Text = boleto_cheque.VALOR.ToString();
@@ -66,6 +68,13 @@ namespace APP_UI
         {
             try
             {
+                if (Convert.ToDecimal(txtValor.Text) > ValorDisponivel)
+                {
+                    MessageBox.Show("O valor da parcela não pode ser maior do que o valor total disponível", "Dados inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtValor.Focus();
+                    return;
+                }
+
                 AtualizaDTO();
                 ValidarDados();
                 this.DialogResult = DialogResult.OK;
@@ -109,6 +118,11 @@ namespace APP_UI
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

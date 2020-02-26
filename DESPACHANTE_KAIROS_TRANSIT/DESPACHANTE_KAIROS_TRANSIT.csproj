@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesomeIcons, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -231,10 +234,77 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Content\Fonts\fontawesome-webfont.eot" />
+    <None Include="Content\Fonts\fontawesome-webfont.ttf" />
+    <None Include="Content\Fonts\fontawesome-webfont.woff" />
+    <None Include="Content\Fonts\fontawesome-webfont.woff2" />
+    <None Include="Content\Fonts\FontAwesome.otf" />
+    <None Include="Content\Less\FontAwesome\animated.less" />
+    <None Include="Content\Less\FontAwesome\bordered-pulled.less" />
+    <None Include="Content\Less\FontAwesome\core.less" />
+    <None Include="Content\Less\FontAwesome\fixed-width.less" />
+    <None Include="Content\Less\FontAwesome\font-awesome.less" />
+    <None Include="Content\Less\FontAwesome\icons.less" />
+    <None Include="Content\Less\FontAwesome\larger.less" />
+    <None Include="Content\Less\FontAwesome\list.less" />
+    <None Include="Content\Less\FontAwesome\mixins.less" />
+    <None Include="Content\Less\FontAwesome\path.less" />
+    <None Include="Content\Less\FontAwesome\rotated-flipped.less" />
+    <None Include="Content\Less\FontAwesome\stacked.less" />
+    <None Include="Content\Less\FontAwesome\variables.less" />
+    <None Include="Content\Scss\FontAwesome\font-awesome.scss" />
+    <None Include="Content\Scss\FontAwesome\_animated.scss" />
+    <None Include="Content\Scss\FontAwesome\_bordered-pulled.scss" />
+    <None Include="Content\Scss\FontAwesome\_core.scss" />
+    <None Include="Content\Scss\FontAwesome\_fixed-width.scss" />
+    <None Include="Content\Scss\FontAwesome\_icons.scss" />
+    <None Include="Content\Scss\FontAwesome\_larger.scss" />
+    <None Include="Content\Scss\FontAwesome\_list.scss" />
+    <None Include="Content\Scss\FontAwesome\_mixins.scss" />
+    <None Include="Content\Scss\FontAwesome\_path.scss" />
+    <None Include="Content\Scss\FontAwesome\_rotated-flipped.scss" />
+    <None Include="Content\Scss\FontAwesome\_stacked.scss" />
+    <None Include="Content\Scss\FontAwesome\_variables.scss" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\DESPACHANTE_KAIROS_TRANSIT.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\DESPACHANTE_KAIROS_TRANSIT.csprojAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <None Include="packages\Correios.CEP.Net.1.1.6\.signature.p7s" />
+    <None Include="packages\Correios.CEP.Net.1.1.6\Correios.CEP.Net.1.1.6.nupkg" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\.signature.p7s" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Fonts\fontawesome-webfont.eot" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Fonts\fontawesome-webfont.ttf" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Fonts\fontawesome-webfont.woff" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Fonts\fontawesome-webfont.woff2" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Fonts\FontAwesome.otf" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\animated.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\bordered-pulled.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\core.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\fixed-width.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\font-awesome.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\icons.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\larger.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\list.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\mixins.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\path.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\rotated-flipped.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\stacked.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Less\FontAwesome\variables.less" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\font-awesome.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_animated.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_bordered-pulled.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_core.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_fixed-width.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_icons.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_larger.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_list.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_mixins.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_path.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_rotated-flipped.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_stacked.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Scss\FontAwesome\_variables.scss" />
+    <None Include="packages\FontAwesomeIcons.1.0.3\FontAwesomeIcons.1.0.3.nupkg" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -262,6 +332,19 @@
     <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\CSS\font-awesome.css" />
+    <Content Include="Content\CSS\font-awesome.min.css" />
+    <Content Include="Content\Fonts\fontawesome-webfont.svg" />
+    <Content Include="packages\Correios.CEP.Net.1.1.6\lib\Correios.Net.dll" />
+    <Content Include="packages\Correios.CEP.Net.1.1.6\lib\Correios.Net.pdb" />
+    <Content Include="packages\FontAwesomeIcons.1.0.3\Content\Content\CSS\font-awesome.css" />
+    <Content Include="packages\FontAwesomeIcons.1.0.3\Content\Content\CSS\font-awesome.min.css" />
+    <Content Include="packages\FontAwesomeIcons.1.0.3\Content\Content\Fonts\fontawesome-webfont.svg" />
+    <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.dll" />
+    <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.pdb" />
+    <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

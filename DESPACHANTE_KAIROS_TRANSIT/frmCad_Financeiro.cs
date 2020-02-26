@@ -62,11 +62,11 @@ namespace APP_UI
                     lista_boleto_cheque = new BOLETO_CHEQUE_BLL().Seleciona_by_Id_Financeiro(ID);
 
                     foreach (BOLETO_CHEQUE_DTO boleto_cheque in lista_boleto_cheque)
-                        boleto_cheque.Operacao = SysDTO.Operacoes.Leitura;
+                        boleto_cheque.OPERACAO = SysDTO.Operacoes.Leitura;
                     PopularGrid();
                     PopularDados();
                     txtValor.ReadOnly = true;
-                    FINANCEIRO_DTO.Operacao = SysDTO.Operacoes.Alteracao;
+                    FINANCEIRO_DTO.OPERACAO = SysDTO.Operacoes.Alteracao;
                 }
             }
             catch (Exception ex)
@@ -119,25 +119,43 @@ namespace APP_UI
             try
             {
                 txtValor.Text = FINANCEIRO_DTO.VALOR.ToString();
+
                 numQtdParcela.ValueChanged -= numQtdParcela_ValueChanged;
-                cboForma_Pagamento.Text = FINANCEIRO_DTO.FORMA_PAGAMENTO;
                 numQtdParcela.Value = FINANCEIRO_DTO.PARCELAS;
                 numQtdParcela.ValueChanged += numQtdParcela_ValueChanged;
+
+                cboForma_Pagamento.SelectedIndexChanged -= CboForma_Pagamento_SelectedIndexChanged;
+                cboForma_Pagamento.Text = FINANCEIRO_DTO.FORMA_PAGAMENTO;
+                cboForma_Pagamento.SelectedIndexChanged += CboForma_Pagamento_SelectedIndexChanged;
+
                 cboConsultor.Text = FINANCEIRO_DTO.CONSULTOR;
+
                 txtObservacao.Text = FINANCEIRO_DTO.OBSERVACAO;
+
                 CLIENTE_DTO = new CLIENTE_BLL().Selecione(FINANCEIRO_DTO.ID_CLIENTE);
+
                 txtCliente.Text = CLIENTE_DTO.NOME_COMPLETO;
+
                 cboIndicacao.Text = FINANCEIRO_DTO.INDICACAO;
+
                 cboServico.SelectedValue = FINANCEIRO_DTO.ID_SERVICO;
+
                 cboStatus.SelectedValue = FINANCEIRO_DTO.ID_STATUS;
+
                 txtBanco.Text = FINANCEIRO_DTO.BANCO_OS;
+
                 txtMotoboy_os.Text = FINANCEIRO_DTO.MOTOBOY_OS;
+
                 txtLocal_os.Text = FINANCEIRO_DTO.LOCAL_OS;
+
                 nudDiaVencimento.Value = FINANCEIRO_DTO.DIA_VENCIMENTO;
+
                 txtValorOS.Text = FINANCEIRO_DTO.VALOR_OS.ToString();
+
                 mskData.Text = FINANCEIRO_DTO.DATA.Value.ToShortDateString();
 
                 txtValorLi.Text = FINANCEIRO_DTO.VALOR_LIQUIDO.ToString();
+
                 txtValorB.Text = FINANCEIRO_DTO.VALOR_BRUTO.ToString();
             }
             catch (Exception ex)
@@ -169,6 +187,31 @@ namespace APP_UI
                 else
                 {
                     btnAlterarValor.Visible = false;
+                }
+
+                if (FINANCEIRO_DTO.ID != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT TOP (100) PERCENT ID, DATAHORA AS 'Data', USUARIO AS Usuário, ASSUNTO, HISTORICO,ID_REGISTRO ");
+                    sb.Append(" FROM LOG_SISTEMA WHERE (TABELA = N'FINANCEIRO') ");
+                    sb.Append(" and (id_registro = " + FINANCEIRO_DTO.ID + ")");
+                    //Carregando o Histórico
+                    if (FINANCEIRO_DTO.ID != 0)
+                    {
+                        DataTable dtt = new PesquisaGeralBLL().Pesquisa(sb.ToString());
+
+                        dtt.DefaultView.Sort = "Data Desc";
+                        dtgHistorico.DataSource = dtt;
+                        dtgHistorico.Columns["Historico"].Visible = false;
+                        dtgHistorico.RowHeadersVisible = false;
+                        dtgHistorico.Columns["id_registro"].Visible = false;
+                        dtgHistorico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                    }
+                }
+                else
+                {
+                    tabControl2.TabPages.Remove(tabHistórico);
                 }
             }
             catch (Exception ex)
@@ -205,6 +248,8 @@ namespace APP_UI
                 FINANCEIRO_DTO.LOCAL_OS = txtLocal_os.Text;
                 FINANCEIRO_DTO.VALOR_OS = Convert.ToDecimal(txtValorOS.Text);
                 FINANCEIRO_DTO.OBSERVACAO = txtObservacao.Text;
+                FINANCEIRO_DTO.ULT_ATUAL = DateTime.Now;
+                FINANCEIRO_DTO.USUARIO = SysBLL.UserLogin.NOME;
 
                 FINANCEIRO_DTO.VALOR_LIQUIDO = Convert.ToDecimal(txtValorLi.Text);
                 FINANCEIRO_DTO.VALOR_BRUTO = Convert.ToDecimal(txtValorB.Text);
@@ -263,6 +308,13 @@ namespace APP_UI
                 {
                     return;
                 }
+
+                foreach (BOLETO_CHEQUE_DTO DTO in lista_boleto_cheque)
+                {
+                    if (DTO.OPERACAO == SysDTO.Operacoes.Exclusao)
+                        new BOLETO_CHEQUE_BLL().Excluir(DTO.ID);
+                }
+
                 DataTable dtt = ConvertToDataTable(lista_boleto_cheque);
 
                 //DataColumn clnValorParcela = new DataColumn();
@@ -294,23 +346,23 @@ namespace APP_UI
 
                 foreach (DataGridViewRow row in dtgBoletosCheques.Rows)
                 {
-                    //row.Cells["Valor da parcela"].Value = ValorParcelas;
-
                     row.Cells["VALOR"].Value = Convert.ToDecimal(row.Cells["VALOR"].Value.ToString()).ToString("#0.00");
-
-
-                    if (row.Cells["Operacao"].Value.ToString() == "3")
+                    if (row.Cells["OPERACAO"].Value.ToString() == "3")
                     {
                         dtgBoletosCheques.Rows.Remove(row);
                     }
-
-
                 }
-                dtgBoletosCheques.Columns["ID"].Visible = false;
-                dtgBoletosCheques.Columns["ATIVO"].Visible = false;
-                dtgBoletosCheques.Columns["ID_FINANCEIRO"].Visible = false;
-                dtgBoletosCheques.Columns["Operacao"].Visible = false;
-                dtgBoletosCheques.Columns["LOG_SISTEMA"].Visible = false;
+                foreach (DataGridViewColumn column in dtgBoletosCheques.Columns)
+                {
+                    column.Visible = false;
+                }
+
+                dtgBoletosCheques.Columns["NUMERO"].Visible = true;
+                dtgBoletosCheques.Columns["PARCELA"].Visible = true;
+                dtgBoletosCheques.Columns["FORMA_PAGAMENTO"].Visible = true;
+                dtgBoletosCheques.Columns["VALOR"].Visible = true;
+                dtgBoletosCheques.Columns["DATA_VENCTO"].Visible = true;
+                dtgBoletosCheques.Columns["STATUS_PAGAMENTO"].Visible = true;
                 dtgBoletosCheques.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.ColumnHeader); //Redimenciona as colunas de acordo com o conteúdo do campo
             }
             catch (Exception ex)
@@ -351,17 +403,19 @@ namespace APP_UI
                     return;
                 }
 
-                if (FINANCEIRO_DTO.Operacao == SysDTO.Operacoes.Inclusao)
+                if (FINANCEIRO_DTO.OPERACAO == SysDTO.Operacoes.Inclusao)
                 {
                     int? id = FINANCEIRO_BLL.Set_Financeiro(FINANCEIRO_DTO);
                     if (id > 0)
                     {
                         foreach (BOLETO_CHEQUE_DTO bOLETO_CHEQUE in lista_boleto_cheque)
                         {
+                            bOLETO_CHEQUE.USUARIO = SysBLL.UserLogin.NOME;
+                            bOLETO_CHEQUE.ULT_ATUAL = DateTime.Now;
                             bOLETO_CHEQUE.ID_FINANCEIRO = (int)id;
-                            if (bOLETO_CHEQUE.Operacao == SysDTO.Operacoes.Inclusao)
+                            if (bOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Inclusao)
                                 new BOLETO_CHEQUE_BLL().Inserir(bOLETO_CHEQUE);
-                            else if (bOLETO_CHEQUE.Operacao == SysDTO.Operacoes.Alteracao)
+                            else if (bOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Alteracao)
                                 new BOLETO_CHEQUE_BLL().Alterar(bOLETO_CHEQUE);
                         }
 
@@ -369,18 +423,20 @@ namespace APP_UI
                         this.DialogResult = DialogResult.OK;
                     }
                 }
-                else if (FINANCEIRO_DTO.Operacao == SysDTO.Operacoes.Alteracao)
+                else if (FINANCEIRO_DTO.OPERACAO == SysDTO.Operacoes.Alteracao)
                 {
                     if (FINANCEIRO_BLL.Update_Financeiro(FINANCEIRO_DTO))
                     {
                         foreach (BOLETO_CHEQUE_DTO bOLETO_CHEQUE in lista_boleto_cheque)
                         {
+                            bOLETO_CHEQUE.USUARIO = SysBLL.UserLogin.NOME;
+                            bOLETO_CHEQUE.ULT_ATUAL = DateTime.Now;
                             bOLETO_CHEQUE.ID_FINANCEIRO = (int)FINANCEIRO_DTO.ID;
-                            if (bOLETO_CHEQUE.Operacao == SysDTO.Operacoes.Inclusao)
+                            if (bOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Inclusao)
                                 new BOLETO_CHEQUE_BLL().Inserir(bOLETO_CHEQUE);
-                            else if (bOLETO_CHEQUE.Operacao == SysDTO.Operacoes.Alteracao)
+                            else if (bOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Alteracao)
                                 new BOLETO_CHEQUE_BLL().Alterar(bOLETO_CHEQUE);
-                            else if (bOLETO_CHEQUE.Operacao == SysDTO.Operacoes.Exclusao)
+                            else if (bOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Exclusao)
                                 new BOLETO_CHEQUE_BLL().Excluir(bOLETO_CHEQUE.ID);
                         }
                         MessageBox.Show("Registro incluído com sucesso!", "Concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -414,7 +470,7 @@ namespace APP_UI
                                 DTO.FORMA_PAGAMENTO = cboForma_Pagamento.Text;
                                 DTO.DATA_VENCTO = new DateTime(data.Year, data.Month, (int)nudDiaVencimento.Value);
                                 DTO.ATIVO = true;
-                                DTO.Operacao = SysDTO.Operacoes.Inclusao;
+                                DTO.OPERACAO = SysDTO.Operacoes.Inclusao;
                                 DTO.ID_FINANCEIRO = FINANCEIRO_DTO.ID == null ? 0 : (int)FINANCEIRO_DTO.ID;
                                 DTO.PARCELA = i + 1;
                                 DTO.VALOR = 0;
@@ -425,8 +481,8 @@ namespace APP_UI
                         foreach (BOLETO_CHEQUE_DTO BOLETO_CHEQUE in lista_boleto_cheque)
                         {
                             BOLETO_CHEQUE.FORMA_PAGAMENTO = cboForma_Pagamento.Text;
-                            if (BOLETO_CHEQUE.Operacao == SysDTO.Operacoes.Leitura)
-                                BOLETO_CHEQUE.Operacao = SysDTO.Operacoes.Alteracao;
+                            if (BOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Leitura)
+                                BOLETO_CHEQUE.OPERACAO = SysDTO.Operacoes.Alteracao;
                         }
 
                     }
@@ -434,11 +490,11 @@ namespace APP_UI
                     {
                         foreach (BOLETO_CHEQUE_DTO bOLETO in lista_boleto_cheque)
                         {
-                            if (bOLETO.Operacao == SysDTO.Operacoes.Alteracao || bOLETO.Operacao == SysDTO.Operacoes.Leitura)
-                                bOLETO.Operacao = SysDTO.Operacoes.Exclusao;
+                            if (bOLETO.OPERACAO == SysDTO.Operacoes.Alteracao || bOLETO.OPERACAO == SysDTO.Operacoes.Leitura)
+                                bOLETO.OPERACAO = SysDTO.Operacoes.Exclusao;
                         }
 
-                        lista_boleto_cheque.RemoveAll(x => x.Operacao == SysDTO.Operacoes.Inclusao);
+                        lista_boleto_cheque.RemoveAll(x => x.OPERACAO == SysDTO.Operacoes.Inclusao);
                         dtgBoletosCheques.DataSource = null;
                     }
 
@@ -520,25 +576,39 @@ namespace APP_UI
                     return;
                 }
 
+
                 int ID = (int)(dtgBoletosCheques.CurrentRow.Cells["ID"].Value);
                 if (lista_boleto_cheque.Exists(x => x.ID == ID))
                 {
 
                     BOLETO_CHEQUE_SELECIONADO = lista_boleto_cheque.First(x => x.ID == ID);
                     BOLETO_CHEQUE_SELECIONADO.VALOR = Convert.ToDecimal(BOLETO_CHEQUE_SELECIONADO.VALOR.Value.ToString("#0.00"));
+                    decimal valorParcelasAnteriores = 0;
+                    decimal valorDisponivel = 0;
+                    if (BOLETO_CHEQUE_SELECIONADO.PARCELA == 1)
+                    {
+                        valorDisponivel += Convert.ToDecimal(txtValor.Text);
+                    }
+                    else
+                    {
+                        foreach (BOLETO_CHEQUE_DTO DTO in lista_boleto_cheque.FindAll(x => x.PARCELA < BOLETO_CHEQUE_SELECIONADO.PARCELA))
+                        {
+                            valorParcelasAnteriores += Convert.ToDecimal(DTO.VALOR);
+                        }
+                    }
 
-                    decimal? clone_valor = BOLETO_CHEQUE_SELECIONADO.VALOR;
-                    frmBoletoCheque frmBoletoCheque = new frmBoletoCheque(BOLETO_CHEQUE_SELECIONADO);
+                    valorDisponivel = Convert.ToDecimal(txtValor.Text) - valorParcelasAnteriores;
+
+                    bool LastParcela = (lista_boleto_cheque.Max(x => x.PARCELA) == BOLETO_CHEQUE_SELECIONADO.PARCELA);
+
+                    frmBoletoCheque frmBoletoCheque = new frmBoletoCheque(BOLETO_CHEQUE_SELECIONADO, valorDisponivel, LastParcela);
                     DialogResult result = frmBoletoCheque.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        if (BOLETO_CHEQUE_SELECIONADO.VALOR != clone_valor)
+                        UpdateValorPrestacao(BOLETO_CHEQUE_SELECIONADO);
+                        if (BOLETO_CHEQUE_SELECIONADO.OPERACAO == SysDTO.Operacoes.Leitura)
                         {
-                            UpdateValorPrestacao(BOLETO_CHEQUE_SELECIONADO);
-                        }
-                        if (BOLETO_CHEQUE_SELECIONADO.Operacao == SysDTO.Operacoes.Leitura)
-                        {
-                            BOLETO_CHEQUE_SELECIONADO.Operacao = SysDTO.Operacoes.Alteracao;
+                            BOLETO_CHEQUE_SELECIONADO.OPERACAO = SysDTO.Operacoes.Alteracao;
                         }
                     }
                 }
@@ -568,11 +638,11 @@ namespace APP_UI
                     {
                         foreach (BOLETO_CHEQUE_DTO bOLETO in lista_boleto_cheque)
                         {
-                            if (bOLETO.Operacao == SysDTO.Operacoes.Alteracao || bOLETO.Operacao == SysDTO.Operacoes.Leitura)
-                                bOLETO.Operacao = SysDTO.Operacoes.Exclusao;
+                            if (bOLETO.OPERACAO == SysDTO.Operacoes.Alteracao || bOLETO.OPERACAO == SysDTO.Operacoes.Leitura)
+                                bOLETO.OPERACAO = SysDTO.Operacoes.Exclusao;
                         }
 
-                        lista_boleto_cheque.RemoveAll(x => x.Operacao == SysDTO.Operacoes.Inclusao);
+                        lista_boleto_cheque.RemoveAll(x => x.OPERACAO == SysDTO.Operacoes.Inclusao);
                         dtgBoletosCheques.DataSource = null;
                         return;
                     }
@@ -592,7 +662,7 @@ namespace APP_UI
                         _DTO.DATA_VENCTO = new DateTime(data.Year, data.Month, (int)nudDiaVencimento.Value);
                         _DTO.PARCELA = i + 1;
                         //  _DTO.PRECO = Convert.toDecimal;
-                        _DTO.Operacao = SysDTO.Operacoes.Inclusao;
+                        _DTO.OPERACAO = SysDTO.Operacoes.Inclusao;
                         lista_boleto_cheque.Add(_DTO);
                     }
                 }
@@ -605,16 +675,24 @@ namespace APP_UI
 
                         return;
                     }
-                    for (int i = Convert.ToInt32(numQtdParcela.Value); i < lista_boleto_cheque.Count;)
+                    DialogResult result = MessageBox.Show("Ao diminuir a quantidade de parcelas, você irá excluir a última. Deseja continuar?", "Excluir parcela", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (result == DialogResult.Yes)
                     {
-                        var list = lista_boleto_cheque.OrderBy(x => x.ID);
-                        if (lista_boleto_cheque.Exists(x => x.Operacao == SysDTO.Operacoes.Inclusao))
+
+                        for (int i = Convert.ToInt32(numQtdParcela.Value); i < lista_boleto_cheque.Count;)
                         {
-                            lista_boleto_cheque.Remove(lista_boleto_cheque.Last(x => x.Operacao == SysDTO.Operacoes.Inclusao));
+
+                            lista_boleto_cheque.Last(x => x.PARCELA != null).OPERACAO = SysDTO.Operacoes.Exclusao;
+                            foreach (BOLETO_CHEQUE_DTO DTO in lista_boleto_cheque.FindAll(x => x.OPERACAO == SysDTO.Operacoes.Exclusao))
+                            {
+                                new BOLETO_CHEQUE_BLL().Excluir(DTO.ID);
+                            }
+                            lista_boleto_cheque.RemoveAll(x => x.OPERACAO == SysDTO.Operacoes.Exclusao);
+
                         }
-                        else
-                            numQtdParcela.Value += 1;
+
                     }
+
 
                 }
 
@@ -756,9 +834,11 @@ namespace APP_UI
                 foreach (BOLETO_CHEQUE_DTO DTO in lista_boleto_cheque.FindAll(x => x.STATUS_PAGAMENTO.ToUpper() != "PAGO"))
                 {
                     DTO.VALOR = Convert.ToDecimal(valorTotal / Qtd);
+                    if (DTO.OPERACAO == SysDTO.Operacoes.Leitura)
+                        DTO.OPERACAO = SysDTO.Operacoes.Alteracao;
                 }
 
-                if (FINANCEIRO_DTO.Operacao != SysDTO.Operacoes.Inclusao)
+                if (FINANCEIRO_DTO.OPERACAO != SysDTO.Operacoes.Inclusao)
                     txtValor.ReadOnly = true;
 
                 PopularGrid();
@@ -794,9 +874,11 @@ namespace APP_UI
                 foreach (BOLETO_CHEQUE_DTO DTO in lista_boleto_cheque.FindAll(x => x.STATUS_PAGAMENTO.ToUpper() != "PAGO"))
                 {
                     DTO.VALOR = Convert.ToDecimal(Convert.ToDecimal(valorTotal / Qtd).ToString("#0.00"));
+                    if (DTO.OPERACAO == SysDTO.Operacoes.Leitura)
+                        DTO.OPERACAO = SysDTO.Operacoes.Alteracao;
                 }
 
-                if (FINANCEIRO_DTO.Operacao != SysDTO.Operacoes.Inclusao)
+                if (FINANCEIRO_DTO.OPERACAO != SysDTO.Operacoes.Inclusao)
                     txtValor.ReadOnly = true;
 
                 PopularGrid();
@@ -818,17 +900,53 @@ namespace APP_UI
                 }
                 int qtdPrestacao = lista_boleto_cheque.Count(x => x.PARCELA > DTO.PARCELA);
                 decimal valorTotal = Convert.ToDecimal(txtValor.Text) - valoresPassados;
-
-                decimal valorParaParcela = valorTotal / qtdPrestacao;
-
-                foreach (BOLETO_CHEQUE_DTO boleto_cheque_ in lista_boleto_cheque.FindAll(x => x.PARCELA > DTO.PARCELA))
+                if (qtdPrestacao > 0)
                 {
-                    boleto_cheque_.VALOR = valorParaParcela;
+                    decimal valorParaParcela = valorTotal / qtdPrestacao;
+
+                    foreach (BOLETO_CHEQUE_DTO boleto_cheque_ in lista_boleto_cheque.FindAll(x => x.PARCELA > DTO.PARCELA))
+                    {
+                        boleto_cheque_.VALOR = valorParaParcela;
+                        if (boleto_cheque_.OPERACAO == SysDTO.Operacoes.Leitura)
+                            boleto_cheque_.OPERACAO = SysDTO.Operacoes.Alteracao;
+                    }
+
                 }
+                //else
+                //    decimal valorParaParcela = valorTotal / qtdPrestacao;
+
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void DtgHistorico_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dtgHistorico.Rows.Count != 0)
+                {
+                    string strAssunto = dtgHistorico.CurrentRow.Cells["Assunto"].Value.ToString();
+                    StringBuilder stbDetalhes = new StringBuilder();
+                    stbDetalhes.Append(strAssunto + "\r\n");
+                    stbDetalhes.Append(string.Join("", Enumerable.Repeat("-", strAssunto.Length)) + "\r\n");
+                    stbDetalhes.Append("Id do Registro: " + dtgHistorico.CurrentRow.Cells["ID_REGISTRO"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("Usuário: " + dtgHistorico.CurrentRow.Cells["Usuário"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("Data: " + dtgHistorico.CurrentRow.Cells["Data"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("\r\n");
+                    stbDetalhes.Append("---------- Dados" + (dtgHistorico.CurrentRow.Cells["Assunto"].Value.ToString() != "Criação" ? " Anteriores" : "") + ": ----------\r\n");
+                    stbDetalhes.Append(dtgHistorico.CurrentRow.Cells["historico"].Value.ToString().Replace("|", "\r\n"));
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    txtMaisDetalhes.Text = stbDetalhes.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao mostrar detalhes do Histórico!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

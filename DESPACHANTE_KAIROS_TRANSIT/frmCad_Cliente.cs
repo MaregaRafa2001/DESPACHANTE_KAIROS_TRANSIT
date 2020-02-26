@@ -33,7 +33,7 @@ namespace APP_UI
             {
                 CLIENTE_DTO = CLIENTE_BLL.Selecione(ID);
                 PopularDados();
-                CLIENTE_DTO.Operacao = SysDTO.Operacoes.Alteracao;
+                CLIENTE_DTO.OPERACAO = SysDTO.Operacoes.Alteracao;
                 popularGrid = true;
             }
         }
@@ -72,6 +72,7 @@ namespace APP_UI
                 DataTable dtt = new PesquisaGeralBLL().Pesquisa(sbSql.ToString(), ListaCampos);
                 dtgContrato.DataSource = null;
                 dtgContrato.DataSource = dtt;
+                dtgContrato.Columns["ID_INVISIBLE"].Visible = false;
                 foreach (DataGridViewRow item in dtgContrato.Rows)
                 {
                     if (!String.IsNullOrEmpty(item.Cells["COR"].ToString()))
@@ -109,6 +110,31 @@ namespace APP_UI
                     tsbDocDel.Enabled = false;
                 if (!SysBLL.grupo_acesso.SYS_MENU.Exists(x => x.NAME == "frmFinanceiro.Update"))
                     tsbDocEdit.Enabled = false;
+
+                if (CLIENTE_DTO.ID != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT TOP (100) PERCENT ID, DATAHORA AS 'Data', USUARIO AS Usuário, ASSUNTO, HISTORICO,ID_REGISTRO ");
+                    sb.Append(" FROM LOG_SISTEMA WHERE (TABELA = N'CLIENTE') ");
+                    sb.Append(" and (id_registro = " + CLIENTE_DTO.ID + ")");
+                    //Carregando o Histórico
+                    if (CLIENTE_DTO.ID != 0)
+                    {
+                        DataTable dtt = new PesquisaGeralBLL().Pesquisa(sb.ToString());
+
+                        dtt.DefaultView.Sort = "Data Desc";
+                        dtgHistorico.DataSource = dtt;
+                        dtgHistorico.Columns["Historico"].Visible = false;
+                        dtgHistorico.RowHeadersVisible = false;
+                        dtgHistorico.Columns["id_registro"].Visible = false;
+                        dtgHistorico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                    }
+                }
+                else
+                {
+                    tabControl1.TabPages.Remove(tabHistórico);
+                }
             }
             catch (Exception ex)
             {
@@ -125,7 +151,6 @@ namespace APP_UI
             txtComplemento.Text = CLIENTE_DTO.COMPLEMENTO;
             txtLogradouro.Text = CLIENTE_DTO.LOGRADOURO;
             txtMunicipio.Text = CLIENTE_DTO.MUNICIPIO;
-            cboUF.Text = CLIENTE_DTO.UF;
             mskCEP.Text = CLIENTE_DTO.CEP;
             txtNumeroResidencial.Text = CLIENTE_DTO.NUMERO_RES;
 
@@ -168,7 +193,6 @@ namespace APP_UI
                 CLIENTE_DTO.CEP = mskCEP.Text.Replace("-", "");
                 CLIENTE_DTO.BAIRRO = txtBairro.Text;
                 CLIENTE_DTO.LOGRADOURO = txtLogradouro.Text;
-                CLIENTE_DTO.UF = cboUF.Text;
                 CLIENTE_DTO.MUNICIPIO = txtMunicipio.Text;
                 CLIENTE_DTO.COMPLEMENTO = txtComplemento.Text;
                 CLIENTE_DTO.NUMERO_RES = txtNumeroResidencial.Text;
@@ -179,6 +203,9 @@ namespace APP_UI
                 CLIENTE_DTO.TELEFONE = mskTelelefone.Text;
                 CLIENTE_DTO.OBSERVACAO = txtObs.Text;
                 CLIENTE_DTO.PORTARIA = (radPortariaSim.Checked ? true : false);
+                CLIENTE_DTO.ULT_ATUAL = DateTime.Now;
+                CLIENTE_DTO.USUARIO = SysBLL.UserLogin.NOME;
+
             }
             catch (Exception EX)
             {
@@ -189,34 +216,41 @@ namespace APP_UI
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (ValidarDados(CLIENTE_DTO))
+            try
             {
-                AtualizaDTO();
-
-                if (CLIENTE_DTO.Operacao == SysDTO.Operacoes.Inclusao)
+                if (ValidarDados(CLIENTE_DTO))
                 {
-                    int? id = CLIENTE_BLL.Set_Cliente(CLIENTE_DTO);
-                    if (id > 0)
+                    AtualizaDTO();
+
+                    if (CLIENTE_DTO.OPERACAO == SysDTO.Operacoes.Inclusao)
                     {
-                        foreach (var financeiro in lista_financeiro)
+                        int? id = CLIENTE_BLL.Set_Cliente(CLIENTE_DTO);
+                        if (id > 0)
                         {
-                            if (financeiro.ID == 0)
+                            foreach (var financeiro in lista_financeiro)
                             {
-                                financeiro.ID_CLIENTE = (int)id;
-                                new FINANCEIRO_BLL().Set_Financeiro(financeiro);
+                                if (financeiro.ID == 0)
+                                {
+                                    financeiro.ID_CLIENTE = (int)id;
+                                    new FINANCEIRO_BLL().Set_Financeiro(financeiro);
+                                }
                             }
+                            MessageBox.Show("Cliente alterado com sucesso!", "Cliente inserido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.DialogResult = DialogResult.OK;
                         }
-                        MessageBox.Show("Cliente inserido com sucesso !");
+                    }
+                    else if (CLIENTE_DTO.OPERACAO == SysDTO.Operacoes.Alteracao)
+                    {
+                        if (CLIENTE_BLL.Update_Cliente(CLIENTE_DTO))
+                            MessageBox.Show("Cliente alterado com sucesso!", "Cliente alterado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;
+
                     }
                 }
-                else if (CLIENTE_DTO.Operacao == SysDTO.Operacoes.Alteracao)
-                {
-                    if (CLIENTE_BLL.Update_Cliente(CLIENTE_DTO))
-                        MessageBox.Show("Cliente alterado com sucesso !");
-                    this.DialogResult = DialogResult.OK;
-
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao localizar o Cep", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private bool ValidarDados(CLIENTE_DTO DTO)
@@ -407,7 +441,7 @@ namespace APP_UI
                 MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-           
+
         }
 
         private void tsbDocDel_Click(object sender, EventArgs e)
@@ -499,15 +533,6 @@ namespace APP_UI
             }
         }
 
-        private void DtgContrato_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void ToolStrip4_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
 
         private void TxtObs_Leave(object sender, EventArgs e)
         {
@@ -533,35 +558,8 @@ namespace APP_UI
             }
         }
 
-        private void CboUFCNH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DtgContrato_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                if (dtgContrato.CurrentRow == null)
-                {
-                    MessageBox.Show("Selecione uma linha da tabela", "Registro não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                }
-
-                FINANCEIRO_DTO FinanceiroDTO = new FINANCEIRO_DTO();
-
-                FinanceiroDTO.ID = Convert.ToInt32(dtgContrato.CurrentRow.Cells["ID_INVISIBLE"].Value.ToString());
-
-                FinanceiroDTO = new FINANCEIRO_BLL().Seleciona((int)FinanceiroDTO.ID);
-
-                txtObs.Text = FinanceiroDTO.OBSERVACAO;
-
-            }
-
-                catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
         }
 
@@ -573,6 +571,62 @@ namespace APP_UI
         private void MskCEP_Leave(object sender, EventArgs e)
         {
             this.AcceptButton = btnRegistrar;
+        }
+
+        private void DtgHistorico_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dtgHistorico.Rows.Count != 0)
+                {
+                    string strAssunto = dtgHistorico.CurrentRow.Cells["Assunto"].Value.ToString();
+                    StringBuilder stbDetalhes = new StringBuilder();
+                    stbDetalhes.Append(strAssunto + "\r\n");
+                    stbDetalhes.Append(string.Join("", Enumerable.Repeat("-", strAssunto.Length)) + "\r\n");
+                    stbDetalhes.Append("Id do Registro: " + dtgHistorico.CurrentRow.Cells["ID_REGISTRO"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("Usuário: " + dtgHistorico.CurrentRow.Cells["Usuário"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("Data: " + dtgHistorico.CurrentRow.Cells["Data"].Value.ToString() + "\r\n");
+                    stbDetalhes.Append("\r\n");
+                    stbDetalhes.Append("---------- Dados" + (dtgHistorico.CurrentRow.Cells["Assunto"].Value.ToString() != "Criação" ? " Anteriores" : "") + ": ----------\r\n");
+                    stbDetalhes.Append(dtgHistorico.CurrentRow.Cells["historico"].Value.ToString().Replace("|", "\r\n"));
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    stbDetalhes.Append("---------------------------------------\r\n");
+                    txtMaisDetalhes.Text = stbDetalhes.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao mostrar detalhes do Histórico!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DtgContrato_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dtgContrato.CurrentRow == null)
+                {
+                    MessageBox.Show("Selecione uma linha ta tabela", "Registro não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                FINANCEIRO_DTO FinanceiroDTO = new FINANCEIRO_DTO();
+
+                FinanceiroDTO.ID = Convert.ToInt32(dtgContrato.CurrentRow.Cells["ID_INVISIBLE"].Value.ToString());
+
+                frmCad_Financeiro frmProfissional_Servico = new frmCad_Financeiro((int)FinanceiroDTO.ID);
+                frmProfissional_Servico.ShowDialog(this);
+                PopularGrid();
+
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Selecione um ítem válido na lista clicando sobre o mesmo!", "Aviso...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

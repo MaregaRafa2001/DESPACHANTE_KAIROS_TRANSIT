@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class BOLETO_CHEQUE_DTO
+    public class BOLETO_CHEQUE_DTO : IDTO
     {
         public BOLETO_CHEQUE_DTO()
         {
-            Operacao = SysDTO.Operacoes.Inclusao;
-            LOG_SISTEMA.TABELA = "BOLETO_CHEQUE";
+            OPERACAO = SysDTO.Operacoes.Inclusao;
+            this.NOME_TABELA = "BOLETO_CHEQUE";
+            this.ID_CLASSE = this.GetHashCode();
         }
 
         public int ID { get; set; }
@@ -23,15 +24,15 @@ namespace DTO
         public decimal? VALOR { get; set; }
         public DateTime? DATA_VENCTO { get; set; }
         public string STATUS_PAGAMENTO { get; set; }
-        public SysDTO.Operacoes Operacao { get; set; }
 
-
-        //LOG DO SISTEMA
-        private LOG_SISTEMA_DTO L_DTO = new LOG_SISTEMA_DTO();
-        public LOG_SISTEMA_DTO LOG_SISTEMA
+        public SysDTO.Operacoes OPERACAO { get; set; }
+        public string USUARIO { get; set; }
+        public DateTime? ULT_ATUAL { get; set; }
+        public int ID_CLASSE { get; set; }
+        public string NOME_TABELA { get; set; }
+        public object Clone()
         {
-            get { return L_DTO; }
-            set { L_DTO = value; }
+            return this.MemberwiseClone();
         }
     }
 }

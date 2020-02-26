@@ -36,6 +36,7 @@ namespace BLL
             try
             {
                 ValidarDados(DTO);
+                SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
                 return DAO.Set_Financeiro(DTO);
             }
             catch (Exception ex)
@@ -61,6 +62,7 @@ namespace BLL
             try
             {
                 ValidarDados(DTO);
+                SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
                 return DAO.Update_Financeiro(DTO);
             }
             catch (Exception ex)

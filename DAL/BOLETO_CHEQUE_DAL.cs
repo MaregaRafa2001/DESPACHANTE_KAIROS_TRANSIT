@@ -39,6 +39,8 @@ namespace DAL
                     SQL_.Append("VALOR, ");
                     SQL_.Append("DATA_VENCTO, ");
                     SQL_.Append("STATUS_PAGAMENTO, ");
+                    SQL_.Append("USUARIO, ");
+                    SQL_.Append("ULT_ATUAL, ");
                     SQL_.Append("ATIVO ");
 
                     SQL_.Append(") ");
@@ -52,6 +54,8 @@ namespace DAL
                     SQL_.Append("@VALOR, ");
                     SQL_.Append("@DATA_VENCTO, ");
                     SQL_.Append("@STATUS_PAGAMENTO, ");
+                    SQL_.Append("@USUARIO, ");
+                    SQL_.Append("@ULT_ATUAL, ");
                     SQL_.Append("1 ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
@@ -104,6 +108,8 @@ namespace DAL
                     SQL_.Append("VALOR = @VALOR, ");
                     SQL_.Append("DATA_VENCTO = @DATA_VENCTO, ");
                     SQL_.Append("STATUS_PAGAMENTO = @STATUS_PAGAMENTO, ");
+                    SQL_.Append("USUARIO = @USUARIO, ");
+                    SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
                     SQL_.Append("ATIVO = @ATIVO ");
 
                     SQL_.Append("WHERE ID = @ID ");
@@ -165,9 +171,8 @@ namespace DAL
             cmd.Parameters.AddWithValue("@VALOR", DTO.VALOR);
             cmd.Parameters.AddWithValue("@DATA_VENCTO", DTO.DATA_VENCTO);
             cmd.Parameters.AddWithValue("@STATUS_PAGAMENTO", DTO.STATUS_PAGAMENTO);
-            cmd.Parameters.AddWithValue("@VALOR", DTO.VALOR);
-            cmd.Parameters.AddWithValue("@DATA_VENCTO", DTO.DATA_VENCTO);
-            cmd.Parameters.AddWithValue("@STATUS_PAGAMENTO", DTO.STATUS_PAGAMENTO);
+            cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
+            cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
             cmd.Parameters.AddWithValue("@ATIVO", DTO.ATIVO);
 
 
@@ -201,6 +206,8 @@ namespace DAL
                     {
                         BOLETO_CHEQUE_DTO DTO = new BOLETO_CHEQUE_DTO();
                         PopularDados(dtr, DTO);
+                        SysDAL.GuardarDTO((IDTO)DTO.Clone());
+
                         lista.Add(DTO);
                     }
 
@@ -234,6 +241,8 @@ namespace DAL
                 DTO.VALOR = dtr["VALOR"] == DBNull.Value? (decimal?)null : Convert.ToDecimal(dtr["VALOR"]);
                 DTO.DATA_VENCTO = dtr["DATA_VENCTO"] == DBNull.Value? (DateTime?)null : Convert.ToDateTime(dtr["DATA_VENCTO"]);
                 DTO.STATUS_PAGAMENTO = dtr["STATUS_PAGAMENTO"] == DBNull.Value? "" : Convert.ToString(dtr["STATUS_PAGAMENTO"]);
+                DTO.USUARIO = dtr["USUARIO"].ToString();
+                DTO.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
                 DTO.ATIVO = Convert.ToBoolean(dtr["ATIVO"]);
             }
             catch (Exception ex)
