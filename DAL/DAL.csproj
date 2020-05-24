@@ -46,7 +46,7 @@
     <Compile Include="CLIENTE_DAL.cs" />
     <Compile Include="CONSULTOR_DAL.cs" />
     <Compile Include="CONTRATO_DAL.cs" />
-    <Compile Include="FASE_FINANCEIRO_DAL.cs" />
+    <Compile Include="ADMINISTRACAO_DAL.cs" />
     <Compile Include="FINANCEIRO_DAL.cs" />
     <Compile Include="FORMA_PAGAMENTO_DAL.cs" />
     <Compile Include="GRUPO_ACESSO_DAL.cs" />

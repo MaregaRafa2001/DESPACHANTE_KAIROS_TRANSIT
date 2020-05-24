@@ -54,6 +54,7 @@ namespace APP_UI
                 if (ID == 0)
                 {
                     FINANCEIRO_DTO = new FINANCEIRO_DTO();
+                    mskData.Text = DateTime.Now.ToShortDateString();
                 }
 
                 else
@@ -67,6 +68,7 @@ namespace APP_UI
                     PopularDados();
                     txtValor.ReadOnly = true;
                     FINANCEIRO_DTO.OPERACAO = SysDTO.Operacoes.Alteracao;
+                    cboServico.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -106,10 +108,15 @@ namespace APP_UI
                 cboStatus.DisplayMember = "text";
                 cboStatus.DataSource = new STATUS_FINANCEIRO_BLL().Lista_Status();
                 cboStatus.SelectedIndex = -1;
+
+                cboConsultor.ValueMember = "value";
+                cboConsultor.DisplayMember = "text";
+                cboConsultor.DataSource = new FINANCEIRO_BLL().Lista_Consultor();
+                cboConsultor.SelectedIndex = -1;
+
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -659,7 +666,9 @@ namespace APP_UI
                         _DTO.STATUS_PAGAMENTO = "Pendente";
                         _DTO.NUMERO = "";
                         DateTime data = DateTime.Now.AddMonths(i);
-                        _DTO.DATA_VENCTO = new DateTime(data.Year, data.Month, (int)nudDiaVencimento.Value);
+
+                        //_DTO.DATA_VENCTO = new DateTime(data.Year, data.Month, (int)nudDiaVencimento.Value);
+                        _DTO.DATA_VENCTO = RetornaDataValida(data.Year, data.Month, (int)nudDiaVencimento.Value);
                         _DTO.PARCELA = i + 1;
                         //  _DTO.PRECO = Convert.toDecimal;
                         _DTO.OPERACAO = SysDTO.Operacoes.Inclusao;
@@ -678,22 +687,16 @@ namespace APP_UI
                     DialogResult result = MessageBox.Show("Ao diminuir a quantidade de parcelas, você irá excluir a última. Deseja continuar?", "Excluir parcela", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (result == DialogResult.Yes)
                     {
-
                         for (int i = Convert.ToInt32(numQtdParcela.Value); i < lista_boleto_cheque.Count;)
                         {
-
                             lista_boleto_cheque.Last(x => x.PARCELA != null).OPERACAO = SysDTO.Operacoes.Exclusao;
                             foreach (BOLETO_CHEQUE_DTO DTO in lista_boleto_cheque.FindAll(x => x.OPERACAO == SysDTO.Operacoes.Exclusao))
                             {
                                 new BOLETO_CHEQUE_BLL().Excluir(DTO.ID);
                             }
                             lista_boleto_cheque.RemoveAll(x => x.OPERACAO == SysDTO.Operacoes.Exclusao);
-
                         }
-
                     }
-
-
                 }
 
                 UpdateValor();
@@ -702,6 +705,39 @@ namespace APP_UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro ao carregar os dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        DateTime RetornaDataValida(int year, int month, int day)
+        {
+            try
+            {
+                string result = (day.ToString().Length == 1 ? "0" + day : day.ToString()) + "/" + (month.ToString().Length == 1 ? "0" + month : month.ToString()) + "/" + year;
+                DateTime date = DateTime.Now;
+                while (!DateTime.TryParse(result, out date))
+                {
+                    if (day == 1)
+                    {
+                        day = 30;
+                        if (month == 1)
+                        {
+                            month = 12;
+                            year = year - 1;
+                        }
+                        else
+                            month = month - 1;
+                    }
+                    else
+                        day = day - 1;
+
+
+                    result = (day.ToString().Length == 1 ? "0" + day : day.ToString()) + "/" + (month.ToString().Length == 1 ? "0" + month : month.ToString()) + "/" + year;
+                }
+                return date;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

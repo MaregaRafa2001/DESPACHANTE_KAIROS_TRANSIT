@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCad_Financeiro));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -40,6 +40,7 @@
             this.txtValorB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.picConsultor = new System.Windows.Forms.PictureBox();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cboIndicacao = new System.Windows.Forms.ComboBox();
@@ -68,13 +69,12 @@
             this.txtBanco = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cboConsultor = new System.Windows.Forms.ComboBox();
-            this.picConsultor = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.nudDiaVencimento = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAplicar = new System.Windows.Forms.Button();
-            this.dtgBoletosCheques = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
+            this.dtgBoletosCheques = new System.Windows.Forms.DataGridView();
+            this.btnAplicar = new System.Windows.Forms.Button();
             this.btnAlterarValor = new System.Windows.Forms.Button();
             this.gpbDetalhes = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -83,9 +83,9 @@
             this.grpMaisDetalhes = new System.Windows.Forms.GroupBox();
             this.txtMaisDetalhes = new System.Windows.Forms.TextBox();
             this.dtgHistorico = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.picConsultor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPesquisarAdvogado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQtdParcela)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picConsultor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiaVencimento)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBoletosCheques)).BeginInit();
@@ -164,6 +164,19 @@
             this.label2.TabIndex = 445;
             this.label2.Text = "Indicação:";
             // 
+            // picConsultor
+            // 
+            this.picConsultor.Image = ((System.Drawing.Image)(resources.GetObject("picConsultor.Image")));
+            this.picConsultor.Location = new System.Drawing.Point(676, 330);
+            this.picConsultor.Name = "picConsultor";
+            this.picConsultor.Size = new System.Drawing.Size(16, 16);
+            this.picConsultor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picConsultor.TabIndex = 516;
+            this.picConsultor.TabStop = false;
+            this.toolTip.SetToolTip(this.picConsultor, "Consultor não encontrado em registros anteriores.\r\nAo inserir, será considerado c" +
+        "omo novo consultor.");
+            this.picConsultor.Visible = false;
+            // 
             // cboStatus
             // 
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -210,9 +223,9 @@
             this.lblCliente.AutoSize = true;
             this.lblCliente.Location = new System.Drawing.Point(10, 8);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(42, 13);
+            this.lblCliente.Size = new System.Drawing.Size(46, 13);
             this.lblCliente.TabIndex = 520;
-            this.lblCliente.Text = "Cliente:";
+            this.lblCliente.Text = "Cliente:*";
             // 
             // txtCliente
             // 
@@ -293,9 +306,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 482;
-            this.label4.Text = "Serviço:";
+            this.label4.Text = "Serviço:*";
             // 
             // cboServico
             // 
@@ -365,9 +378,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(424, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 13);
+            this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 507;
-            this.label3.Text = "Forma de pagamento:";
+            this.label3.Text = "Forma de pagamento:*";
             // 
             // cboForma_Pagamento
             // 
@@ -402,9 +415,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(356, 312);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 13);
+            this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 513;
-            this.label8.Text = "Consultor:";
+            this.label8.Text = "Consultor:*";
             // 
             // txtBanco
             // 
@@ -430,19 +443,6 @@
             this.cboConsultor.Size = new System.Drawing.Size(349, 21);
             this.cboConsultor.TabIndex = 11;
             this.cboConsultor.Leave += new System.EventHandler(this.CboConsultor_Leave);
-            // 
-            // picConsultor
-            // 
-            this.picConsultor.Image = ((System.Drawing.Image)(resources.GetObject("picConsultor.Image")));
-            this.picConsultor.Location = new System.Drawing.Point(676, 330);
-            this.picConsultor.Name = "picConsultor";
-            this.picConsultor.Size = new System.Drawing.Size(16, 16);
-            this.picConsultor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picConsultor.TabIndex = 516;
-            this.picConsultor.TabStop = false;
-            this.toolTip.SetToolTip(this.picConsultor, "Consultor não encontrado em registros anteriores.\r\nAo inserir, será considerado c" +
-        "omo novo consultor.");
-            this.picConsultor.Visible = false;
             // 
             // label14
             // 
@@ -491,18 +491,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados pagamento";
             // 
-            // btnAplicar
+            // label10
             // 
-            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAplicar.Location = new System.Drawing.Point(620, 189);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(68, 32);
-            this.btnAplicar.TabIndex = 517;
-            this.btnAplicar.Text = "Alterar";
-            this.btnAplicar.UseVisualStyleBackColor = true;
-            this.btnAplicar.Click += new System.EventHandler(this.BtnAplicar_Click);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 13);
+            this.label10.TabIndex = 501;
+            this.label10.Text = "Boletos/Cheques:";
             // 
             // dtgBoletosCheques
             // 
@@ -517,28 +513,32 @@
             this.dtgBoletosCheques.Location = new System.Drawing.Point(14, 41);
             this.dtgBoletosCheques.Name = "dtgBoletosCheques";
             this.dtgBoletosCheques.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgBoletosCheques.RowHeadersWidth = 51;
             this.dtgBoletosCheques.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgBoletosCheques.Size = new System.Drawing.Size(673, 144);
             this.dtgBoletosCheques.TabIndex = 8;
             this.dtgBoletosCheques.DoubleClick += new System.EventHandler(this.dtgBoletosCheques_DoubleClick);
             // 
-            // label10
+            // btnAplicar
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 24);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(92, 13);
-            this.label10.TabIndex = 501;
-            this.label10.Text = "Boletos/Cheques:";
+            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAplicar.Location = new System.Drawing.Point(620, 189);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAplicar.Name = "btnAplicar";
+            this.btnAplicar.Size = new System.Drawing.Size(68, 32);
+            this.btnAplicar.TabIndex = 517;
+            this.btnAplicar.Text = "Alterar";
+            this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.Click += new System.EventHandler(this.BtnAplicar_Click);
             // 
             // btnAlterarValor
             // 
@@ -648,8 +648,8 @@
             this.dtgHistorico.AllowUserToAddRows = false;
             this.dtgHistorico.AllowUserToDeleteRows = false;
             this.dtgHistorico.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -693,9 +693,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Financeiro";
             this.Load += new System.EventHandler(this.FrmCad_Financeiro_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picConsultor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPesquisarAdvogado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQtdParcela)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picConsultor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiaVencimento)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

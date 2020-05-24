@@ -40,6 +40,7 @@ namespace DAL
                     SQL_.Append("CNH_UF, ");
                     SQL_.Append("CNH_PONTUACAO, ");
                     SQL_.Append("CNH_DATA_VENCIMENTO, ");
+                    SQL_.Append("CNH_VENCIDA, ");
                     //ENDERECO
                     SQL_.Append("CEP, ");
                     SQL_.Append("BAIRRO, ");
@@ -50,9 +51,10 @@ namespace DAL
                     //CONTATO
                     SQL_.Append("EMAIL, ");
                     SQL_.Append("EMAIL2, ");
-                    SQL_.Append("CELULAR, ");
-                    SQL_.Append("TELEFONE, ");
+                    //SQL_.Append("CELULAR, ");
+                    //SQL_.Append("TELEFONE, ");
                     SQL_.Append("PORTARIA, ");
+                    SQL_.Append("IMPEDIMENTO, ");
                     SQL_.Append("USUARIO, ");
                     SQL_.Append("ULT_ATUAL, ");
                     SQL_.Append("OBSERVACAO ");
@@ -70,6 +72,7 @@ namespace DAL
                     SQL_.Append("@CNH_UF, ");
                     SQL_.Append("@CNH_PONTUACAO, ");
                     SQL_.Append("@CNH_DATA_VENCIMENTO, ");
+                    SQL_.Append("@CNH_VENCIDA, ");
                     //ENDERECO
                     SQL_.Append("@CEP, ");
                     SQL_.Append("@BAIRRO, ");
@@ -81,9 +84,10 @@ namespace DAL
                     //CONTATO
                     SQL_.Append("@EMAIL, ");
                     SQL_.Append("@EMAIL2, ");
-                    SQL_.Append("@CELULAR, ");
-                    SQL_.Append("@TELEFONE, ");
+                    //SQL_.Append("@CELULAR, ");
+                    //SQL_.Append("@TELEFONE, ");
                     SQL_.Append("@PORTARIA, ");
+                    SQL_.Append("@IMPEDIMENTO, ");
                     SQL_.Append("@USUARIO, ");
                     SQL_.Append("@ULT_ATUAL, ");
                     SQL_.Append("@OBSERVACAO ");
@@ -95,6 +99,14 @@ namespace DAL
 
                     if ((DTO.ID = Convert.ToInt32(cmd.ExecuteScalar())) > 0)
                     {
+                        try
+                        {
+                            Set_Cliente_Celular(DTO);
+                            Set_Cliente_Telefone(DTO);
+                        }
+                        catch
+                        {
+                        }
                         return DTO.ID;
                     }
 
@@ -139,6 +151,7 @@ namespace DAL
                     SQL_.Append("CNH_UF = @CNH_UF, ");
                     SQL_.Append("CNH_PONTUACAO = @CNH_PONTUACAO, ");
                     SQL_.Append("CNH_DATA_VENCIMENTO = @CNH_DATA_VENCIMENTO, ");
+                    SQL_.Append("CNH_VENCIDA = @CNH_VENCIDA, ");
                     //ENDERECO
                     SQL_.Append("CEP = @CEP, ");
                     SQL_.Append("BAIRRO = @BAIRRO, ");
@@ -149,9 +162,10 @@ namespace DAL
                     //CONTATO
                     SQL_.Append("EMAIL = @EMAIL, ");
                     SQL_.Append("EMAIL2 = @EMAIL2, ");
-                    SQL_.Append("CELULAR = @CELULAR, ");
-                    SQL_.Append("TELEFONE = @TELEFONE, ");
+                    //SQL_.Append("CELULAR = @CELULAR, ");
+                    //SQL_.Append("TELEFONE = @TELEFONE, ");
                     SQL_.Append("PORTARIA = @PORTARIA, ");
+                    SQL_.Append("IMPEDIMENTO = @IMPEDIMENTO, ");
                     SQL_.Append("USUARIO = @USUARIO, ");
                     SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
                     SQL_.Append("OBSERVACAO = @OBSERVACAO ");
@@ -164,6 +178,15 @@ namespace DAL
 
 
                     cmd.ExecuteNonQuery();
+
+                    try
+                    {
+                        Set_Cliente_Celular(DTO);
+                        Set_Cliente_Telefone(DTO);
+                    }
+                    catch
+                    {
+                    }
 
                     return true;
                 }
@@ -213,11 +236,20 @@ namespace DAL
             cmd.Parameters.AddWithValue("@NOME_COMPLETO", DTO.NOME_COMPLETO);
             cmd.Parameters.AddWithValue("@CPF", DTO.CPF);
             cmd.Parameters.AddWithValue("@RG", DTO.RG);
+            try
+            {
+                Convert.ToDateTime(DTO.DATA_NASCIMENTO);
+            }
+            catch
+            {
+                DTO.DATA_NASCIMENTO = null;
+            }
             cmd.Parameters.AddWithValue("@DATA_NASCIMENTO", DTO.DATA_NASCIMENTO);
             cmd.Parameters.AddWithValue("@CNH", DTO.CNH);
             cmd.Parameters.AddWithValue("@CNH_UF", DTO.CNH_UF);
             cmd.Parameters.AddWithValue("@CNH_PONTUACAO", DTO.CNH_PONTUACAO);
             cmd.Parameters.AddWithValue("@CNH_DATA_VENCIMENTO", DTO.CNH_DATA_VENCIMENTO);
+            cmd.Parameters.AddWithValue("@CNH_VENCIDA", DTO.CNH_VENCIDA);
             //ENDEREÇO
             cmd.Parameters.AddWithValue("@CEP", DTO.CEP.Replace("-", ""));
             cmd.Parameters.AddWithValue("@BAIRRO", DTO.BAIRRO);
@@ -228,9 +260,10 @@ namespace DAL
             //CONTATO
             cmd.Parameters.AddWithValue("@EMAIL", DTO.EMAIL);
             cmd.Parameters.AddWithValue("@EMAIL2", DTO.EMAIL2);
-            cmd.Parameters.AddWithValue("@CELULAR", DTO.CELULAR);
-            cmd.Parameters.AddWithValue("@TELEFONE", DTO.TELEFONE);
+            //cmd.Parameters.AddWithValue("@CELULAR", DTO.CELULAR);
+            //cmd.Parameters.AddWithValue("@TELEFONE", DTO.TELEFONE);
             cmd.Parameters.AddWithValue("@PORTARIA", DTO.PORTARIA);
+            cmd.Parameters.AddWithValue("@IMPEDIMENTO", DTO.IMPEDIMENTO);
             cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
             cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
             cmd.Parameters.AddWithValue("@OBSERVACAO", DTO.OBSERVACAO);
@@ -257,6 +290,9 @@ namespace DAL
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.Append("SELECT * FROM CLIENTE Where (Id = " + Id + " );");
+
+                    sb.Append("SELECT * FROM CELULAR Where (ID_CLIENTE = " + Id + " );");
+                    sb.Append("SELECT * FROM TELEFONE Where (ID_CLIENTE = " + Id + " );");
                     scn.Open();
                     SqlCommand scm = new SqlCommand(sb.ToString(), scn);
 
@@ -265,6 +301,26 @@ namespace DAL
                     if (dtr.Read())
                     {
                         PopularDados(dtr, DTO);
+
+                        if (dtr.NextResult())
+                        {
+                            while (dtr.Read())
+                            {
+                                CELULAR_DTO CELULAR = new CELULAR_DTO();
+                                PopularDadosCelular(dtr, CELULAR);
+                                DTO.CELULAR.Add(CELULAR);
+                            }
+                        }
+
+                        if (dtr.NextResult())
+                        {
+                            while (dtr.Read())
+                            {
+                                TELEFONE_DTO TELEFONE = new TELEFONE_DTO();
+                                PopularDadosTelefone(dtr, TELEFONE);
+                                DTO.TELEFONE.Add(TELEFONE);
+                            }
+                        }
                         SysDAL.GuardarDTO((IDTO)DTO.Clone());
                     }
 
@@ -290,16 +346,17 @@ namespace DAL
         {
             Cliente.ID = Convert.ToInt32(dtr["ID"]);
             //DADOS
-            Cliente.NOME_COMPLETO = dtr["NOME_COMPLETO"].ToString();
+            Cliente.NOME_COMPLETO = dtr["NOME_COMPLETO"] == DBNull.Value ? "" : dtr["NOME_COMPLETO"].ToString();
             Cliente.CPF = dtr["CPF"].ToString();
             Cliente.RG = dtr["RG"].ToString();
-            Cliente.DATA_NASCIMENTO = dtr["DATA_NASCIMENTO"].ToString();
+            Cliente.DATA_NASCIMENTO = dtr["DATA_NASCIMENTO"] == DBNull.Value ? "" : dtr["DATA_NASCIMENTO"].ToString();
             if (!string.IsNullOrEmpty(Cliente.DATA_NASCIMENTO) && Cliente.DATA_NASCIMENTO.Length > 10)
                 Cliente.DATA_NASCIMENTO = Cliente.DATA_NASCIMENTO.Substring(0, 10);
             Cliente.CNH = Convert.ToString(dtr["CNH"]);
             Cliente.CNH_UF = dtr["CNH_UF"].ToString();
-            Cliente.CNH_PONTUACAO = Convert.ToInt32(dtr["CNH_PONTUACAO"]);
-            Cliente.CNH_DATA_VENCIMENTO = Convert.ToDateTime(dtr["CNH_DATA_VENCIMENTO"]);
+            Cliente.CNH_PONTUACAO = dtr["CNH_PONTUACAO"] == DBNull.Value ? (int?)null : Convert.ToInt32(dtr["CNH_PONTUACAO"]);
+            Cliente.CNH_DATA_VENCIMENTO = dtr["CNH_DATA_VENCIMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["CNH_DATA_VENCIMENTO"]);
+            Cliente.CNH_VENCIDA = dtr["CNH_VENCIDA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["CNH_VENCIDA"]);
             //ENDERECO
             Cliente.CEP = dtr["CEP"].ToString();
             Cliente.BAIRRO = dtr["BAIRRO"].ToString();
@@ -311,13 +368,200 @@ namespace DAL
             //CONTATO
             Cliente.EMAIL = dtr["EMAIL"].ToString();
             Cliente.EMAIL2 = dtr["EMAIL2"].ToString();
-            Cliente.CELULAR = dtr["CELULAR"].ToString();
-            Cliente.TELEFONE = dtr["TELEFONE"].ToString();
+            //Cliente.CELULAR = dtr["CELULAR"].ToString();
+            //Cliente.TELEFONE = dtr["TELEFONE"].ToString();
             Cliente.USUARIO = dtr["USUARIO"].ToString();
             Cliente.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
-            Cliente.PORTARIA = dtr["PORTARIA"] == DBNull.Value? false : Convert.ToBoolean(dtr["PORTARIA"]);
+            Cliente.PORTARIA = dtr["PORTARIA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["PORTARIA"]);
+            Cliente.IMPEDIMENTO = dtr["IMPEDIMENTO"] == DBNull.Value ? false : Convert.ToBoolean(dtr["IMPEDIMENTO"]);
             Cliente.OBSERVACAO = dtr["OBSERVACAO"].ToString();
         }
+
+        #region CELULAR
+        public int? Set_Cliente_Celular(CLIENTE_DTO CLIENTE)
+        {
+            using (SqlConnection cn = new SqlConnection(strConnection))
+            {
+                try
+                {
+                    if (CLIENTE.CELULAR == null)
+                        return 0;
+                    if (!CLIENTE.CELULAR.Exists(x => x.OPERACAO != SysDTO.Operacoes.Leitura))
+                        return 0;
+                    int qtdUpdIns = 0;
+
+                    foreach (CELULAR_DTO DTO in CLIENTE.CELULAR.Where(x => x.OPERACAO != SysDTO.Operacoes.Leitura))
+                    {
+                        DTO.ID_CLIENTE = Convert.ToInt32(CLIENTE.ID);
+
+                        StringBuilder SQL_ = new StringBuilder();
+                        if (DTO.OPERACAO == SysDTO.Operacoes.Inclusao)
+                        {
+                            SQL_.Append("INSERT INTO [dbo].[CELULAR] ");
+                            SQL_.Append("           ([ID_CLIENTE] ");
+                            SQL_.Append("           ,[NUMERO]) ");
+                            SQL_.Append("     VALUES ");
+                            SQL_.Append("           ( ");
+                            SQL_.Append("		     @ID_CLIENTE ");
+                            SQL_.Append("           ,@NUMERO ");
+                            SQL_.Append("           ); ");
+                            SQL_.Append("SELECT SCOPE_IDENTITY(); ");
+                        }
+                        else if (DTO.OPERACAO == SysDTO.Operacoes.Alteracao)
+                        {
+                            SQL_.Append("UPDATE [dbo].[CELULAR] ");
+                            SQL_.Append("   SET [ID_CLIENTE] = @ID_CLIENTE ");
+                            SQL_.Append("      ,[NUMERO] = @NUMERO ");
+                            SQL_.Append(" WHERE ID = @ID ");
+                        }
+                        else if (DTO.OPERACAO == SysDTO.Operacoes.Exclusao)
+                        {
+                            SQL_.Append("DELETE FROM [CELULAR] WHERE ID = @ID");
+                        }
+                        cn.Open();
+
+                        SqlCommand cmd = new SqlCommand(SQL_.ToString(), cn);
+                        PopularParametrosCelular(DTO, cmd);
+
+                        cmd.ExecuteNonQuery();
+                        cn.Close();
+                        qtdUpdIns++;
+                    }
+                    return qtdUpdIns;
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
+        public void PopularParametrosCelular(CELULAR_DTO DTO, SqlCommand cmd)
+        {
+            cmd.Parameters.AddWithValue("@ID", DTO.ID);
+            //DADOS
+            cmd.Parameters.AddWithValue("@ID_CLIENTE", DTO.ID_CLIENTE);
+            cmd.Parameters.AddWithValue("@NUMERO", DTO.NUMERO);
+
+            //Substitui o null por DBnull
+            foreach (SqlParameter Parameter in cmd.Parameters)
+            {
+                if (Parameter.Value == null)
+                {
+                    Parameter.Value = DBNull.Value;
+                }
+            }
+
+        }
+
+        public void PopularDadosCelular(SqlDataReader dtr, CELULAR_DTO DTO)
+        {
+            DTO.ID = Convert.ToInt32(dtr["ID"]);
+            DTO.ID_CLIENTE = Convert.ToInt32(dtr["ID_CLIENTE"]);
+            DTO.NUMERO = dtr["NUMERO"].ToString();
+        }
+
+        #endregion
+
+        #region TELEFONE
+        public int? Set_Cliente_Telefone(CLIENTE_DTO CLIENTE)
+        {
+            using (SqlConnection cn = new SqlConnection(strConnection))
+            {
+                try
+                {
+                    if (CLIENTE.TELEFONE == null)
+                        return 0;
+                    if (!CLIENTE.TELEFONE.Exists(x => x.OPERACAO != SysDTO.Operacoes.Leitura))
+                        return 0;
+                    int qtdUpdIns = 0;
+
+                    foreach (TELEFONE_DTO DTO in CLIENTE.TELEFONE.Where(x => x.OPERACAO != SysDTO.Operacoes.Leitura))
+                    {
+                        DTO.ID_CLIENTE = Convert.ToInt32(CLIENTE.ID);
+                        StringBuilder SQL_ = new StringBuilder();
+                        if (DTO.OPERACAO == SysDTO.Operacoes.Inclusao)
+                        {
+                            SQL_.Append("INSERT INTO [dbo].[TELEFONE] ");
+                            SQL_.Append("           ([ID_CLIENTE] ");
+                            SQL_.Append("           ,[NUMERO]) ");
+                            SQL_.Append("     VALUES ");
+                            SQL_.Append("           ( ");
+                            SQL_.Append("		     @ID_CLIENTE ");
+                            SQL_.Append("           ,@NUMERO ");
+                            SQL_.Append("           ); ");
+                            SQL_.Append("SELECT SCOPE_IDENTITY(); ");
+                        }
+                        else if (DTO.OPERACAO == SysDTO.Operacoes.Alteracao)
+                        {
+                            SQL_.Append("UPDATE [dbo].[TELEFONE] ");
+                            SQL_.Append("   SET [ID_CLIENTE] = @ID_CLIENTE ");
+                            SQL_.Append("      ,[NUMERO] = @NUMERO ");
+                            SQL_.Append(" WHERE ID = @ID ");
+                        }
+                        else if (DTO.OPERACAO == SysDTO.Operacoes.Exclusao)
+                        {
+                            SQL_.Append("DELETE FROM [TELEFONE] WHERE ID = @ID");
+                        }
+                        cn.Open();
+
+                        SqlCommand cmd = new SqlCommand(SQL_.ToString(), cn);
+                        PopularParametrosTelefone(DTO, cmd);
+
+                        cmd.ExecuteNonQuery();
+                        cn.Close();
+                        qtdUpdIns++;
+                    }
+                    return qtdUpdIns;
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
+        public void PopularParametrosTelefone(TELEFONE_DTO DTO, SqlCommand cmd)
+        {
+            cmd.Parameters.AddWithValue("@ID", DTO.ID);
+            //DADOS
+            cmd.Parameters.AddWithValue("@ID_CLIENTE", DTO.ID_CLIENTE);
+            cmd.Parameters.AddWithValue("@NUMERO", DTO.NUMERO);
+
+            //Substitui o null por DBnull
+            foreach (SqlParameter Parameter in cmd.Parameters)
+            {
+                if (Parameter.Value == null)
+                {
+                    Parameter.Value = DBNull.Value;
+                }
+            }
+
+        }
+
+        public void PopularDadosTelefone(SqlDataReader dtr, TELEFONE_DTO DTO)
+        {
+            DTO.ID = Convert.ToInt32(dtr["ID"]);
+            DTO.ID_CLIENTE = Convert.ToInt32(dtr["ID_CLIENTE"]);
+            DTO.NUMERO = dtr["NUMERO"].ToString();
+        }
+        #endregion
 
     }
 }

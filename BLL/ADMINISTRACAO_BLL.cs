@@ -8,22 +8,26 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class FASE_FINANCEIRO_BLL
+    public class ADMINISTRACAO_BLL
     {
         public string strConnection;
-        FASE_FINANCEIRO_DAL uDAO = null;
+        ADMINISTRACAO_DAL uDAO = null;
 
-        public FASE_FINANCEIRO_BLL(string cn = "")
+        public ADMINISTRACAO_BLL(string cn = "")
         {
             if (string.IsNullOrEmpty(cn))
                 cn = SysBLL.strConexao;
             this.strConnection = cn;
-            uDAO = new FASE_FINANCEIRO_DAL(strConnection);
+            uDAO = new ADMINISTRACAO_DAL(strConnection);
         }
 
-        public List<FASE_FINANCEIRO_DTO> Listar()
+        public List<ADMINISTRACAO_DTO> Listar()
         {
             return uDAO.Listar();
+        }
+        public List<FASE_FINANCEIRO_DTO> Listar_FaseFinanceiro(int ID_SERVICO)
+        {
+            return uDAO.Listar_FaseFinanceiro(ID_SERVICO);
         }
     }
 }

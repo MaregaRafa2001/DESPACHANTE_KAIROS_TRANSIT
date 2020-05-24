@@ -16,13 +16,10 @@ namespace APP_UI
     public partial class frmFinanceiro : Form
     {
         List<PesquisaGeralDTO> ListaCampos = new List<PesquisaGeralDTO>();
-        mdi_principal mdi_Principal = null;
 
         public frmFinanceiro(mdi_principal mdi)
         {
             InitializeComponent();
-            mdi_Principal = mdi;
-            this.MdiParent = mdi;
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
@@ -38,8 +35,7 @@ namespace APP_UI
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageBox.Show(ex.Message, "Não foi possível adicionar um novo registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -14,14 +14,17 @@ namespace APP_UI
 {
     public partial class frmCad_Administracao_Fases : Form
     {
-        public FASE_FINANCEIRO_DTO fase_financeiro_dto;
+        public ADMINISTRACAO_DTO administracao_dto;
+        int ID_SERVICO;
+
         string ObservacaoClone = "";
-        public frmCad_Administracao_Fases(FASE_FINANCEIRO_DTO fase_financeiro_dto)
+        public frmCad_Administracao_Fases(ADMINISTRACAO_DTO administracao_dto, int ID_SERVICO)
         {
             InitializeComponent();
+            this.ID_SERVICO = ID_SERVICO;
             PopularCombos();
-            this.fase_financeiro_dto = fase_financeiro_dto;
-            if (this.fase_financeiro_dto.ID != null)
+            this.administracao_dto = administracao_dto;
+            if (this.administracao_dto.ID != null)
             {
                 PopularDados();
                 cboFase.Enabled = false;
@@ -29,7 +32,7 @@ namespace APP_UI
             else
             {
                 Random random = new Random();
-                this.fase_financeiro_dto.ID = random.Next();
+                this.administracao_dto.ID = random.Next();
                 tabControl1.TabPages.Remove(tabDetalhe);
             }
         }
@@ -39,20 +42,13 @@ namespace APP_UI
             try
             {
                 cboFase.SelectedIndexChanged -= cboFase_SelectedIndexChanged;
-                List<FASE_FINANCEIRO_DTO> Lista_fases = new List<FASE_FINANCEIRO_DTO>();
-                Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = 1, FASE = "FASE 1 - BEM-VINDO" });
-                Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = 2, FASE = "FASE 2 - DOCUMENTAÇÃO" });
-                Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = 3, FASE = "FASE 3 - CORRESPONDÊNCIA" });
-                Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = 4, FASE = "FASE 4 - MONTAGEM DE PROCESSO" });
-                Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = 5, FASE = "FASE 5 - PROCURADORIA DETRAN" });
-                Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = 6, FASE = "FASE 6 - PÓS-VENDA" });
-                Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = 7, FASE = "FASE 7 - AUTO-ESCOLA" });
-                //Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = , FASE = "SETOR DE COBRANÇA" });
-                //Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = , FASE = "ABRIRAM CHAMADO SAC" });
-                //Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = , FASE = "PEDIRAM DEVOLUÇÃO" });
-                //Lista_fases.Add(new FASE_FINANCEIRO_DTO() { ID = , FASE = "CHEGAR CERTIFICADO CFC" });
-                cboFase.ValueMember = "ID";
-                cboFase.DisplayMember = "FASE";
+                List<FASE_FINANCEIRO_DTO> Lista_fases = new ADMINISTRACAO_BLL().Listar_FaseFinanceiro(ID_SERVICO);
+                if (Lista_fases.Count() == 0)
+                {
+                    throw new CustomException("Não foi identificado nenhuma fase para este serviço. Entre em contato com o suporte do sistema." + (administracao_dto == null ? "" : "\nID do registro: " + administracao_dto.ID), "Erro ao carregar fases");
+                }
+                cboFase.ValueMember = "LAYOUT_TELA";
+                cboFase.DisplayMember = "DESCRICAO";
                 cboFase.DataSource = Lista_fases;
                 cboFase.SelectedIndex = 0;
                 cboFase.SelectedIndexChanged += cboFase_SelectedIndexChanged;
@@ -65,49 +61,76 @@ namespace APP_UI
 
         void PopularDados()
         {
-            cboFase.Text = fase_financeiro_dto.FASE;
-            lblDescricao.Text = fase_financeiro_dto.OBSERVACAO;
-            ObservacaoClone = fase_financeiro_dto.OBSERVACAO;
+            cboFase.SelectedValue = administracao_dto.LAYOUT_TELA;
+            lblDescricao.Text = administracao_dto.OBSERVACAO;
+            ObservacaoClone = administracao_dto.OBSERVACAO;
 
             if (cboFase.SelectedValue == null)
             {
-                throw new Exception("Não foi possível localizar a fase selecionada. Entre em contato com o suporte do sistema. \r\nID do registro: " + fase_financeiro_dto.ID);
+                throw new Exception("Não foi possível localizar a fase selecionada. Entre em contato com o suporte do sistema. \r\nID do registro: " + administracao_dto.ID);
             }
 
             loadTela(Convert.ToInt32(cboFase.SelectedValue));
-
+            //POPULA A TELA COM O LAYOUT DA FASE
             switch (Convert.ToInt32(cboFase.SelectedValue))
             {
-                case 1:
-                    Fase1_mskDataRecebimento.Text = fase_financeiro_dto.DATA_RECEBIMENTO_CONTRATO.ToString();
+                case 1://BEM VINDO
+                    Layout1_mskDataRecebimento.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_RECEBIMENTO_CONTRATO);
                     break;
-                case 2:
+                case 2://DOCUMENTAÇÃO
                     break;
-                case 3:
-                    Fase3_mskDataEntrega.Text = fase_financeiro_dto.DATA_ENTREGA_DOCUMENTO.ToString();
-                    Fase3_mskDataVencimento.Text = fase_financeiro_dto.DATA_VENCIMENTO_DOCUMENTO.ToString();
+                case 3://CORRESPÔNDENCIA
+                    Layout3_mskDataEntrega.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_ENTREGA_DOCUMENTO);
+                    Layout3_mskDataVencimento.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_VENCIMENTO_DOCUMENTO);
                     break;
-                case 4:
-                    Fase4_mskDataMontagemProcesso.Text = fase_financeiro_dto.DATA_MONTAGEM_PROCESSO.ToString();
+                case 4://MONTAGEM
+                    Layout4_mskDataMontagemProcesso.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_MONTAGEM_PROCESSO);
                     break;
-                case 5:
-                    Fase5_mskIda.Text = fase_financeiro_dto.DATA_IDA_DETRAN.ToString();
-                    Fase5_mskRetorno.Text = fase_financeiro_dto.DATA_RETORNO_DETRAN.ToString();
-                    Fase5_mskProcurador.Text = fase_financeiro_dto.PROCURADOR.ToString();
-                    Fase5_txtPenalidade.Text = fase_financeiro_dto.PENALIDADE.ToString();
+                case 5://PROCURADORIA DETRAN
+                    Layout5_mskIda.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_IDA_DETRAN);
+                    Layout5_mskRetorno.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_RETORNO_DETRAN);
+                    Layout5_mskProcurador.Text = administracao_dto.PROCURADOR;
+                    Layout5_mskInicio.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_INICIO);
+                    Layout5_mskTermino.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_TERMINO);
+                    Layout5_txtMesesDetran.Text = administracao_dto.MESES_DETRAN == (int?)null ? "0" : administracao_dto.MESES_DETRAN.ToString();
                     break;
-                case 6:
-                    Fase6_mskFechamentoCurso.Text = fase_financeiro_dto.DATA_FECHAMENTO_CURSO.ToString();
-                    Fase6_cbRecebimentoAuto.Checked = fase_financeiro_dto.RECEBIMENTO_AUTO == null ? false : Convert.ToBoolean(fase_financeiro_dto.RECEBIMENTO_AUTO);
-                    Fase6_cbCursoFora.Checked = fase_financeiro_dto.CURSO_FORA == null ? false : Convert.ToBoolean(fase_financeiro_dto.CURSO_FORA);
+                case 6://PÓS VENDA \ CURSO DE CFC
+                    Layout6_mskFechamentoCurso.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_FECHAMENTO_CURSO);
+                    Fase6_cbRecebimentoAuto.Checked = administracao_dto.RECEBIMENTO_AUTO == null ? false : Convert.ToBoolean(administracao_dto.RECEBIMENTO_AUTO);
+                    Fase6_cbCursoFora.Checked = administracao_dto.CURSO_FORA == null ? false : Convert.ToBoolean(administracao_dto.CURSO_FORA);
                     break;
-                case 7:
-                    Fase7_mskDigital1.Text = fase_financeiro_dto.DATA_DIGITAL_1.ToString();
-                    Fase7_mskDigital2.Text = fase_financeiro_dto.DATA_DIGITAL_2.ToString();
-                    Fase7_mskRecebimentoCertificado.Text = fase_financeiro_dto.DATA_RECEBIMENTO_CERTIFICADO.ToString();
+                case 7://AUTO ESCOLA
+                    Layout7_mskDigital1.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_DIGITAL_1);
+                    Fase7_mskDigital2.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_DIGITAL_2);
+                    Fase7_mskRecebimentoCertificado.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_RECEBIMENTO_CERTIFICADO);
+                    Layout7_txtAutoEscola.Text = administracao_dto.AUTO_ESCOLA;
                     break;
+                case 8://FINALIZAÇÃO
+                    Layout8_mskDataFinalizacao.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_FINALIZACAO);
+                    Layout8_mskDataBaixaDePontos.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_BAIXA_DE_PONTOS);
+                    break;
+                case 9://CADASTRO DETRAN
+                    Layout9_mskDataAgendamento.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_AGENDAMENTO);
+                    break;
+                //case 10://CURSO DE CFC
+                //    break;
+                case 11://TEÓRICO DETRAN
+                    Layout11_mskDataRecebimento.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_AGENDAMENTO_TEORICODETRAN);
+                    break;
+                case 12://PRÁTICO AUTO-ESCOLA
+                    Layout12_mskDataAgendamento.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_AGENDAMENTO);
+                    Layout12_mskDataCategoria1.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_CATEGORIA_1);
+                    Layout12_mskDataCategoria2.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_CATEGORIA_2);
+                    break;
+                case 13://FINALIZAÇÃO ENTREGA CNH
+                    Layout13_mskDataEmissao.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_EMISSAO);
+                    Layout13_mskDataEntrega.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_ENTREGA);
+                    Layout13_RetiradoPor.Text = administracao_dto.RETIRADO_POR;
+                    break;
+
+
             }
-        }
+        }        
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
         {
@@ -131,62 +154,73 @@ namespace APP_UI
                 if (!ValidarDados())
                     return false;
 
-                fase_financeiro_dto.DATA = Convert.ToDateTime(DateTime.Now);
-                fase_financeiro_dto.FASE = cboFase.Text.ToString();
+                administracao_dto.DATA = Convert.ToDateTime(DateTime.Now);
+                administracao_dto.FASE = cboFase.Text.ToString();
+                administracao_dto.LAYOUT_TELA = Convert.ToInt32(cboFase.SelectedValue);
                 if (txtObservacao.Text.Trim().Length > 0)
-                    fase_financeiro_dto.OBSERVACAO = lblDescricao.Text + "\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " - " + txtObservacao.Text;
+                    administracao_dto.OBSERVACAO = lblDescricao.Text + "\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " - " + txtObservacao.Text;
 
                 switch (Convert.ToInt32(cboFase.SelectedValue))
                 {
-                    case 1:
-                        fase_financeiro_dto.DATA_RECEBIMENTO_CONTRATO = GetMskDate(Fase1_mskDataRecebimento);
+                    case 1://BEM VINDO
+                        administracao_dto.DATA_RECEBIMENTO_CONTRATO = FormFuncoes.GetMskDate(Layout1_mskDataRecebimento);
                         break;
-                    case 2:
+                    case 2://DOCUMENTAÇÃO
                         break;
-                    case 3:
-                        fase_financeiro_dto.DATA_ENTREGA_DOCUMENTO = GetMskDate(Fase3_mskDataEntrega);
-                        fase_financeiro_dto.DATA_VENCIMENTO_DOCUMENTO = GetMskDate(Fase3_mskDataVencimento);
+                    case 3://CORRESPÔNDENCIA
+                        administracao_dto.DATA_ENTREGA_DOCUMENTO = FormFuncoes.GetMskDate(Layout3_mskDataEntrega);
+                        administracao_dto.DATA_VENCIMENTO_DOCUMENTO = FormFuncoes.GetMskDate(Layout3_mskDataVencimento);
                         break;
-                    case 4:
-                        fase_financeiro_dto.DATA_MONTAGEM_PROCESSO = GetMskDate(Fase4_mskDataMontagemProcesso);
+                    case 4://MONTAGEM
+                        administracao_dto.DATA_MONTAGEM_PROCESSO = FormFuncoes.GetMskDate(Layout4_mskDataMontagemProcesso);
                         break;
-                    case 5:
-                        fase_financeiro_dto.DATA_IDA_DETRAN = GetMskDate(Fase5_mskIda);
-                        fase_financeiro_dto.DATA_RETORNO_DETRAN = GetMskDate(Fase5_mskRetorno);
-                        fase_financeiro_dto.PENALIDADE = Fase5_txtPenalidade.Text;
-                        fase_financeiro_dto.PROCURADOR = Fase5_mskProcurador.Text;
+                    case 5://PROCURADORIA DETRAN
+                        administracao_dto.DATA_IDA_DETRAN = FormFuncoes.GetMskDate(Layout5_mskIda);
+                        administracao_dto.DATA_RETORNO_DETRAN = FormFuncoes.GetMskDate(Layout5_mskRetorno);
+                        administracao_dto.PROCURADOR = Layout5_mskProcurador.Text;
+                        administracao_dto.DATA_INICIO = FormFuncoes.GetMskDate(Layout5_mskInicio);
+                        administracao_dto.DATA_TERMINO = FormFuncoes.GetMskDate(Layout5_mskTermino);
+                        administracao_dto.MESES_DETRAN = string.IsNullOrEmpty(Layout5_txtMesesDetran.Text) ? (int?)null : Convert.ToInt32(Layout5_txtMesesDetran.Text);
+
                         break;
-                    case 6:
-                        fase_financeiro_dto.DATA_FECHAMENTO_CURSO = GetMskDate(Fase6_mskFechamentoCurso);
-                        fase_financeiro_dto.RECEBIMENTO_AUTO = Fase6_cbRecebimentoAuto.Checked;
-                        fase_financeiro_dto.CURSO_FORA = Fase6_cbCursoFora.Checked;
+                    case 6://PÓS VENDA \ CURSO DE CFC
+                        administracao_dto.DATA_FECHAMENTO_CURSO = FormFuncoes.GetMskDate(Layout6_mskFechamentoCurso);
+                        administracao_dto.RECEBIMENTO_AUTO = Fase6_cbRecebimentoAuto.Checked;
+                        administracao_dto.CURSO_FORA = Fase6_cbCursoFora.Checked;
                         break;
-                    case 7:
-                        fase_financeiro_dto.DATA_DIGITAL_1 = GetMskDate(Fase7_mskDigital1);
-                        fase_financeiro_dto.DATA_DIGITAL_2 = GetMskDate(Fase7_mskDigital2);
-                        fase_financeiro_dto.DATA_RECEBIMENTO_CERTIFICADO = GetMskDate(Fase7_mskRecebimentoCertificado);
+                    case 7://AUTO ESCOLA
+                        administracao_dto.DATA_DIGITAL_1 = FormFuncoes.GetMskDate(Layout7_mskDigital1);
+                        administracao_dto.DATA_DIGITAL_2 = FormFuncoes.GetMskDate(Fase7_mskDigital2);
+                        administracao_dto.DATA_RECEBIMENTO_CERTIFICADO = FormFuncoes.GetMskDate(Fase7_mskRecebimentoCertificado);
+                        administracao_dto.AUTO_ESCOLA = Layout7_txtAutoEscola.Text;
+                        break;
+                    case 8://FINALIZAÇÃO
+                        administracao_dto.DATA_FINALIZACAO = FormFuncoes.GetMskDate(Layout8_mskDataFinalizacao);
+                        administracao_dto.DATA_BAIXA_DE_PONTOS = FormFuncoes.GetMskDate(Layout8_mskDataBaixaDePontos);
+                        break;
+                    case 9://CADASTRO DETRAN
+                        administracao_dto.DATA_AGENDAMENTO = FormFuncoes.GetMskDate(Layout9_mskDataAgendamento);
+                        break;
+                    //case 10://CURSO DE CFC
+                    //    break;
+                    case 11://TEÓRICO DETRAN
+                        administracao_dto.DATA_AGENDAMENTO_TEORICODETRAN = FormFuncoes.GetMskDate(Layout11_mskDataRecebimento);
+                        break;
+                    case 12://PRÁTICO AUTO-ESCOLA
+                        administracao_dto.DATA_AGENDAMENTO = FormFuncoes.GetMskDate(Layout12_mskDataAgendamento);
+                        administracao_dto.DATA_CATEGORIA_1 = FormFuncoes.GetMskDate(Layout12_mskDataCategoria1);
+                        administracao_dto.DATA_CATEGORIA_2 = FormFuncoes.GetMskDate(Layout12_mskDataCategoria2);
+                        break;
+                    case 13://FINALIZAÇÃO ENTREGA CNH
+                        administracao_dto.DATA_EMISSAO = FormFuncoes.GetMskDate(Layout13_mskDataEmissao);
+                        administracao_dto.DATA_ENTREGA = FormFuncoes.GetMskDate(Layout13_mskDataEntrega);
+                        administracao_dto.RETIRADO_POR = Layout13_RetiradoPor.Text;
                         break;
                     default:
                         break;
                 }
 
                 return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public DateTime? GetMskDate(MaskedTextBox txt)
-        {
-            try
-            {
-                if (FormFuncoes.IsDate(txt.Text))
-                {
-                    return Convert.ToDateTime(txt.Text);
-                }
-                return (DateTime?)null;
             }
             catch (Exception ex)
             {
@@ -242,9 +276,8 @@ namespace APP_UI
         {
             switch (Fase)
             {
-                case 1:
-                    this.Size = new System.Drawing.Size(402, 397);
-                    gpbObservacao.Location = new System.Drawing.Point(13, 132);
+
+                case 1: //BEM VINDO
                     pnlFase1.Visible = true;
                     pnlFase2.Visible = false;
                     pnlFase3.Visible = false;
@@ -252,8 +285,17 @@ namespace APP_UI
                     pnlFase5.Visible = false;
                     pnlFase6.Visible = false;
                     pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase1.Location = new System.Drawing.Point(6, 50);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 132);
+                    this.Size = new System.Drawing.Size(402, 397);
                     break;
-                case 2:
+
+                case 2:  //DOCUMENTAÇÃO
                     pnlFase1.Visible = false;
                     pnlFase2.Visible = true;
                     pnlFase3.Visible = false;
@@ -261,10 +303,16 @@ namespace APP_UI
                     pnlFase5.Visible = false;
                     pnlFase6.Visible = false;
                     pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase2.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 314);
                     gpbObservacao.Location = new System.Drawing.Point(13, 50);
                     break;
-                case 3:
+                case 3:  //CORRESPÔNDENCIA
                     pnlFase1.Visible = false;
                     pnlFase2.Visible = false;
                     pnlFase3.Visible = true;
@@ -272,10 +320,16 @@ namespace APP_UI
                     pnlFase5.Visible = false;
                     pnlFase6.Visible = false;
                     pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase3.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
                     gpbObservacao.Location = new System.Drawing.Point(13, 132);
                     break;
-                case 4:
+                case 4: //MONTAGEM
                     pnlFase1.Visible = false;
                     pnlFase2.Visible = false;
                     pnlFase3.Visible = false;
@@ -283,10 +337,16 @@ namespace APP_UI
                     pnlFase5.Visible = false;
                     pnlFase6.Visible = false;
                     pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase4.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
                     gpbObservacao.Location = new System.Drawing.Point(13, 132);
                     break;
-                case 5:
+                case 5: //PROCURADORIA DETRAN
                     pnlFase1.Visible = false;
                     pnlFase2.Visible = false;
                     pnlFase3.Visible = false;
@@ -294,10 +354,16 @@ namespace APP_UI
                     pnlFase5.Visible = true;
                     pnlFase6.Visible = false;
                     pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase5.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 455);
                     gpbObservacao.Location = new System.Drawing.Point(13, 184);
                     break;
-                case 6:
+                case 6: //PÓS VENDA  / CURSO DE CFC
                     pnlFase1.Visible = false;
                     pnlFase2.Visible = false;
                     pnlFase3.Visible = false;
@@ -305,10 +371,16 @@ namespace APP_UI
                     pnlFase5.Visible = false;
                     pnlFase6.Visible = true;
                     pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase6.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
                     gpbObservacao.Location = new System.Drawing.Point(13, 132);
                     break;
-                case 7:
+                case 7: //AUTO ESCOLA
                     pnlFase1.Visible = false;
                     pnlFase2.Visible = false;
                     pnlFase3.Visible = false;
@@ -316,8 +388,103 @@ namespace APP_UI
                     pnlFase5.Visible = false;
                     pnlFase6.Visible = false;
                     pnlFase7.Visible = true;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase7.Location = new System.Drawing.Point(6, 50);
+                    this.Size = new System.Drawing.Size(402, 455);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 184);
+                    break;
+                case 8: //FINALIZAÇÃO
+                    pnlFase1.Visible = false;
+                    pnlFase2.Visible = false;
+                    pnlFase3.Visible = false;
+                    pnlFase4.Visible = false;
+                    pnlFase5.Visible = false;
+                    pnlFase6.Visible = false;
+                    pnlFase7.Visible = false;
+                    pnlFase8.Visible = true;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase8.Location = new System.Drawing.Point(6, 50);
+                    this.Size = new System.Drawing.Size(402, 395);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 125);
+                    break;
+                case 9: //CADASTRO DETRAN
+                    pnlFase1.Visible = false;
+                    pnlFase2.Visible = false;
+                    pnlFase3.Visible = false;
+                    pnlFase4.Visible = false;
+                    pnlFase5.Visible = false;
+                    pnlFase6.Visible = false;
+                    pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = true;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+
+                    pnlLayout9.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
                     gpbObservacao.Location = new System.Drawing.Point(13, 132);
+                    break;
+                case 11: //TEÓRICO DETRAN
+                    pnlFase1.Visible = false;
+                    pnlFase2.Visible = false;
+                    pnlFase3.Visible = false;
+                    pnlFase4.Visible = false;
+                    pnlFase5.Visible = false;
+                    pnlFase6.Visible = false;
+                    pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = true;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+
+                    pnlLayout11.Location = new System.Drawing.Point(6, 50);
+                    this.Size = new System.Drawing.Size(402, 397);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 132);
+                    break;
+                case 12: //PRÁTICO AUTO-ESCOLA
+                    pnlFase1.Visible = false;
+                    pnlFase2.Visible = false;
+                    pnlFase3.Visible = false;
+                    pnlFase4.Visible = false;
+                    pnlFase5.Visible = false;
+                    pnlFase6.Visible = false;
+                    pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = true;
+                    pnlLayout13.Visible = false;
+
+                    pnlLayout12.Location = new System.Drawing.Point(6, 50);
+                    this.Size = new System.Drawing.Size(402, 455);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 184);
+                    break;
+                case 13: //FINALIZAÇÃO ENTREGA CNH
+                    pnlFase1.Visible = false;
+                    pnlFase2.Visible = false;
+                    pnlFase3.Visible = false;
+                    pnlFase4.Visible = false;
+                    pnlFase5.Visible = false;
+                    pnlFase6.Visible = false;
+                    pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = true;
+
+                    pnlLayout13.Location = new System.Drawing.Point(6, 50);
+                    this.Size = new System.Drawing.Size(402, 455);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 184);
                     break;
             }
         }

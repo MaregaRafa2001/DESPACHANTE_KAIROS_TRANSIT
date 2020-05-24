@@ -35,15 +35,20 @@ namespace APP_UI
             }
         }
 
-        public void OpenTela(Form Tela)
+        public void OpenTela(Form Tela, bool Maximized = true)
         {
             try
             {
+                if (!SysBLL.grupo_acesso.SYS_MENU.Exists(x => x.NAME == Tela.Name))
+                {
+                    return;
+                }
+
                 foreach (Form form in this.MdiChildren)
                 {
                     if (form.Name.ToLower() == Tela.Name.ToLower())
                     {
-                        form.WindowState = FormWindowState.Maximized;
+                        form.WindowState = (Maximized ? FormWindowState.Maximized : FormWindowState.Normal);
                         form.Focus();
                         return;
                     }
@@ -59,7 +64,7 @@ namespace APP_UI
                     //Mostrando o formulário
                     Tela.Show();
                     //Maximizando o formulário (se for maximizar antes do show utilizar o BringToFront() após o WindowState)
-                    Tela.WindowState = FormWindowState.Maximized;
+                    Tela.WindowState = (Maximized ? FormWindowState.Maximized : FormWindowState.Normal);
                 }
             }
             catch (Exception ex)
@@ -72,17 +77,21 @@ namespace APP_UI
         {
             switch (nomeForm.Name)
             {
-                case "tssfrmCliente":
+                case "frmCliente":
                     return new frmCliente(this);
-                case "tssfrmFinanceiro":
+                case "frmFinanceiro":
                     return new frmFinanceiro(this);
-                case "tssfrmAdministração":
+                case "frmAdministração":
                     return new frmAdministracao(this);
-                case "tssfrmRelatorios":
+                case "frmAdministracao":
+                    return new frmAdministracao(this);
+                case "frmJuridico":
+                    return new frmJuridico(this);
+                case "frmRelatorios":
                     return new frmRelatorios(this);
-                case "tssfrmPermissoes":
+                case "frmPermissoes":
                     return new frmPermissoes(this);
-                case "tssfrmUsuario":
+                case "frmUsuario":
                     return new frmUsuario(this);
             }
             throw new Exception("Não conseguimos localizar a tela. Por favor reinicie o sistema. Caso o problema persista, entre em contato com o suporte");
@@ -93,7 +102,6 @@ namespace APP_UI
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                string strNomeForm = "frmUsuario";
                 Form frm = new frmUsuario(this);
                 OpenTela(frm);
                 return;
@@ -112,7 +120,7 @@ namespace APP_UI
                 Cursor.Current = Cursors.WaitCursor;
                 //Nome do formulário que será instanciado
                 Form frm = new frmPermissoes(this);
-                OpenTela(frm);
+                OpenTela(frm, false);
                 return;
             }
             catch (Exception ex)
@@ -129,8 +137,9 @@ namespace APP_UI
                 Acesso(clienteToolStripMenuItem);
                 Acesso(financeiroToolStripMenuItem);
                 Acesso(administracaoToolStrip);
+                Acesso(jurídicoToolStripMenuItem);
                 Acesso(apoioDoSistemaToolStripMenuItem);
-
+                Acesso(tssRelatorios);
             }
             catch (Exception ex)
             {
@@ -198,6 +207,22 @@ namespace APP_UI
                 //Setando o mousepointer para ocupado.
                 Cursor.Current = Cursors.WaitCursor;
                 Form frm = new frmFinanceiro(this);
+                OpenTela(frm);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Acesso Negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TssfrmJuridico_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Setando o mousepointer para ocupado.
+                Cursor.Current = Cursors.WaitCursor;
+                Form frm = new frmJuridico(this);
                 OpenTela(frm);
                 return;
             }

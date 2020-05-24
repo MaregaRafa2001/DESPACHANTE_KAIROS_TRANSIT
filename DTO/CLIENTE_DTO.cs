@@ -21,8 +21,9 @@ namespace DTO
         public string RG { get; set; }
         public string CPF { get; set; }
         public string CNH { get; set; }
-        public DateTime CNH_DATA_VENCIMENTO { get; set; }
-        public int CNH_PONTUACAO { get; set; }
+        public DateTime? CNH_DATA_VENCIMENTO { get; set; }
+        public bool CNH_VENCIDA { get; set; }
+        public int? CNH_PONTUACAO { get; set; }
         public string CNH_UF { get; set; }
 
         //ENDEREÇO
@@ -35,11 +36,12 @@ namespace DTO
         //CONTATO
         public string EMAIL { get; set; }
         public string EMAIL2 { get; set; }
-        public string TELEFONE { get; set; }
-        public string CELULAR { get; set; }
+        //public string TELEFONE { get; set; }
+        //public string CELULAR { get; set; }
         public string FONE_LIVRE { get; set; }
         public string OBSERVACAO { get; set; }
         public bool PORTARIA { get; set; }
+        public bool IMPEDIMENTO { get; set; }
 
         public SysDTO.Operacoes OPERACAO { get; set; }
         public string USUARIO { get; set; }
@@ -50,5 +52,34 @@ namespace DTO
         {
             return this.MemberwiseClone();
         }
+
+        private List<TELEFONE_DTO> T_DTO = new List<TELEFONE_DTO>();
+        public List<TELEFONE_DTO> TELEFONE
+        {
+            get { return T_DTO; }
+            set { T_DTO = value; }
+        }
+
+        private List<CELULAR_DTO> C_DTO = new List<CELULAR_DTO>();
+        public List<CELULAR_DTO> CELULAR
+        {
+            get { return C_DTO; }
+            set { C_DTO = value; }
+        }
+    }
+    public class TELEFONE_DTO
+    {
+        public int ID { get; set; }
+        public int ID_CLIENTE { get; set; }
+        public string NUMERO { get; set; }
+        public SysDTO.Operacoes OPERACAO { get; set; }
+    }
+
+    public class CELULAR_DTO
+    {
+        public int ID { get; set; }
+        public int ID_CLIENTE { get; set; }
+        public string NUMERO { get; set; }
+        public SysDTO.Operacoes OPERACAO { get; set; }
     }
 }

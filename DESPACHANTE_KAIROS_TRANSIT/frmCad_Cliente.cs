@@ -27,11 +27,12 @@ namespace APP_UI
             if (ID == 0)
             {
                 CLIENTE_DTO = new CLIENTE_DTO();
-
+                PopularTelefoneCelular();
             }
             else
             {
                 CLIENTE_DTO = CLIENTE_BLL.Selecione(ID);
+                PopularTelefoneCelular();
                 PopularDados();
                 CLIENTE_DTO.OPERACAO = SysDTO.Operacoes.Alteracao;
                 popularGrid = true;
@@ -54,11 +55,39 @@ namespace APP_UI
                 cboUFCNH.DisplayMember = "Text";
                 cboUFCNH.DataSource = FormFuncoes.ListaEstados();
                 cboUFCNH.SelectedIndex = -1;
+
             }
             catch (Exception ex)
             {
 
             }
+        }
+
+        void PopularTelefoneCelular()
+        {
+            cboTelefone.SelectedValueChanged -= CboTelefone_SelectedValueChanged;
+            CLIENTE_DTO.TELEFONE.Insert(0, new TELEFONE_DTO() { NUMERO = "(Adicionar...)", OPERACAO = SysDTO.Operacoes.Leitura, ID = -1 });
+            cboTelefone.DataSource = null;
+            cboTelefone.DisplayMember = "NUMERO";
+            cboTelefone.ValueMember = "ID";
+            cboTelefone.DataSource = CLIENTE_DTO.TELEFONE;
+            cboTelefone.SelectedIndex = -1;
+            mskTelefone.Visible = false;
+            btnExcluirTelefone.Visible = false;
+            cboTelefone.Visible = true;
+            cboTelefone.SelectedValueChanged += CboTelefone_SelectedValueChanged;
+
+            cboCelular.SelectedValueChanged -= CboCelular_SelectedValueChanged;
+            CLIENTE_DTO.CELULAR.Insert(0, new CELULAR_DTO() { NUMERO = "(Adicionar...)", OPERACAO = SysDTO.Operacoes.Leitura, ID = -1 });
+            cboCelular.DataSource = null;
+            cboCelular.DisplayMember = "NUMERO";
+            cboCelular.ValueMember = "ID";
+            cboCelular.DataSource = CLIENTE_DTO.CELULAR;
+            cboCelular.SelectedIndex = -1;
+            mskCelular.Visible = false;
+            btnExcluirCelular.Visible = false;
+            cboCelular.Visible = true;
+            cboCelular.SelectedValueChanged += CboCelular_SelectedValueChanged;
         }
 
         void PopularGrid(int ID_SERVICO = 0)
@@ -67,7 +96,7 @@ namespace APP_UI
             {
                 StringBuilder sbSql = new StringBuilder();
 
-                sbSql.Append("SELECT X.ID AS ID_INVISIBLE, B.NOME AS SERVIÇO, A.DESCRICAO AS [STATUS], A.COR FROM FINANCEIRO X LEFT JOIN STATUS_FINANCEIRO A ON X.ID_STATUS = A.ID LEFT JOIN SERVICOS B ON X.ID_SERVICO = B.ID WHERE ID_CLIENTE = " + CLIENTE_DTO.ID + " ORDER BY  DATA_ALTERACAO DESC");
+                sbSql.Append("SELECT X.ID AS ID_INVISIBLE, X.DATA, B.NOME AS SERVIÇO, A.DESCRICAO AS [STATUS], A.COR FROM FINANCEIRO X LEFT JOIN STATUS_FINANCEIRO A ON X.ID_STATUS = A.ID LEFT JOIN SERVICOS B ON X.ID_SERVICO = B.ID WHERE ID_CLIENTE = " + CLIENTE_DTO.ID + " ORDER BY  DATA_ALTERACAO DESC");
                 //Monta o grid e recupera as colunas utilizadas para pesquisa
                 DataTable dtt = new PesquisaGeralBLL().Pesquisa(sbSql.ToString(), ListaCampos);
                 dtgContrato.DataSource = null;
@@ -80,7 +109,10 @@ namespace APP_UI
                         int[] coresArgb = new int[3];
                         for (int i = 0; i < item.Cells["COR"].Value.ToString().Split(';').Length; i++)
                         {
-                            coresArgb[i] = Convert.ToInt32(item.Cells["COR"].Value.ToString().Split(';')[i]);
+                            if (item.Cells["COR"].Value.ToString() != "")
+                                coresArgb[i] = Convert.ToInt32(item.Cells["COR"].Value.ToString().Split(';')[i]);
+                            else
+                                coresArgb[i] = 255;
                         }
 
                         item.DefaultCellStyle.BackColor = Color.FromName("lightGreen");
@@ -128,7 +160,6 @@ namespace APP_UI
                         dtgHistorico.RowHeadersVisible = false;
                         dtgHistorico.Columns["id_registro"].Visible = false;
                         dtgHistorico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
                     }
                 }
                 else
@@ -157,8 +188,33 @@ namespace APP_UI
             //CONTATO
             txtEmail.Text = CLIENTE_DTO.EMAIL;
             txtEmail2.Text = CLIENTE_DTO.EMAIL2;
-            mskCelular.Text = CLIENTE_DTO.CELULAR;
-            mskTelelefone.Text = CLIENTE_DTO.TELEFONE;
+
+            //cboTelefone.SelectedValueChanged -= CboTelefone_SelectedValueChanged;
+            //if (CLIENTE_DTO.TELEFONE != null)
+            //{
+            //    CLIENTE_DTO.TELEFONE = new List<TELEFONE_DTO>();
+            //    CLIENTE_DTO.TELEFONE.Insert(0, new TELEFONE_DTO() { NUMERO = "(Adicionar...)", OPERACAO = SysDTO.Operacoes.Leitura, ID = -1 });
+            //}
+            //cboTelefone.DataSource = null;
+            //cboTelefone.DisplayMember = "NUMERO";
+            //cboTelefone.ValueMember = "ID";
+            //cboTelefone.DataSource = CLIENTE_DTO.TELEFONE;
+            //cboTelefone.SelectedIndex = -1;
+            //cboTelefone.SelectedValueChanged += CboTelefone_SelectedValueChanged;
+
+            //cboCelular.SelectedValueChanged -= CboCelular_SelectedValueChanged;
+            //if (CLIENTE_DTO.CELULAR != null)
+            //{
+            //    CLIENTE_DTO.CELULAR = new List<CELULAR_DTO>();
+            //    CLIENTE_DTO.CELULAR.Insert(0, new CELULAR_DTO() { NUMERO = "(Adicionar...)", OPERACAO = SysDTO.Operacoes.Leitura, ID = -1 });
+            //}
+            //cboCelular.DataSource = null;
+            //cboCelular.DisplayMember = "NUMERO";
+            //cboCelular.ValueMember = "ID";
+            //cboCelular.DataSource = CLIENTE_DTO.CELULAR;
+            //cboCelular.SelectedIndex = -1;
+            //cboCelular.SelectedValueChanged += CboCelular_SelectedValueChanged;
+
             txtObs.Text = CLIENTE_DTO.OBSERVACAO;
             //DADOS
             txtNome.Text = CLIENTE_DTO.NOME_COMPLETO;
@@ -167,12 +223,20 @@ namespace APP_UI
             mskNascimento.Text = CLIENTE_DTO.DATA_NASCIMENTO;
             txtCNH.Text = CLIENTE_DTO.CNH.ToString();
             cboUFCNH.Text = CLIENTE_DTO.CNH_UF;
-            nupPontuacao.Value = CLIENTE_DTO.CNH_PONTUACAO;
+            nupPontuacao.Value = CLIENTE_DTO.CNH_PONTUACAO == null ? 0 : Convert.ToInt32(CLIENTE_DTO.CNH_PONTUACAO);
             mskDataVencimentoCNH.Text = CLIENTE_DTO.CNH_DATA_VENCIMENTO.ToString();
             if (CLIENTE_DTO.PORTARIA)
                 radPortariaSim.Checked = true;
             else
                 radPortariaNao.Checked = true;
+            if (CLIENTE_DTO.IMPEDIMENTO)
+                radImpedimentoSim.Checked = true;
+            else
+                radImpedimentoNao.Checked = true;
+            if (CLIENTE_DTO.CNH_VENCIDA)
+                radCNHVencidaSim.Checked = true;
+            else
+                radCNHVencidaNao.Checked = true;
         }
 
 
@@ -188,7 +252,9 @@ namespace APP_UI
                 CLIENTE_DTO.CNH = Convert.ToString(txtCNH.Text);
                 CLIENTE_DTO.CNH_UF = cboUFCNH.Text;
                 CLIENTE_DTO.CNH_PONTUACAO = Convert.ToInt32(nupPontuacao.Value);
-                CLIENTE_DTO.CNH_DATA_VENCIMENTO = Convert.ToDateTime(mskDataVencimentoCNH.Text);
+
+                CLIENTE_DTO.CNH_DATA_VENCIMENTO = FormFuncoes.GetMskDate(mskDataVencimentoCNH);
+                CLIENTE_DTO.CNH_VENCIDA = radCNHVencidaSim.Checked ? true : false;
                 //ENDEREÇO
                 CLIENTE_DTO.CEP = mskCEP.Text.Replace("-", "");
                 CLIENTE_DTO.BAIRRO = txtBairro.Text;
@@ -199,13 +265,23 @@ namespace APP_UI
                 //CONTATO
                 CLIENTE_DTO.EMAIL = txtEmail.Text;
                 CLIENTE_DTO.EMAIL2 = txtEmail2.Text;
-                CLIENTE_DTO.CELULAR = mskCelular.Text;
-                CLIENTE_DTO.TELEFONE = mskTelelefone.Text;
+
+
+
+                //CLIENTE_DTO.CELULAR = mskCelular.Text;
+                //CLIENTE_DTO.TELEFONE = mskTelelefone.Text;
                 CLIENTE_DTO.OBSERVACAO = txtObs.Text;
                 CLIENTE_DTO.PORTARIA = (radPortariaSim.Checked ? true : false);
+                CLIENTE_DTO.IMPEDIMENTO = (radImpedimentoSim.Checked ? true : false);
                 CLIENTE_DTO.ULT_ATUAL = DateTime.Now;
                 CLIENTE_DTO.USUARIO = SysBLL.UserLogin.NOME;
 
+
+                //LIMPO AS DTOs DE ADICIONAR TELEFONE/CELULAR
+                if (CLIENTE_DTO.CELULAR.Exists(x => x.ID == -1))
+                    CLIENTE_DTO.CELULAR.RemoveAll(x => x.ID == -1);
+                if (CLIENTE_DTO.TELEFONE.Exists(x => x.ID == -1))
+                    CLIENTE_DTO.TELEFONE.RemoveAll(x => x.ID == -1);
             }
             catch (Exception EX)
             {
@@ -255,17 +331,18 @@ namespace APP_UI
         }
         private bool ValidarDados(CLIENTE_DTO DTO)
         {
+            //VALIDAR CAMPOS VAZIOS
             List<string> result = new List<string>();
             if (string.IsNullOrEmpty(txtNome.Text))
             {
                 result.Add("NOME COMPLETO");
                 txtNome.ForeColor = System.Drawing.Color.Red;
             }
-            if (string.IsNullOrEmpty(mskCelular.Text))
-            {
-                result.Add("CELULAR");
-                txtRG.ForeColor = System.Drawing.Color.Red;
-            }
+            //if (string.IsNullOrEmpty(mskCelular.Text))
+            //{
+            //    result.Add("CELULAR");
+            //    txtRG.ForeColor = System.Drawing.Color.Red;
+            //}
             if (string.IsNullOrEmpty(txtBairro.Text))
             {
                 result.Add("BAIRRO");
@@ -306,20 +383,71 @@ namespace APP_UI
                 result.Add("LOGRADOURO");
                 txtLogradouro.ForeColor = System.Drawing.Color.Red;
             }
-            if (result.Count == 0)
+
+
+            //VALIDAR CAMPOS COM ERROS
+            List<string> erros = new List<string>();
+            if (mskNascimento.Text.Replace("/", "").Trim().Length > 0)
+            {
+                try
+                {
+                    Convert.ToDateTime(mskNascimento.Text);
+                }
+                catch
+                {
+                    erros.Add("DATA DE NASCIMENTO");
+                    mskNascimento.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+
+            if (mskDataVencimentoCNH.Text.Replace("/", "").Trim().Length > 0)
+            {
+                try
+                {
+                    Convert.ToDateTime(mskDataVencimentoCNH.Text);
+                }
+                catch
+                {
+                    erros.Add("DATA DE VENCIMENTO");
+                    mskDataVencimentoCNH.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            if (result.Count == 0 && erros.Count == 0)
                 return true;
+
+
             var msg = "";
             foreach (var item in result)
             {
                 msg += item + ", ";
             }
             if (msg.Length > 2)
+            {
                 msg = msg.Substring(0, msg.Length - 2);
+                if (result.Count > 1)
+                    msg = msg.Substring(0, msg.LastIndexOf(',')) + " e" + msg.Substring(msg.LastIndexOf(',') + 1, (msg.Length - msg.LastIndexOf(',')) - 1);
+            }
             if (result.Count > 1)
                 MessageBox.Show("Campos " + msg + " são obrigatórios!", "Campos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (result.Count == 1)
                 MessageBox.Show("Campo " + msg + " é obrigatório!", "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+
+            msg = "";
+            foreach (var item in erros)
+            {
+                msg += item + ", ";
+            }
+            if (msg.Length > 2)
+            {
+                msg = msg.Substring(0, msg.Length - 2);
+                if (erros.Count > 1)
+                    msg = msg.Substring(0, msg.LastIndexOf(',')) + " e" + msg.Substring(msg.LastIndexOf(',') + 1, (msg.Length - msg.LastIndexOf(',')) - 1);
+            }
+            if (erros.Count > 1)
+                MessageBox.Show("Campos " + msg + " estão com valores inválidos!", "Campos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (erros.Count == 1)
+                MessageBox.Show("Campo " + msg + " está com valor inválido!", "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             return false;
         }
@@ -622,6 +750,290 @@ namespace APP_UI
             catch (NullReferenceException)
             {
                 MessageBox.Show("Selecione um ítem válido na lista clicando sobre o mesmo!", "Aviso...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CboTelefone_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cboTelefone.SelectedValue == null)
+                    return;
+                if (Convert.ToInt32(cboTelefone.SelectedValue) == -1)
+                {
+                    btnTelefone.Click -= BtnEditTelefone_Click;
+                    btnTelefone.Click -= BtnAddTelefone_Click;
+                    btnTelefone.Click += BtnAddTelefone_Click;
+                    cboTelefone.Visible = false;
+                    mskTelefone.Visible = true;
+                    mskTelefone.Focus();
+                    btnExcluirTelefone.Visible = false;
+                }
+                else
+                {
+                    btnTelefone.Click -= BtnAddTelefone_Click;
+                    btnTelefone.Click -= BtnEditTelefone_Click;
+                    btnTelefone.Click += BtnEditTelefone_Click;
+                    cboTelefone.Visible = false;
+                    mskTelefone.Visible = true;
+                    mskTelefone.Text = cboTelefone.Text;
+                    btnExcluirTelefone.Visible = true;
+                    btnExcluirTelefone.BringToFront();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnAddTelefone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (mskTelefone.Text.Replace("_", "").Length >= 8)
+                {
+                    TELEFONE_DTO TELEFONE = new TELEFONE_DTO();
+                    TELEFONE.NUMERO = mskTelefone.Text;
+                    TELEFONE.OPERACAO = SysDTO.Operacoes.Inclusao;
+                    TELEFONE.ID = Convert.ToInt32(new Random().Next().ToString().Substring(0, 5));
+                    CLIENTE_DTO.TELEFONE.Add(TELEFONE);
+                    PopularTelefone();
+                    cboTelefone.Visible = true;
+                    mskTelefone.Visible = false;
+                    mskTelefone.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnEditTelefone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CLIENTE_DTO.TELEFONE.Exists(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                {
+                    TELEFONE_DTO TELEFONE = CLIENTE_DTO.TELEFONE.Find(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue));
+                    TELEFONE.NUMERO = mskTelefone.Text;
+                    if (TELEFONE.OPERACAO != SysDTO.Operacoes.Inclusao)
+                        TELEFONE.OPERACAO = SysDTO.Operacoes.Alteracao;
+
+                    foreach (TELEFONE_DTO TEL in CLIENTE_DTO.TELEFONE.Where(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                    {
+                        TEL.NUMERO = TELEFONE.NUMERO;
+                        if (TEL.OPERACAO != SysDTO.Operacoes.Inclusao)
+                            TEL.OPERACAO = SysDTO.Operacoes.Alteracao;
+                    }
+
+                    PopularTelefone();
+                    cboTelefone.Visible = true;
+                    mskTelefone.Visible = false;
+                    mskTelefone.Text = "";
+                    btnExcluirTelefone.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PicExcluirTelefone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CLIENTE_DTO.TELEFONE.Exists(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                {
+                    foreach (TELEFONE_DTO TEL in CLIENTE_DTO.TELEFONE.Where(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                    {
+                        TEL.OPERACAO = SysDTO.Operacoes.Exclusao;
+                    }
+
+                    PopularTelefone();
+                    cboTelefone.Visible = true;
+                    mskTelefone.Visible = false;
+                    mskTelefone.Text = "";
+                    btnExcluirTelefone.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void PopularTelefone()
+        {
+            try
+            {
+                cboTelefone.SelectedValueChanged -= CboTelefone_SelectedValueChanged;
+                cboTelefone.DataSource = null;
+                cboTelefone.DisplayMember = "NUMERO";
+                cboTelefone.ValueMember = "ID";
+                cboTelefone.DataSource = CLIENTE_DTO.TELEFONE.FindAll(x => x.OPERACAO != SysDTO.Operacoes.Exclusao);
+                cboTelefone.SelectedIndex = -1;
+                cboTelefone.SelectedValueChanged += CboTelefone_SelectedValueChanged;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnExcluirTelefone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(cboTelefone.SelectedValue) != -1 && CLIENTE_DTO.TELEFONE.Exists(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                {
+                    foreach (TELEFONE_DTO TEL in CLIENTE_DTO.TELEFONE.Where(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                    {
+                        TEL.OPERACAO = SysDTO.Operacoes.Exclusao;
+                    }
+
+                    PopularTelefone();
+                    cboTelefone.Visible = true;
+                    mskTelefone.Visible = false;
+                    mskTelefone.Text = "";
+                    btnExcluirTelefone.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnCelular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CLIENTE_DTO.CELULAR.Exists(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue)))
+                {
+                    CELULAR_DTO CELULAR = CLIENTE_DTO.CELULAR.Find(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue));
+                    CELULAR.NUMERO = mskCelular.Text;
+                    if (CELULAR.OPERACAO != SysDTO.Operacoes.Inclusao)
+                        CELULAR.OPERACAO = SysDTO.Operacoes.Alteracao;
+
+                    foreach (CELULAR_DTO TEL in CLIENTE_DTO.CELULAR.Where(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue)))
+                    {
+                        TEL.NUMERO = CELULAR.NUMERO;
+                        if (TEL.OPERACAO != SysDTO.Operacoes.Inclusao)
+                            TEL.OPERACAO = SysDTO.Operacoes.Alteracao;
+                    }
+
+                    PopularCelular();
+                    cboCelular.Visible = true;
+                    mskCelular.Visible = false;
+                    mskCelular.Text = "";
+                    btnExcluirCelular.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void PopularCelular()
+        {
+            try
+            {
+                cboCelular.SelectedValueChanged -= CboCelular_SelectedValueChanged;
+                cboCelular.DataSource = null;
+                cboCelular.DisplayMember = "NUMERO";
+                cboCelular.ValueMember = "ID";
+                cboCelular.DataSource = CLIENTE_DTO.CELULAR.FindAll(x => x.OPERACAO != SysDTO.Operacoes.Exclusao);
+                cboCelular.SelectedIndex = -1;
+                cboCelular.SelectedValueChanged += CboCelular_SelectedValueChanged;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CboCelular_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cboCelular.SelectedValue == null)
+                    return;
+                if (Convert.ToInt32(cboCelular.SelectedValue) == -1)
+                {
+                    btnCelular.Click -= BtnCelular_Click;
+                    btnCelular.Click -= BtnAddCelular_Click;
+                    btnCelular.Click += BtnAddCelular_Click;
+                    cboCelular.Visible = false;
+                    mskCelular.Visible = true;
+                    mskCelular.Focus();
+                    btnExcluirCelular.Visible = false;
+                }
+                else
+                {
+                    btnCelular.Click -= BtnAddCelular_Click;
+                    btnCelular.Click -= BtnCelular_Click;
+                    btnCelular.Click += BtnCelular_Click;
+                    cboCelular.Visible = false;
+                    mskCelular.Visible = true;
+                    mskCelular.Text = cboCelular.Text;
+                    btnExcluirCelular.Visible = true;
+                    btnExcluirCelular.BringToFront();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnAddCelular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (mskCelular.Text.Replace("_", "").Length >= 8)
+                {
+                    CELULAR_DTO CELULAR = new CELULAR_DTO();
+                    CELULAR.NUMERO = mskCelular.Text;
+                    CELULAR.OPERACAO = SysDTO.Operacoes.Inclusao;
+                    CELULAR.ID = Convert.ToInt32(new Random().Next().ToString().Substring(0, 5));
+                    CLIENTE_DTO.CELULAR.Add(CELULAR);
+                    PopularCelular();
+                    cboCelular.Visible = true;
+                    mskCelular.Visible = false;
+                    mskCelular.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnExcluirCelular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(cboCelular.SelectedValue) != -1 && CLIENTE_DTO.CELULAR.Exists(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue)))
+                {
+                    foreach (CELULAR_DTO TEL in CLIENTE_DTO.CELULAR.Where(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue)))
+                    {
+                        TEL.OPERACAO = SysDTO.Operacoes.Exclusao;
+                    }
+
+                    PopularCelular();
+                    cboCelular.Visible = true;
+                    mskCelular.Visible = false;
+                    mskCelular.Text = "";
+                    btnExcluirCelular.Visible = false;
+                }
             }
             catch (Exception ex)
             {

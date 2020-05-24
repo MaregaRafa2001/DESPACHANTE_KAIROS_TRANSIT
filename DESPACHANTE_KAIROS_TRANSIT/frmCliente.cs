@@ -14,12 +14,9 @@ namespace APP_UI
 {
     public partial class frmCliente : Form
     {
-        mdi_principal mdi_Principal = null;
         public frmCliente(mdi_principal mdi)
         {
             InitializeComponent();
-            mdi_Principal = mdi;
-            this.MdiParent = mdi;
         }
 
         Dictionary<string, string> campos = new Dictionary<string, string>();
@@ -44,7 +41,7 @@ namespace APP_UI
             try
             {
                 StringBuilder sbSql = new StringBuilder();
-                sbSql.Append("SELECT * FROM CLIENTE ORDER BY ID DESC ");
+                sbSql.Append("SELECT * FROM VW_CLIENTE ORDER BY ID DESC ");
 
                 //Monta o grid e recupera as colunas utilizadas para pesquisa
                 DataTable dtt = new PesquisaGeralBLL().Pesquisa(sbSql.ToString());

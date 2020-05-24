@@ -14,14 +14,11 @@ namespace APP_UI
 {
     public partial class frmUsuario : Form
     {
-        mdi_principal mdi_Principal = null;
         List<PesquisaGeralDTO> ListaCampos = new List<PesquisaGeralDTO>();
 
         public frmUsuario(mdi_principal mdi)
         {
             InitializeComponent();
-            mdi_Principal = mdi;
-            this.MdiParent = mdi;
         }
 
         Dictionary<string, string> campos = new Dictionary<string, string>();

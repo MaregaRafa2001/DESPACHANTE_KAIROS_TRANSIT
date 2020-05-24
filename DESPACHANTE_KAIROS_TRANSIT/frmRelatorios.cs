@@ -16,7 +16,6 @@ namespace APP_UI
     public partial class frmRelatorios : Form
     {
         List<PesquisaGeralDTO> ListaCampos = new List<PesquisaGeralDTO>();
-        mdi_principal mdi_Principal = null;
         public RELATORIOS_DTO relatorio_dto = new RELATORIOS_DTO();
 
         Dictionary<string, string> campos = new Dictionary<string, string>();
@@ -24,8 +23,6 @@ namespace APP_UI
         public frmRelatorios(mdi_principal mdi)
         {
             InitializeComponent();
-            mdi_Principal = mdi;
-            this.MdiParent = mdi;
         }
 
         private void TsbFilter_Click(object sender, EventArgs e)

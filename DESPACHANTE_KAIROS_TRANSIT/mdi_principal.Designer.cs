@@ -40,6 +40,8 @@
             this.apoioDoSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tssfrmPermissoes = new System.Windows.Forms.ToolStripMenuItem();
             this.tssfrmUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.jurídicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssfrmJuridico = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,11 +52,12 @@
             this.clienteToolStripMenuItem,
             this.financeiroToolStripMenuItem,
             this.administracaoToolStrip,
+            this.jurídicoToolStripMenuItem,
             this.tssRelatorios,
             this.apoioDoSistemaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -63,7 +66,7 @@
             this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssfrmCliente});
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.clienteToolStripMenuItem.Text = "Cadastros";
             // 
             // tssfrmCliente
@@ -78,7 +81,7 @@
             this.financeiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssfrmFinanceiro});
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
-            this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
+            this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
             // 
             // tssfrmFinanceiro
@@ -93,7 +96,7 @@
             this.administracaoToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssfrmAdministracao});
             this.administracaoToolStrip.Name = "administracaoToolStrip";
-            this.administracaoToolStrip.Size = new System.Drawing.Size(119, 26);
+            this.administracaoToolStrip.Size = new System.Drawing.Size(119, 24);
             this.administracaoToolStrip.Text = "Administração";
             // 
             // tssfrmAdministracao
@@ -108,7 +111,7 @@
             this.tssRelatorios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssfrmRelatorios});
             this.tssRelatorios.Name = "tssRelatorios";
-            this.tssRelatorios.Size = new System.Drawing.Size(90, 26);
+            this.tssRelatorios.Size = new System.Drawing.Size(90, 24);
             this.tssRelatorios.Text = "Relatórios";
             // 
             // tssfrmRelatorios
@@ -124,7 +127,7 @@
             this.tssfrmPermissoes,
             this.tssfrmUsuario});
             this.apoioDoSistemaToolStripMenuItem.Name = "apoioDoSistemaToolStripMenuItem";
-            this.apoioDoSistemaToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
+            this.apoioDoSistemaToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.apoioDoSistemaToolStripMenuItem.Text = "Configurações";
             // 
             // tssfrmPermissoes
@@ -140,6 +143,21 @@
             this.tssfrmUsuario.Size = new System.Drawing.Size(177, 26);
             this.tssfrmUsuario.Text = "Criar Usuario";
             this.tssfrmUsuario.Click += new System.EventHandler(this.criarUsuarioToolStripMenuItem_Click);
+            // 
+            // jurídicoToolStripMenuItem
+            // 
+            this.jurídicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssfrmJuridico});
+            this.jurídicoToolStripMenuItem.Name = "jurídicoToolStripMenuItem";
+            this.jurídicoToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.jurídicoToolStripMenuItem.Text = "Jurídico";
+            // 
+            // tssfrmJuridico
+            // 
+            this.tssfrmJuridico.Name = "tssfrmJuridico";
+            this.tssfrmJuridico.Size = new System.Drawing.Size(224, 26);
+            this.tssfrmJuridico.Text = "Jurídico";
+            this.tssfrmJuridico.Click += new System.EventHandler(this.TssfrmJuridico_Click);
             // 
             // mdi_principal
             // 
@@ -175,5 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem administracaoToolStrip;
         private System.Windows.Forms.ToolStripMenuItem tssfrmAdministracao;
         private System.Windows.Forms.ToolStripMenuItem tssfrmRelatorios;
+        private System.Windows.Forms.ToolStripMenuItem jurídicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tssfrmJuridico;
     }
 }

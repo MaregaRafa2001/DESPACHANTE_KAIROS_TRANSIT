@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using APP_UI;
+using BLL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,17 @@ using System.Windows.Forms;
 
 namespace APP_UI
 {
-    public partial class frmAdministracao : Form
+    public partial class frmJuridico : Form
     {
         List<PesquisaGeralDTO> ListaCampos = new List<PesquisaGeralDTO>();
         mdi_principal mdi_Principal = null;
 
-        public frmAdministracao(mdi_principal mdi)
+        public frmJuridico(mdi_principal mdi)
         {
             InitializeComponent();
             mdi_Principal = mdi;
-
         }
+
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
@@ -35,8 +36,8 @@ namespace APP_UI
                 }
 
                 int ID = Convert.ToInt32(dtgDados.CurrentRow.Cells["ID"].Value);
-                frmCad_Administracao frmCad_Financeiro = new frmCad_Administracao(ID, mdi_Principal);
-                DialogResult result = frmCad_Financeiro.ShowDialog();
+                frmCad_Juridico frmCad_Juridico = new frmCad_Juridico(ID, mdi_Principal);
+                DialogResult result = frmCad_Juridico.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     PopularGrid();
@@ -66,24 +67,6 @@ namespace APP_UI
             }
         }
 
-        private void FrmFinanceiro_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                PopularGrid();
-
-                if (!SysBLL.grupo_acesso.SYS_MENU.Exists(x => x.NAME == "frmAdministracao.Update"))
-                {
-                    btnAlterar.Enabled = false;
-                    dtgDados.DoubleClick -= DtgDados_DoubleClick;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         private void BtnLocalizar_Click(object sender, EventArgs e)
         {
             try
@@ -95,6 +78,24 @@ namespace APP_UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro ao carregar os dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FrmJuridico_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                PopularGrid();
+
+                if (!SysBLL.grupo_acesso.SYS_MENU.Exists(x => x.NAME == "frmJuridico.Update"))
+                {
+                    btnAlterar.Enabled = false;
+                    dtgDados.DoubleClick -= DtgDados_DoubleClick;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

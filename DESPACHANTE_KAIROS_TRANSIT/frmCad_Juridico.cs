@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
 using BLL;
+using APP_UI;
 
 namespace APP_UI
 {
-    public partial class frmCad_Administracao : Form
+    public partial class frmCad_Juridico : Form
     {
-        List<ADMINISTRACAO_DTO> list_fase_financeiro_dto = new List<ADMINISTRACAO_DTO>();
+        List<JURIDICO_DTO> list_fase_juridico_dto = new List<JURIDICO_DTO>();
         FINANCEIRO_DTO financeiro_dto;
         mdi_principal mdi_Principal;
-        public frmCad_Administracao(int ID, mdi_principal mdi_Principal)
+        public frmCad_Juridico(int ID, mdi_principal mdi_Principal)
         {
             InitializeComponent();
             this.mdi_Principal = mdi_Principal;
-            this.financeiro_dto = new FINANCEIRO_BLL().Seleciona_Financeiro_By_Id(ID);
+            this.financeiro_dto = new FINANCEIRO_BLL().Seleciona_Financeiro_By_Id_For_Juridico(ID);
             PopularDadosCliente();
             PopularDadosFinanceiro();
         }
@@ -36,7 +37,7 @@ namespace APP_UI
                 txtValor.Text = financeiro_dto.VALOR.ToString();
                 txtFormaPagamento.Text = financeiro_dto.FORMA_PAGAMENTO;
                 txtNParcelas.Text = financeiro_dto.PARCELAS.ToString();
-                list_fase_financeiro_dto = financeiro_dto.ADMINISTRACAO;
+                list_fase_juridico_dto = financeiro_dto.JURIDICO;
             }
             catch (Exception ex)
             {
@@ -57,8 +58,8 @@ namespace APP_UI
         {
             try
             {
-                List<ADMINISTRACAO_DTO> new_list_ = new List<ADMINISTRACAO_DTO>();
-                var list_fase_financeiro = list_fase_financeiro_dto.OrderByDescending(x => x.DATA);
+                List<JURIDICO_DTO> new_list_ = new List<JURIDICO_DTO>();
+                var list_fase_financeiro = list_fase_juridico_dto.OrderByDescending(x => x.DATA);
                 foreach (var item in list_fase_financeiro)
                 {
                     new_list_.Add(item);
@@ -81,19 +82,20 @@ namespace APP_UI
             }
         }
 
+
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
             try
             {
-                ADMINISTRACAO_DTO fase_financeiro = new ADMINISTRACAO_DTO();
-                frmCad_Administracao_Fases frmCad_Financeiro_Fases = new frmCad_Administracao_Fases(fase_financeiro, financeiro_dto.ID_SERVICO);
-                DialogResult result = frmCad_Financeiro_Fases.ShowDialog();
+                JURIDICO_DTO fase_juridico = new JURIDICO_DTO();
+                frmCad_Juridico_Fases frmCad_Juridico_Fases = new frmCad_Juridico_Fases(fase_juridico, financeiro_dto.ID_SERVICO);
+                DialogResult result = frmCad_Juridico_Fases.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    fase_financeiro = frmCad_Financeiro_Fases.administracao_dto;
-                    fase_financeiro.ID_FINANCEIRO = financeiro_dto.ID == null ? 0 : (int)financeiro_dto.ID;
-                    fase_financeiro.OPERACAO = SysDTO.Operacoes.Inclusao;
-                    list_fase_financeiro_dto.Add(fase_financeiro);
+                    fase_juridico = frmCad_Juridico_Fases.juridico_dto;
+                    fase_juridico.ID_FINANCEIRO = financeiro_dto.ID == null ? 0 : (int)financeiro_dto.ID;
+                    fase_juridico.OPERACAO = SysDTO.Operacoes.Inclusao;
+                    list_fase_juridico_dto.Add(fase_juridico);
                     PopularGrid();
                 }
             }
@@ -115,21 +117,21 @@ namespace APP_UI
 
                 string Id = dtgDados.CurrentRow.Cells["Id"].Value.ToString();
 
-                if (list_fase_financeiro_dto.Exists(x => x.ID.ToString() == Id))
+                if (list_fase_juridico_dto.Exists(x => x.ID.ToString() == Id))
                 {
-                    ADMINISTRACAO_DTO administracao = list_fase_financeiro_dto.First(x => x.ID.ToString() == Id);
-                    frmCad_Administracao_Fases frmCad_Financeiro_Fases = new frmCad_Administracao_Fases(administracao, financeiro_dto.ID_SERVICO);
-                    DialogResult result = frmCad_Financeiro_Fases.ShowDialog();
+                    JURIDICO_DTO juridico = list_fase_juridico_dto.First(x => x.ID.ToString() == Id);
+                    frmCad_Juridico_Fases frmCad_Juridico_Fases = new frmCad_Juridico_Fases(juridico, financeiro_dto.ID_SERVICO);
+                    DialogResult result = frmCad_Juridico_Fases.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        foreach (ADMINISTRACAO_DTO fASE_FINANCEIRO in list_fase_financeiro_dto.FindAll(x => x.ID.ToString() == Id))
+                        foreach (JURIDICO_DTO FASE_JURIDICO in list_fase_juridico_dto.FindAll(x => x.ID.ToString() == Id))
                         {
-                            fASE_FINANCEIRO.DATA = administracao.DATA;
-                            fASE_FINANCEIRO.FASE = administracao.FASE;
-                            fASE_FINANCEIRO.OBSERVACAO = fASE_FINANCEIRO.OBSERVACAO;
-                            fASE_FINANCEIRO.ID_FINANCEIRO = financeiro_dto.ID == null ? 0 : (int)financeiro_dto.ID;
-                            if (fASE_FINANCEIRO.OPERACAO != SysDTO.Operacoes.Inclusao)
-                                fASE_FINANCEIRO.OPERACAO = SysDTO.Operacoes.Alteracao;
+                            FASE_JURIDICO.DATA = juridico.DATA;
+                            FASE_JURIDICO.FASE = juridico.FASE;
+                            FASE_JURIDICO.OBSERVACAO = FASE_JURIDICO.OBSERVACAO;
+                            FASE_JURIDICO.ID_FINANCEIRO = financeiro_dto.ID == null ? 0 : (int)financeiro_dto.ID;
+                            if (FASE_JURIDICO.OPERACAO != SysDTO.Operacoes.Inclusao)
+                                FASE_JURIDICO.OPERACAO = SysDTO.Operacoes.Alteracao;
                         }
                         PopularGrid();
                     }
@@ -157,12 +159,12 @@ namespace APP_UI
 
                 string Id = dtgDados.CurrentRow.Cells["Id"].Value.ToString();
 
-                if (list_fase_financeiro_dto.Exists(x => x.ID.ToString() == Id))
+                if (list_fase_juridico_dto.Exists(x => x.ID.ToString() == Id))
                 {
-                    ADMINISTRACAO_DTO fase_financeiro = list_fase_financeiro_dto.Find(x => x.ID.ToString() == Id);
+                    JURIDICO_DTO fase_financeiro = list_fase_juridico_dto.Find(x => x.ID.ToString() == Id);
                     if (fase_financeiro.OPERACAO != SysDTO.Operacoes.Inclusao)
                         new FINANCEIRO_BLL().Excluir_FaseFinanceiro((int)fase_financeiro.ID);
-                    list_fase_financeiro_dto.Remove(fase_financeiro);
+                    list_fase_juridico_dto.Remove(fase_financeiro);
                     PopularGrid();
                 }
                 else
@@ -181,7 +183,7 @@ namespace APP_UI
         {
             try
             {
-                int result = new FINANCEIRO_BLL().Registrar_FaseFinanceiro(financeiro_dto.ADMINISTRACAO);
+                int result = new FINANCEIRO_BLL().Registrar_FaseJuridico(financeiro_dto.JURIDICO);
                 if (result > 1)
                     MessageBox.Show("Foram incluídos/alterados " + result + " fases", "Registro concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
@@ -195,7 +197,7 @@ namespace APP_UI
             }
         }
 
-        private void FrmCad_FinanceiroV2_Load(object sender, EventArgs e)
+        private void FrmCad_Juridico_Load(object sender, EventArgs e)
         {
             PopularGrid();
 
@@ -223,10 +225,12 @@ namespace APP_UI
             {
                 tabControl1.TabPages.Remove(tabHistórico);
             }
+
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void BtnCancelar_Click(object sender, EventArgs e)
         {
+            try
             {
                 DialogResult escolha = MessageBox.Show("Tem a certeza que deseja sair?", "Mensagem do Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -234,6 +238,10 @@ namespace APP_UI
                 {
                     this.Close();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -306,7 +314,7 @@ namespace APP_UI
             }
         }
 
-        private void DtgDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DtgDados_DoubleClick(object sender, EventArgs e)
         {
             BtnAlterar_Click(sender, e);
         }

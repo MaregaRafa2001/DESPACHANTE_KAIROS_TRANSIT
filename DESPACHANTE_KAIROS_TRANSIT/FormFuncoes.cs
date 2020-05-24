@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace APP_UI
 {
@@ -54,6 +55,34 @@ namespace APP_UI
             retorno.Add(new ComboItemDTO() { Text = "SE", Value = "SE" });
             retorno.Add(new ComboItemDTO() { Text = "TO", Value = "TO" });
             return retorno;
+        }
+
+        public static string PopularMskData(DateTime? data)
+        {
+            try
+            {
+                return (data == null ? "" : data.Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DateTime? GetMskDate(MaskedTextBox txt)
+        {
+            try
+            {
+                if (FormFuncoes.IsDate(txt.Text))
+                {
+                    return Convert.ToDateTime(txt.Text);
+                }
+                return (DateTime?)null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static bool IsDate(string date)

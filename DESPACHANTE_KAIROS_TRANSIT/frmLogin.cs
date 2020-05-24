@@ -62,17 +62,22 @@ namespace APP_UI
 
         private void BtnSair_Click(object sender, EventArgs e)
         {
-            DialogResult escolha = MessageBox.Show("Tem a certeza que deseja sair?", "Mensagem do Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (escolha == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
             this.AcceptButton = btnEntrar;
+        }
+
+        private void TxtLogin_Enter(object sender, EventArgs e)
+        {
+            txtLogin.SelectAll();
+        }
+
+        private void TxtSenha_Enter(object sender, EventArgs e)
+        {
+            txtSenha.SelectAll();
         }
     }
 }

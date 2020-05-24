@@ -85,7 +85,7 @@ namespace DAL
 
             foreach (DataRow row in dtt.Rows)
             {
-                List.Add(new SERVICO_DTO() { NOME = row["NOME"] == DBNull.Value ? (string)null : char.ToUpper(row["NOME"].ToString()[0]) + row["NOME"].ToString().Substring(1), ID = row["ID"] == DBNull.Value ? 0 : Convert.ToInt32(row["ID"]), VALOR = Convert.ToDecimal(row["VALOR"].ToString()) });
+                List.Add(new SERVICO_DTO() { NOME = row["NOME"] == DBNull.Value ? (string)null : char.ToUpper(row["NOME"].ToString()[0]) + row["NOME"].ToString().Substring(1), ID = row["ID"] == DBNull.Value ? 0 : Convert.ToInt32(row["ID"]), VALOR = row["VALOR"] == DBNull.Value? 0 : Convert.ToDecimal(row["VALOR"].ToString()) });
             }
 
             if (List.Count > 0)

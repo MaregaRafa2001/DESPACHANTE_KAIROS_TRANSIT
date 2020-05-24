@@ -94,11 +94,35 @@ namespace BLL
             }
         }
 
-        public int Registrar_FaseFinanceiro(List<FASE_FINANCEIRO_DTO> lista_fase)
+        public FINANCEIRO_DTO Seleciona_Financeiro_By_Id_For_Juridico(int ID)
+        {
+            try
+            {
+                return DAO.Seleciona_Financeiro_By_Id_For_Juridico(ID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int Registrar_FaseFinanceiro(List<ADMINISTRACAO_DTO> lista_fase)
         {
             try
             {
                 return DAO.Registrar_FaseFinanceiro(lista_fase);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int Registrar_FaseJuridico(List<JURIDICO_DTO> lista_fase)
+        {
+            try
+            {
+                return DAO.Registrar_FaseJuridico(lista_fase);
             }
             catch (Exception ex)
             {
@@ -111,6 +135,17 @@ namespace BLL
             try
             {
                 return DAO.Excluir_FaseFinanceiro(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Excluir_FaseJuridico(int id)
+        {
+            try
+            {
+                return DAO.Excluir_FaseJuridico(id);
             }
             catch (Exception ex)
             {
@@ -141,11 +176,17 @@ namespace BLL
                 throw ex;
             }
         }
-
-
-
-
-
+        public List<ComboItemDTO> Lista_Consultor()
+        {
+            try
+            {
+                return DAO.Lista_Consultor();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         private void ValidarDados(FINANCEIRO_DTO DTO)
         {
             try

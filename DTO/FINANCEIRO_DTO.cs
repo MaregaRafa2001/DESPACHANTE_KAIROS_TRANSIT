@@ -68,13 +68,19 @@ namespace DTO
             set { C_DTO = value; }
         }
 
-        private List<FASE_FINANCEIRO_DTO> F_DTO = new List<FASE_FINANCEIRO_DTO>();
-        public List<FASE_FINANCEIRO_DTO> FASE_FINANCEIRO
+        private List<ADMINISTRACAO_DTO> F_DTO = new List<ADMINISTRACAO_DTO>();
+        public List<ADMINISTRACAO_DTO> ADMINISTRACAO
         {
             get { return F_DTO; }
             set { F_DTO = value; }
         }
 
+        private List<JURIDICO_DTO> J_DTO = new List<JURIDICO_DTO>();
+        public List<JURIDICO_DTO> JURIDICO
+        {
+            get { return J_DTO; }
+            set { J_DTO = value; }
+        }
 
 
         public SysDTO.Operacoes OPERACAO { get; set; }

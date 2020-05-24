@@ -21,7 +21,6 @@ namespace APP_UI
         public frmPermissoes(mdi_principal mdi)
         {
             InitializeComponent();
-            this.MdiParent = mdi;
             Popular_Combos();
         }
         #region TELAS

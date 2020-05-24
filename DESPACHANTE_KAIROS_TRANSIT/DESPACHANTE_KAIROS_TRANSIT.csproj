@@ -81,6 +81,18 @@
     <Compile Include="frmCad_Administracao_Fases.Designer.cs">
       <DependentUpon>frmCad_Administracao_Fases.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCad_Juridico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Juridico.Designer.cs">
+      <DependentUpon>frmCad_Juridico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCad_Juridico_Fases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Juridico_Fases.Designer.cs">
+      <DependentUpon>frmCad_Juridico_Fases.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCad_Usuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +104,12 @@
     </Compile>
     <Compile Include="frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCriacaLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCriacaLayout.Designer.cs">
+      <DependentUpon>frmCriacaLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFinanceiro.cs">
       <SubType>Form</SubType>
@@ -110,6 +128,12 @@
     </Compile>
     <Compile Include="frmInputBox.designer.cs">
       <DependentUpon>frmInputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJuridico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJuridico.Designer.cs">
+      <DependentUpon>frmJuridico.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLocalizar.cs">
       <SubType>Form</SubType>
@@ -183,11 +207,20 @@
     <EmbeddedResource Include="frmCad_Administracao_Fases.resx">
       <DependentUpon>frmCad_Administracao_Fases.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Juridico.resx">
+      <DependentUpon>frmCad_Juridico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Juridico_Fases.resx">
+      <DependentUpon>frmCad_Juridico_Fases.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCad_Usuario.resx">
       <DependentUpon>frmCad_Usuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCriacaLayout.resx">
+      <DependentUpon>frmCriacaLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFinanceiro.resx">
       <DependentUpon>frmFinanceiro.cs</DependentUpon>
@@ -197,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputBox.resx">
       <DependentUpon>frmInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJuridico.resx">
+      <DependentUpon>frmJuridico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLocalizar.resx">
       <DependentUpon>frmLocalizar.cs</DependentUpon>

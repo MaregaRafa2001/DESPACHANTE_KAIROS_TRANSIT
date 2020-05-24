@@ -64,8 +64,8 @@ namespace BLL
             //    result.Add("UF");
             if (string.IsNullOrEmpty(DTO.MUNICIPIO))
                 result.Add("MUNICIPIO");
-            if (string.IsNullOrEmpty(DTO.CELULAR))
-                result.Add("CELULAR");
+            //if (string.IsNullOrEmpty(DTO.CELULAR))
+            //    result.Add("CELULAR");
             if (string.IsNullOrEmpty(DTO.RG))
                 result.Add("RG");
             if (string.IsNullOrEmpty(DTO.LOGRADOURO))
