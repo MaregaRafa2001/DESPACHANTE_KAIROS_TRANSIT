@@ -111,6 +111,12 @@
     <Compile Include="frmCriacaLayout.Designer.cs">
       <DependentUpon>frmCriacaLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDesign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDesign.Designer.cs">
+      <DependentUpon>frmDesign.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFinanceiro.cs">
       <SubType>Form</SubType>
     </Compile>

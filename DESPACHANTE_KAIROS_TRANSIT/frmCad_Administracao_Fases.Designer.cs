@@ -146,8 +146,8 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(209, 208);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Location = new System.Drawing.Point(932, 566);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 32);
             this.btnCancelar.TabIndex = 532;
@@ -158,8 +158,8 @@
             // btnConfirmar
             // 
             this.btnConfirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmar.Location = new System.Drawing.Point(124, 208);
-            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfirmar.Location = new System.Drawing.Point(847, 566);
+            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(80, 32);
             this.btnConfirmar.TabIndex = 531;
@@ -181,7 +181,7 @@
             this.cboFase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFase.FormattingEnabled = true;
             this.cboFase.Location = new System.Drawing.Point(13, 24);
-            this.cboFase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboFase.Margin = new System.Windows.Forms.Padding(2);
             this.cboFase.Name = "cboFase";
             this.cboFase.Size = new System.Drawing.Size(277, 21);
             this.cboFase.TabIndex = 535;
@@ -224,9 +224,9 @@
             this.groupBox7.Controls.Add(this.Layout5_mskInicio);
             this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Location = new System.Drawing.Point(4, 58);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox7.Size = new System.Drawing.Size(347, 57);
             this.groupBox7.TabIndex = 548;
             this.groupBox7.TabStop = false;
@@ -652,7 +652,7 @@
             // 
             this.pnlFase8.Controls.Add(this.groupBox8);
             this.pnlFase8.Location = new System.Drawing.Point(71, 188);
-            this.pnlFase8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFase8.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFase8.Name = "pnlFase8";
             this.pnlFase8.Size = new System.Drawing.Size(379, 68);
             this.pnlFase8.TabIndex = 1;
@@ -693,7 +693,7 @@
             // Layout8_mskDataBaixaDePontos
             // 
             this.Layout8_mskDataBaixaDePontos.Location = new System.Drawing.Point(135, 35);
-            this.Layout8_mskDataBaixaDePontos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Layout8_mskDataBaixaDePontos.Margin = new System.Windows.Forms.Padding(2);
             this.Layout8_mskDataBaixaDePontos.Mask = "00/00/0000";
             this.Layout8_mskDataBaixaDePontos.Name = "Layout8_mskDataBaixaDePontos";
             this.Layout8_mskDataBaixaDePontos.Size = new System.Drawing.Size(124, 20);
@@ -704,7 +704,7 @@
             // Layout8_mskDataFinalizacao
             // 
             this.Layout8_mskDataFinalizacao.Location = new System.Drawing.Point(7, 35);
-            this.Layout8_mskDataFinalizacao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Layout8_mskDataFinalizacao.Margin = new System.Windows.Forms.Padding(2);
             this.Layout8_mskDataFinalizacao.Mask = "00/00/0000";
             this.Layout8_mskDataFinalizacao.Name = "Layout8_mskDataFinalizacao";
             this.Layout8_mskDataFinalizacao.Size = new System.Drawing.Size(124, 20);
@@ -965,7 +965,7 @@
             this.tabDetalhe.Controls.Add(this.lblDescricao);
             this.tabDetalhe.Location = new System.Drawing.Point(4, 22);
             this.tabDetalhe.Name = "tabDetalhe";
-            this.tabDetalhe.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabDetalhe.Padding = new System.Windows.Forms.Padding(3);
             this.tabDetalhe.Size = new System.Drawing.Size(341, 126);
             this.tabDetalhe.TabIndex = 0;
             this.tabDetalhe.Text = "Histórico";
@@ -986,7 +986,7 @@
             this.tabPage2.Controls.Add(this.txtObservacao);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(341, 126);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Adicionar";
@@ -1015,7 +1015,7 @@
             this.AcceptButton = this.btnConfirmar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 249);
+            this.ClientSize = new System.Drawing.Size(1024, 607);
             this.Controls.Add(this.pnlLayout13);
             this.Controls.Add(this.pnlLayout12);
             this.Controls.Add(this.gpbObservacao);
@@ -1034,7 +1034,7 @@
             this.Controls.Add(this.pnlLayout11);
             this.Controls.Add(this.pnlLayout9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmCad_Administracao_Fases";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

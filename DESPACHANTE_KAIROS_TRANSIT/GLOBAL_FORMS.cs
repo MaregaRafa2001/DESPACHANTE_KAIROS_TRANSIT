@@ -93,5 +93,20 @@ namespace APP_UI
             }
             return table;
         }
+
+        public static void InicioIndex(MaskedTextBox msk)
+        {
+            try
+            {
+                msk.Focus();
+                msk.SelectionStart = 0;
+                msk.SelectAll();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

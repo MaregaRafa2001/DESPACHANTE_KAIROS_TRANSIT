@@ -174,7 +174,6 @@ namespace APP_UI
             }
         }
 
-
         public void PopularDados()
         {
             //ENDEREÇO
@@ -238,7 +237,6 @@ namespace APP_UI
             else
                 radCNHVencidaNao.Checked = true;
         }
-
 
         public void AtualizaDTO()
         {
@@ -329,6 +327,7 @@ namespace APP_UI
                 MessageBox.Show(ex.Message, "Erro ao localizar o Cep", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private bool ValidarDados(CLIENTE_DTO DTO)
         {
             //VALIDAR CAMPOS VAZIOS
@@ -452,7 +451,47 @@ namespace APP_UI
             return false;
         }
 
+
+        #region CEP
         private void btnPesquisarCep_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (mskCEP.Focused)
+                {
+                    btnPesquisarCep.Focus();
+                }
+                else
+                {
+                    BuscarCep();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void mskCEP_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPesquisarCep_Click(sender, e);
+            }
+        }
+
+        private void MskCEP_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = null;
+        }
+
+        private void MskCEP_Leave(object sender, EventArgs e)
+        {
+            BuscarCep();
+            this.AcceptButton = btnRegistrar;
+        }
+
+        void BuscarCep()
         {
             try
             {
@@ -492,6 +531,7 @@ namespace APP_UI
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show(ex.Message, "Erro ao localizar o Cep", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -501,14 +541,7 @@ namespace APP_UI
             }
         }
 
-        private void mskCEP_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnPesquisarCep_Click(sender, e);
-            }
-        }
-
+        #endregion
         private void tsbDocAdd_Click(object sender, EventArgs e)
         {
             int ID_CLIENTE = CLIENTE_DTO.ID == null ? -1 : Convert.ToInt32(CLIENTE_DTO.ID);
@@ -691,15 +724,6 @@ namespace APP_UI
 
         }
 
-        private void MskCEP_Enter(object sender, EventArgs e)
-        {
-            this.AcceptButton = null;
-        }
-
-        private void MskCEP_Leave(object sender, EventArgs e)
-        {
-            this.AcceptButton = btnRegistrar;
-        }
 
         private void DtgHistorico_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -756,7 +780,7 @@ namespace APP_UI
                 MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        #region TELEFONE
         private void CboTelefone_SelectedValueChanged(object sender, EventArgs e)
         {
             try
@@ -812,6 +836,11 @@ namespace APP_UI
             {
                 MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void BtnTelefone_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void BtnEditTelefone_Click(object sender, EventArgs e)
@@ -911,6 +940,21 @@ namespace APP_UI
             }
         }
 
+        private void MskTelefone_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                btnTelefone.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        #region CELULAR
         private void BtnCelular_Click(object sender, EventArgs e)
         {
             try
@@ -1039,6 +1083,24 @@ namespace APP_UI
             {
                 MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void MskCelular_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                btnCelular.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+        private void MskCPF_Enter(object sender, EventArgs e)
+        {
+            GLOBAL_FORMS.InicioIndex(mskCPF);
         }
     }
 }

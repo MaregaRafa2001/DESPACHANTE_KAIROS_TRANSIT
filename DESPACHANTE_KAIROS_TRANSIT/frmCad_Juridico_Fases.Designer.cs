@@ -46,6 +46,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pnlFase3_DataEntregaCliente = new System.Windows.Forms.MaskedTextBox();
             this.pnlFase4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.pnlFase4_radImpedimentoNao = new System.Windows.Forms.RadioButton();
+            this.pnlFase4_radImpedimentoSim = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
             this.pnlFase4_mskDataExpedicao = new System.Windows.Forms.MaskedTextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -59,6 +63,8 @@
             this.pnlFase4_cboBloqueio = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlFase5 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pnlFase5_mskDataEntregaAdvogado = new System.Windows.Forms.MaskedTextBox();
             this.pnlFase5_cboStatus = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.pnlFase5_cboInstancia = new System.Windows.Forms.ComboBox();
@@ -68,6 +74,8 @@
             this.pnlFase5_cboBloqueio = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.pnlFase6 = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.pnlFase6_mskSentencaProtocolada = new System.Windows.Forms.MaskedTextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.pnlFase6_mskDataFinalizacao = new System.Windows.Forms.MaskedTextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -93,17 +101,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.pnlFase6_mskSentencaProtocolada = new System.Windows.Forms.MaskedTextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.pnlFase4_radImpedimentoNao = new System.Windows.Forms.RadioButton();
-            this.pnlFase4_radImpedimentoSim = new System.Windows.Forms.RadioButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.pnlFase5_mskDataEntregaAdvogado = new System.Windows.Forms.MaskedTextBox();
             this.pnlFase1.SuspendLayout();
             this.pnlFase3.SuspendLayout();
             this.pnlFase4.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.pnlFase5.SuspendLayout();
             this.pnlFase6.SuspendLayout();
             this.pnlFase7.SuspendLayout();
@@ -111,7 +112,6 @@
             this.tabControl1.SuspendLayout();
             this.tabDetalhe.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFase1
@@ -196,6 +196,7 @@
             // 
             this.pnlFase1_txtSenhaDetran.Location = new System.Drawing.Point(159, 78);
             this.pnlFase1_txtSenhaDetran.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFase1_txtSenhaDetran.MaxLength = 25;
             this.pnlFase1_txtSenhaDetran.Name = "pnlFase1_txtSenhaDetran";
             this.pnlFase1_txtSenhaDetran.Size = new System.Drawing.Size(159, 20);
             this.pnlFase1_txtSenhaDetran.TabIndex = 60;
@@ -314,6 +315,51 @@
             this.pnlFase4.Name = "pnlFase4";
             this.pnlFase4.Size = new System.Drawing.Size(320, 148);
             this.pnlFase4.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label20);
+            this.panel2.Controls.Add(this.pnlFase4_radImpedimentoNao);
+            this.panel2.Controls.Add(this.pnlFase4_radImpedimentoSim);
+            this.panel2.Location = new System.Drawing.Point(111, 96);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(207, 33);
+            this.panel2.TabIndex = 43;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(2, 9);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(43, 13);
+            this.label20.TabIndex = 36;
+            this.label20.Text = "Liminar:";
+            // 
+            // pnlFase4_radImpedimentoNao
+            // 
+            this.pnlFase4_radImpedimentoNao.AutoSize = true;
+            this.pnlFase4_radImpedimentoNao.Checked = true;
+            this.pnlFase4_radImpedimentoNao.Location = new System.Drawing.Point(120, 9);
+            this.pnlFase4_radImpedimentoNao.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFase4_radImpedimentoNao.Name = "pnlFase4_radImpedimentoNao";
+            this.pnlFase4_radImpedimentoNao.Size = new System.Drawing.Size(45, 17);
+            this.pnlFase4_radImpedimentoNao.TabIndex = 210;
+            this.pnlFase4_radImpedimentoNao.TabStop = true;
+            this.pnlFase4_radImpedimentoNao.Text = "Não";
+            this.pnlFase4_radImpedimentoNao.UseVisualStyleBackColor = true;
+            // 
+            // pnlFase4_radImpedimentoSim
+            // 
+            this.pnlFase4_radImpedimentoSim.AutoSize = true;
+            this.pnlFase4_radImpedimentoSim.Location = new System.Drawing.Point(76, 9);
+            this.pnlFase4_radImpedimentoSim.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFase4_radImpedimentoSim.Name = "pnlFase4_radImpedimentoSim";
+            this.pnlFase4_radImpedimentoSim.Size = new System.Drawing.Size(42, 17);
+            this.pnlFase4_radImpedimentoSim.TabIndex = 200;
+            this.pnlFase4_radImpedimentoSim.Text = "Sim";
+            this.pnlFase4_radImpedimentoSim.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -458,6 +504,26 @@
             this.pnlFase5.Size = new System.Drawing.Size(320, 130);
             this.pnlFase5.TabIndex = 14;
             // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(2, 6);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 27);
+            this.label15.TabIndex = 35;
+            this.label15.Text = "Entrega Procurador/Interno:";
+            // 
+            // pnlFase5_mskDataEntregaAdvogado
+            // 
+            this.pnlFase5_mskDataEntregaAdvogado.Location = new System.Drawing.Point(4, 35);
+            this.pnlFase5_mskDataEntregaAdvogado.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFase5_mskDataEntregaAdvogado.Mask = "00/00/0000";
+            this.pnlFase5_mskDataEntregaAdvogado.Name = "pnlFase5_mskDataEntregaAdvogado";
+            this.pnlFase5_mskDataEntregaAdvogado.Size = new System.Drawing.Size(102, 20);
+            this.pnlFase5_mskDataEntregaAdvogado.TabIndex = 90;
+            this.pnlFase5_mskDataEntregaAdvogado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pnlFase5_mskDataEntregaAdvogado.ValidatingType = typeof(System.DateTime);
+            // 
             // pnlFase5_cboStatus
             // 
             this.pnlFase5_cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -554,6 +620,26 @@
             this.pnlFase6.Name = "pnlFase6";
             this.pnlFase6.Size = new System.Drawing.Size(320, 106);
             this.pnlFase6.TabIndex = 15;
+            // 
+            // label23
+            // 
+            this.label23.Location = new System.Drawing.Point(0, 3);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(103, 27);
+            this.label23.TabIndex = 35;
+            this.label23.Text = "Sentença protocolada:";
+            // 
+            // pnlFase6_mskSentencaProtocolada
+            // 
+            this.pnlFase6_mskSentencaProtocolada.Location = new System.Drawing.Point(2, 32);
+            this.pnlFase6_mskSentencaProtocolada.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFase6_mskSentencaProtocolada.Mask = "00/00/0000";
+            this.pnlFase6_mskSentencaProtocolada.Name = "pnlFase6_mskSentencaProtocolada";
+            this.pnlFase6_mskSentencaProtocolada.Size = new System.Drawing.Size(102, 20);
+            this.pnlFase6_mskSentencaProtocolada.TabIndex = 220;
+            this.pnlFase6_mskSentencaProtocolada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pnlFase6_mskSentencaProtocolada.ValidatingType = typeof(System.DateTime);
             // 
             // label22
             // 
@@ -726,6 +812,7 @@
             // txtObservacao
             // 
             this.txtObservacao.Location = new System.Drawing.Point(6, 6);
+            this.txtObservacao.MaxLength = 150;
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.Size = new System.Drawing.Size(294, 114);
@@ -815,91 +902,6 @@
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // label23
-            // 
-            this.label23.Location = new System.Drawing.Point(0, 3);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(103, 27);
-            this.label23.TabIndex = 35;
-            this.label23.Text = "Sentença protocolada:";
-            // 
-            // pnlFase6_mskSentencaProtocolada
-            // 
-            this.pnlFase6_mskSentencaProtocolada.Location = new System.Drawing.Point(2, 32);
-            this.pnlFase6_mskSentencaProtocolada.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlFase6_mskSentencaProtocolada.Mask = "00/00/0000";
-            this.pnlFase6_mskSentencaProtocolada.Name = "pnlFase6_mskSentencaProtocolada";
-            this.pnlFase6_mskSentencaProtocolada.Size = new System.Drawing.Size(102, 20);
-            this.pnlFase6_mskSentencaProtocolada.TabIndex = 220;
-            this.pnlFase6_mskSentencaProtocolada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.pnlFase6_mskSentencaProtocolada.ValidatingType = typeof(System.DateTime);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.pnlFase4_radImpedimentoNao);
-            this.panel2.Controls.Add(this.pnlFase4_radImpedimentoSim);
-            this.panel2.Location = new System.Drawing.Point(111, 96);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(207, 33);
-            this.panel2.TabIndex = 43;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(2, 9);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(43, 13);
-            this.label20.TabIndex = 36;
-            this.label20.Text = "Liminar:";
-            // 
-            // pnlFase4_radImpedimentoNao
-            // 
-            this.pnlFase4_radImpedimentoNao.AutoSize = true;
-            this.pnlFase4_radImpedimentoNao.Checked = true;
-            this.pnlFase4_radImpedimentoNao.Location = new System.Drawing.Point(120, 9);
-            this.pnlFase4_radImpedimentoNao.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlFase4_radImpedimentoNao.Name = "pnlFase4_radImpedimentoNao";
-            this.pnlFase4_radImpedimentoNao.Size = new System.Drawing.Size(45, 17);
-            this.pnlFase4_radImpedimentoNao.TabIndex = 210;
-            this.pnlFase4_radImpedimentoNao.TabStop = true;
-            this.pnlFase4_radImpedimentoNao.Text = "Não";
-            this.pnlFase4_radImpedimentoNao.UseVisualStyleBackColor = true;
-            // 
-            // pnlFase4_radImpedimentoSim
-            // 
-            this.pnlFase4_radImpedimentoSim.AutoSize = true;
-            this.pnlFase4_radImpedimentoSim.Location = new System.Drawing.Point(76, 9);
-            this.pnlFase4_radImpedimentoSim.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlFase4_radImpedimentoSim.Name = "pnlFase4_radImpedimentoSim";
-            this.pnlFase4_radImpedimentoSim.Size = new System.Drawing.Size(42, 17);
-            this.pnlFase4_radImpedimentoSim.TabIndex = 200;
-            this.pnlFase4_radImpedimentoSim.Text = "Sim";
-            this.pnlFase4_radImpedimentoSim.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.Location = new System.Drawing.Point(2, 6);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(103, 27);
-            this.label15.TabIndex = 35;
-            this.label15.Text = "Entrega Procurador/Interno:";
-            // 
-            // pnlFase5_mskDataEntregaAdvogado
-            // 
-            this.pnlFase5_mskDataEntregaAdvogado.Location = new System.Drawing.Point(4, 35);
-            this.pnlFase5_mskDataEntregaAdvogado.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlFase5_mskDataEntregaAdvogado.Mask = "00/00/0000";
-            this.pnlFase5_mskDataEntregaAdvogado.Name = "pnlFase5_mskDataEntregaAdvogado";
-            this.pnlFase5_mskDataEntregaAdvogado.Size = new System.Drawing.Size(102, 20);
-            this.pnlFase5_mskDataEntregaAdvogado.TabIndex = 90;
-            this.pnlFase5_mskDataEntregaAdvogado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.pnlFase5_mskDataEntregaAdvogado.ValidatingType = typeof(System.DateTime);
-            // 
             // frmCad_Juridico_Fases
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -934,6 +936,8 @@
             this.pnlFase3.PerformLayout();
             this.pnlFase4.ResumeLayout(false);
             this.pnlFase4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.pnlFase5.ResumeLayout(false);
             this.pnlFase5.PerformLayout();
             this.pnlFase6.ResumeLayout(false);
@@ -945,8 +949,6 @@
             this.tabDetalhe.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -41,6 +41,7 @@
             // txtValor
             // 
             this.txtValor.Location = new System.Drawing.Point(12, 77);
+            this.txtValor.MaxLength = 70;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(319, 20);
             this.txtValor.TabIndex = 1;

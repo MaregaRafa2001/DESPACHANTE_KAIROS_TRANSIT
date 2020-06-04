@@ -45,6 +45,7 @@
             // txtNumBolChe
             // 
             this.txtNumBolChe.Location = new System.Drawing.Point(10, 83);
+            this.txtNumBolChe.MaxLength = 200;
             this.txtNumBolChe.Multiline = true;
             this.txtNumBolChe.Name = "txtNumBolChe";
             this.txtNumBolChe.Size = new System.Drawing.Size(418, 102);
@@ -143,6 +144,7 @@
             // txtValor
             // 
             this.txtValor.Location = new System.Drawing.Point(351, 33);
+            this.txtValor.MaxLength = 12;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(80, 20);
             this.txtValor.TabIndex = 531;

@@ -101,7 +101,7 @@ namespace BLL
                 }
                 return Retorno;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -120,14 +120,21 @@ namespace BLL
                 {
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-
-                        Retorno["STATUS"] = "True";
-                        Retorno.Add("UF", ds.Tables[0].Rows[0]["uf"].ToString().Trim());
+                        try
+                        {
+                            Retorno.Add("UF", ds.Tables[0].Rows[0]["uf"].ToString().Trim());
+                        }
+                        catch
+                        {
+                            Retorno["ERRO"] = "Cep não encontrado!";
+                            return Retorno;
+                        }
                         Retorno.Add("LOGRADOURO", ds.Tables[0].Rows[0]["logradouro"].ToString().Trim());
                         Retorno.Add("COMPLEMENTO", ds.Tables[0].Rows[0]["complemento"].ToString().Trim());
                         Retorno.Add("BAIRRO", ds.Tables[0].Rows[0]["bairro"].ToString().Trim());
                         Retorno.Add("CIDADE", ds.Tables[0].Rows[0]["localidade"].ToString().Trim());
                         Retorno.Add("Uf", ds.Tables[0].Rows[0]["uf"].ToString().Trim());
+                        Retorno["STATUS"] = "True";
                     }
                     else
                         Retorno["ERRO"] = "Cep não encontrado!";
@@ -142,6 +149,6 @@ namespace BLL
             }
         }
 
-       
+
     }
 }

@@ -192,7 +192,7 @@
             this.ClientSize = new System.Drawing.Size(890, 604);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.tss);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmPermissoes";
