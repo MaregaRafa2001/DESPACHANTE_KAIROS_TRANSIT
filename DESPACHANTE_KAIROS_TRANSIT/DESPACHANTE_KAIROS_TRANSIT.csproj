@@ -228,6 +228,9 @@
     <EmbeddedResource Include="frmCriacaLayout.resx">
       <DependentUpon>frmCriacaLayout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDesign.resx">
+      <DependentUpon>frmDesign.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFinanceiro.resx">
       <DependentUpon>frmFinanceiro.cs</DependentUpon>
     </EmbeddedResource>

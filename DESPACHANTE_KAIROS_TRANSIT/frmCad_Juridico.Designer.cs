@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabHistórico = new System.Windows.Forms.TabPage();
             this.grpMaisDetalhes = new System.Windows.Forms.GroupBox();
             this.txtMaisDetalhes = new System.Windows.Forms.TextBox();
@@ -46,9 +46,7 @@
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dtgDados = new System.Windows.Forms.DataGridView();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.txtPontuacaoCNH = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCliente = new System.Windows.Forms.Button();
             this.txtNParcelas = new System.Windows.Forms.TextBox();
@@ -82,7 +80,7 @@
             this.tabHistórico.Controls.Add(this.dtgHistorico);
             this.tabHistórico.Location = new System.Drawing.Point(4, 22);
             this.tabHistórico.Name = "tabHistórico";
-            this.tabHistórico.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabHistórico.Padding = new System.Windows.Forms.Padding(3);
             this.tabHistórico.Size = new System.Drawing.Size(751, 316);
             this.tabHistórico.TabIndex = 1;
             this.tabHistórico.Text = "Histórico";
@@ -92,9 +90,9 @@
             // 
             this.grpMaisDetalhes.Controls.Add(this.txtMaisDetalhes);
             this.grpMaisDetalhes.Location = new System.Drawing.Point(4, 133);
-            this.grpMaisDetalhes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
             this.grpMaisDetalhes.Name = "grpMaisDetalhes";
-            this.grpMaisDetalhes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpMaisDetalhes.Padding = new System.Windows.Forms.Padding(4);
             this.grpMaisDetalhes.Size = new System.Drawing.Size(741, 176);
             this.grpMaisDetalhes.TabIndex = 362;
             this.grpMaisDetalhes.TabStop = false;
@@ -106,7 +104,7 @@
             this.txtMaisDetalhes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaisDetalhes.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaisDetalhes.Location = new System.Drawing.Point(8, 23);
-            this.txtMaisDetalhes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaisDetalhes.Multiline = true;
             this.txtMaisDetalhes.Name = "txtMaisDetalhes";
             this.txtMaisDetalhes.ReadOnly = true;
@@ -119,15 +117,15 @@
             this.dtgHistorico.AllowUserToAddRows = false;
             this.dtgHistorico.AllowUserToDeleteRows = false;
             this.dtgHistorico.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgHistorico.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtgHistorico.ColumnHeadersHeight = 29;
             this.dtgHistorico.Location = new System.Drawing.Point(4, 7);
-            this.dtgHistorico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgHistorico.Margin = new System.Windows.Forms.Padding(4);
             this.dtgHistorico.Name = "dtgHistorico";
             this.dtgHistorico.ReadOnly = true;
             this.dtgHistorico.RowHeadersWidth = 51;
@@ -179,7 +177,7 @@
             this.mskData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mskData.Location = new System.Drawing.Point(335, 83);
-            this.mskData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mskData.Margin = new System.Windows.Forms.Padding(2);
             this.mskData.Mask = "00/00/0000";
             this.mskData.Name = "mskData";
             this.mskData.ReadOnly = true;
@@ -220,7 +218,7 @@
             // 
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemover.Location = new System.Drawing.Point(139, 6);
-            this.btnRemover.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(62, 23);
             this.btnRemover.TabIndex = 471;
@@ -232,7 +230,7 @@
             // 
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.Location = new System.Drawing.Point(72, 6);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(62, 23);
             this.btnAlterar.TabIndex = 470;
@@ -244,7 +242,7 @@
             // 
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdicionar.Location = new System.Drawing.Point(5, 5);
-            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(62, 23);
             this.btnAdicionar.TabIndex = 469;
@@ -260,7 +258,7 @@
             this.tabPage1.Controls.Add(this.dtgDados);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(751, 316);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Fase";
@@ -285,39 +283,20 @@
             this.dtgDados.TabIndex = 468;
             this.dtgDados.DoubleClick += new System.EventHandler(this.DtgDados_DoubleClick);
             // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTelefone.Location = new System.Drawing.Point(474, 43);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.ReadOnly = true;
-            this.txtTelefone.Size = new System.Drawing.Size(181, 20);
-            this.txtTelefone.TabIndex = 543;
-            // 
             // txtPontuacaoCNH
             // 
             this.txtPontuacaoCNH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPontuacaoCNH.Location = new System.Drawing.Point(335, 43);
+            this.txtPontuacaoCNH.Location = new System.Drawing.Point(522, 43);
             this.txtPontuacaoCNH.Name = "txtPontuacaoCNH";
             this.txtPontuacaoCNH.ReadOnly = true;
             this.txtPontuacaoCNH.Size = new System.Drawing.Size(133, 20);
             this.txtPontuacaoCNH.TabIndex = 538;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(471, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 541;
-            this.label1.Text = "Telefone:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(332, 27);
+            this.label2.Location = new System.Drawing.Point(519, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 539;
@@ -379,7 +358,7 @@
             this.txtCliente.Location = new System.Drawing.Point(8, 43);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
-            this.txtCliente.Size = new System.Drawing.Size(321, 20);
+            this.txtCliente.Size = new System.Drawing.Size(508, 20);
             this.txtCliente.TabIndex = 528;
             // 
             // tabControl1
@@ -497,9 +476,7 @@
             this.gpbDados.Controls.Add(this.label11);
             this.gpbDados.Controls.Add(this.label8);
             this.gpbDados.Controls.Add(this.txtPortaria);
-            this.gpbDados.Controls.Add(this.txtTelefone);
             this.gpbDados.Controls.Add(this.txtPontuacaoCNH);
-            this.gpbDados.Controls.Add(this.label1);
             this.gpbDados.Controls.Add(this.label2);
             this.gpbDados.Controls.Add(this.txtNParcelas);
             this.gpbDados.Controls.Add(this.txtFormaPagamento);
@@ -512,9 +489,9 @@
             this.gpbDados.Controls.Add(this.lblCliente);
             this.gpbDados.Controls.Add(this.label6);
             this.gpbDados.Location = new System.Drawing.Point(11, 58);
-            this.gpbDados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpbDados.Margin = new System.Windows.Forms.Padding(2);
             this.gpbDados.Name = "gpbDados";
-            this.gpbDados.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpbDados.Padding = new System.Windows.Forms.Padding(2);
             this.gpbDados.Size = new System.Drawing.Size(760, 158);
             this.gpbDados.TabIndex = 468;
             this.gpbDados.TabStop = false;
@@ -533,7 +510,7 @@
             this.Controls.Add(this.gpbDados);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmCad_Juridico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -571,9 +548,7 @@
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dtgDados;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.TextBox txtPontuacaoCNH;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCliente;
         private System.Windows.Forms.TextBox txtNParcelas;

@@ -19,7 +19,16 @@ namespace APP_UI
         CLIENTE_BLL CLIENTE_BLL = new CLIENTE_BLL();
         List<PesquisaGeralDTO> ListaCampos = new List<PesquisaGeralDTO>();
         List<FINANCEIRO_DTO> lista_financeiro = new List<FINANCEIRO_DTO>();
+        //verifica se a grid já foi populada
         bool popularGrid = false;
+        //se verdadeiro, ao clica no botão ok ao lado da maskedBox adicionar telefone
+        //se falso, ao clica no botão ok ao lado da maskedBox alterar telefone
+        bool telefoneAdd = true;
+
+        //se verdadeiro, ao clica no botão ok ao lado da maskedBox adicionar celular
+        //se falso, ao clica no botão ok ao lado da maskedBox alterar celular
+        bool celularAdd = true;
+
         public frmCad_Cliente(int ID = 0)
         {
             InitializeComponent();
@@ -787,11 +796,33 @@ namespace APP_UI
             {
                 if (cboTelefone.SelectedValue == null)
                     return;
+                #region Código antigo
+                //if (Convert.ToInt32(cboTelefone.SelectedValue) == -1)
+                //{
+                //    btnTelefone.Click -= BtnEditTelefone_Click;
+                //    btnTelefone.Click -= BtnAddTelefone_Click;
+                //    btnTelefone.Click += BtnAddTelefone_Click;
+                //    cboTelefone.Visible = false;
+                //    mskTelefone.Visible = true;
+                //    mskTelefone.Focus();
+                //    btnExcluirTelefone.Visible = false;
+                //}
+                //else
+                //{
+                //    btnTelefone.Click -= BtnAddTelefone_Click;
+                //    btnTelefone.Click -= BtnEditTelefone_Click;
+                //    btnTelefone.Click += BtnEditTelefone_Click;
+                //    cboTelefone.Visible = false;
+                //    mskTelefone.Visible = true;
+                //    mskTelefone.Text = cboTelefone.Text;
+                //    btnExcluirTelefone.Visible = true;
+                //    btnExcluirTelefone.BringToFront();
+                //}
+                #endregion
+                #region Novo Código
                 if (Convert.ToInt32(cboTelefone.SelectedValue) == -1)
                 {
-                    btnTelefone.Click -= BtnEditTelefone_Click;
-                    btnTelefone.Click -= BtnAddTelefone_Click;
-                    btnTelefone.Click += BtnAddTelefone_Click;
+                    telefoneAdd = true;
                     cboTelefone.Visible = false;
                     mskTelefone.Visible = true;
                     mskTelefone.Focus();
@@ -799,15 +830,15 @@ namespace APP_UI
                 }
                 else
                 {
-                    btnTelefone.Click -= BtnAddTelefone_Click;
-                    btnTelefone.Click -= BtnEditTelefone_Click;
-                    btnTelefone.Click += BtnEditTelefone_Click;
+                    telefoneAdd = false;
                     cboTelefone.Visible = false;
                     mskTelefone.Visible = true;
                     mskTelefone.Text = cboTelefone.Text;
                     btnExcluirTelefone.Visible = true;
                     btnExcluirTelefone.BringToFront();
+                    mskTelefone.Focus();
                 }
+                #endregion
             }
             catch (Exception ex)
             {
@@ -819,6 +850,15 @@ namespace APP_UI
         {
             try
             {
+                //valida se o campo celular está vazio. Se estiver apenas retorna a função sem metodo.
+                if (ValidFieldNumber(mskTelefone.Text))
+                {
+                    PopularTelefone();
+                    cboTelefone.Visible = true;
+                    mskTelefone.Visible = false;
+                    mskTelefone.Text = "";
+                    return;
+                }
                 if (mskTelefone.Text.Replace("_", "").Length >= 8)
                 {
                     TELEFONE_DTO TELEFONE = new TELEFONE_DTO();
@@ -838,11 +878,6 @@ namespace APP_UI
             }
         }
 
-        private void BtnTelefone_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnEditTelefone_Click(object sender, EventArgs e)
         {
             try
@@ -850,15 +885,25 @@ namespace APP_UI
                 if (CLIENTE_DTO.TELEFONE.Exists(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
                 {
                     TELEFONE_DTO TELEFONE = CLIENTE_DTO.TELEFONE.Find(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue));
-                    TELEFONE.NUMERO = mskTelefone.Text;
-                    if (TELEFONE.OPERACAO != SysDTO.Operacoes.Inclusao)
-                        TELEFONE.OPERACAO = SysDTO.Operacoes.Alteracao;
 
-                    foreach (TELEFONE_DTO TEL in CLIENTE_DTO.TELEFONE.Where(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                    //valida se o campo celular está vazio. Se estiver exclui o número.
+                    if (ValidFieldNumber(mskTelefone.Text))
                     {
-                        TEL.NUMERO = TELEFONE.NUMERO;
-                        if (TEL.OPERACAO != SysDTO.Operacoes.Inclusao)
-                            TEL.OPERACAO = SysDTO.Operacoes.Alteracao;
+                        BtnExcluirTelefone_Click(sender, e);
+                        return;
+                    }
+                    else
+                    {
+                        TELEFONE.NUMERO = mskTelefone.Text;
+                        if (TELEFONE.OPERACAO != SysDTO.Operacoes.Inclusao)
+                            TELEFONE.OPERACAO = SysDTO.Operacoes.Alteracao;
+
+                        foreach (TELEFONE_DTO TEL in CLIENTE_DTO.TELEFONE.Where(x => x.ID == Convert.ToInt32(cboTelefone.SelectedValue)))
+                        {
+                            TEL.NUMERO = TELEFONE.NUMERO;
+                            if (TEL.OPERACAO != SysDTO.Operacoes.Inclusao)
+                                TEL.OPERACAO = SysDTO.Operacoes.Alteracao;
+                        }
                     }
 
                     PopularTelefone();
@@ -944,7 +989,19 @@ namespace APP_UI
         {
             try
             {
-                btnTelefone.PerformClick();
+                if (btnExcluirTelefone.Focused)
+                {
+                    BtnExcluirTelefone_Click(sender, e);
+                    return;
+                }
+                else if (telefoneAdd)
+                {
+                    BtnAddTelefone_Click(sender, e);
+                }
+                else
+                {
+                    BtnEditTelefone_Click(sender, e);
+                }
             }
             catch (Exception ex)
             {
@@ -955,22 +1012,32 @@ namespace APP_UI
         #endregion
 
         #region CELULAR
-        private void BtnCelular_Click(object sender, EventArgs e)
+        private void BtnEditCelular_Click(object sender, EventArgs e)
         {
             try
             {
                 if (CLIENTE_DTO.CELULAR.Exists(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue)))
                 {
                     CELULAR_DTO CELULAR = CLIENTE_DTO.CELULAR.Find(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue));
-                    CELULAR.NUMERO = mskCelular.Text;
-                    if (CELULAR.OPERACAO != SysDTO.Operacoes.Inclusao)
-                        CELULAR.OPERACAO = SysDTO.Operacoes.Alteracao;
 
-                    foreach (CELULAR_DTO TEL in CLIENTE_DTO.CELULAR.Where(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue)))
+                    //valida se o campo celular está vazio. Se estiver exclui o número.
+                    if (ValidFieldNumber(mskCelular.Text))
                     {
-                        TEL.NUMERO = CELULAR.NUMERO;
-                        if (TEL.OPERACAO != SysDTO.Operacoes.Inclusao)
-                            TEL.OPERACAO = SysDTO.Operacoes.Alteracao;
+                        BtnExcluirCelular_Click(sender, e);
+                        return;
+                    }
+                    else
+                    {
+                        CELULAR.NUMERO = mskCelular.Text;
+                        if (CELULAR.OPERACAO != SysDTO.Operacoes.Inclusao)
+                            CELULAR.OPERACAO = SysDTO.Operacoes.Alteracao;
+
+                        foreach (CELULAR_DTO TEL in CLIENTE_DTO.CELULAR.Where(x => x.ID == Convert.ToInt32(cboCelular.SelectedValue)))
+                        {
+                            TEL.NUMERO = CELULAR.NUMERO;
+                            if (TEL.OPERACAO != SysDTO.Operacoes.Inclusao)
+                                TEL.OPERACAO = SysDTO.Operacoes.Alteracao;
+                        }
                     }
 
                     PopularCelular();
@@ -1012,9 +1079,7 @@ namespace APP_UI
                     return;
                 if (Convert.ToInt32(cboCelular.SelectedValue) == -1)
                 {
-                    btnCelular.Click -= BtnCelular_Click;
-                    btnCelular.Click -= BtnAddCelular_Click;
-                    btnCelular.Click += BtnAddCelular_Click;
+                    celularAdd = true;
                     cboCelular.Visible = false;
                     mskCelular.Visible = true;
                     mskCelular.Focus();
@@ -1022,14 +1087,13 @@ namespace APP_UI
                 }
                 else
                 {
-                    btnCelular.Click -= BtnAddCelular_Click;
-                    btnCelular.Click -= BtnCelular_Click;
-                    btnCelular.Click += BtnCelular_Click;
+                    celularAdd = false;
                     cboCelular.Visible = false;
                     mskCelular.Visible = true;
                     mskCelular.Text = cboCelular.Text;
                     btnExcluirCelular.Visible = true;
                     btnExcluirCelular.BringToFront();
+                    mskCelular.Focus();
                 }
             }
             catch (Exception ex)
@@ -1042,18 +1106,24 @@ namespace APP_UI
         {
             try
             {
-                if (mskCelular.Text.Replace("_", "").Length >= 8)
+                //valida se o campo celular está vazio. Se estiver apenas retorna a função sem metodo.
+                if (ValidFieldNumber(mskCelular.Text))
                 {
-                    CELULAR_DTO CELULAR = new CELULAR_DTO();
-                    CELULAR.NUMERO = mskCelular.Text;
-                    CELULAR.OPERACAO = SysDTO.Operacoes.Inclusao;
-                    CELULAR.ID = Convert.ToInt32(new Random().Next().ToString().Substring(0, 5));
-                    CLIENTE_DTO.CELULAR.Add(CELULAR);
                     PopularCelular();
                     cboCelular.Visible = true;
                     mskCelular.Visible = false;
                     mskCelular.Text = "";
+                    return;
                 }
+                CELULAR_DTO CELULAR = new CELULAR_DTO();
+                CELULAR.NUMERO = mskCelular.Text;
+                CELULAR.OPERACAO = SysDTO.Operacoes.Inclusao;
+                CELULAR.ID = Convert.ToInt32(new Random().Next().ToString().Substring(0, 5));
+                CLIENTE_DTO.CELULAR.Add(CELULAR);
+                PopularCelular();
+                cboCelular.Visible = true;
+                mskCelular.Visible = false;
+                mskCelular.Text = "";
             }
             catch (Exception ex)
             {
@@ -1089,7 +1159,19 @@ namespace APP_UI
         {
             try
             {
-                btnCelular.PerformClick();
+                if (btnExcluirCelular.Focused)
+                {
+                    BtnExcluirCelular_Click(sender, e);
+                    return;
+                }
+                else if (celularAdd)
+                {
+                    BtnAddCelular_Click(sender, e);
+                }
+                else
+                {
+                    BtnEditCelular_Click(sender, e);
+                }
             }
             catch (Exception ex)
             {
@@ -1098,9 +1180,94 @@ namespace APP_UI
         }
 
         #endregion
-        private void MskCPF_Enter(object sender, EventArgs e)
+
+        //VALIDA SE O CAMPO CELULAR OU TELEFONE ESTÁ VAZIO
+        bool ValidFieldNumber(string value)
         {
-            GLOBAL_FORMS.InicioIndex(mskCPF);
+            try
+            {
+                return value.Replace(" ", "").Length == 3;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
+
+        #region Envia o cursor para o inicio do campo de mascaras
+        private void MskCPF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.InicioIndex(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao selecionar campo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void MskNascimento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.InicioIndex(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao selecionar campo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskTelefone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.InicioIndex(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao selecionar campo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskCelular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.InicioIndex(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao selecionar campo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskDataVencimentoCNH_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.InicioIndex(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao selecionar campo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskCEP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.InicioIndex(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao selecionar campo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
     }
 }

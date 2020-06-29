@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCad_Cliente));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -213,7 +213,7 @@
             this.mskCPF.Size = new System.Drawing.Size(90, 20);
             this.mskCPF.TabIndex = 2;
             this.mskCPF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mskCPF.Enter += new System.EventHandler(this.MskCPF_Enter);
+            this.mskCPF.Click += new System.EventHandler(this.MskCPF_Click);
             // 
             // txtData
             // 
@@ -235,6 +235,7 @@
             this.mskNascimento.TabIndex = 4;
             this.mskNascimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskNascimento.ValidatingType = typeof(System.DateTime);
+            this.mskNascimento.Click += new System.EventHandler(this.MskNascimento_Click);
             // 
             // toolStrip1
             // 
@@ -361,6 +362,7 @@
             this.mskDataVencimentoCNH.TabIndex = 12;
             this.mskDataVencimentoCNH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskDataVencimentoCNH.ValidatingType = typeof(System.DateTime);
+            this.mskDataVencimentoCNH.Click += new System.EventHandler(this.MskDataVencimentoCNH_Click);
             // 
             // label17
             // 
@@ -472,6 +474,7 @@
             this.mskTelefone.Size = new System.Drawing.Size(161, 20);
             this.mskTelefone.TabIndex = 45;
             this.mskTelefone.Visible = false;
+            this.mskTelefone.Click += new System.EventHandler(this.MskTelefone_Click);
             this.mskTelefone.Leave += new System.EventHandler(this.MskTelefone_Leave);
             // 
             // btnCelular
@@ -482,7 +485,6 @@
             this.btnCelular.TabIndex = 44;
             this.btnCelular.Text = "Ok";
             this.btnCelular.UseVisualStyleBackColor = true;
-            this.btnCelular.Click += new System.EventHandler(this.BtnCelular_Click);
             // 
             // btnTelefone
             // 
@@ -657,6 +659,7 @@
             this.mskCelular.Size = new System.Drawing.Size(161, 20);
             this.mskCelular.TabIndex = 47;
             this.mskCelular.Visible = false;
+            this.mskCelular.Click += new System.EventHandler(this.MskCelular_Click);
             this.mskCelular.Leave += new System.EventHandler(this.MskCelular_Leave);
             // 
             // cboCelular
@@ -924,6 +927,7 @@
             this.mskCEP.Name = "mskCEP";
             this.mskCEP.Size = new System.Drawing.Size(74, 20);
             this.mskCEP.TabIndex = 13;
+            this.mskCEP.Click += new System.EventHandler(this.MskCEP_Click);
             this.mskCEP.Enter += new System.EventHandler(this.MskCEP_Enter);
             this.mskCEP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.mskCEP_KeyUp);
             this.mskCEP.Leave += new System.EventHandler(this.MskCEP_Leave);
@@ -999,8 +1003,8 @@
             this.dtgHistorico.AllowUserToAddRows = false;
             this.dtgHistorico.AllowUserToDeleteRows = false;
             this.dtgHistorico.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
-            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

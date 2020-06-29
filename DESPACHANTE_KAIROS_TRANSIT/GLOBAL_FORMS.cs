@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -94,14 +95,15 @@ namespace APP_UI
             return table;
         }
 
-        public static void InicioIndex(MaskedTextBox msk)
+        public static void InicioIndex(object obj)
         {
             try
             {
-                msk.Focus();
-                msk.SelectionStart = 0;
-                msk.SelectAll();
+                MaskedTextBox msk = (MaskedTextBox)obj;
+                string removido = Regex.Replace(msk.Text, "[^0-9]", "");
 
+                if (removido.Length == 0)
+                    msk.SelectionStart = 0;
             }
             catch (Exception ex)
             {

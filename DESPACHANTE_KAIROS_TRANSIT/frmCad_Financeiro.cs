@@ -985,5 +985,19 @@ namespace APP_UI
                 MessageBox.Show(ex.Message, "Erro ao mostrar detalhes do Histórico!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        #region Envia o cursor para o inicio do campo de mascaras
+        private void MskData_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.InicioIndex(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao selecionar campo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
     }
 }

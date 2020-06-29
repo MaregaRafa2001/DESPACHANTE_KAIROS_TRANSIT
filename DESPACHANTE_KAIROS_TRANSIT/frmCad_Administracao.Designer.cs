@@ -38,9 +38,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPortaria = new System.Windows.Forms.TextBox();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.txtPontuacaoCNH = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNParcelas = new System.Windows.Forms.TextBox();
             this.txtFormaPagamento = new System.Windows.Forms.TextBox();
@@ -88,9 +86,7 @@
             this.gpbDados.Controls.Add(this.label11);
             this.gpbDados.Controls.Add(this.label8);
             this.gpbDados.Controls.Add(this.txtPortaria);
-            this.gpbDados.Controls.Add(this.txtTelefone);
             this.gpbDados.Controls.Add(this.txtPontuacaoCNH);
-            this.gpbDados.Controls.Add(this.label1);
             this.gpbDados.Controls.Add(this.label2);
             this.gpbDados.Controls.Add(this.txtNParcelas);
             this.gpbDados.Controls.Add(this.txtFormaPagamento);
@@ -191,39 +187,20 @@
             this.txtPortaria.Size = new System.Drawing.Size(94, 20);
             this.txtPortaria.TabIndex = 544;
             // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTelefone.Location = new System.Drawing.Point(474, 43);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.ReadOnly = true;
-            this.txtTelefone.Size = new System.Drawing.Size(181, 20);
-            this.txtTelefone.TabIndex = 543;
-            // 
             // txtPontuacaoCNH
             // 
             this.txtPontuacaoCNH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPontuacaoCNH.Location = new System.Drawing.Point(335, 43);
+            this.txtPontuacaoCNH.Location = new System.Drawing.Point(522, 43);
             this.txtPontuacaoCNH.Name = "txtPontuacaoCNH";
             this.txtPontuacaoCNH.ReadOnly = true;
             this.txtPontuacaoCNH.Size = new System.Drawing.Size(133, 20);
             this.txtPontuacaoCNH.TabIndex = 538;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(471, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 541;
-            this.label1.Text = "Telefone:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(332, 27);
+            this.label2.Location = new System.Drawing.Point(519, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 539;
@@ -275,7 +252,7 @@
             this.txtCliente.Location = new System.Drawing.Point(8, 43);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
-            this.txtCliente.Size = new System.Drawing.Size(321, 20);
+            this.txtCliente.Size = new System.Drawing.Size(508, 20);
             this.txtCliente.TabIndex = 528;
             // 
             // label5
@@ -568,9 +545,7 @@
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPortaria;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.TextBox txtPontuacaoCNH;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnFinanceiro;
