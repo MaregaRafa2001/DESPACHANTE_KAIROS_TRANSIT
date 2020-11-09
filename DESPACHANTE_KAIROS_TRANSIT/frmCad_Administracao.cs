@@ -86,6 +86,7 @@ namespace APP_UI
             try
             {
                 ADMINISTRACAO_DTO fase_financeiro = new ADMINISTRACAO_DTO();
+                fase_financeiro.ID_FINANCEIRO = (int)financeiro_dto.ID;
                 frmCad_Administracao_Fases frmCad_Financeiro_Fases = new frmCad_Administracao_Fases(fase_financeiro, financeiro_dto.ID_SERVICO);
                 DialogResult result = frmCad_Financeiro_Fases.ShowDialog();
                 if (result == DialogResult.OK)

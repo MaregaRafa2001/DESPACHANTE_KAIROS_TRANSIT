@@ -95,6 +95,10 @@ namespace APP_UI
             return table;
         }
 
+        /// <summary>
+        /// SETA O CURSOR NO INICIO DO CAMPO
+        /// </summary>
+        /// <param name="obj">Campo que será setado o cursor</param>
         public static void InicioIndex(object obj)
         {
             try

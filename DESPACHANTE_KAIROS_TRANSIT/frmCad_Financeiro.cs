@@ -83,12 +83,12 @@ namespace APP_UI
             try
             {
                 //Forma pagamento
-                cboForma_Pagamento.SelectedIndexChanged -= CboForma_Pagamento_SelectedIndexChanged;
-                cboForma_Pagamento.ValueMember = "ID";
-                cboForma_Pagamento.DisplayMember = "DESCRICAO";
-                cboForma_Pagamento.DataSource = lista_forma_pagamento;
-                cboForma_Pagamento.SelectedIndex = -1;
-                cboForma_Pagamento.SelectedIndexChanged += CboForma_Pagamento_SelectedIndexChanged;
+                //cboForma_Pagamento.SelectedIndexChanged -= CboForma_Pagamento_SelectedIndexChanged;
+                //cboForma_Pagamento.ValueMember = "ID";
+                //cboForma_Pagamento.DisplayMember = "DESCRICAO";
+                //cboForma_Pagamento.DataSource = lista_forma_pagamento;
+                //cboForma_Pagamento.SelectedIndex = -1;
+                //cboForma_Pagamento.SelectedIndexChanged += CboForma_Pagamento_SelectedIndexChanged;
 
                 //INDICAÇAO
                 cboIndicacao.ValueMember = "ID";
@@ -131,9 +131,9 @@ namespace APP_UI
                 numQtdParcela.Value = FINANCEIRO_DTO.PARCELAS;
                 numQtdParcela.ValueChanged += numQtdParcela_ValueChanged;
 
-                cboForma_Pagamento.SelectedIndexChanged -= CboForma_Pagamento_SelectedIndexChanged;
-                cboForma_Pagamento.Text = FINANCEIRO_DTO.FORMA_PAGAMENTO;
-                cboForma_Pagamento.SelectedIndexChanged += CboForma_Pagamento_SelectedIndexChanged;
+                //cboForma_Pagamento.SelectedIndexChanged -= CboForma_Pagamento_SelectedIndexChanged;
+                //cboForma_Pagamento.Text = FINANCEIRO_DTO.FORMA_PAGAMENTO;
+                //cboForma_Pagamento.SelectedIndexChanged += CboForma_Pagamento_SelectedIndexChanged;
 
                 cboConsultor.Text = FINANCEIRO_DTO.CONSULTOR;
 
@@ -175,6 +175,8 @@ namespace APP_UI
         {
             try
             {
+                numQtdParcela.Minimum = 1;
+
                 if (FINANCEIRO_DTO.ID != null && FINANCEIRO_DTO.ID > 0)
                 {
                     if (!SysBLL.grupo_acesso.SYS_MENU.Exists(x => x.NAME == "frmFinanceiro.Update.Valor"))
@@ -182,7 +184,7 @@ namespace APP_UI
                         txtValor.ReadOnly = true;
                         BloquearNumeric(nudDiaVencimento);
                         BloquearNumeric(numQtdParcela);
-                        cboForma_Pagamento.Enabled = false;
+                        //cboForma_Pagamento.Enabled = false;
                         cboServico.Enabled = false;
                         txtValorB.ReadOnly = true;
                         txtValorLi.ReadOnly = true;
@@ -247,7 +249,7 @@ namespace APP_UI
                 FINANCEIRO_DTO.SERVICO.NOME = cboServico.Text;
                 FINANCEIRO_DTO.SERVICO.VALOR = Convert.ToDecimal(txtValor.Text);
                 FINANCEIRO_DTO.VALOR = Convert.ToDecimal(txtValor.Text);
-                FINANCEIRO_DTO.FORMA_PAGAMENTO = cboForma_Pagamento.Text;
+                //FINANCEIRO_DTO.FORMA_PAGAMENTO = cboForma_Pagamento.Text;
                 FINANCEIRO_DTO.PARCELAS = Convert.ToInt32(numQtdParcela.Value.ToString());
                 FINANCEIRO_DTO.BANCO_OS = txtBanco.Text;
                 FINANCEIRO_DTO.CONSULTOR = cboConsultor.Text;
@@ -396,11 +398,19 @@ namespace APP_UI
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
             try
-
             {
                 if (!AtualizaDTO())
                 {
                     return;
+                }
+
+                foreach (BOLETO_CHEQUE_DTO bOLETO_CHEQUE in lista_boleto_cheque)
+                {
+                    if (bOLETO_CHEQUE.ID_FORMA_PAGAMENTO == null || bOLETO_CHEQUE.ID_FORMA_PAGAMENTO == 0)
+                    {
+                        MessageBox.Show("Insira a forma de pagamento em todas as parcelas", "Dados inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
 
                 if (SetWithNewCliente)
@@ -419,6 +429,7 @@ namespace APP_UI
                         {
                             bOLETO_CHEQUE.USUARIO = SysBLL.UserLogin.NOME;
                             bOLETO_CHEQUE.ULT_ATUAL = DateTime.Now;
+                            bOLETO_CHEQUE.SERVICO = cboServico.Text;
                             bOLETO_CHEQUE.ID_FINANCEIRO = (int)id;
                             if (bOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Inclusao)
                                 new BOLETO_CHEQUE_BLL().Inserir(bOLETO_CHEQUE);
@@ -438,6 +449,7 @@ namespace APP_UI
                         {
                             bOLETO_CHEQUE.USUARIO = SysBLL.UserLogin.NOME;
                             bOLETO_CHEQUE.ULT_ATUAL = DateTime.Now;
+                            bOLETO_CHEQUE.SERVICO = cboServico.Text;
                             bOLETO_CHEQUE.ID_FINANCEIRO = (int)FINANCEIRO_DTO.ID;
                             if (bOLETO_CHEQUE.OPERACAO == SysDTO.Operacoes.Inclusao)
                                 new BOLETO_CHEQUE_BLL().Inserir(bOLETO_CHEQUE);
@@ -451,13 +463,18 @@ namespace APP_UI
                     }
 
                 }
+
+                if (FormFuncoes.GerarComprovante(lista_boleto_cheque))
+                    MessageBox.Show("Comprovante(s) emitido(s) com sucesso. Para abri-lo manualmente, vá até a pasta do sistema.", "Comprovante(s) emitido(s)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro ao carregar os dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Erro ao registrar os dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        //EVENTO NÃO UTILIZADO MAIS 
         private void CboForma_Pagamento_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -638,22 +655,24 @@ namespace APP_UI
         {
             try
             {
-                if (lista_forma_pagamento.Exists(x => x.ID == Convert.ToInt32(cboForma_Pagamento.SelectedValue)))
-                {
-                    FORMA_PAGAMENTO_DTO forma_pagamento = lista_forma_pagamento.First(x => x.ID == Convert.ToInt32(cboForma_Pagamento.SelectedValue));
-                    if (forma_pagamento.GERANUMERO == false)
-                    {
-                        foreach (BOLETO_CHEQUE_DTO bOLETO in lista_boleto_cheque)
-                        {
-                            if (bOLETO.OPERACAO == SysDTO.Operacoes.Alteracao || bOLETO.OPERACAO == SysDTO.Operacoes.Leitura)
-                                bOLETO.OPERACAO = SysDTO.Operacoes.Exclusao;
-                        }
+                ////Verifica se existe 
+                //if (lista_forma_pagamento.Exists(x => x.ID == Convert.ToInt32(cboForma_Pagamento.SelectedValue)))
+                //{
+                //    FORMA_PAGAMENTO_DTO forma_pagamento = lista_forma_pagamento.First(x => x.ID == Convert.ToInt32(cboForma_Pagamento.SelectedValue));
+                //    if (forma_pagamento.GERANUMERO == false)
+                //    {
+                //        foreach (BOLETO_CHEQUE_DTO bOLETO in lista_boleto_cheque)
+                //        {
+                //            if (bOLETO.OPERACAO == SysDTO.Operacoes.Alteracao || bOLETO.OPERACAO == SysDTO.Operacoes.Leitura)
+                //                bOLETO.OPERACAO = SysDTO.Operacoes.Exclusao;
+                //        }
 
-                        lista_boleto_cheque.RemoveAll(x => x.OPERACAO == SysDTO.Operacoes.Inclusao);
-                        dtgBoletosCheques.DataSource = null;
-                        return;
-                    }
-                }
+                //        lista_boleto_cheque.RemoveAll(x => x.OPERACAO == SysDTO.Operacoes.Inclusao);
+                //        dtgBoletosCheques.DataSource = null;
+                //        return;
+                //    }
+                //}
+
                 if (lista_boleto_cheque.Count <= numQtdParcela.Value)
                 {
                     int count = lista_boleto_cheque.Count;
@@ -662,13 +681,13 @@ namespace APP_UI
                         BOLETO_CHEQUE_DTO _DTO = new BOLETO_CHEQUE_DTO();
                         Random random = new Random();
                         _DTO.ID = random.Next();
-                        _DTO.FORMA_PAGAMENTO = string.IsNullOrEmpty(cboForma_Pagamento.Text) ? "" : cboForma_Pagamento.Text;
+                        _DTO.FORMA_PAGAMENTO = "";
                         _DTO.STATUS_PAGAMENTO = "Pendente";
                         _DTO.NUMERO = "";
                         DateTime data = DateTime.Now.AddMonths(i);
 
                         //_DTO.DATA_VENCTO = new DateTime(data.Year, data.Month, (int)nudDiaVencimento.Value);
-                        _DTO.DATA_VENCTO = RetornaDataValida(data.Year, data.Month, (int)nudDiaVencimento.Value);
+                        _DTO.DATA_VENCTO = RetornaDataValida(data.Year, data.Month, data.Day);
                         _DTO.PARCELA = i + 1;
                         //  _DTO.PRECO = Convert.toDecimal;
                         _DTO.OPERACAO = SysDTO.Operacoes.Inclusao;
@@ -696,6 +715,10 @@ namespace APP_UI
                             }
                             lista_boleto_cheque.RemoveAll(x => x.OPERACAO == SysDTO.Operacoes.Exclusao);
                         }
+                    }
+                    else
+                    {
+
                     }
                 }
 

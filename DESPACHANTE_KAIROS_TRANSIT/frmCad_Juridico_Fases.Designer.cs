@@ -923,11 +923,13 @@
             this.Controls.Add(this.pnlFase3);
             this.Controls.Add(this.pnlFase2);
             this.Controls.Add(this.pnlFase1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmCad_Juridico_Fases";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCad_Juridico";
+            this.Text = "Registrar Juridico";
             this.Load += new System.EventHandler(this.FrmCad_Juridico_Fases_Load);
             this.SizeChanged += new System.EventHandler(this.FrmCad_Juridico_Fases_SizeChanged);
             this.pnlFase1.ResumeLayout(false);

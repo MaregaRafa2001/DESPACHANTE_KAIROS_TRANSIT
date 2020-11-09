@@ -46,6 +46,12 @@ namespace APP_UI
                 cboStatusPagamento.DataSource = Lista_Status;
                 cboStatusPagamento.SelectedIndex = 0;
 
+                //Forma pagamento
+                cboForma_Pagamento.ValueMember = "ID";
+                cboForma_Pagamento.DisplayMember = "DESCRICAO";
+                cboForma_Pagamento.DataSource = new FORMA_PAGAMENTO_BLL().Lista_Forma_Pagamento();
+                cboForma_Pagamento.SelectedIndex = -1;
+
             }
             catch (Exception ex)
             {
@@ -59,8 +65,12 @@ namespace APP_UI
             txtParcela.Text = boleto_cheque.PARCELA.ToString();
             mskDataVencimento.Text = (boleto_cheque.DATA_VENCTO == null ? "" : boleto_cheque.DATA_VENCTO.Value.ToShortDateString());
             cboStatusPagamento.Text = boleto_cheque.STATUS_PAGAMENTO;
+            if (cboStatusPagamento.Text.ToLower() == "pago")
+                cboStatusPagamento.Enabled = false;
             txtNumBolChe.Text = boleto_cheque.NUMERO;
             txtValor.Text = boleto_cheque.VALOR.ToString();
+            if (boleto_cheque.ID_FORMA_PAGAMENTO != null)
+                cboForma_Pagamento.SelectedValue = boleto_cheque.ID_FORMA_PAGAMENTO;
         }
 
 
@@ -89,11 +99,14 @@ namespace APP_UI
 
         void AtualizaDTO()
         {
-
+            if (boleto_cheque.STATUS_PAGAMENTO.ToLower() != "pago" && cboStatusPagamento.Text.ToLower() == "pago")
+                boleto_cheque.GeraComprovante = true;
             boleto_cheque.DATA_VENCTO = FormFuncoes.IsDate(mskDataVencimento.Text) ? Convert.ToDateTime(mskDataVencimento.Text) : (DateTime?)null;
             boleto_cheque.STATUS_PAGAMENTO = Convert.ToString(cboStatusPagamento.Text);
             boleto_cheque.NUMERO = txtNumBolChe.Text;
             boleto_cheque.VALOR = Convert.ToDecimal(txtValor.Text);
+            boleto_cheque.ID_FORMA_PAGAMENTO = Convert.ToInt32(cboForma_Pagamento.SelectedValue);
+            boleto_cheque.FORMA_PAGAMENTO = cboForma_Pagamento.Text;
         }
 
         void ValidarDados()
@@ -106,6 +119,8 @@ namespace APP_UI
                 throw new CustomException("Favor informe a data de vencimento", "Dados incorretos");
             if (string.IsNullOrEmpty(boleto_cheque.STATUS_PAGAMENTO.ToString()) || boleto_cheque.STATUS_PAGAMENTO.ToString() == "0")
                 throw new CustomException("Favor informe o status de pagamento", "Dados incorretos");
+            if (boleto_cheque.ID_FORMA_PAGAMENTO == null || boleto_cheque.ID_FORMA_PAGAMENTO == 0)
+                throw new CustomException("Favor informe a forma de pagamento", "Dados incorretos");
         }
 
         private void TxtValor_TextChanged(object sender, EventArgs e)

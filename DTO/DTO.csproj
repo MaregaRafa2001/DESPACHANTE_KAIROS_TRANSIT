@@ -47,6 +47,9 @@
     <Compile Include="CONSULTOR_DTO.cs" />
     <Compile Include="CONTRATO_DTO.cs" />
     <Compile Include="ADMINISTRACAO_DTO.cs" />
+    <Compile Include="DOCUMENTO_DTO.cs" />
+    <Compile Include="DOCUMENTO_FINANCEIRO_DTO.cs" />
+    <Compile Include="DOCUMENTO_SERVICO_DTO.cs" />
     <Compile Include="FASE_FINANCEIRO_DTO.cs" />
     <Compile Include="FINANCEIRO_DTO.cs" />
     <Compile Include="FORMA_PAGAMENTO_DTO.cs" />

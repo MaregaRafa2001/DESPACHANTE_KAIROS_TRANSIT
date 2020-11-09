@@ -14,12 +14,13 @@ namespace APP_UI
 {
     public partial class frmCliente : Form
     {
+        Dictionary<string, string> campos = new Dictionary<string, string>();
+
         public frmCliente(mdi_principal mdi)
         {
             InitializeComponent();
         }
 
-        Dictionary<string, string> campos = new Dictionary<string, string>();
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             try

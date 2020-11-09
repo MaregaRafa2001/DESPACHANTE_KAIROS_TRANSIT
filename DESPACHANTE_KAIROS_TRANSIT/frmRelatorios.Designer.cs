@@ -46,10 +46,9 @@
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Padding = new System.Windows.Forms.Padding(7, 15, 0, 0);
-            this.lblTitulo.Size = new System.Drawing.Size(1063, 61);
+            this.lblTitulo.Padding = new System.Windows.Forms.Padding(5, 12, 0, 0);
+            this.lblTitulo.Size = new System.Drawing.Size(797, 50);
             this.lblTitulo.TabIndex = 433;
             this.lblTitulo.Text = "Relatórios";
             // 
@@ -58,9 +57,9 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFilter});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 61);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 50);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1063, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(797, 27);
             this.toolStrip1.TabIndex = 434;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -70,7 +69,7 @@
             this.tsbFilter.Image = ((System.Drawing.Image)(resources.GetObject("tsbFilter.Image")));
             this.tsbFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFilter.Name = "tsbFilter";
-            this.tsbFilter.Size = new System.Drawing.Size(29, 24);
+            this.tsbFilter.Size = new System.Drawing.Size(24, 24);
             this.tsbFilter.Text = "Filtrar dados";
             this.tsbFilter.Click += new System.EventHandler(this.TsbFilter_Click);
             // 
@@ -86,27 +85,26 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgDados.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtgDados.ColumnHeadersHeight = 29;
-            this.dtgDados.Location = new System.Drawing.Point(13, 92);
-            this.dtgDados.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgDados.Location = new System.Drawing.Point(10, 75);
             this.dtgDados.Name = "dtgDados";
             this.dtgDados.ReadOnly = true;
             this.dtgDados.RowHeadersWidth = 51;
             this.dtgDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgDados.Size = new System.Drawing.Size(1037, 519);
+            this.dtgDados.Size = new System.Drawing.Size(778, 422);
             this.dtgDados.TabIndex = 435;
             // 
             // frmRelatorios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1063, 624);
+            this.ClientSize = new System.Drawing.Size(797, 507);
             this.Controls.Add(this.dtgDados);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmRelatorios";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatórios";
             this.toolStrip1.ResumeLayout(false);

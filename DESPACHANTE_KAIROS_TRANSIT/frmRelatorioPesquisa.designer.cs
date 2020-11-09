@@ -73,7 +73,7 @@
             this.tabControl1.Controls.Add(this.tabListaRelatorios);
             this.tabControl1.Controls.Add(this.tabGerarRelatorio);
             this.tabControl1.Location = new System.Drawing.Point(10, 11);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(772, 517);
@@ -86,9 +86,9 @@
             this.tabListaRelatorios.Controls.Add(this.label7);
             this.tabListaRelatorios.Controls.Add(this.label6);
             this.tabListaRelatorios.Location = new System.Drawing.Point(4, 22);
-            this.tabListaRelatorios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabListaRelatorios.Margin = new System.Windows.Forms.Padding(2);
             this.tabListaRelatorios.Name = "tabListaRelatorios";
-            this.tabListaRelatorios.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabListaRelatorios.Padding = new System.Windows.Forms.Padding(2);
             this.tabListaRelatorios.Size = new System.Drawing.Size(764, 491);
             this.tabListaRelatorios.TabIndex = 0;
             this.tabListaRelatorios.Text = "Lista de relatórios";
@@ -131,7 +131,7 @@
             this.tspFiltros.Location = new System.Drawing.Point(739, 51);
             this.tspFiltros.Name = "tspFiltros";
             this.tspFiltros.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspFiltros.Size = new System.Drawing.Size(32, 127);
+            this.tspFiltros.Size = new System.Drawing.Size(25, 54);
             this.tspFiltros.TabIndex = 6;
             this.tspFiltros.Text = "toolStrip1";
             // 
@@ -216,9 +216,9 @@
             this.tabGerarRelatorio.Controls.Add(this.txtListaHTML1);
             this.tabGerarRelatorio.Controls.Add(this.txtHTML);
             this.tabGerarRelatorio.Location = new System.Drawing.Point(4, 22);
-            this.tabGerarRelatorio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabGerarRelatorio.Margin = new System.Windows.Forms.Padding(2);
             this.tabGerarRelatorio.Name = "tabGerarRelatorio";
-            this.tabGerarRelatorio.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabGerarRelatorio.Padding = new System.Windows.Forms.Padding(2);
             this.tabGerarRelatorio.Size = new System.Drawing.Size(764, 491);
             this.tabGerarRelatorio.TabIndex = 1;
             this.tabGerarRelatorio.Text = "Gerar relatório";
@@ -247,7 +247,7 @@
             // txtGroupBy
             // 
             this.txtGroupBy.Location = new System.Drawing.Point(10, 466);
-            this.txtGroupBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGroupBy.Margin = new System.Windows.Forms.Padding(2);
             this.txtGroupBy.Name = "txtGroupBy";
             this.txtGroupBy.Size = new System.Drawing.Size(393, 20);
             this.txtGroupBy.TabIndex = 23;
@@ -255,7 +255,7 @@
             // txtID
             // 
             this.txtID.Location = new System.Drawing.Point(686, 23);
-            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(76, 20);
             this.txtID.TabIndex = 22;
@@ -264,7 +264,7 @@
             // txtNOME
             // 
             this.txtNOME.Location = new System.Drawing.Point(10, 23);
-            this.txtNOME.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNOME.Margin = new System.Windows.Forms.Padding(2);
             this.txtNOME.Name = "txtNOME";
             this.txtNOME.Size = new System.Drawing.Size(752, 20);
             this.txtNOME.TabIndex = 21;
@@ -324,7 +324,7 @@
             // 
             this.txtListaHTML2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtListaHTML2.Location = new System.Drawing.Point(407, 202);
-            this.txtListaHTML2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtListaHTML2.Margin = new System.Windows.Forms.Padding(2);
             this.txtListaHTML2.Multiline = true;
             this.txtListaHTML2.Name = "txtListaHTML2";
             this.txtListaHTML2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -365,7 +365,7 @@
             // 
             this.txtQuery.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQuery.Location = new System.Drawing.Point(10, 349);
-            this.txtQuery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuery.Margin = new System.Windows.Forms.Padding(2);
             this.txtQuery.Multiline = true;
             this.txtQuery.Name = "txtQuery";
             this.txtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -376,7 +376,7 @@
             // 
             this.txtListaHTML1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtListaHTML1.Location = new System.Drawing.Point(407, 65);
-            this.txtListaHTML1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtListaHTML1.Margin = new System.Windows.Forms.Padding(2);
             this.txtListaHTML1.Multiline = true;
             this.txtListaHTML1.Name = "txtListaHTML1";
             this.txtListaHTML1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -387,7 +387,7 @@
             // 
             this.txtHTML.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHTML.Location = new System.Drawing.Point(10, 65);
-            this.txtHTML.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHTML.Margin = new System.Windows.Forms.Padding(2);
             this.txtHTML.Multiline = true;
             this.txtHTML.Name = "txtHTML";
             this.txtHTML.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -433,9 +433,10 @@
             this.Controls.Add(this.staUsuario);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmRelatorioPesquisa";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório Pesquisa";
             this.Load += new System.EventHandler(this.FrmRelatorioPesquisa_Load);

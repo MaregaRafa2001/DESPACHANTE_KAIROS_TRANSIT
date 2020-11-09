@@ -174,6 +174,7 @@
             this.Controls.Add(this.mskValor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmInputBox";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInputBox";
             this.Load += new System.EventHandler(this.frmInputBox_Load);

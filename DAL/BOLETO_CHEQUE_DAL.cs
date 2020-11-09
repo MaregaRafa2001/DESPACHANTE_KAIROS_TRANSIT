@@ -35,6 +35,7 @@ namespace DAL
                     SQL_.Append("ID_FINANCEIRO, ");
                     SQL_.Append("NUMERO, ");
                     SQL_.Append("PARCELA, ");
+                    SQL_.Append("ID_FORMA_PAGAMENTO, ");
                     SQL_.Append("FORMA_PAGAMENTO, ");
                     SQL_.Append("VALOR, ");
                     SQL_.Append("DATA_VENCTO, ");
@@ -50,6 +51,7 @@ namespace DAL
                     SQL_.Append("@ID_FINANCEIRO, ");
                     SQL_.Append("@NUMERO, ");
                     SQL_.Append("@PARCELA, ");
+                    SQL_.Append("@ID_FORMA_PAGAMENTO, ");
                     SQL_.Append("@FORMA_PAGAMENTO, ");
                     SQL_.Append("@VALOR, ");
                     SQL_.Append("@DATA_VENCTO, ");
@@ -104,6 +106,7 @@ namespace DAL
                     SQL_.Append("ID_FINANCEIRO = @ID_FINANCEIRO, ");
                     SQL_.Append("NUMERO = @NUMERO, ");
                     SQL_.Append("PARCELA = @PARCELA, ");
+                    SQL_.Append("ID_FORMA_PAGAMENTO = @ID_FORMA_PAGAMENTO, ");
                     SQL_.Append("FORMA_PAGAMENTO = @FORMA_PAGAMENTO, ");
                     SQL_.Append("VALOR = @VALOR, ");
                     SQL_.Append("DATA_VENCTO = @DATA_VENCTO, ");
@@ -167,6 +170,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@ID_FINANCEIRO", DTO.ID_FINANCEIRO);
             cmd.Parameters.AddWithValue("@NUMERO", DTO.NUMERO);
             cmd.Parameters.AddWithValue("@PARCELA", DTO.PARCELA);
+            cmd.Parameters.AddWithValue("@ID_FORMA_PAGAMENTO", DTO.ID_FORMA_PAGAMENTO);
             cmd.Parameters.AddWithValue("@FORMA_PAGAMENTO", DTO.FORMA_PAGAMENTO);
             cmd.Parameters.AddWithValue("@VALOR", DTO.VALOR);
             cmd.Parameters.AddWithValue("@DATA_VENCTO", DTO.DATA_VENCTO);
@@ -236,6 +240,7 @@ namespace DAL
                 DTO.ID = Convert.ToInt32(dtr["ID"]);
                 DTO.ID_FINANCEIRO = Convert.ToInt32(dtr["ID_FINANCEIRO"]);
                 DTO.NUMERO = dtr["NUMERO"].ToString();
+                DTO.ID_FORMA_PAGAMENTO = dtr["ID_FORMA_PAGAMENTO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_FORMA_PAGAMENTO"]);
                 DTO.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
                 DTO.PARCELA = Convert.ToInt32(dtr["PARCELA"]);
                 DTO.VALOR = dtr["VALOR"] == DBNull.Value? (decimal?)null : Convert.ToDecimal(dtr["VALOR"]);

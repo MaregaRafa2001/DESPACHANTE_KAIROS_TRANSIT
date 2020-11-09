@@ -93,6 +93,8 @@ namespace APP_UI
                     return new frmPermissoes(this);
                 case "frmUsuario":
                     return new frmUsuario(this);
+                case "frmFormaPagamento":
+                    return new frmFormaPagamento();
             }
             throw new Exception("Não conseguimos localizar a tela. Por favor reinicie o sistema. Caso o problema persista, entre em contato com o suporte");
         }
@@ -223,6 +225,21 @@ namespace APP_UI
                 //Setando o mousepointer para ocupado.
                 Cursor.Current = Cursors.WaitCursor;
                 Form frm = new frmJuridico(this);
+                OpenTela(frm);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Acesso Negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TssFormaPagamento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Form frm = new frmFormaPagamento();
                 OpenTela(frm);
                 return;
             }

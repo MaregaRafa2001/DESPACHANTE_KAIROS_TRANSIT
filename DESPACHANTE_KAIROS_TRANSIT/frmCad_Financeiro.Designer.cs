@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCad_Financeiro));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -59,15 +59,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMotoboy_os = new System.Windows.Forms.TextBox();
-            this.txtValorOS = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboForma_Pagamento = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtLocal_os = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtBanco = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.cboConsultor = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.nudDiaVencimento = new System.Windows.Forms.NumericUpDown();
@@ -77,6 +73,10 @@
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnAlterarValor = new System.Windows.Forms.Button();
             this.gpbDetalhes = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtValorOS = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBanco = new System.Windows.Forms.TextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabHistórico = new System.Windows.Forms.TabPage();
@@ -100,7 +100,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(672, 606);
+            this.btnCancelar.Location = new System.Drawing.Point(672, 633);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 31);
             this.btnCancelar.TabIndex = 17;
@@ -111,7 +111,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistrar.Location = new System.Drawing.Point(585, 606);
+            this.btnRegistrar.Location = new System.Drawing.Point(585, 633);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(80, 31);
             this.btnRegistrar.TabIndex = 16;
@@ -122,45 +122,49 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 589);
+            this.label15.Location = new System.Drawing.Point(10, 631);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 531;
             this.label15.Text = "Valor Bruto:";
+            this.label15.Visible = false;
             // 
             // txtValorL
             // 
             this.txtValorL.AutoSize = true;
-            this.txtValorL.Location = new System.Drawing.Point(98, 589);
+            this.txtValorL.Location = new System.Drawing.Point(98, 631);
             this.txtValorL.Name = "txtValorL";
             this.txtValorL.Size = new System.Drawing.Size(73, 13);
             this.txtValorL.TabIndex = 530;
             this.txtValorL.Text = "Valor Líquido:";
+            this.txtValorL.Visible = false;
             // 
             // txtValorLi
             // 
-            this.txtValorLi.Location = new System.Drawing.Point(100, 606);
+            this.txtValorLi.Location = new System.Drawing.Point(100, 648);
             this.txtValorLi.MaxLength = 12;
             this.txtValorLi.Name = "txtValorLi";
             this.txtValorLi.Size = new System.Drawing.Size(83, 20);
             this.txtValorLi.TabIndex = 528;
             this.txtValorLi.Text = "0.00";
+            this.txtValorLi.Visible = false;
             this.txtValorLi.TextChanged += new System.EventHandler(this.txtValorLi_TextChanged);
             // 
             // txtValorB
             // 
-            this.txtValorB.Location = new System.Drawing.Point(13, 606);
+            this.txtValorB.Location = new System.Drawing.Point(13, 648);
             this.txtValorB.MaxLength = 12;
             this.txtValorB.Name = "txtValorB";
             this.txtValorB.Size = new System.Drawing.Size(83, 20);
             this.txtValorB.TabIndex = 527;
             this.txtValorB.Text = "0.00";
+            this.txtValorB.Visible = false;
             this.txtValorB.TextChanged += new System.EventHandler(this.txtValorB_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(423, 7);
+            this.label2.Location = new System.Drawing.Point(445, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 445;
@@ -169,7 +173,7 @@
             // picConsultor
             // 
             this.picConsultor.Image = ((System.Drawing.Image)(resources.GetObject("picConsultor.Image")));
-            this.picConsultor.Location = new System.Drawing.Point(676, 330);
+            this.picConsultor.Location = new System.Drawing.Point(316, 67);
             this.picConsultor.Name = "picConsultor";
             this.picConsultor.Size = new System.Drawing.Size(16, 16);
             this.picConsultor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -184,15 +188,15 @@
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.ItemHeight = 13;
-            this.cboStatus.Location = new System.Drawing.Point(587, 24);
+            this.cboStatus.Location = new System.Drawing.Point(609, 66);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(144, 21);
+            this.cboStatus.Size = new System.Drawing.Size(142, 21);
             this.cboStatus.TabIndex = 3;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(585, 8);
+            this.label11.Location = new System.Drawing.Point(607, 50);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 13);
             this.label11.TabIndex = 462;
@@ -203,7 +207,7 @@
             this.cboIndicacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboIndicacao.FormattingEnabled = true;
             this.cboIndicacao.ItemHeight = 13;
-            this.cboIndicacao.Location = new System.Drawing.Point(426, 24);
+            this.cboIndicacao.Location = new System.Drawing.Point(448, 66);
             this.cboIndicacao.Name = "cboIndicacao";
             this.cboIndicacao.Size = new System.Drawing.Size(156, 21);
             this.cboIndicacao.TabIndex = 518;
@@ -240,16 +244,16 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(334, 8);
+            this.label12.Location = new System.Drawing.Point(356, 50);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(33, 13);
+            this.label12.Size = new System.Drawing.Size(75, 13);
             this.label12.TabIndex = 523;
-            this.label12.Text = "Data:";
+            this.label12.Text = "Data contrato:";
             // 
             // mskData
             // 
-            this.mskData.Location = new System.Drawing.Point(336, 24);
-            this.mskData.Margin = new System.Windows.Forms.Padding(2);
+            this.mskData.Location = new System.Drawing.Point(358, 66);
+            this.mskData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mskData.Mask = "00/00/0000";
             this.mskData.Name = "mskData";
             this.mskData.Size = new System.Drawing.Size(86, 20);
@@ -261,7 +265,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(634, 16);
+            this.label6.Location = new System.Drawing.Point(424, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 13);
             this.label6.TabIndex = 471;
@@ -269,7 +273,7 @@
             // 
             // txtObservacao
             // 
-            this.txtObservacao.Location = new System.Drawing.Point(9, 406);
+            this.txtObservacao.Location = new System.Drawing.Point(10, 366);
             this.txtObservacao.MaxLength = 250;
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
@@ -281,7 +285,7 @@
             // lblObservacao
             // 
             this.lblObservacao.AutoSize = true;
-            this.lblObservacao.Location = new System.Drawing.Point(6, 390);
+            this.lblObservacao.Location = new System.Drawing.Point(8, 349);
             this.lblObservacao.Name = "lblObservacao";
             this.lblObservacao.Size = new System.Drawing.Size(68, 13);
             this.lblObservacao.TabIndex = 475;
@@ -289,20 +293,10 @@
             // 
             // numQtdParcela
             // 
-            this.numQtdParcela.Location = new System.Drawing.Point(634, 32);
-            this.numQtdParcela.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.numQtdParcela.Location = new System.Drawing.Point(424, 32);
             this.numQtdParcela.Name = "numQtdParcela";
-            this.numQtdParcela.Size = new System.Drawing.Size(74, 20);
+            this.numQtdParcela.Size = new System.Drawing.Size(79, 20);
             this.numQtdParcela.TabIndex = 7;
-            this.numQtdParcela.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numQtdParcela.ValueChanged += new System.EventHandler(this.numQtdParcela_ValueChanged);
             // 
             // label4
@@ -347,7 +341,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 351);
+            this.label1.Location = new System.Drawing.Point(86, 311);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 494;
@@ -355,56 +349,38 @@
             // 
             // txtMotoboy_os
             // 
-            this.txtMotoboy_os.Location = new System.Drawing.Point(8, 367);
+            this.txtMotoboy_os.Location = new System.Drawing.Point(88, 327);
             this.txtMotoboy_os.MaxLength = 100;
             this.txtMotoboy_os.Name = "txtMotoboy_os";
             this.txtMotoboy_os.Size = new System.Drawing.Size(287, 20);
             this.txtMotoboy_os.TabIndex = 12;
             // 
-            // txtValorOS
-            // 
-            this.txtValorOS.Location = new System.Drawing.Point(634, 367);
-            this.txtValorOS.MaxLength = 12;
-            this.txtValorOS.Name = "txtValorOS";
-            this.txtValorOS.Size = new System.Drawing.Size(74, 20);
-            this.txtValorOS.TabIndex = 14;
-            this.txtValorOS.Text = "0.00";
-            this.txtValorOS.TextChanged += new System.EventHandler(this.txtValorOS_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(632, 352);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 496;
-            this.label7.Text = "Valor O.S.:";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(424, 16);
+            this.label3.Location = new System.Drawing.Point(348, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 507;
             this.label3.Text = "Forma de pagamento:*";
+            this.label3.Visible = false;
             // 
             // cboForma_Pagamento
             // 
             this.cboForma_Pagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboForma_Pagamento.FormattingEnabled = true;
             this.cboForma_Pagamento.ItemHeight = 13;
-            this.cboForma_Pagamento.Location = new System.Drawing.Point(427, 32);
+            this.cboForma_Pagamento.Location = new System.Drawing.Point(351, 20);
             this.cboForma_Pagamento.Name = "cboForma_Pagamento";
             this.cboForma_Pagamento.Size = new System.Drawing.Size(202, 21);
             this.cboForma_Pagamento.TabIndex = 6;
-            this.cboForma_Pagamento.SelectedIndexChanged += new System.EventHandler(this.CboForma_Pagamento_SelectedIndexChanged);
+            this.cboForma_Pagamento.Visible = false;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label13.Location = new System.Drawing.Point(297, 351);
+            this.label13.Location = new System.Drawing.Point(377, 311);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
             this.label13.TabIndex = 509;
@@ -412,7 +388,7 @@
             // 
             // txtLocal_os
             // 
-            this.txtLocal_os.Location = new System.Drawing.Point(300, 367);
+            this.txtLocal_os.Location = new System.Drawing.Point(380, 327);
             this.txtLocal_os.MaxLength = 200;
             this.txtLocal_os.Name = "txtLocal_os";
             this.txtLocal_os.Size = new System.Drawing.Size(329, 20);
@@ -421,52 +397,36 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(356, 312);
+            this.label8.Location = new System.Drawing.Point(10, 47);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 513;
             this.label8.Text = "Consultor:*";
             // 
-            // txtBanco
-            // 
-            this.txtBanco.Location = new System.Drawing.Point(9, 328);
-            this.txtBanco.MaxLength = 100;
-            this.txtBanco.Name = "txtBanco";
-            this.txtBanco.Size = new System.Drawing.Size(345, 20);
-            this.txtBanco.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 312);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 13);
-            this.label9.TabIndex = 515;
-            this.label9.Text = "Banco:";
-            // 
             // cboConsultor
             // 
             this.cboConsultor.FormattingEnabled = true;
-            this.cboConsultor.Location = new System.Drawing.Point(359, 328);
+            this.cboConsultor.Location = new System.Drawing.Point(13, 65);
             this.cboConsultor.MaxLength = 100;
             this.cboConsultor.Name = "cboConsultor";
-            this.cboConsultor.Size = new System.Drawing.Size(349, 21);
+            this.cboConsultor.Size = new System.Drawing.Size(340, 21);
             this.cboConsultor.TabIndex = 11;
             this.cboConsultor.Leave += new System.EventHandler(this.CboConsultor_Leave);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(496, 64);
+            this.label14.Location = new System.Drawing.Point(507, 22);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(170, 13);
             this.label14.TabIndex = 520;
             this.label14.Text = "Dia de vencimento de pagamento:";
+            this.label14.Visible = false;
             // 
             // nudDiaVencimento
             // 
-            this.nudDiaVencimento.Location = new System.Drawing.Point(668, 63);
-            this.nudDiaVencimento.Margin = new System.Windows.Forms.Padding(2);
+            this.nudDiaVencimento.Location = new System.Drawing.Point(680, 21);
+            this.nudDiaVencimento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nudDiaVencimento.Maximum = new decimal(new int[] {
             30,
             0,
@@ -485,6 +445,7 @@
             0,
             0,
             0});
+            this.nudDiaVencimento.Visible = false;
             this.nudDiaVencimento.ValueChanged += new System.EventHandler(this.NudDiaVencimento_ValueChanged);
             // 
             // groupBox1
@@ -492,10 +453,10 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.dtgBoletosCheques);
             this.groupBox1.Controls.Add(this.btnAplicar);
-            this.groupBox1.Location = new System.Drawing.Point(8, 80);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(10, 80);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Size = new System.Drawing.Size(700, 229);
             this.groupBox1.TabIndex = 526;
             this.groupBox1.TabStop = false;
@@ -523,14 +484,14 @@
             this.dtgBoletosCheques.Location = new System.Drawing.Point(14, 41);
             this.dtgBoletosCheques.Name = "dtgBoletosCheques";
             this.dtgBoletosCheques.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgBoletosCheques.RowHeadersWidth = 51;
             this.dtgBoletosCheques.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgBoletosCheques.Size = new System.Drawing.Size(673, 144);
@@ -542,7 +503,7 @@
             this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAplicar.Location = new System.Drawing.Point(620, 189);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(68, 32);
             this.btnAplicar.TabIndex = 517;
@@ -552,9 +513,9 @@
             // 
             // btnAlterarValor
             // 
-            this.btnAlterarValor.Location = new System.Drawing.Point(339, 58);
+            this.btnAlterarValor.Location = new System.Drawing.Point(338, 52);
             this.btnAlterarValor.Name = "btnAlterarValor";
-            this.btnAlterarValor.Size = new System.Drawing.Size(83, 23);
+            this.btnAlterarValor.Size = new System.Drawing.Size(85, 23);
             this.btnAlterarValor.TabIndex = 527;
             this.btnAlterarValor.Text = "Alterar Valor";
             this.btnAlterarValor.UseVisualStyleBackColor = true;
@@ -562,21 +523,14 @@
             // 
             // gpbDetalhes
             // 
-            this.gpbDetalhes.Controls.Add(this.btnAlterarValor);
-            this.gpbDetalhes.Controls.Add(this.groupBox1);
-            this.gpbDetalhes.Controls.Add(this.nudDiaVencimento);
-            this.gpbDetalhes.Controls.Add(this.label14);
-            this.gpbDetalhes.Controls.Add(this.picConsultor);
-            this.gpbDetalhes.Controls.Add(this.cboConsultor);
-            this.gpbDetalhes.Controls.Add(this.label9);
-            this.gpbDetalhes.Controls.Add(this.txtBanco);
-            this.gpbDetalhes.Controls.Add(this.label8);
-            this.gpbDetalhes.Controls.Add(this.txtLocal_os);
-            this.gpbDetalhes.Controls.Add(this.label13);
-            this.gpbDetalhes.Controls.Add(this.cboForma_Pagamento);
-            this.gpbDetalhes.Controls.Add(this.label3);
             this.gpbDetalhes.Controls.Add(this.label7);
             this.gpbDetalhes.Controls.Add(this.txtValorOS);
+            this.gpbDetalhes.Controls.Add(this.label9);
+            this.gpbDetalhes.Controls.Add(this.txtBanco);
+            this.gpbDetalhes.Controls.Add(this.btnAlterarValor);
+            this.gpbDetalhes.Controls.Add(this.groupBox1);
+            this.gpbDetalhes.Controls.Add(this.txtLocal_os);
+            this.gpbDetalhes.Controls.Add(this.label13);
             this.gpbDetalhes.Controls.Add(this.txtMotoboy_os);
             this.gpbDetalhes.Controls.Add(this.label1);
             this.gpbDetalhes.Controls.Add(this.label5);
@@ -589,16 +543,51 @@
             this.gpbDetalhes.Controls.Add(this.label6);
             this.gpbDetalhes.Location = new System.Drawing.Point(7, 9);
             this.gpbDetalhes.Name = "gpbDetalhes";
-            this.gpbDetalhes.Size = new System.Drawing.Size(717, 491);
+            this.gpbDetalhes.Size = new System.Drawing.Size(717, 445);
             this.gpbDetalhes.TabIndex = 10;
             this.gpbDetalhes.TabStop = false;
             this.gpbDetalhes.Text = "Dados";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 312);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 531;
+            this.label7.Text = "Valor O.S.:";
+            // 
+            // txtValorOS
+            // 
+            this.txtValorOS.Location = new System.Drawing.Point(10, 327);
+            this.txtValorOS.MaxLength = 12;
+            this.txtValorOS.Name = "txtValorOS";
+            this.txtValorOS.Size = new System.Drawing.Size(74, 20);
+            this.txtValorOS.TabIndex = 530;
+            this.txtValorOS.Text = "0.00";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(509, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 13);
+            this.label9.TabIndex = 529;
+            this.label9.Text = "Banco:";
+            // 
+            // txtBanco
+            // 
+            this.txtBanco.Location = new System.Drawing.Point(509, 31);
+            this.txtBanco.MaxLength = 100;
+            this.txtBanco.Name = "txtBanco";
+            this.txtBanco.Size = new System.Drawing.Size(203, 20);
+            this.txtBanco.TabIndex = 528;
             // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabHistórico);
-            this.tabControl2.Location = new System.Drawing.Point(13, 50);
+            this.tabControl2.Location = new System.Drawing.Point(13, 92);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(742, 536);
@@ -609,7 +598,7 @@
             this.tabPage3.Controls.Add(this.gpbDetalhes);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage3.Size = new System.Drawing.Size(734, 510);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Financeiro";
@@ -621,7 +610,7 @@
             this.tabHistórico.Controls.Add(this.dtgHistorico);
             this.tabHistórico.Location = new System.Drawing.Point(4, 22);
             this.tabHistórico.Name = "tabHistórico";
-            this.tabHistórico.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHistórico.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabHistórico.Size = new System.Drawing.Size(734, 510);
             this.tabHistórico.TabIndex = 3;
             this.tabHistórico.Text = "Histórico";
@@ -631,9 +620,9 @@
             // 
             this.grpMaisDetalhes.Controls.Add(this.txtMaisDetalhes);
             this.grpMaisDetalhes.Location = new System.Drawing.Point(4, 217);
-            this.grpMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
+            this.grpMaisDetalhes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpMaisDetalhes.Name = "grpMaisDetalhes";
-            this.grpMaisDetalhes.Padding = new System.Windows.Forms.Padding(4);
+            this.grpMaisDetalhes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpMaisDetalhes.Size = new System.Drawing.Size(718, 285);
             this.grpMaisDetalhes.TabIndex = 362;
             this.grpMaisDetalhes.TabStop = false;
@@ -645,7 +634,7 @@
             this.txtMaisDetalhes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaisDetalhes.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaisDetalhes.Location = new System.Drawing.Point(8, 23);
-            this.txtMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaisDetalhes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMaisDetalhes.Multiline = true;
             this.txtMaisDetalhes.Name = "txtMaisDetalhes";
             this.txtMaisDetalhes.ReadOnly = true;
@@ -658,15 +647,15 @@
             this.dtgHistorico.AllowUserToAddRows = false;
             this.dtgHistorico.AllowUserToDeleteRows = false;
             this.dtgHistorico.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgHistorico.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtgHistorico.ColumnHeadersHeight = 29;
             this.dtgHistorico.Location = new System.Drawing.Point(7, 7);
-            this.dtgHistorico.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgHistorico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtgHistorico.Name = "dtgHistorico";
             this.dtgHistorico.ReadOnly = true;
             this.dtgHistorico.RowHeadersWidth = 51;
@@ -680,15 +669,22 @@
             this.AcceptButton = this.btnRegistrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 660);
+            this.ClientSize = new System.Drawing.Size(762, 687);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.btnPesquisarAdvogado);
+            this.Controls.Add(this.cboForma_Pagamento);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtValorL);
+            this.Controls.Add(this.picConsultor);
             this.Controls.Add(this.label12);
+            this.Controls.Add(this.nudDiaVencimento);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.cboConsultor);
             this.Controls.Add(this.txtValorLi);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.txtValorB);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.cboIndicacao);
             this.Controls.Add(this.label11);
@@ -700,6 +696,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmCad_Financeiro";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Financeiro";
             this.Load += new System.EventHandler(this.FrmCad_Financeiro_Load);
@@ -751,15 +748,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMotoboy_os;
-        private System.Windows.Forms.TextBox txtValorOS;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboForma_Pagamento;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtLocal_os;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtBanco;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboConsultor;
         private System.Windows.Forms.PictureBox picConsultor;
         private System.Windows.Forms.Label label14;
@@ -776,5 +769,9 @@
         private System.Windows.Forms.GroupBox grpMaisDetalhes;
         private System.Windows.Forms.TextBox txtMaisDetalhes;
         private System.Windows.Forms.DataGridView dtgHistorico;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtValorOS;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtBanco;
     }
 }

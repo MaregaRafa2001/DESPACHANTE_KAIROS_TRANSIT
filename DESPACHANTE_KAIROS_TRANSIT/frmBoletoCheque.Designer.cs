@@ -40,21 +40,23 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboForma_Pagamento = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtNumBolChe
             // 
-            this.txtNumBolChe.Location = new System.Drawing.Point(10, 83);
+            this.txtNumBolChe.Location = new System.Drawing.Point(7, 121);
             this.txtNumBolChe.MaxLength = 200;
             this.txtNumBolChe.Multiline = true;
             this.txtNumBolChe.Name = "txtNumBolChe";
-            this.txtNumBolChe.Size = new System.Drawing.Size(418, 102);
+            this.txtNumBolChe.Size = new System.Drawing.Size(421, 102);
             this.txtNumBolChe.TabIndex = 10;
             // 
             // lblBoletoCheque
             // 
             this.lblBoletoCheque.AutoSize = true;
-            this.lblBoletoCheque.Location = new System.Drawing.Point(10, 66);
+            this.lblBoletoCheque.Location = new System.Drawing.Point(7, 104);
             this.lblBoletoCheque.Name = "lblBoletoCheque";
             this.lblBoletoCheque.Size = new System.Drawing.Size(73, 13);
             this.lblBoletoCheque.TabIndex = 479;
@@ -64,16 +66,16 @@
             // 
             this.cboStatusPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatusPagamento.FormattingEnabled = true;
-            this.cboStatusPagamento.Location = new System.Drawing.Point(73, 32);
+            this.cboStatusPagamento.Location = new System.Drawing.Point(111, 32);
             this.cboStatusPagamento.Margin = new System.Windows.Forms.Padding(2);
             this.cboStatusPagamento.Name = "cboStatusPagamento";
-            this.cboStatusPagamento.Size = new System.Drawing.Size(166, 21);
+            this.cboStatusPagamento.Size = new System.Drawing.Size(177, 21);
             this.cboStatusPagamento.TabIndex = 523;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 16);
+            this.label1.Location = new System.Drawing.Point(108, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 524;
@@ -85,7 +87,7 @@
             this.txtParcela.Margin = new System.Windows.Forms.Padding(2);
             this.txtParcela.Name = "txtParcela";
             this.txtParcela.ReadOnly = true;
-            this.txtParcela.Size = new System.Drawing.Size(60, 20);
+            this.txtParcela.Size = new System.Drawing.Size(97, 20);
             this.txtParcela.TabIndex = 525;
             // 
             // label2
@@ -100,7 +102,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistrar.Location = new System.Drawing.Point(264, 190);
+            this.btnRegistrar.Location = new System.Drawing.Point(264, 234);
             this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(80, 32);
@@ -112,7 +114,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(349, 190);
+            this.btnCancelar.Location = new System.Drawing.Point(349, 234);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 32);
@@ -123,11 +125,11 @@
             // 
             // mskDataVencimento
             // 
-            this.mskDataVencimento.Location = new System.Drawing.Point(243, 33);
+            this.mskDataVencimento.Location = new System.Drawing.Point(292, 32);
             this.mskDataVencimento.Margin = new System.Windows.Forms.Padding(2);
             this.mskDataVencimento.Mask = "00/00/0000";
             this.mskDataVencimento.Name = "mskDataVencimento";
-            this.mskDataVencimento.Size = new System.Drawing.Size(103, 20);
+            this.mskDataVencimento.Size = new System.Drawing.Size(136, 20);
             this.mskDataVencimento.TabIndex = 530;
             this.mskDataVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskDataVencimento.ValidatingType = typeof(System.DateTime);
@@ -135,7 +137,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(243, 17);
+            this.label19.Location = new System.Drawing.Point(292, 16);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(66, 13);
             this.label19.TabIndex = 529;
@@ -143,10 +145,10 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(351, 33);
+            this.txtValor.Location = new System.Drawing.Point(10, 72);
             this.txtValor.MaxLength = 12;
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(80, 20);
+            this.txtValor.Size = new System.Drawing.Size(96, 20);
             this.txtValor.TabIndex = 531;
             this.txtValor.Text = "0.00";
             this.txtValor.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
@@ -154,17 +156,38 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(348, 17);
+            this.label3.Location = new System.Drawing.Point(10, 57);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 532;
             this.label3.Text = "Valor:";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(111, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.TabIndex = 536;
+            this.label4.Text = "Forma de pagamento:";
+            // 
+            // cboForma_Pagamento
+            // 
+            this.cboForma_Pagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboForma_Pagamento.FormattingEnabled = true;
+            this.cboForma_Pagamento.Location = new System.Drawing.Point(111, 72);
+            this.cboForma_Pagamento.Margin = new System.Windows.Forms.Padding(2);
+            this.cboForma_Pagamento.Name = "cboForma_Pagamento";
+            this.cboForma_Pagamento.Size = new System.Drawing.Size(317, 21);
+            this.cboForma_Pagamento.TabIndex = 535;
+            // 
             // frmBoletoCheque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 234);
+            this.ClientSize = new System.Drawing.Size(440, 277);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cboForma_Pagamento);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.mskDataVencimento);
@@ -202,5 +225,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboForma_Pagamento;
     }
 }

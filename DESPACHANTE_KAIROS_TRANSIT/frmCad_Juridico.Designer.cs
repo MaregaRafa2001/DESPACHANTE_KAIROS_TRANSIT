@@ -514,7 +514,7 @@
             this.MaximizeBox = false;
             this.Name = "frmCad_Juridico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCad_Juridico";
+            this.Text = "Registrar Jurídico";
             this.Load += new System.EventHandler(this.FrmCad_Juridico_Load);
             this.tabHistórico.ResumeLayout(false);
             this.grpMaisDetalhes.ResumeLayout(false);

@@ -21,6 +21,28 @@ namespace BLL
             DAO = new FORMA_PAGAMENTO_DAL(strConnection);
         }
 
+        public int? Set_FormaPagamento(FORMA_PAGAMENTO_DTO DTO)
+        {
+            SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
+            return DAO.Set_FormaPagamento(DTO);
+        }
+
+        public bool Update_FormaPagamento(FORMA_PAGAMENTO_DTO DTO)
+        {
+            SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
+            return DAO.Update_FormaPagamento(DTO);
+        }
+
+        public bool Excluir(int id)
+        {
+            return DAO.Excluir(id);
+        }
+
+        public FORMA_PAGAMENTO_DTO Selecione(int ID)
+        {
+            return DAO.Seleciona(ID);
+        }
+
         public List<FORMA_PAGAMENTO_DTO> Lista_Forma_Pagamento()
         {
             return DAO.Lista_Forma_Pagamento();

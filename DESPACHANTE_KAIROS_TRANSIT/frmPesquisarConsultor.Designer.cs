@@ -43,25 +43,28 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(13, 29);
+            this.txtValor.Location = new System.Drawing.Point(10, 24);
+            this.txtValor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(404, 22);
+            this.txtValor.Size = new System.Drawing.Size(304, 20);
             this.txtValor.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 9);
+            this.label1.Location = new System.Drawing.Point(8, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 17);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Parâmetro:";
             // 
             // btnLocalizar
             // 
-            this.btnLocalizar.Location = new System.Drawing.Point(314, 152);
+            this.btnLocalizar.Location = new System.Drawing.Point(236, 124);
+            this.btnLocalizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLocalizar.Name = "btnLocalizar";
-            this.btnLocalizar.Size = new System.Drawing.Size(103, 45);
+            this.btnLocalizar.Size = new System.Drawing.Size(77, 37);
             this.btnLocalizar.TabIndex = 2;
             this.btnLocalizar.Text = "Localizar";
             this.btnLocalizar.UseVisualStyleBackColor = true;
@@ -76,22 +79,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgDados.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtgDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDados.Location = new System.Drawing.Point(13, 204);
-            this.dtgDados.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgDados.Location = new System.Drawing.Point(10, 166);
             this.dtgDados.MultiSelect = false;
             this.dtgDados.Name = "dtgDados";
             this.dtgDados.ReadOnly = true;
             this.dtgDados.RowHeadersWidth = 51;
             this.dtgDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgDados.Size = new System.Drawing.Size(403, 230);
+            this.dtgDados.Size = new System.Drawing.Size(302, 187);
             this.dtgDados.TabIndex = 426;
             this.dtgDados.DoubleClick += new System.EventHandler(this.DtgDados_DoubleClick);
             // 
             // btnSelecionar
             // 
-            this.btnSelecionar.Location = new System.Drawing.Point(314, 441);
+            this.btnSelecionar.Location = new System.Drawing.Point(236, 358);
+            this.btnSelecionar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(103, 45);
+            this.btnSelecionar.Size = new System.Drawing.Size(77, 37);
             this.btnSelecionar.TabIndex = 427;
             this.btnSelecionar.Text = "Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
@@ -102,11 +105,9 @@
             this.grpOpcoes.Controls.Add(this.radFonetica);
             this.grpOpcoes.Controls.Add(this.radQualquerParte);
             this.grpOpcoes.Controls.Add(this.radInicio);
-            this.grpOpcoes.Location = new System.Drawing.Point(13, 58);
-            this.grpOpcoes.Margin = new System.Windows.Forms.Padding(4);
+            this.grpOpcoes.Location = new System.Drawing.Point(10, 47);
             this.grpOpcoes.Name = "grpOpcoes";
-            this.grpOpcoes.Padding = new System.Windows.Forms.Padding(4);
-            this.grpOpcoes.Size = new System.Drawing.Size(404, 87);
+            this.grpOpcoes.Size = new System.Drawing.Size(303, 71);
             this.grpOpcoes.TabIndex = 428;
             this.grpOpcoes.TabStop = false;
             this.grpOpcoes.Text = "Parâmetros para a pesquisa:";
@@ -114,10 +115,9 @@
             // radFonetica
             // 
             this.radFonetica.AutoSize = true;
-            this.radFonetica.Location = new System.Drawing.Point(240, 23);
-            this.radFonetica.Margin = new System.Windows.Forms.Padding(4);
+            this.radFonetica.Location = new System.Drawing.Point(180, 19);
             this.radFonetica.Name = "radFonetica";
-            this.radFonetica.Size = new System.Drawing.Size(140, 21);
+            this.radFonetica.Size = new System.Drawing.Size(108, 17);
             this.radFonetica.TabIndex = 2;
             this.radFonetica.Text = "pesquisa fonética";
             this.radFonetica.UseVisualStyleBackColor = true;
@@ -125,10 +125,9 @@
             // radQualquerParte
             // 
             this.radQualquerParte.AutoSize = true;
-            this.radQualquerParte.Location = new System.Drawing.Point(8, 52);
-            this.radQualquerParte.Margin = new System.Windows.Forms.Padding(4);
+            this.radQualquerParte.Location = new System.Drawing.Point(6, 42);
             this.radQualquerParte.Name = "radQualquerParte";
-            this.radQualquerParte.Size = new System.Drawing.Size(199, 21);
+            this.radQualquerParte.Size = new System.Drawing.Size(151, 17);
             this.radQualquerParte.TabIndex = 1;
             this.radQualquerParte.Text = "em qualquer parte do texto";
             this.radQualquerParte.UseVisualStyleBackColor = true;
@@ -137,10 +136,9 @@
             // 
             this.radInicio.AutoSize = true;
             this.radInicio.Checked = true;
-            this.radInicio.Location = new System.Drawing.Point(8, 23);
-            this.radInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.radInicio.Location = new System.Drawing.Point(6, 19);
             this.radInicio.Name = "radInicio";
-            this.radInicio.Size = new System.Drawing.Size(184, 21);
+            this.radInicio.Size = new System.Drawing.Size(142, 17);
             this.radInicio.TabIndex = 0;
             this.radInicio.TabStop = true;
             this.radInicio.Text = "a partir do início do texto";
@@ -149,9 +147,9 @@
             // frmPesquisarConsultor
             // 
             this.AcceptButton = this.btnLocalizar;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 498);
+            this.ClientSize = new System.Drawing.Size(322, 405);
             this.Controls.Add(this.grpOpcoes);
             this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.dtgDados);
@@ -159,7 +157,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtValor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
             this.Name = "frmPesquisarConsultor";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar";
             this.Load += new System.EventHandler(this.FrmPesquisarConsultor_Load);

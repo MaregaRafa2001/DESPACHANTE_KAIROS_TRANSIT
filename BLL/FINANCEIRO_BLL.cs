@@ -187,14 +187,28 @@ namespace BLL
                 throw ex;
             }
         }
+
+        public List<ComboItemDTO> Lista_Documento()
+        {
+            try
+            {
+                return DAO.Lista_Documento();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         private void ValidarDados(FINANCEIRO_DTO DTO)
         {
             try
             {
                 if (string.IsNullOrEmpty(DTO.INDICACAO))
                     throw new CustomException("Favor informe a Indicação", "Dados incorretos");
-                if (string.IsNullOrEmpty(DTO.FORMA_PAGAMENTO))
-                    throw new CustomException("Favor informe a forma de pagamento", "Dados incorretos");
+                if (DTO.PARCELAS <= 0)
+                    throw new CustomException("Favor insira a quantidade de parcelas", "Dados incorretos");
                 if (string.IsNullOrEmpty(DTO.CONSULTOR))
                     throw new CustomException("Favor informe o consultor", "Dados incorretos");
                 if (DTO.ID_CLIENTE == 0)

@@ -32,15 +32,17 @@ namespace BLL
             return DAO.Set_Cliente(DTO);
         }
 
-        public bool Excluir(int id)
-        {
-            return DAO.Excluir(id);
-        }
         public bool Update_Cliente(CLIENTE_DTO DTO)
         {
             SysDAL.Grava_Historico(DTO, strConnection, SysBLL.UserLogin.NOME);
             return DAO.Update_Cliente(DTO);
         }
+
+        public bool Excluir(int id)
+        {
+            return DAO.Excluir(id);
+        }
+       
 
         public CLIENTE_DTO Selecione(int ID)
         {

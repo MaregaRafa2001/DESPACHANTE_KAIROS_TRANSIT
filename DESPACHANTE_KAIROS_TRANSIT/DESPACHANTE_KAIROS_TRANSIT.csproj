@@ -63,6 +63,12 @@
     <Compile Include="frmCad_Cliente.Designer.cs">
       <DependentUpon>frmCad_Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCad_Documento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_Documento.Designer.cs">
+      <DependentUpon>frmCad_Documento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCad_Financeiro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,12 @@
     </Compile>
     <Compile Include="frmCad_Administracao_Fases.Designer.cs">
       <DependentUpon>frmCad_Administracao_Fases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCad_FormaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCad_FormaPagamento.Designer.cs">
+      <DependentUpon>frmCad_FormaPagamento.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCad_Juridico.cs">
       <SubType>Form</SubType>
@@ -129,6 +141,12 @@
     <Compile Include="frmAdministracao.Designer.cs">
       <DependentUpon>frmAdministracao.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFormaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormaPagamento.Designer.cs">
+      <DependentUpon>frmFormaPagamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInputBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +170,12 @@
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmObservacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmObservacoes.Designer.cs">
+      <DependentUpon>frmObservacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPermissoes.cs">
       <SubType>Form</SubType>
@@ -204,6 +228,9 @@
     <EmbeddedResource Include="frmCad_Cliente.resx">
       <DependentUpon>frmCad_Cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_Documento.resx">
+      <DependentUpon>frmCad_Documento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCad_Financeiro.resx">
       <DependentUpon>frmCad_Financeiro.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCad_Administracao_Fases.resx">
       <DependentUpon>frmCad_Administracao_Fases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCad_FormaPagamento.resx">
+      <DependentUpon>frmCad_FormaPagamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCad_Juridico.resx">
       <DependentUpon>frmCad_Juridico.cs</DependentUpon>
@@ -237,6 +267,9 @@
     <EmbeddedResource Include="frmAdministracao.resx">
       <DependentUpon>frmAdministracao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFormaPagamento.resx">
+      <DependentUpon>frmFormaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInputBox.resx">
       <DependentUpon>frmInputBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmObservacoes.resx">
+      <DependentUpon>frmObservacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPermissoes.resx">
       <DependentUpon>frmPermissoes.cs</DependentUpon>
@@ -278,6 +314,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Content\Fonts\fontawesome-webfont.eot" />
     <None Include="Content\Fonts\fontawesome-webfont.ttf" />
@@ -390,6 +427,9 @@
     <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.dll" />
     <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.pdb" />
     <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.XML" />
+    <None Include="Resources\visualizar-icon1.png" />
+    <None Include="Resources\visualizar-icon.png" />
+    <None Include="Resources\visualizar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

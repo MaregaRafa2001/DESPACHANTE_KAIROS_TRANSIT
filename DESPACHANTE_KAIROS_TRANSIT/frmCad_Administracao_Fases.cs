@@ -80,8 +80,6 @@ namespace APP_UI
                 case 2://DOCUMENTAÇÃO
                     break;
                 case 3://CORRESPÔNDENCIA
-                    Layout3_mskDataEntrega.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_ENTREGA_DOCUMENTO);
-                    Layout3_mskDataVencimento.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_VENCIMENTO_DOCUMENTO);
                     break;
                 case 4://MONTAGEM
                     Layout4_mskDataMontagemProcesso.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_MONTAGEM_PROCESSO);
@@ -130,7 +128,7 @@ namespace APP_UI
 
 
             }
-        }        
+        }
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
         {
@@ -158,7 +156,7 @@ namespace APP_UI
                 administracao_dto.FASE = cboFase.Text.ToString();
                 administracao_dto.LAYOUT_TELA = Convert.ToInt32(cboFase.SelectedValue);
                 if (txtObservacao.Text.Trim().Length > 0)
-                    administracao_dto.OBSERVACAO = lblDescricao.Text + "\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " - " + txtObservacao.Text;
+                    administracao_dto.OBSERVACAO = lblDescricao.Text + "\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " (" + SysBLL.UserLogin.NOME + ") - " + txtObservacao.Text;
 
                 switch (Convert.ToInt32(cboFase.SelectedValue))
                 {
@@ -168,8 +166,6 @@ namespace APP_UI
                     case 2://DOCUMENTAÇÃO
                         break;
                     case 3://CORRESPÔNDENCIA
-                        administracao_dto.DATA_ENTREGA_DOCUMENTO = FormFuncoes.GetMskDate(Layout3_mskDataEntrega);
-                        administracao_dto.DATA_VENCIMENTO_DOCUMENTO = FormFuncoes.GetMskDate(Layout3_mskDataVencimento);
                         break;
                     case 4://MONTAGEM
                         administracao_dto.DATA_MONTAGEM_PROCESSO = FormFuncoes.GetMskDate(Layout4_mskDataMontagemProcesso);
@@ -265,6 +261,25 @@ namespace APP_UI
         {
             if (cboFase.Enabled)
                 loadTela(Convert.ToInt32(cboFase.SelectedValue));
+            PopularGrid();
+        }
+
+        void PopularGrid()
+        {
+            try
+            {
+                StringBuilder sbSql = new StringBuilder();
+                sbSql.Append("SELECT * FROM VW_DOCUMENTO WHERE ID_FINANCEIRO_INVISIBLE = " + administracao_dto.ID_FINANCEIRO + " ORDER BY DOCUMENTO DESC");
+
+                //Monta o grid e recupera as colunas utilizadas para pesquisa
+                DataTable dtt = new PesquisaGeralBLL().Pesquisa(sbSql.ToString());
+                dtgDadosDocumento.DataSource = dtt; //Vincula o datatable ao datagrid
+                dtgDadosDocumento.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells); //Redimenciona as colunas de acordo com o conteúdo do campo
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao carregar os dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cboFase_SelectedIndexChanged(object sender, EventArgs e)
@@ -326,8 +341,8 @@ namespace APP_UI
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
                     pnlFase3.Location = new System.Drawing.Point(6, 50);
-                    this.Size = new System.Drawing.Size(402, 397);
-                    gpbObservacao.Location = new System.Drawing.Point(13, 132);
+                    this.Size = new System.Drawing.Size(402, 487);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 222);
                     break;
                 case 4: //MONTAGEM
                     pnlFase1.Visible = false;
@@ -486,6 +501,126 @@ namespace APP_UI
                     this.Size = new System.Drawing.Size(402, 455);
                     gpbObservacao.Location = new System.Drawing.Point(13, 184);
                     break;
+            }
+        }
+
+        private void PicVisualizarObservacao_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmObservacoes frmObservacoes = new frmObservacoes(administracao_dto.OBSERVACAO);
+                frmObservacoes.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DtgDadosDocumento_DoubleClick(object sender, EventArgs e)
+        {
+            TsbDocEdit_Click(sender, e);
+        }
+
+        private void TsbDocAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmCad_Documento frmCad_Documento = new frmCad_Documento(0, administracao_dto.ID_FINANCEIRO);
+                DialogResult result = frmCad_Documento.ShowDialog();
+                if (result == DialogResult.OK)
+                    PopularGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Não foi possível incluir o registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TsbDocEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Setando o mousepointer para ocupado.
+                Cursor.Current = Cursors.WaitCursor;
+
+                //Verifica se existem registros no datagrid
+                if (dtgDadosDocumento.RowCount == 0)
+                {
+                    return;
+                }
+
+                //Visualizando o registro selecionado
+                int Id = Convert.ToInt32(dtgDadosDocumento.CurrentRow.Cells["ID"].Value.ToString());
+                if (Id != 0)
+                {
+                    frmCad_Documento frmCad_Documento = new frmCad_Documento(Id, administracao_dto.ID_FINANCEIRO);
+                    DialogResult result = frmCad_Documento.ShowDialog();
+                    if (result == DialogResult.OK)
+                        PopularGrid();
+                }
+                else
+                {
+                    throw new Exception("O Id do registro selecionado está incorreto!");
+                }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Nenhum registro válido foi selecionado!", "Não foi possível a visualização do registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Não foi possível a visualização do registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void TsbDocDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Setando o mousepointer para ocupado.
+                Cursor.Current = Cursors.WaitCursor;
+
+                //Verifica se existem registros no datagrid
+                if (dtgDadosDocumento.RowCount == 0)
+                {
+                    return;
+                }
+
+                //Visualizando o registro selecionado
+                int Id = Convert.ToInt32(dtgDadosDocumento.CurrentRow.Cells["ID"].Value.ToString());
+                if (Id != 0)
+                {
+                    DialogResult messageResult = MessageBox.Show("Tem certeza que deseja excluir o registro " + Id + "?", "Exclusão", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                    if (messageResult != DialogResult.Yes)
+                        return;
+                    bool result = new DOCUMENTO_FINANCEIRO_BLL().Excluir(Id);
+                    if (result)
+                    {
+                        MessageBox.Show("Registro excluído com sucesso", "Registro excluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        PopularGrid();
+                    }
+                }
+                else
+                {
+                    throw new Exception("O Id do registro selecionado está incorreto!");
+                }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Nenhum registro válido foi selecionado!", "Não foi possível a visualização do registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Não foi possível a visualização do registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
         }
     }

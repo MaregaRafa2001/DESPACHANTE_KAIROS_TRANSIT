@@ -19,6 +19,8 @@ namespace APP_UI
         CLIENTE_BLL CLIENTE_BLL = new CLIENTE_BLL();
         List<PesquisaGeralDTO> ListaCampos = new List<PesquisaGeralDTO>();
         List<FINANCEIRO_DTO> lista_financeiro = new List<FINANCEIRO_DTO>();
+        //Lista de erros
+        List<string> lista_erros = new List<string>();
         //verifica se a grid já foi populada
         bool popularGrid = false;
         //se verdadeiro, ao clica no botão ok ao lado da maskedBox adicionar telefone
@@ -63,7 +65,7 @@ namespace APP_UI
                 cboUFCNH.ValueMember = "Value";
                 cboUFCNH.DisplayMember = "Text";
                 cboUFCNH.DataSource = FormFuncoes.ListaEstados();
-                cboUFCNH.SelectedIndex = -1;
+                cboUFCNH.SelectedValue = "SP";
 
             }
             catch (Exception ex)
@@ -197,54 +199,241 @@ namespace APP_UI
             txtEmail.Text = CLIENTE_DTO.EMAIL;
             txtEmail2.Text = CLIENTE_DTO.EMAIL2;
 
-            //cboTelefone.SelectedValueChanged -= CboTelefone_SelectedValueChanged;
-            //if (CLIENTE_DTO.TELEFONE != null)
-            //{
-            //    CLIENTE_DTO.TELEFONE = new List<TELEFONE_DTO>();
-            //    CLIENTE_DTO.TELEFONE.Insert(0, new TELEFONE_DTO() { NUMERO = "(Adicionar...)", OPERACAO = SysDTO.Operacoes.Leitura, ID = -1 });
-            //}
-            //cboTelefone.DataSource = null;
-            //cboTelefone.DisplayMember = "NUMERO";
-            //cboTelefone.ValueMember = "ID";
-            //cboTelefone.DataSource = CLIENTE_DTO.TELEFONE;
-            //cboTelefone.SelectedIndex = -1;
-            //cboTelefone.SelectedValueChanged += CboTelefone_SelectedValueChanged;
-
-            //cboCelular.SelectedValueChanged -= CboCelular_SelectedValueChanged;
-            //if (CLIENTE_DTO.CELULAR != null)
-            //{
-            //    CLIENTE_DTO.CELULAR = new List<CELULAR_DTO>();
-            //    CLIENTE_DTO.CELULAR.Insert(0, new CELULAR_DTO() { NUMERO = "(Adicionar...)", OPERACAO = SysDTO.Operacoes.Leitura, ID = -1 });
-            //}
-            //cboCelular.DataSource = null;
-            //cboCelular.DisplayMember = "NUMERO";
-            //cboCelular.ValueMember = "ID";
-            //cboCelular.DataSource = CLIENTE_DTO.CELULAR;
-            //cboCelular.SelectedIndex = -1;
-            //cboCelular.SelectedValueChanged += CboCelular_SelectedValueChanged;
-
             txtObs.Text = CLIENTE_DTO.OBSERVACAO;
             //DADOS
             txtNome.Text = CLIENTE_DTO.NOME_COMPLETO;
             mskCPF.Text = CLIENTE_DTO.CPF;
             txtRG.Text = CLIENTE_DTO.RG;
             mskNascimento.Text = CLIENTE_DTO.DATA_NASCIMENTO;
-            txtCNH.Text = CLIENTE_DTO.CNH.ToString();
+            mskNumeroCNH.Text = CLIENTE_DTO.CNH.ToString();
+            cbCategoriaA.Checked = CLIENTE_DTO.CNH_CATEGORIA.Contains("A");
+            PopularRadioCategoriaCNH(CLIENTE_DTO.CNH_CATEGORIA);
+            PopularRadioTipoCNH(CLIENTE_DTO.CNH_ID_TIPO);
             cboUFCNH.Text = CLIENTE_DTO.CNH_UF;
+            txtCNHMunicipio.Text = CLIENTE_DTO.CNH_MUNICIPIO;
             nupPontuacao.Value = CLIENTE_DTO.CNH_PONTUACAO == null ? 0 : Convert.ToInt32(CLIENTE_DTO.CNH_PONTUACAO);
             mskDataVencimentoCNH.Text = CLIENTE_DTO.CNH_DATA_VENCIMENTO.ToString();
-            if (CLIENTE_DTO.PORTARIA)
-                radPortariaSim.Checked = true;
-            else
-                radPortariaNao.Checked = true;
-            if (CLIENTE_DTO.IMPEDIMENTO)
-                radImpedimentoSim.Checked = true;
-            else
-                radImpedimentoNao.Checked = true;
-            if (CLIENTE_DTO.CNH_VENCIDA)
-                radCNHVencidaSim.Checked = true;
-            else
-                radCNHVencidaNao.Checked = true;
+            mskCNHDataEmissao.Text = CLIENTE_DTO.CNH_DATA_EMISSAO.ToString();
+
+            PopularSiglaPCD(CLIENTE_DTO.SIGLA_PCD);
+            PopularRadios(radPortariaSim, radPortariaNao, CLIENTE_DTO.PORTARIA);
+            PopularRadios(radImpedimentoSim, radImpedimentoNao, CLIENTE_DTO.IMPEDIMENTO);
+            PopularRadios(radCNHVencidaSim, radCNHVencidaNao, CLIENTE_DTO.CNH_VENCIDA);
+            PopularRadios(radAtivRemuneradaSim, radAtivRemuneradaNao, CLIENTE_DTO.ATIV_REMUNERADA);
+
+        }
+
+        void PopularSiglaPCD(string PCD)
+        {
+            try
+            {
+                string[] pcds = PCD.Split(',');
+                foreach (string pcd in pcds)
+                {
+                    switch (pcd)
+                    {
+                        case "CETPP":
+                            cbPCDcetpp.Checked = true;
+                            break;
+
+                        case "CETE":
+                            cbPCDcete.Checked = true;
+                            break;
+
+                        case "CETCP":
+                            cbPCDcetcp.Checked = true;
+                            break;
+
+                        case "CETVE":
+                            cbPCDcetve.Checked = true;
+                            break;
+
+                        case "EAR":
+                            cbPCDear.Checked = true;
+                            break;
+
+                        case "CETCI":
+                            cbPCDcetci.Checked = true;
+                            break;
+
+                        case "CMTX":
+                            cbPCDcmtx.Checked = true;
+                            break;
+
+                        case "CMTF":
+                            cbPCDcmtf.Checked = true;
+                            break;
+
+                        case "A":
+                            cbPCDa.Checked = true;
+                            break;
+
+                        case "B":
+                            cbPCDb.Checked = true;
+                            break;
+
+                        case "C":
+                            cbPCDc.Checked = true;
+                            break;
+
+                        case "D":
+                            cbPCDd.Checked = true;
+                            break;
+
+                        case "E":
+                            cbPCDe.Checked = true;
+                            break;
+
+                        case "F":
+                            cbPCDf.Checked = true;
+                            break;
+
+                        case "G":
+                            cbPCDg.Checked = true;
+                            break;
+
+                        case "H":
+                            cbPCDh.Checked = true;
+                            break;
+
+                        case "I":
+                            cbPCDi.Checked = true;
+                            break;
+
+                        case "J":
+                            cbPCDj.Checked = true;
+                            break;
+
+                        case "K":
+                            cbPCDk.Checked = true;
+                            break;
+
+                        case "L":
+                            cbPCDl.Checked = true;
+                            break;
+
+                        case "M":
+                            cbPCDm.Checked = true;
+                            break;
+
+                        case "N":
+                            cbPCDn.Checked = true;
+                            break;
+
+                        case "O":
+                            cbPCDo.Checked = true;
+                            break;
+
+                        case "P":
+                            cbPCDp.Checked = true;
+                            break;
+
+                        case "Q":
+                            cbPCDq.Checked = true;
+                            break;
+
+                        case "R":
+                            cbPCDr.Checked = true;
+                            break;
+
+                        case "S":
+                            cbPCDs.Checked = true;
+                            break;
+
+                        case "T":
+                            cbPCDt.Checked = true;
+                            break;
+
+                        case "U":
+                            cbPCDu.Checked = true;
+                            break;
+
+                        case "V":
+                            cbPCDv.Checked = true;
+                            break;
+
+                        case "X":
+                            cbPCDx.Checked = true;
+                            break;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void PopularRadioCategoriaCNH(string categoria)
+        {
+            try
+            {
+                switch (categoria)
+                {
+                    case string a when a.Contains("E"):
+                        radCategoriaE.Checked = true;
+                        break;
+                    case string a when a.Contains("D"):
+                        radCategoriaD.Checked = true;
+                        break;
+                    case string a when a.Contains("C"):
+                        radCategoriaC.Checked = true;
+                        break;
+                    case string a when a.Contains("B"):
+                        radCategoriaB.Checked = true;
+                        break;
+                    default:
+                        radCategoriaE.Checked = false;
+                        radCategoriaD.Checked = false;
+                        radCategoriaC.Checked = false;
+                        radCategoriaB.Checked = false;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void PopularRadioTipoCNH(int? tipo)
+        {
+            try
+            {
+                switch (tipo)
+                {
+                    case 1:
+                        radTipoCNH.Checked = true;
+                        break;
+                    case 2:
+                        radTipoPGU.Checked = true;
+                        break;
+                    default:
+                        radTipoCNH.Checked = true;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void PopularRadios(RadioButton radSim, RadioButton radNao, bool Valor)
+        {
+            try
+            {
+                if (Valor)
+                    radSim.Checked = true;
+                else
+                    radNao.Checked = true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public void AtualizaDTO()
@@ -256,12 +445,18 @@ namespace APP_UI
                 CLIENTE_DTO.CPF = mskCPF.Text.Replace(".", "").Replace("-", "").Replace(",", "");
                 CLIENTE_DTO.RG = txtRG.Text;
                 CLIENTE_DTO.DATA_NASCIMENTO = mskNascimento.Text;
-                CLIENTE_DTO.CNH = Convert.ToString(txtCNH.Text);
+                CLIENTE_DTO.CNH = Convert.ToString(mskNumeroCNH.Text.Replace("_", ""));
+                CLIENTE_DTO.CNH_CATEGORIA = AtualizaCategoriaCNH();
+                CLIENTE_DTO.CNH_ID_TIPO = (radTipoCNH.Checked ? 1 : 2);
                 CLIENTE_DTO.CNH_UF = cboUFCNH.Text;
+                CLIENTE_DTO.CNH_MUNICIPIO = txtCNHMunicipio.Text;
                 CLIENTE_DTO.CNH_PONTUACAO = Convert.ToInt32(nupPontuacao.Value);
 
                 CLIENTE_DTO.CNH_DATA_VENCIMENTO = FormFuncoes.GetMskDate(mskDataVencimentoCNH);
+                CLIENTE_DTO.CNH_DATA_EMISSAO = FormFuncoes.GetMskDate(mskCNHDataEmissao);
                 CLIENTE_DTO.CNH_VENCIDA = radCNHVencidaSim.Checked ? true : false;
+                CLIENTE_DTO.ATIV_REMUNERADA = radAtivRemuneradaSim.Checked ? true : false;
+                CLIENTE_DTO.SIGLA_PCD = AtualizaSiglaPCD();
                 //ENDEREÇO
                 CLIENTE_DTO.CEP = mskCEP.Text.Replace("-", "");
                 CLIENTE_DTO.BAIRRO = txtBairro.Text;
@@ -297,10 +492,115 @@ namespace APP_UI
             }
         }
 
+        string AtualizaSiglaPCD()
+        {
+            try
+            {
+                
+                string pcd = "";
+
+                if (cbPCDcetpp.Checked)
+                    pcd += "CETPP,";
+                if (cbPCDcete.Checked)
+                    pcd += "CETE,";
+                if (cbPCDcetcp.Checked)
+                    pcd += "CETCP,";
+                if (cbPCDcetve.Checked)
+                    pcd += "CETVE,";
+                if (cbPCDear.Checked)
+                    pcd += "EAR,";
+                if (cbPCDcetci.Checked)
+                    pcd += "CETCI,";
+                if (cbPCDcmtx.Checked)
+                    pcd += "CMTX,";
+                if (cbPCDcmtf.Checked)
+                    pcd += "CMTF,";
+                if (cbPCDa.Checked)
+                    pcd += "A,";
+                if (cbPCDb.Checked)
+                    pcd += "B,";
+                if (cbPCDc.Checked)
+                    pcd += "C,";
+                if (cbPCDd.Checked)
+                    pcd += "D,";
+                if (cbPCDe.Checked)
+                    pcd += "E,";
+                if (cbPCDf.Checked)
+                    pcd += "F,";
+                if (cbPCDg.Checked)
+                    pcd += "G,";
+                if (cbPCDh.Checked)
+                    pcd += "H,";
+                if (cbPCDi.Checked)
+                    pcd += "I,";
+                if (cbPCDj.Checked)
+                    pcd += "J,";
+                if (cbPCDk.Checked)
+                    pcd += "K,";
+                if (cbPCDl.Checked)
+                    pcd += "L,";
+                if (cbPCDm.Checked)
+                    pcd += "M,";
+                if (cbPCDn.Checked)
+                    pcd += "N,";
+                if (cbPCDo.Checked)
+                    pcd += "O,";
+                if (cbPCDp.Checked)
+                    pcd += "P,";
+                if (cbPCDq.Checked)
+                    pcd += "Q,";
+                if (cbPCDr.Checked)
+                    pcd += "R,";
+                if (cbPCDs.Checked)
+                    pcd += "S,";
+                if (cbPCDt.Checked)
+                    pcd += "T,";
+                if (cbPCDu.Checked)
+                    pcd += "U,";
+                if (cbPCDv.Checked)
+                    pcd += "V,";
+                if (cbPCDx.Checked)
+                    pcd += "X,";
+
+                return pcd;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        string AtualizaCategoriaCNH()
+        {
+            try
+            {
+                string categoria = "";
+                categoria = cbCategoriaA.Checked ? "A" : "";
+                if (radCategoriaE.Checked)
+                    categoria += "E";
+                else if (radCategoriaD.Checked)
+                    categoria += "D";
+                else if (radCategoriaC.Checked)
+                    categoria += "C";
+                else if (radCategoriaB.Checked)
+                    categoria += "B";
+                return categoria;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (lista_erros.Count > 0)
+                {
+                    MessageBox.Show("Ajuste o(s) erro(s) informado(s) na parte inferior da tela.", "Erro ao registrar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (ValidarDados(CLIENTE_DTO))
                 {
                     AtualizaDTO();
@@ -318,7 +618,7 @@ namespace APP_UI
                                     new FINANCEIRO_BLL().Set_Financeiro(financeiro);
                                 }
                             }
-                            MessageBox.Show("Cliente alterado com sucesso!", "Cliente inserido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Cliente inserido com sucesso!", "Cliente inserido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.DialogResult = DialogResult.OK;
                         }
                     }
@@ -390,6 +690,11 @@ namespace APP_UI
             {
                 result.Add("LOGRADOURO");
                 txtLogradouro.ForeColor = System.Drawing.Color.Red;
+            }
+            if (string.IsNullOrEmpty(txtRG.Text))
+            {
+                result.Add("RG");
+                txtRG.ForeColor = System.Drawing.Color.Red;
             }
 
 
@@ -508,7 +813,11 @@ namespace APP_UI
 
                 string Cep = FormFuncoes.SomenteNumeros(mskCEP.Text);
 
-                if (Cep.Length < 8)
+                if (Cep.Length == 0)
+                {
+                    return;
+                }
+                else if (Cep.Length < 8)
                 {
                     MessageBox.Show("Cep incorreto,favor informar no minímo 8 números", "Cep incorreto...", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     mskCEP.Focus();
@@ -727,12 +1036,6 @@ namespace APP_UI
                 MessageBox.Show(ex.Message, "Erro ao excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void DtgContrato_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
 
         private void DtgHistorico_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1269,5 +1572,178 @@ namespace APP_UI
             }
         }
         #endregion
+
+        #region Valida campos
+
+        private void ExibeMensagemErro(string Erro = "", bool limparErro = false)
+        {
+            try
+            {
+                if (!limparErro && !lista_erros.Exists(erro => erro == Erro))
+                {
+                    lista_erros.Add(Erro);
+                }
+                else if (limparErro && lista_erros.Exists(erro => erro == Erro))
+                {
+                    lista_erros.RemoveAll(erro => erro == Erro);
+                }
+
+                if (lista_erros.Count == 0)
+                {
+                    tslErro.Visible = false;
+                    tslErro.Text = "";
+                }
+                else
+                {
+                    tslErro.Visible = true;
+                    tslErro.Text = lista_erros.LastOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void MskCPF_Leave(object sender, EventArgs e)
+        {
+            //11
+            try
+            {
+                string CPF = mskCPF.Text.Replace("-", "").Replace(",", "").Trim();
+                if (CPF.Length != 11 && CPF.Length != 0)
+                {
+                    ExibeMensagemErro("CPF inválido");
+                }
+                else
+                {
+                    ExibeMensagemErro("CPF inválido", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TxtRG_Leave(object sender, EventArgs e)
+        {
+            //9
+            try
+            {
+                string RG = txtRG.Text.Replace("-", "");
+                if (RG.Length != 9 || !FormFuncoes.IsNumber(RG))
+                {
+                    ExibeMensagemErro("RG inválido");
+                }
+                else
+                {
+                    ExibeMensagemErro("RG inválido", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskNascimento_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!FormFuncoes.IsDate(mskNascimento.Text))
+                {
+                    ExibeMensagemErro("Data de nascimento inválida");
+                }
+                else
+                {
+                    ExibeMensagemErro("Data de nascimento inválida", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskDataVencimentoCNH_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!FormFuncoes.IsDate(mskDataVencimentoCNH.Text) && mskDataVencimentoCNH.Text.Replace("/", "").Trim().Length > 0)
+                {
+                    ExibeMensagemErro("Data de vencimento da CNH inválida");
+                }
+                else
+                {
+                    ExibeMensagemErro("Data de vencimento da CNH inválida", true);
+                    if (mskDataVencimentoCNH.Text.Replace("/", "").Trim().Length > 0)
+                    {
+                        radCNHVencidaSim.Checked = (DateTime.Parse(mskDataVencimentoCNH.Text) >= DateTime.Now);
+                        radCNHVencidaNao.Checked = (DateTime.Parse(mskDataVencimentoCNH.Text) < DateTime.Now);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskCNHDataEmissao_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!FormFuncoes.IsDate(mskCNHDataEmissao.Text) && mskCNHDataEmissao.Text.Replace("/", "").Trim().Length > 0)
+                {
+                    ExibeMensagemErro("Data de emissão da CNH inválida");
+                }
+                else
+                {
+                    ExibeMensagemErro("Data de emissão da CNH inválida", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MskNumeroCNH_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string CNH = FormFuncoes.SomenteNumeros(mskNumeroCNH.Text.Trim());
+                if (CNH.Length == 11 || CNH.Length == 0)
+                {
+                    ExibeMensagemErro("Número da CNH inválido", true);
+                }
+                else
+                {
+                    ExibeMensagemErro("Número da CNH inválido");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        private void PicLimparCategoriaCNH_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                radCategoriaE.Checked = false;
+                radCategoriaD.Checked = false;
+                radCategoriaC.Checked = false;
+                radCategoriaB.Checked = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -37,10 +37,16 @@ namespace DAL
                     SQL_.Append("RG, ");
                     SQL_.Append("DATA_NASCIMENTO, ");
                     SQL_.Append("CNH, ");
+                    SQL_.Append("CNH_CATEGORIA, ");
+                    SQL_.Append("CNH_ID_TIPO, ");
                     SQL_.Append("CNH_UF, ");
+                    SQL_.Append("CNH_MUNICIPIO, ");
                     SQL_.Append("CNH_PONTUACAO, ");
                     SQL_.Append("CNH_DATA_VENCIMENTO, ");
+                    SQL_.Append("CNH_DATA_EMISSAO, ");
                     SQL_.Append("CNH_VENCIDA, ");
+                    SQL_.Append("ATIV_REMUNERADA, ");
+                    SQL_.Append("SIGLA_PCD, ");
                     //ENDERECO
                     SQL_.Append("CEP, ");
                     SQL_.Append("BAIRRO, ");
@@ -69,10 +75,16 @@ namespace DAL
                     SQL_.Append("@RG, ");
                     SQL_.Append("@DATA_NASCIMENTO, ");
                     SQL_.Append("@CNH, ");
+                    SQL_.Append("@CNH_CATEGORIA, ");
+                    SQL_.Append("@CNH_ID_TIPO, ");
                     SQL_.Append("@CNH_UF, ");
+                    SQL_.Append("@CNH_MUNICIPIO, ");
                     SQL_.Append("@CNH_PONTUACAO, ");
                     SQL_.Append("@CNH_DATA_VENCIMENTO, ");
+                    SQL_.Append("@CNH_DATA_EMISSAO, ");
                     SQL_.Append("@CNH_VENCIDA, ");
+                    SQL_.Append("@ATIV_REMUNERADA, ");
+                    SQL_.Append("@SIGLA_PCD, ");
                     //ENDERECO
                     SQL_.Append("@CEP, ");
                     SQL_.Append("@BAIRRO, ");
@@ -148,10 +160,16 @@ namespace DAL
                     SQL_.Append("RG = @RG, ");
                     SQL_.Append("DATA_NASCIMENTO = @DATA_NASCIMENTO, ");
                     SQL_.Append("CNH = @CNH, ");
+                    SQL_.Append("CNH_CATEGORIA = @CNH_CATEGORIA, ");
+                    SQL_.Append("CNH_ID_TIPO = @CNH_ID_TIPO, ");
                     SQL_.Append("CNH_UF = @CNH_UF, ");
+                    SQL_.Append("CNH_MUNICIPIO = @CNH_MUNICIPIO, ");
                     SQL_.Append("CNH_PONTUACAO = @CNH_PONTUACAO, ");
                     SQL_.Append("CNH_DATA_VENCIMENTO = @CNH_DATA_VENCIMENTO, ");
+                    SQL_.Append("CNH_DATA_EMISSAO = @CNH_DATA_EMISSAO, ");
                     SQL_.Append("CNH_VENCIDA = @CNH_VENCIDA, ");
+                    SQL_.Append("ATIV_REMUNERADA = @ATIV_REMUNERADA, ");
+                    SQL_.Append("SIGLA_PCD = @SIGLA_PCD, ");
                     //ENDERECO
                     SQL_.Append("CEP = @CEP, ");
                     SQL_.Append("BAIRRO = @BAIRRO, ");
@@ -246,10 +264,16 @@ namespace DAL
             }
             cmd.Parameters.AddWithValue("@DATA_NASCIMENTO", DTO.DATA_NASCIMENTO);
             cmd.Parameters.AddWithValue("@CNH", DTO.CNH);
+            cmd.Parameters.AddWithValue("@CNH_CATEGORIA", DTO.CNH_CATEGORIA);
+            cmd.Parameters.AddWithValue("@CNH_ID_TIPO", DTO.CNH_ID_TIPO);
             cmd.Parameters.AddWithValue("@CNH_UF", DTO.CNH_UF);
+            cmd.Parameters.AddWithValue("@CNH_MUNICIPIO", DTO.CNH_MUNICIPIO);
             cmd.Parameters.AddWithValue("@CNH_PONTUACAO", DTO.CNH_PONTUACAO);
             cmd.Parameters.AddWithValue("@CNH_DATA_VENCIMENTO", DTO.CNH_DATA_VENCIMENTO);
+            cmd.Parameters.AddWithValue("@CNH_DATA_EMISSAO", DTO.CNH_DATA_EMISSAO);
             cmd.Parameters.AddWithValue("@CNH_VENCIDA", DTO.CNH_VENCIDA);
+            cmd.Parameters.AddWithValue("@ATIV_REMUNERADA", DTO.ATIV_REMUNERADA);
+            cmd.Parameters.AddWithValue("@SIGLA_PCD", DTO.SIGLA_PCD);
             //ENDEREÇO
             cmd.Parameters.AddWithValue("@CEP", DTO.CEP.Replace("-", ""));
             cmd.Parameters.AddWithValue("@BAIRRO", DTO.BAIRRO);
@@ -352,11 +376,17 @@ namespace DAL
             Cliente.DATA_NASCIMENTO = dtr["DATA_NASCIMENTO"] == DBNull.Value ? "" : dtr["DATA_NASCIMENTO"].ToString();
             if (!string.IsNullOrEmpty(Cliente.DATA_NASCIMENTO) && Cliente.DATA_NASCIMENTO.Length > 10)
                 Cliente.DATA_NASCIMENTO = Cliente.DATA_NASCIMENTO.Substring(0, 10);
+            Cliente.CNH_CATEGORIA = dtr["CNH_CATEGORIA"].ToString();
+            Cliente.CNH_ID_TIPO = dtr["CNH_ID_TIPO"] == DBNull.Value ? (int?)null : Convert.ToInt32(dtr["CNH_ID_TIPO"]);
             Cliente.CNH = Convert.ToString(dtr["CNH"]);
             Cliente.CNH_UF = dtr["CNH_UF"].ToString();
+            Cliente.CNH_MUNICIPIO = dtr["CNH_MUNICIPIO"].ToString();
             Cliente.CNH_PONTUACAO = dtr["CNH_PONTUACAO"] == DBNull.Value ? (int?)null : Convert.ToInt32(dtr["CNH_PONTUACAO"]);
             Cliente.CNH_DATA_VENCIMENTO = dtr["CNH_DATA_VENCIMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["CNH_DATA_VENCIMENTO"]);
+            Cliente.CNH_DATA_EMISSAO = dtr["CNH_DATA_EMISSAO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["CNH_DATA_EMISSAO"]);
             Cliente.CNH_VENCIDA = dtr["CNH_VENCIDA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["CNH_VENCIDA"]);
+            Cliente.ATIV_REMUNERADA = dtr["ATIV_REMUNERADA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["ATIV_REMUNERADA"]);
+            Cliente.SIGLA_PCD = dtr["SIGLA_PCD"] == DBNull.Value ? "" : dtr["SIGLA_PCD"].ToString();
             //ENDERECO
             Cliente.CEP = dtr["CEP"].ToString();
             Cliente.BAIRRO = dtr["BAIRRO"].ToString();

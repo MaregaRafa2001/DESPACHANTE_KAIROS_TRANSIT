@@ -20,11 +20,18 @@ namespace DTO
         public string DATA_NASCIMENTO { get; set; }
         public string RG { get; set; }
         public string CPF { get; set; }
+        //CNH - PGU
         public string CNH { get; set; }
+        public string CNH_CATEGORIA { get; set; }
+        public int? CNH_ID_TIPO { get; set; }
         public DateTime? CNH_DATA_VENCIMENTO { get; set; }
+        public DateTime? CNH_DATA_EMISSAO { get; set; }
         public bool CNH_VENCIDA { get; set; }
         public int? CNH_PONTUACAO { get; set; }
         public string CNH_UF { get; set; }
+        public string CNH_MUNICIPIO { get; set; }
+        public bool ATIV_REMUNERADA { get; set; }
+        public string SIGLA_PCD { get; set; }
 
         //ENDEREÇO
         public string LOGRADOURO { get; set; }

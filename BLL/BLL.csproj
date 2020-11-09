@@ -50,6 +50,7 @@
     <Compile Include="CONSULTOR_BLL.cs" />
     <Compile Include="CONTRATO_BLL.cs" />
     <Compile Include="ADMINISTRACAO_BLL.cs" />
+    <Compile Include="DOCUMENTO_FINANCEIRO_BLL.cs" />
     <Compile Include="FINANCEIRO_BLL.cs" />
     <Compile Include="FORMA_PAGAMENTO_BLL.cs" />
     <Compile Include="GLOBAL_BLL.cs" />

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCad_Cliente));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -42,21 +43,70 @@
             this.mskNascimento = new System.Windows.Forms.MaskedTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tssMSG = new System.Windows.Forms.ToolStripLabel();
+            this.tslErro = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.radCNHVencidaNao = new System.Windows.Forms.RadioButton();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.cbPCDd = new System.Windows.Forms.CheckBox();
+            this.cbPCDx = new System.Windows.Forms.CheckBox();
+            this.cbPCDv = new System.Windows.Forms.CheckBox();
+            this.cbPCDu = new System.Windows.Forms.CheckBox();
+            this.cbPCDt = new System.Windows.Forms.CheckBox();
+            this.cbPCDs = new System.Windows.Forms.CheckBox();
+            this.cbPCDr = new System.Windows.Forms.CheckBox();
+            this.cbPCDq = new System.Windows.Forms.CheckBox();
+            this.cbPCDp = new System.Windows.Forms.CheckBox();
+            this.cbPCDo = new System.Windows.Forms.CheckBox();
+            this.cbPCDn = new System.Windows.Forms.CheckBox();
+            this.cbPCDm = new System.Windows.Forms.CheckBox();
+            this.cbPCDl = new System.Windows.Forms.CheckBox();
+            this.cbPCDk = new System.Windows.Forms.CheckBox();
+            this.cbPCDj = new System.Windows.Forms.CheckBox();
+            this.cbPCDi = new System.Windows.Forms.CheckBox();
+            this.cbPCDh = new System.Windows.Forms.CheckBox();
+            this.cbPCDg = new System.Windows.Forms.CheckBox();
+            this.cbPCDf = new System.Windows.Forms.CheckBox();
+            this.cbPCDe = new System.Windows.Forms.CheckBox();
+            this.cbPCDc = new System.Windows.Forms.CheckBox();
+            this.cbPCDb = new System.Windows.Forms.CheckBox();
+            this.cbPCDa = new System.Windows.Forms.CheckBox();
+            this.cbPCDcmtf = new System.Windows.Forms.CheckBox();
+            this.cbPCDcmtx = new System.Windows.Forms.CheckBox();
+            this.cbPCDcetci = new System.Windows.Forms.CheckBox();
+            this.cbPCDear = new System.Windows.Forms.CheckBox();
+            this.cbPCDcetve = new System.Windows.Forms.CheckBox();
+            this.cbPCDcetcp = new System.Windows.Forms.CheckBox();
+            this.cbPCDcete = new System.Windows.Forms.CheckBox();
+            this.cbPCDcetpp = new System.Windows.Forms.CheckBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.radAtivRemuneradaSim = new System.Windows.Forms.RadioButton();
+            this.radAtivRemuneradaNao = new System.Windows.Forms.RadioButton();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.radCNHVencidaSim = new System.Windows.Forms.RadioButton();
+            this.radCNHVencidaNao = new System.Windows.Forms.RadioButton();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.radTipoCNH = new System.Windows.Forms.RadioButton();
+            this.radTipoPGU = new System.Windows.Forms.RadioButton();
+            this.label25 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.picLimparCategoriaCNH = new System.Windows.Forms.PictureBox();
+            this.radCategoriaE = new System.Windows.Forms.RadioButton();
+            this.radCategoriaD = new System.Windows.Forms.RadioButton();
+            this.radCategoriaC = new System.Windows.Forms.RadioButton();
+            this.radCategoriaB = new System.Windows.Forms.RadioButton();
+            this.cbCategoriaA = new System.Windows.Forms.CheckBox();
+            this.mskNumeroCNH = new System.Windows.Forms.MaskedTextBox();
+            this.txtCNHMunicipio = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.mskCNHDataEmissao = new System.Windows.Forms.MaskedTextBox();
+            this.cboUFCNH = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.mskDataVencimentoCNH = new System.Windows.Forms.MaskedTextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.nupPontuacao = new System.Windows.Forms.NumericUpDown();
-            this.cboUFCNH = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtCNH = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.nupPontuacao = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnExcluirCelular = new System.Windows.Forms.Button();
             this.btnExcluirTelefone = new System.Windows.Forms.Button();
@@ -115,11 +165,17 @@
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLimparCategoriaCNH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupPontuacao)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -151,7 +207,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label6.Location = new System.Drawing.Point(550, 6);
+            this.label6.Location = new System.Drawing.Point(583, 6);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 5;
@@ -161,7 +217,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label8.Location = new System.Drawing.Point(454, 6);
+            this.label8.Location = new System.Drawing.Point(487, 6);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 7;
@@ -172,16 +228,17 @@
             this.txtNome.Location = new System.Drawing.Point(12, 22);
             this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(439, 20);
+            this.txtNome.Size = new System.Drawing.Size(472, 20);
             this.txtNome.TabIndex = 1;
             // 
             // txtRG
             // 
-            this.txtRG.Location = new System.Drawing.Point(553, 22);
+            this.txtRG.Location = new System.Drawing.Point(586, 22);
             this.txtRG.MaxLength = 12;
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(109, 20);
             this.txtRG.TabIndex = 3;
+            this.txtRG.Leave += new System.EventHandler(this.TxtRG_Leave);
             // 
             // btnCancelar
             // 
@@ -207,20 +264,21 @@
             // 
             // mskCPF
             // 
-            this.mskCPF.Location = new System.Drawing.Point(457, 22);
+            this.mskCPF.Location = new System.Drawing.Point(490, 22);
             this.mskCPF.Mask = "000.000.000-00";
             this.mskCPF.Name = "mskCPF";
             this.mskCPF.Size = new System.Drawing.Size(90, 20);
             this.mskCPF.TabIndex = 2;
             this.mskCPF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskCPF.Click += new System.EventHandler(this.MskCPF_Click);
+            this.mskCPF.Leave += new System.EventHandler(this.MskCPF_Leave);
             // 
             // txtData
             // 
             this.txtData.AccessibleRole = System.Windows.Forms.AccessibleRole.Dialog;
             this.txtData.AutoSize = true;
             this.txtData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtData.Location = new System.Drawing.Point(665, 6);
+            this.txtData.Location = new System.Drawing.Point(698, 6);
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(105, 13);
             this.txtData.TabIndex = 43;
@@ -228,7 +286,7 @@
             // 
             // mskNascimento
             // 
-            this.mskNascimento.Location = new System.Drawing.Point(668, 22);
+            this.mskNascimento.Location = new System.Drawing.Point(701, 22);
             this.mskNascimento.Mask = "00/00/0000";
             this.mskNascimento.Name = "mskNascimento";
             this.mskNascimento.Size = new System.Drawing.Size(110, 20);
@@ -236,13 +294,15 @@
             this.mskNascimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskNascimento.ValidatingType = typeof(System.DateTime);
             this.mskNascimento.Click += new System.EventHandler(this.MskNascimento_Click);
+            this.mskNascimento.Leave += new System.EventHandler(this.MskNascimento_Leave);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssMSG});
+            this.tssMSG,
+            this.tslErro});
             this.toolStrip1.Location = new System.Drawing.Point(0, 624);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(827, 25);
@@ -254,6 +314,13 @@
             this.tssMSG.Name = "tssMSG";
             this.tssMSG.Size = new System.Drawing.Size(0, 22);
             this.tssMSG.Visible = false;
+            // 
+            // tslErro
+            // 
+            this.tslErro.ForeColor = System.Drawing.Color.Red;
+            this.tslErro.Name = "tslErro";
+            this.tslErro.Size = new System.Drawing.Size(0, 22);
+            this.tslErro.Visible = false;
             // 
             // tabControl1
             // 
@@ -282,142 +349,683 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.panel3);
+            this.groupBox4.Controls.Add(this.groupBox9);
+            this.groupBox4.Controls.Add(this.groupBox8);
+            this.groupBox4.Controls.Add(this.groupBox7);
+            this.groupBox4.Controls.Add(this.groupBox6);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Controls.Add(this.groupBox5);
+            this.groupBox4.Controls.Add(this.mskNumeroCNH);
+            this.groupBox4.Controls.Add(this.txtCNHMunicipio);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.label23);
+            this.groupBox4.Controls.Add(this.mskCNHDataEmissao);
+            this.groupBox4.Controls.Add(this.cboUFCNH);
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.mskDataVencimentoCNH);
             this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.nupPontuacao);
-            this.groupBox4.Controls.Add(this.cboUFCNH);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.txtCNH);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Location = new System.Drawing.Point(513, 6);
+            this.groupBox4.Controls.Add(this.nupPontuacao);
+            this.groupBox4.Location = new System.Drawing.Point(396, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(259, 136);
+            this.groupBox4.Size = new System.Drawing.Size(376, 325);
             this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "CNH";
             // 
-            // panel3
+            // groupBox9
             // 
-            this.panel3.Controls.Add(this.label21);
-            this.panel3.Controls.Add(this.radCNHVencidaNao);
-            this.panel3.Controls.Add(this.radCNHVencidaSim);
-            this.panel3.Location = new System.Drawing.Point(5, 99);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(248, 33);
-            this.panel3.TabIndex = 452;
+            this.groupBox9.Controls.Add(this.cbPCDd);
+            this.groupBox9.Controls.Add(this.cbPCDx);
+            this.groupBox9.Controls.Add(this.cbPCDv);
+            this.groupBox9.Controls.Add(this.cbPCDu);
+            this.groupBox9.Controls.Add(this.cbPCDt);
+            this.groupBox9.Controls.Add(this.cbPCDs);
+            this.groupBox9.Controls.Add(this.cbPCDr);
+            this.groupBox9.Controls.Add(this.cbPCDq);
+            this.groupBox9.Controls.Add(this.cbPCDp);
+            this.groupBox9.Controls.Add(this.cbPCDo);
+            this.groupBox9.Controls.Add(this.cbPCDn);
+            this.groupBox9.Controls.Add(this.cbPCDm);
+            this.groupBox9.Controls.Add(this.cbPCDl);
+            this.groupBox9.Controls.Add(this.cbPCDk);
+            this.groupBox9.Controls.Add(this.cbPCDj);
+            this.groupBox9.Controls.Add(this.cbPCDi);
+            this.groupBox9.Controls.Add(this.cbPCDh);
+            this.groupBox9.Controls.Add(this.cbPCDg);
+            this.groupBox9.Controls.Add(this.cbPCDf);
+            this.groupBox9.Controls.Add(this.cbPCDe);
+            this.groupBox9.Controls.Add(this.cbPCDc);
+            this.groupBox9.Controls.Add(this.cbPCDb);
+            this.groupBox9.Controls.Add(this.cbPCDa);
+            this.groupBox9.Controls.Add(this.cbPCDcmtf);
+            this.groupBox9.Controls.Add(this.cbPCDcmtx);
+            this.groupBox9.Controls.Add(this.cbPCDcetci);
+            this.groupBox9.Controls.Add(this.cbPCDear);
+            this.groupBox9.Controls.Add(this.cbPCDcetve);
+            this.groupBox9.Controls.Add(this.cbPCDcetcp);
+            this.groupBox9.Controls.Add(this.cbPCDcete);
+            this.groupBox9.Controls.Add(this.cbPCDcetpp);
+            this.groupBox9.Location = new System.Drawing.Point(7, 207);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(363, 112);
+            this.groupBox9.TabIndex = 471;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Siglas PcD";
             // 
-            // label21
+            // cbPCDd
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(8, 8);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 13);
-            this.label21.TabIndex = 36;
-            this.label21.Text = "CNH Vencida:";
+            this.cbPCDd.AutoSize = true;
+            this.cbPCDd.Location = new System.Drawing.Point(139, 87);
+            this.cbPCDd.Name = "cbPCDd";
+            this.cbPCDd.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDd.TabIndex = 31;
+            this.cbPCDd.Text = "D";
+            this.cbPCDd.UseVisualStyleBackColor = true;
             // 
-            // radCNHVencidaNao
+            // cbPCDx
             // 
-            this.radCNHVencidaNao.AutoSize = true;
-            this.radCNHVencidaNao.Location = new System.Drawing.Point(131, 8);
-            this.radCNHVencidaNao.Margin = new System.Windows.Forms.Padding(2);
-            this.radCNHVencidaNao.Name = "radCNHVencidaNao";
-            this.radCNHVencidaNao.Size = new System.Drawing.Size(45, 17);
-            this.radCNHVencidaNao.TabIndex = 38;
-            this.radCNHVencidaNao.Text = "Não";
-            this.radCNHVencidaNao.UseVisualStyleBackColor = true;
+            this.cbPCDx.AutoSize = true;
+            this.cbPCDx.Location = new System.Drawing.Point(321, 67);
+            this.cbPCDx.Name = "cbPCDx";
+            this.cbPCDx.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDx.TabIndex = 30;
+            this.cbPCDx.Text = "X";
+            this.cbPCDx.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDv
+            // 
+            this.cbPCDv.AutoSize = true;
+            this.cbPCDv.Location = new System.Drawing.Point(321, 43);
+            this.cbPCDv.Name = "cbPCDv";
+            this.cbPCDv.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDv.TabIndex = 29;
+            this.cbPCDv.Text = "V";
+            this.cbPCDv.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDu
+            // 
+            this.cbPCDu.AutoSize = true;
+            this.cbPCDu.Location = new System.Drawing.Point(320, 18);
+            this.cbPCDu.Name = "cbPCDu";
+            this.cbPCDu.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDu.TabIndex = 28;
+            this.cbPCDu.Text = "U";
+            this.cbPCDu.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDt
+            // 
+            this.cbPCDt.AutoSize = true;
+            this.cbPCDt.Location = new System.Drawing.Point(285, 87);
+            this.cbPCDt.Name = "cbPCDt";
+            this.cbPCDt.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDt.TabIndex = 27;
+            this.cbPCDt.Text = "T";
+            this.cbPCDt.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDs
+            // 
+            this.cbPCDs.AutoSize = true;
+            this.cbPCDs.Location = new System.Drawing.Point(285, 64);
+            this.cbPCDs.Name = "cbPCDs";
+            this.cbPCDs.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDs.TabIndex = 26;
+            this.cbPCDs.Text = "S";
+            this.cbPCDs.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDr
+            // 
+            this.cbPCDr.AutoSize = true;
+            this.cbPCDr.Location = new System.Drawing.Point(285, 43);
+            this.cbPCDr.Name = "cbPCDr";
+            this.cbPCDr.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDr.TabIndex = 25;
+            this.cbPCDr.Text = "R";
+            this.cbPCDr.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDq
+            // 
+            this.cbPCDq.AutoSize = true;
+            this.cbPCDq.Location = new System.Drawing.Point(285, 20);
+            this.cbPCDq.Name = "cbPCDq";
+            this.cbPCDq.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDq.TabIndex = 24;
+            this.cbPCDq.Text = "Q";
+            this.cbPCDq.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDp
+            // 
+            this.cbPCDp.AutoSize = true;
+            this.cbPCDp.Location = new System.Drawing.Point(253, 87);
+            this.cbPCDp.Name = "cbPCDp";
+            this.cbPCDp.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDp.TabIndex = 23;
+            this.cbPCDp.Text = "P";
+            this.cbPCDp.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDo
+            // 
+            this.cbPCDo.AutoSize = true;
+            this.cbPCDo.Location = new System.Drawing.Point(252, 64);
+            this.cbPCDo.Name = "cbPCDo";
+            this.cbPCDo.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDo.TabIndex = 21;
+            this.cbPCDo.Text = "O";
+            this.cbPCDo.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDn
+            // 
+            this.cbPCDn.AutoSize = true;
+            this.cbPCDn.Location = new System.Drawing.Point(252, 43);
+            this.cbPCDn.Name = "cbPCDn";
+            this.cbPCDn.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDn.TabIndex = 20;
+            this.cbPCDn.Text = "N";
+            this.cbPCDn.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDm
+            // 
+            this.cbPCDm.AutoSize = true;
+            this.cbPCDm.Location = new System.Drawing.Point(251, 20);
+            this.cbPCDm.Name = "cbPCDm";
+            this.cbPCDm.Size = new System.Drawing.Size(35, 17);
+            this.cbPCDm.TabIndex = 19;
+            this.cbPCDm.Text = "M";
+            this.cbPCDm.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDl
+            // 
+            this.cbPCDl.AutoSize = true;
+            this.cbPCDl.Location = new System.Drawing.Point(213, 87);
+            this.cbPCDl.Name = "cbPCDl";
+            this.cbPCDl.Size = new System.Drawing.Size(32, 17);
+            this.cbPCDl.TabIndex = 18;
+            this.cbPCDl.Text = "L";
+            this.cbPCDl.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDk
+            // 
+            this.cbPCDk.AutoSize = true;
+            this.cbPCDk.Location = new System.Drawing.Point(214, 64);
+            this.cbPCDk.Name = "cbPCDk";
+            this.cbPCDk.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDk.TabIndex = 17;
+            this.cbPCDk.Text = "K";
+            this.cbPCDk.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDj
+            // 
+            this.cbPCDj.AutoSize = true;
+            this.cbPCDj.Location = new System.Drawing.Point(214, 41);
+            this.cbPCDj.Name = "cbPCDj";
+            this.cbPCDj.Size = new System.Drawing.Size(31, 17);
+            this.cbPCDj.TabIndex = 16;
+            this.cbPCDj.Text = "J";
+            this.cbPCDj.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDi
+            // 
+            this.cbPCDi.AutoSize = true;
+            this.cbPCDi.Location = new System.Drawing.Point(213, 18);
+            this.cbPCDi.Name = "cbPCDi";
+            this.cbPCDi.Size = new System.Drawing.Size(29, 17);
+            this.cbPCDi.TabIndex = 15;
+            this.cbPCDi.Text = "I";
+            this.cbPCDi.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDh
+            // 
+            this.cbPCDh.AutoSize = true;
+            this.cbPCDh.Location = new System.Drawing.Point(173, 87);
+            this.cbPCDh.Name = "cbPCDh";
+            this.cbPCDh.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDh.TabIndex = 14;
+            this.cbPCDh.Text = "H";
+            this.cbPCDh.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDg
+            // 
+            this.cbPCDg.AutoSize = true;
+            this.cbPCDg.Location = new System.Drawing.Point(173, 65);
+            this.cbPCDg.Name = "cbPCDg";
+            this.cbPCDg.Size = new System.Drawing.Size(34, 17);
+            this.cbPCDg.TabIndex = 13;
+            this.cbPCDg.Text = "G";
+            this.cbPCDg.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDf
+            // 
+            this.cbPCDf.AutoSize = true;
+            this.cbPCDf.Location = new System.Drawing.Point(173, 41);
+            this.cbPCDf.Name = "cbPCDf";
+            this.cbPCDf.Size = new System.Drawing.Size(32, 17);
+            this.cbPCDf.TabIndex = 12;
+            this.cbPCDf.Text = "F";
+            this.cbPCDf.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDe
+            // 
+            this.cbPCDe.AutoSize = true;
+            this.cbPCDe.Location = new System.Drawing.Point(173, 18);
+            this.cbPCDe.Name = "cbPCDe";
+            this.cbPCDe.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDe.TabIndex = 11;
+            this.cbPCDe.Text = "E";
+            this.cbPCDe.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDc
+            // 
+            this.cbPCDc.AutoSize = true;
+            this.cbPCDc.Location = new System.Drawing.Point(139, 66);
+            this.cbPCDc.Name = "cbPCDc";
+            this.cbPCDc.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDc.TabIndex = 10;
+            this.cbPCDc.Text = "C";
+            this.cbPCDc.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDb
+            // 
+            this.cbPCDb.AutoSize = true;
+            this.cbPCDb.Location = new System.Drawing.Point(139, 43);
+            this.cbPCDb.Name = "cbPCDb";
+            this.cbPCDb.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDb.TabIndex = 9;
+            this.cbPCDb.Text = "B";
+            this.cbPCDb.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDa
+            // 
+            this.cbPCDa.AutoSize = true;
+            this.cbPCDa.Location = new System.Drawing.Point(139, 20);
+            this.cbPCDa.Name = "cbPCDa";
+            this.cbPCDa.Size = new System.Drawing.Size(33, 17);
+            this.cbPCDa.TabIndex = 8;
+            this.cbPCDa.Text = "A";
+            this.cbPCDa.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDcmtf
+            // 
+            this.cbPCDcmtf.AutoSize = true;
+            this.cbPCDcmtf.Location = new System.Drawing.Point(70, 87);
+            this.cbPCDcmtf.Name = "cbPCDcmtf";
+            this.cbPCDcmtf.Size = new System.Drawing.Size(55, 17);
+            this.cbPCDcmtf.TabIndex = 7;
+            this.cbPCDcmtf.Text = "CMTF";
+            this.cbPCDcmtf.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDcmtx
+            // 
+            this.cbPCDcmtx.AutoSize = true;
+            this.cbPCDcmtx.Location = new System.Drawing.Point(70, 65);
+            this.cbPCDcmtx.Name = "cbPCDcmtx";
+            this.cbPCDcmtx.Size = new System.Drawing.Size(56, 17);
+            this.cbPCDcmtx.TabIndex = 6;
+            this.cbPCDcmtx.Text = "CMTX";
+            this.cbPCDcmtx.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDcetci
+            // 
+            this.cbPCDcetci.AutoSize = true;
+            this.cbPCDcetci.Location = new System.Drawing.Point(70, 42);
+            this.cbPCDcetci.Name = "cbPCDcetci";
+            this.cbPCDcetci.Size = new System.Drawing.Size(63, 17);
+            this.cbPCDcetci.TabIndex = 5;
+            this.cbPCDcetci.Text = "CETCI  ";
+            this.cbPCDcetci.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDear
+            // 
+            this.cbPCDear.AutoSize = true;
+            this.cbPCDear.Location = new System.Drawing.Point(70, 20);
+            this.cbPCDear.Name = "cbPCDear";
+            this.cbPCDear.Size = new System.Drawing.Size(51, 17);
+            this.cbPCDear.TabIndex = 4;
+            this.cbPCDear.Text = "EAR ";
+            this.cbPCDear.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDcetve
+            // 
+            this.cbPCDcetve.AutoSize = true;
+            this.cbPCDcetve.Location = new System.Drawing.Point(6, 88);
+            this.cbPCDcetve.Name = "cbPCDcetve";
+            this.cbPCDcetve.Size = new System.Drawing.Size(64, 17);
+            this.cbPCDcetve.TabIndex = 3;
+            this.cbPCDcetve.Text = "CETVE ";
+            this.cbPCDcetve.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDcetcp
+            // 
+            this.cbPCDcetcp.AutoSize = true;
+            this.cbPCDcetcp.Location = new System.Drawing.Point(7, 66);
+            this.cbPCDcetcp.Name = "cbPCDcetcp";
+            this.cbPCDcetcp.Size = new System.Drawing.Size(64, 17);
+            this.cbPCDcetcp.TabIndex = 2;
+            this.cbPCDcetcp.Text = "CETCP ";
+            this.cbPCDcetcp.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDcete
+            // 
+            this.cbPCDcete.AutoSize = true;
+            this.cbPCDcete.Location = new System.Drawing.Point(7, 43);
+            this.cbPCDcete.Name = "cbPCDcete";
+            this.cbPCDcete.Size = new System.Drawing.Size(54, 17);
+            this.cbPCDcete.TabIndex = 1;
+            this.cbPCDcete.Text = "CETE";
+            this.cbPCDcete.UseVisualStyleBackColor = true;
+            // 
+            // cbPCDcetpp
+            // 
+            this.cbPCDcetpp.AutoSize = true;
+            this.cbPCDcetpp.Location = new System.Drawing.Point(7, 20);
+            this.cbPCDcetpp.Name = "cbPCDcetpp";
+            this.cbPCDcetpp.Size = new System.Drawing.Size(64, 17);
+            this.cbPCDcetpp.TabIndex = 0;
+            this.cbPCDcetpp.Text = "CETPP ";
+            this.cbPCDcetpp.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.radAtivRemuneradaSim);
+            this.groupBox8.Controls.Add(this.radAtivRemuneradaNao);
+            this.groupBox8.Location = new System.Drawing.Point(260, 113);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(110, 47);
+            this.groupBox8.TabIndex = 470;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Remunerada";
+            // 
+            // radAtivRemuneradaSim
+            // 
+            this.radAtivRemuneradaSim.AutoSize = true;
+            this.radAtivRemuneradaSim.Location = new System.Drawing.Point(9, 19);
+            this.radAtivRemuneradaSim.Margin = new System.Windows.Forms.Padding(2);
+            this.radAtivRemuneradaSim.Name = "radAtivRemuneradaSim";
+            this.radAtivRemuneradaSim.Size = new System.Drawing.Size(42, 17);
+            this.radAtivRemuneradaSim.TabIndex = 37;
+            this.radAtivRemuneradaSim.Text = "Sim";
+            this.radAtivRemuneradaSim.UseVisualStyleBackColor = true;
+            // 
+            // radAtivRemuneradaNao
+            // 
+            this.radAtivRemuneradaNao.AutoSize = true;
+            this.radAtivRemuneradaNao.Checked = true;
+            this.radAtivRemuneradaNao.Location = new System.Drawing.Point(56, 19);
+            this.radAtivRemuneradaNao.Margin = new System.Windows.Forms.Padding(2);
+            this.radAtivRemuneradaNao.Name = "radAtivRemuneradaNao";
+            this.radAtivRemuneradaNao.Size = new System.Drawing.Size(45, 17);
+            this.radAtivRemuneradaNao.TabIndex = 38;
+            this.radAtivRemuneradaNao.TabStop = true;
+            this.radAtivRemuneradaNao.Text = "Não";
+            this.radAtivRemuneradaNao.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.radCNHVencidaSim);
+            this.groupBox7.Controls.Add(this.radCNHVencidaNao);
+            this.groupBox7.Location = new System.Drawing.Point(136, 113);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(118, 47);
+            this.groupBox7.TabIndex = 469;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "CNH Vencida";
             // 
             // radCNHVencidaSim
             // 
             this.radCNHVencidaSim.AutoSize = true;
-            this.radCNHVencidaSim.Checked = true;
-            this.radCNHVencidaSim.Location = new System.Drawing.Point(87, 8);
+            this.radCNHVencidaSim.Location = new System.Drawing.Point(9, 19);
             this.radCNHVencidaSim.Margin = new System.Windows.Forms.Padding(2);
             this.radCNHVencidaSim.Name = "radCNHVencidaSim";
             this.radCNHVencidaSim.Size = new System.Drawing.Size(42, 17);
             this.radCNHVencidaSim.TabIndex = 37;
-            this.radCNHVencidaSim.TabStop = true;
             this.radCNHVencidaSim.Text = "Sim";
             this.radCNHVencidaSim.UseVisualStyleBackColor = true;
             // 
-            // label18
+            // radCNHVencidaNao
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label18.Location = new System.Drawing.Point(105, 58);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(106, 13);
-            this.label18.TabIndex = 451;
-            this.label18.Text = "Data de vencimento:";
+            this.radCNHVencidaNao.AutoSize = true;
+            this.radCNHVencidaNao.Checked = true;
+            this.radCNHVencidaNao.Location = new System.Drawing.Point(56, 19);
+            this.radCNHVencidaNao.Margin = new System.Windows.Forms.Padding(2);
+            this.radCNHVencidaNao.Name = "radCNHVencidaNao";
+            this.radCNHVencidaNao.Size = new System.Drawing.Size(45, 17);
+            this.radCNHVencidaNao.TabIndex = 38;
+            this.radCNHVencidaNao.TabStop = true;
+            this.radCNHVencidaNao.Text = "Não";
+            this.radCNHVencidaNao.UseVisualStyleBackColor = true;
             // 
-            // mskDataVencimentoCNH
+            // groupBox6
             // 
-            this.mskDataVencimentoCNH.Location = new System.Drawing.Point(106, 73);
-            this.mskDataVencimentoCNH.Mask = "00/00/0000";
-            this.mskDataVencimentoCNH.Name = "mskDataVencimentoCNH";
-            this.mskDataVencimentoCNH.Size = new System.Drawing.Size(147, 20);
-            this.mskDataVencimentoCNH.TabIndex = 12;
-            this.mskDataVencimentoCNH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mskDataVencimentoCNH.ValidatingType = typeof(System.DateTime);
-            this.mskDataVencimentoCNH.Click += new System.EventHandler(this.MskDataVencimentoCNH_Click);
+            this.groupBox6.Controls.Add(this.radTipoCNH);
+            this.groupBox6.Controls.Add(this.radTipoPGU);
+            this.groupBox6.Location = new System.Drawing.Point(6, 14);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(137, 47);
+            this.groupBox6.TabIndex = 468;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Tipo";
             // 
-            // label17
+            // radTipoCNH
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label17.Location = new System.Drawing.Point(13, 58);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 13);
-            this.label17.TabIndex = 449;
-            this.label17.Text = "Pontuação:";
+            this.radTipoCNH.AutoSize = true;
+            this.radTipoCNH.Checked = true;
+            this.radTipoCNH.Location = new System.Drawing.Point(16, 21);
+            this.radTipoCNH.Margin = new System.Windows.Forms.Padding(2);
+            this.radTipoCNH.Name = "radTipoCNH";
+            this.radTipoCNH.Size = new System.Drawing.Size(48, 17);
+            this.radTipoCNH.TabIndex = 463;
+            this.radTipoCNH.TabStop = true;
+            this.radTipoCNH.Text = "CNH";
+            this.radTipoCNH.UseVisualStyleBackColor = true;
             // 
-            // nupPontuacao
+            // radTipoPGU
             // 
-            this.nupPontuacao.Location = new System.Drawing.Point(16, 74);
-            this.nupPontuacao.Name = "nupPontuacao";
-            this.nupPontuacao.Size = new System.Drawing.Size(84, 20);
-            this.nupPontuacao.TabIndex = 11;
+            this.radTipoPGU.AutoSize = true;
+            this.radTipoPGU.Location = new System.Drawing.Point(76, 21);
+            this.radTipoPGU.Margin = new System.Windows.Forms.Padding(2);
+            this.radTipoPGU.Name = "radTipoPGU";
+            this.radTipoPGU.Size = new System.Drawing.Size(48, 17);
+            this.radTipoPGU.TabIndex = 466;
+            this.radTipoPGU.Text = "PGU";
+            this.radTipoPGU.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label25.Location = new System.Drawing.Point(3, 163);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(43, 13);
+            this.label25.TabIndex = 467;
+            this.label25.Text = "Estado:";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.picLimparCategoriaCNH);
+            this.groupBox5.Controls.Add(this.radCategoriaE);
+            this.groupBox5.Controls.Add(this.radCategoriaD);
+            this.groupBox5.Controls.Add(this.radCategoriaC);
+            this.groupBox5.Controls.Add(this.radCategoriaB);
+            this.groupBox5.Controls.Add(this.cbCategoriaA);
+            this.groupBox5.Location = new System.Drawing.Point(149, 14);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(221, 47);
+            this.groupBox5.TabIndex = 466;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Categoria CNH:";
+            // 
+            // picLimparCategoriaCNH
+            // 
+            this.picLimparCategoriaCNH.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picLimparCategoriaCNH.Image = ((System.Drawing.Image)(resources.GetObject("picLimparCategoriaCNH.Image")));
+            this.picLimparCategoriaCNH.Location = new System.Drawing.Point(197, 21);
+            this.picLimparCategoriaCNH.Name = "picLimparCategoriaCNH";
+            this.picLimparCategoriaCNH.Size = new System.Drawing.Size(16, 16);
+            this.picLimparCategoriaCNH.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLimparCategoriaCNH.TabIndex = 450;
+            this.picLimparCategoriaCNH.TabStop = false;
+            this.toolTip.SetToolTip(this.picLimparCategoriaCNH, "Limpar Categoria");
+            this.picLimparCategoriaCNH.Click += new System.EventHandler(this.PicLimparCategoriaCNH_Click);
+            // 
+            // radCategoriaE
+            // 
+            this.radCategoriaE.AutoSize = true;
+            this.radCategoriaE.Location = new System.Drawing.Point(160, 20);
+            this.radCategoriaE.Name = "radCategoriaE";
+            this.radCategoriaE.Size = new System.Drawing.Size(32, 17);
+            this.radCategoriaE.TabIndex = 4;
+            this.radCategoriaE.TabStop = true;
+            this.radCategoriaE.Text = "E";
+            this.radCategoriaE.UseVisualStyleBackColor = true;
+            // 
+            // radCategoriaD
+            // 
+            this.radCategoriaD.AutoSize = true;
+            this.radCategoriaD.Location = new System.Drawing.Point(121, 20);
+            this.radCategoriaD.Name = "radCategoriaD";
+            this.radCategoriaD.Size = new System.Drawing.Size(33, 17);
+            this.radCategoriaD.TabIndex = 3;
+            this.radCategoriaD.TabStop = true;
+            this.radCategoriaD.Text = "D";
+            this.radCategoriaD.UseVisualStyleBackColor = true;
+            // 
+            // radCategoriaC
+            // 
+            this.radCategoriaC.AutoSize = true;
+            this.radCategoriaC.Location = new System.Drawing.Point(83, 20);
+            this.radCategoriaC.Name = "radCategoriaC";
+            this.radCategoriaC.Size = new System.Drawing.Size(32, 17);
+            this.radCategoriaC.TabIndex = 2;
+            this.radCategoriaC.TabStop = true;
+            this.radCategoriaC.Text = "C";
+            this.radCategoriaC.UseVisualStyleBackColor = true;
+            // 
+            // radCategoriaB
+            // 
+            this.radCategoriaB.AutoSize = true;
+            this.radCategoriaB.Location = new System.Drawing.Point(45, 20);
+            this.radCategoriaB.Name = "radCategoriaB";
+            this.radCategoriaB.Size = new System.Drawing.Size(32, 17);
+            this.radCategoriaB.TabIndex = 1;
+            this.radCategoriaB.TabStop = true;
+            this.radCategoriaB.Text = "B";
+            this.radCategoriaB.UseVisualStyleBackColor = true;
+            // 
+            // cbCategoriaA
+            // 
+            this.cbCategoriaA.AutoSize = true;
+            this.cbCategoriaA.Location = new System.Drawing.Point(9, 21);
+            this.cbCategoriaA.Name = "cbCategoriaA";
+            this.cbCategoriaA.Size = new System.Drawing.Size(33, 17);
+            this.cbCategoriaA.TabIndex = 0;
+            this.cbCategoriaA.Text = "A";
+            this.cbCategoriaA.UseVisualStyleBackColor = true;
+            // 
+            // mskNumeroCNH
+            // 
+            this.mskNumeroCNH.Location = new System.Drawing.Point(6, 85);
+            this.mskNumeroCNH.Mask = "000.000.000-00";
+            this.mskNumeroCNH.Name = "mskNumeroCNH";
+            this.mskNumeroCNH.Size = new System.Drawing.Size(124, 20);
+            this.mskNumeroCNH.TabIndex = 465;
+            this.mskNumeroCNH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskNumeroCNH.Leave += new System.EventHandler(this.MskNumeroCNH_Leave);
+            // 
+            // txtCNHMunicipio
+            // 
+            this.txtCNHMunicipio.Location = new System.Drawing.Point(111, 179);
+            this.txtCNHMunicipio.MaxLength = 15;
+            this.txtCNHMunicipio.Name = "txtCNHMunicipio";
+            this.txtCNHMunicipio.Size = new System.Drawing.Size(260, 20);
+            this.txtCNHMunicipio.TabIndex = 459;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label22.Location = new System.Drawing.Point(108, 163);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(57, 13);
+            this.label22.TabIndex = 460;
+            this.label22.Text = "Município:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label23.Location = new System.Drawing.Point(133, 69);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(89, 13);
+            this.label23.TabIndex = 458;
+            this.label23.Text = "Data de emissão:";
+            // 
+            // mskCNHDataEmissao
+            // 
+            this.mskCNHDataEmissao.Location = new System.Drawing.Point(136, 85);
+            this.mskCNHDataEmissao.Mask = "00/00/0000";
+            this.mskCNHDataEmissao.Name = "mskCNHDataEmissao";
+            this.mskCNHDataEmissao.Size = new System.Drawing.Size(134, 20);
+            this.mskCNHDataEmissao.TabIndex = 457;
+            this.mskCNHDataEmissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskCNHDataEmissao.ValidatingType = typeof(System.DateTime);
+            this.mskCNHDataEmissao.Leave += new System.EventHandler(this.MskCNHDataEmissao_Leave);
             // 
             // cboUFCNH
             // 
             this.cboUFCNH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUFCNH.FormattingEnabled = true;
             this.cboUFCNH.ItemHeight = 13;
-            this.cboUFCNH.Location = new System.Drawing.Point(154, 35);
+            this.cboUFCNH.Location = new System.Drawing.Point(6, 179);
             this.cboUFCNH.Name = "cboUFCNH";
             this.cboUFCNH.Size = new System.Drawing.Size(99, 21);
             this.cboUFCNH.TabIndex = 10;
             // 
-            // label15
+            // label18
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label15.Location = new System.Drawing.Point(151, 19);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 13);
-            this.label15.TabIndex = 447;
-            this.label15.Text = "Estado:";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label18.Location = new System.Drawing.Point(3, 118);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(106, 13);
+            this.label18.TabIndex = 456;
+            this.label18.Text = "Data de vencimento:";
             // 
-            // txtCNH
+            // mskDataVencimentoCNH
             // 
-            this.txtCNH.Location = new System.Drawing.Point(16, 35);
-            this.txtCNH.MaxLength = 15;
-            this.txtCNH.Name = "txtCNH";
-            this.txtCNH.Size = new System.Drawing.Size(132, 20);
-            this.txtCNH.TabIndex = 9;
+            this.mskDataVencimentoCNH.Location = new System.Drawing.Point(6, 134);
+            this.mskDataVencimentoCNH.Mask = "00/00/0000";
+            this.mskDataVencimentoCNH.Name = "mskDataVencimentoCNH";
+            this.mskDataVencimentoCNH.Size = new System.Drawing.Size(124, 20);
+            this.mskDataVencimentoCNH.TabIndex = 455;
+            this.mskDataVencimentoCNH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskDataVencimentoCNH.ValidatingType = typeof(System.DateTime);
+            this.mskDataVencimentoCNH.Leave += new System.EventHandler(this.MskDataVencimentoCNH_Leave);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label17.Location = new System.Drawing.Point(273, 69);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(62, 13);
+            this.label17.TabIndex = 449;
+            this.label17.Text = "Pontuação:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label13.Location = new System.Drawing.Point(13, 19);
+            this.label13.Location = new System.Drawing.Point(3, 69);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(88, 13);
+            this.label13.Size = new System.Drawing.Size(47, 13);
             this.label13.TabIndex = 445;
-            this.label13.Text = "Número da CNH:";
+            this.label13.Text = "Número:";
+            // 
+            // nupPontuacao
+            // 
+            this.nupPontuacao.Location = new System.Drawing.Point(276, 85);
+            this.nupPontuacao.Name = "nupPontuacao";
+            this.nupPontuacao.Size = new System.Drawing.Size(94, 20);
+            this.nupPontuacao.TabIndex = 11;
             // 
             // groupBox2
             // 
@@ -439,14 +1047,14 @@
             this.groupBox2.Controls.Add(this.cboCelular);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(501, 136);
+            this.groupBox2.Size = new System.Drawing.Size(384, 136);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contato";
             // 
             // btnExcluirCelular
             // 
-            this.btnExcluirCelular.Location = new System.Drawing.Point(107, 72);
+            this.btnExcluirCelular.Location = new System.Drawing.Point(82, 72);
             this.btnExcluirCelular.Name = "btnExcluirCelular";
             this.btnExcluirCelular.Size = new System.Drawing.Size(63, 22);
             this.btnExcluirCelular.TabIndex = 48;
@@ -457,7 +1065,7 @@
             // 
             // btnExcluirTelefone
             // 
-            this.btnExcluirTelefone.Location = new System.Drawing.Point(107, 36);
+            this.btnExcluirTelefone.Location = new System.Drawing.Point(83, 35);
             this.btnExcluirTelefone.Name = "btnExcluirTelefone";
             this.btnExcluirTelefone.Size = new System.Drawing.Size(63, 22);
             this.btnExcluirTelefone.TabIndex = 46;
@@ -471,7 +1079,7 @@
             this.mskTelefone.Location = new System.Drawing.Point(9, 37);
             this.mskTelefone.Mask = "(99) 9999-9999";
             this.mskTelefone.Name = "mskTelefone";
-            this.mskTelefone.Size = new System.Drawing.Size(161, 20);
+            this.mskTelefone.Size = new System.Drawing.Size(138, 20);
             this.mskTelefone.TabIndex = 45;
             this.mskTelefone.Visible = false;
             this.mskTelefone.Click += new System.EventHandler(this.MskTelefone_Click);
@@ -479,7 +1087,7 @@
             // 
             // btnCelular
             // 
-            this.btnCelular.Location = new System.Drawing.Point(177, 71);
+            this.btnCelular.Location = new System.Drawing.Point(149, 72);
             this.btnCelular.Name = "btnCelular";
             this.btnCelular.Size = new System.Drawing.Size(44, 23);
             this.btnCelular.TabIndex = 44;
@@ -488,7 +1096,7 @@
             // 
             // btnTelefone
             // 
-            this.btnTelefone.Location = new System.Drawing.Point(177, 35);
+            this.btnTelefone.Location = new System.Drawing.Point(149, 35);
             this.btnTelefone.Name = "btnTelefone";
             this.btnTelefone.Size = new System.Drawing.Size(44, 23);
             this.btnTelefone.TabIndex = 43;
@@ -501,7 +1109,7 @@
             this.cboTelefone.FormattingEnabled = true;
             this.cboTelefone.Location = new System.Drawing.Point(9, 36);
             this.cboTelefone.Name = "cboTelefone";
-            this.cboTelefone.Size = new System.Drawing.Size(161, 21);
+            this.cboTelefone.Size = new System.Drawing.Size(138, 21);
             this.cboTelefone.TabIndex = 41;
             this.cboTelefone.SelectedValueChanged += new System.EventHandler(this.CboTelefone_SelectedValueChanged);
             // 
@@ -597,17 +1205,17 @@
             // 
             // txtEmail2
             // 
-            this.txtEmail2.Location = new System.Drawing.Point(227, 74);
+            this.txtEmail2.Location = new System.Drawing.Point(200, 74);
             this.txtEmail2.MaxLength = 80;
             this.txtEmail2.Name = "txtEmail2";
-            this.txtEmail2.Size = new System.Drawing.Size(268, 20);
+            this.txtEmail2.Size = new System.Drawing.Size(175, 20);
             this.txtEmail2.TabIndex = 8;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label16.Location = new System.Drawing.Point(224, 19);
+            this.label16.Location = new System.Drawing.Point(196, 19);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 13);
             this.label16.TabIndex = 32;
@@ -637,7 +1245,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label14.Location = new System.Drawing.Point(224, 59);
+            this.label14.Location = new System.Drawing.Point(196, 59);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(92, 13);
             this.label14.TabIndex = 30;
@@ -645,10 +1253,10 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(227, 36);
+            this.txtEmail.Location = new System.Drawing.Point(200, 36);
             this.txtEmail.MaxLength = 80;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(268, 20);
+            this.txtEmail.Size = new System.Drawing.Size(175, 20);
             this.txtEmail.TabIndex = 6;
             // 
             // mskCelular
@@ -656,7 +1264,7 @@
             this.mskCelular.Location = new System.Drawing.Point(8, 74);
             this.mskCelular.Mask = "(99) 99999-9999";
             this.mskCelular.Name = "mskCelular";
-            this.mskCelular.Size = new System.Drawing.Size(161, 20);
+            this.mskCelular.Size = new System.Drawing.Size(138, 20);
             this.mskCelular.TabIndex = 47;
             this.mskCelular.Visible = false;
             this.mskCelular.Click += new System.EventHandler(this.MskCelular_Click);
@@ -668,7 +1276,7 @@
             this.cboCelular.FormattingEnabled = true;
             this.cboCelular.Location = new System.Drawing.Point(9, 73);
             this.cboCelular.Name = "cboCelular";
-            this.cboCelular.Size = new System.Drawing.Size(161, 21);
+            this.cboCelular.Size = new System.Drawing.Size(138, 21);
             this.cboCelular.TabIndex = 42;
             this.cboCelular.SelectedValueChanged += new System.EventHandler(this.CboCelular_SelectedValueChanged);
             // 
@@ -676,9 +1284,9 @@
             // 
             this.Contratos.Controls.Add(this.dtgContrato);
             this.Contratos.Controls.Add(this.toolStripContainer1);
-            this.Contratos.Location = new System.Drawing.Point(326, 267);
+            this.Contratos.Location = new System.Drawing.Point(396, 337);
             this.Contratos.Name = "Contratos";
-            this.Contratos.Size = new System.Drawing.Size(445, 225);
+            this.Contratos.Size = new System.Drawing.Size(375, 155);
             this.Contratos.TabIndex = 39;
             this.Contratos.TabStop = false;
             this.Contratos.Text = "Contratos";
@@ -687,6 +1295,9 @@
             // 
             this.dtgContrato.AllowUserToAddRows = false;
             this.dtgContrato.AllowUserToDeleteRows = false;
+            this.dtgContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgContrato.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtgContrato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgContrato.Location = new System.Drawing.Point(9, 19);
@@ -695,17 +1306,18 @@
             this.dtgContrato.ReadOnly = true;
             this.dtgContrato.RowHeadersWidth = 51;
             this.dtgContrato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgContrato.Size = new System.Drawing.Size(404, 200);
+            this.dtgContrato.Size = new System.Drawing.Size(334, 130);
             this.dtgContrato.TabIndex = 41;
             this.dtgContrato.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgContrato_CellDoubleClick);
             // 
             // toolStripContainer1
             // 
+            this.toolStripContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1, 90);
-            this.toolStripContainer1.Location = new System.Drawing.Point(419, 104);
+            this.toolStripContainer1.Location = new System.Drawing.Point(345, 34);
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
             // toolStripContainer1.RightToolStripPanel
@@ -773,20 +1385,23 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtObs);
-            this.groupBox3.Location = new System.Drawing.Point(6, 267);
+            this.groupBox3.Location = new System.Drawing.Point(6, 337);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(314, 225);
+            this.groupBox3.Size = new System.Drawing.Size(384, 155);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Observações";
             // 
             // txtObs
             // 
+            this.txtObs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtObs.Location = new System.Drawing.Point(9, 19);
             this.txtObs.MaxLength = 250;
             this.txtObs.Multiline = true;
             this.txtObs.Name = "txtObs";
-            this.txtObs.Size = new System.Drawing.Size(299, 200);
+            this.txtObs.Size = new System.Drawing.Size(369, 130);
             this.txtObs.TabIndex = 40;
             this.txtObs.Enter += new System.EventHandler(this.TxtObs_Enter);
             this.txtObs.Leave += new System.EventHandler(this.TxtObs_Leave);
@@ -810,7 +1425,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(5, 148);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(766, 112);
+            this.groupBox1.Size = new System.Drawing.Size(385, 183);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Endereço";
@@ -819,7 +1434,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label9.Location = new System.Drawing.Point(401, 59);
+            this.label9.Location = new System.Drawing.Point(9, 137);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 449;
@@ -827,7 +1442,7 @@
             // 
             // txtNumeroResidencial
             // 
-            this.txtNumeroResidencial.Location = new System.Drawing.Point(404, 75);
+            this.txtNumeroResidencial.Location = new System.Drawing.Point(12, 153);
             this.txtNumeroResidencial.MaxLength = 200;
             this.txtNumeroResidencial.Name = "txtNumeroResidencial";
             this.txtNumeroResidencial.Size = new System.Drawing.Size(125, 20);
@@ -858,7 +1473,7 @@
             this.txtBairro.Location = new System.Drawing.Point(92, 36);
             this.txtBairro.MaxLength = 200;
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(307, 20);
+            this.txtBairro.Size = new System.Drawing.Size(287, 20);
             this.txtBairro.TabIndex = 14;
             // 
             // txtMunicipio
@@ -866,14 +1481,14 @@
             this.txtMunicipio.Location = new System.Drawing.Point(12, 75);
             this.txtMunicipio.MaxLength = 200;
             this.txtMunicipio.Name = "txtMunicipio";
-            this.txtMunicipio.Size = new System.Drawing.Size(387, 20);
+            this.txtMunicipio.Size = new System.Drawing.Size(367, 20);
             this.txtMunicipio.TabIndex = 17;
             // 
             // cboUF
             // 
             this.cboUF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUF.FormattingEnabled = true;
-            this.cboUF.Location = new System.Drawing.Point(686, 15);
+            this.cboUF.Location = new System.Drawing.Point(192, 12);
             this.cboUF.Name = "cboUF";
             this.cboUF.Size = new System.Drawing.Size(74, 21);
             this.cboUF.TabIndex = 16;
@@ -883,7 +1498,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label5.Location = new System.Drawing.Point(683, 0);
+            this.label5.Location = new System.Drawing.Point(189, -3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 441;
@@ -894,7 +1509,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label11.Location = new System.Drawing.Point(533, 59);
+            this.label11.Location = new System.Drawing.Point(141, 137);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(74, 13);
             this.label11.TabIndex = 438;
@@ -902,10 +1517,10 @@
             // 
             // txtComplemento
             // 
-            this.txtComplemento.Location = new System.Drawing.Point(534, 75);
+            this.txtComplemento.Location = new System.Drawing.Point(142, 153);
             this.txtComplemento.MaxLength = 200;
             this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Size = new System.Drawing.Size(226, 20);
+            this.txtComplemento.Size = new System.Drawing.Size(237, 20);
             this.txtComplemento.TabIndex = 18;
             // 
             // btnPesquisarCep
@@ -944,17 +1559,17 @@
             // 
             // txtLogradouro
             // 
-            this.txtLogradouro.Location = new System.Drawing.Point(405, 36);
+            this.txtLogradouro.Location = new System.Drawing.Point(13, 114);
             this.txtLogradouro.MaxLength = 200;
             this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.Size = new System.Drawing.Size(355, 20);
+            this.txtLogradouro.Size = new System.Drawing.Size(366, 20);
             this.txtLogradouro.TabIndex = 15;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label2.Location = new System.Drawing.Point(402, 20);
+            this.label2.Location = new System.Drawing.Point(10, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 1;
@@ -1003,8 +1618,8 @@
             this.dtgHistorico.AllowUserToAddRows = false;
             this.dtgHistorico.AllowUserToDeleteRows = false;
             this.dtgHistorico.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Info;
-            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1080,7 +1695,7 @@
             this.Name = "frmCad_Cliente";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastrar cliente";
+            this.Text = "Registrar Financeiro";
             this.Load += new System.EventHandler(this.frmCad_Cliente_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -1088,8 +1703,17 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLimparCategoriaCNH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupPontuacao)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1137,13 +1761,9 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.MaskedTextBox mskDataVencimentoCNH;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown nupPontuacao;
         private System.Windows.Forms.ComboBox cboUFCNH;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtCNH;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton radPortariaNao;
@@ -1195,10 +1815,6 @@
         private System.Windows.Forms.ToolStripContentPanel ContentPanel;
         private System.Windows.Forms.Button btnCelular;
         private System.Windows.Forms.Button btnTelefone;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.RadioButton radCNHVencidaNao;
-        private System.Windows.Forms.RadioButton radCNHVencidaSim;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.RadioButton radImpedimentoNao;
@@ -1207,6 +1823,64 @@
         private System.Windows.Forms.Button btnExcluirTelefone;
         private System.Windows.Forms.Button btnExcluirCelular;
         private System.Windows.Forms.MaskedTextBox mskCelular;
+        private System.Windows.Forms.ToolStripLabel tslErro;
+        private System.Windows.Forms.TextBox txtCNHMunicipio;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.MaskedTextBox mskCNHDataEmissao;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.MaskedTextBox mskDataVencimentoCNH;
+        private System.Windows.Forms.RadioButton radTipoCNH;
+        private System.Windows.Forms.RadioButton radTipoPGU;
+        private System.Windows.Forms.RadioButton radAtivRemuneradaNao;
+        private System.Windows.Forms.RadioButton radAtivRemuneradaSim;
+        private System.Windows.Forms.RadioButton radCNHVencidaNao;
+        private System.Windows.Forms.RadioButton radCNHVencidaSim;
+        private System.Windows.Forms.MaskedTextBox mskNumeroCNH;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.RadioButton radCategoriaC;
+        private System.Windows.Forms.RadioButton radCategoriaB;
+        private System.Windows.Forms.CheckBox cbCategoriaA;
+        private System.Windows.Forms.RadioButton radCategoriaE;
+        private System.Windows.Forms.RadioButton radCategoriaD;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.PictureBox picLimparCategoriaCNH;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox cbPCDcmtf;
+        private System.Windows.Forms.CheckBox cbPCDcmtx;
+        private System.Windows.Forms.CheckBox cbPCDcetci;
+        private System.Windows.Forms.CheckBox cbPCDear;
+        private System.Windows.Forms.CheckBox cbPCDcetve;
+        private System.Windows.Forms.CheckBox cbPCDcetcp;
+        private System.Windows.Forms.CheckBox cbPCDcete;
+        private System.Windows.Forms.CheckBox cbPCDcetpp;
+        private System.Windows.Forms.CheckBox cbPCDx;
+        private System.Windows.Forms.CheckBox cbPCDv;
+        private System.Windows.Forms.CheckBox cbPCDu;
+        private System.Windows.Forms.CheckBox cbPCDt;
+        private System.Windows.Forms.CheckBox cbPCDs;
+        private System.Windows.Forms.CheckBox cbPCDr;
+        private System.Windows.Forms.CheckBox cbPCDq;
+        private System.Windows.Forms.CheckBox cbPCDp;
+        private System.Windows.Forms.CheckBox cbPCDo;
+        private System.Windows.Forms.CheckBox cbPCDn;
+        private System.Windows.Forms.CheckBox cbPCDm;
+        private System.Windows.Forms.CheckBox cbPCDl;
+        private System.Windows.Forms.CheckBox cbPCDk;
+        private System.Windows.Forms.CheckBox cbPCDj;
+        private System.Windows.Forms.CheckBox cbPCDi;
+        private System.Windows.Forms.CheckBox cbPCDh;
+        private System.Windows.Forms.CheckBox cbPCDg;
+        private System.Windows.Forms.CheckBox cbPCDf;
+        private System.Windows.Forms.CheckBox cbPCDe;
+        private System.Windows.Forms.CheckBox cbPCDc;
+        private System.Windows.Forms.CheckBox cbPCDb;
+        private System.Windows.Forms.CheckBox cbPCDa;
+        private System.Windows.Forms.CheckBox cbPCDd;
     }
 }
 

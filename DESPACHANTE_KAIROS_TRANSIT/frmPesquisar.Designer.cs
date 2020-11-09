@@ -43,49 +43,44 @@
             // 
             this.cboCampos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCampos.FormattingEnabled = true;
-            this.cboCampos.Location = new System.Drawing.Point(16, 48);
-            this.cboCampos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCampos.Location = new System.Drawing.Point(12, 39);
             this.cboCampos.Name = "cboCampos";
-            this.cboCampos.Size = new System.Drawing.Size(321, 24);
+            this.cboCampos.Size = new System.Drawing.Size(242, 21);
             this.cboCampos.TabIndex = 0;
             this.cboCampos.SelectedIndexChanged += new System.EventHandler(this.cboCampos_SelectedIndexChanged);
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(16, 123);
-            this.txtValor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtValor.Location = new System.Drawing.Point(12, 100);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(321, 22);
+            this.txtValor.Size = new System.Drawing.Size(242, 20);
             this.txtValor.TabIndex = 1;
             this.txtValor.Visible = false;
             // 
             // lblValor
             // 
             this.lblValor.AutoSize = true;
-            this.lblValor.Location = new System.Drawing.Point(16, 100);
-            this.lblValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblValor.Location = new System.Drawing.Point(12, 81);
             this.lblValor.Name = "lblValor";
-            this.lblValor.Size = new System.Drawing.Size(45, 17);
+            this.lblValor.Size = new System.Drawing.Size(34, 13);
             this.lblValor.TabIndex = 2;
             this.lblValor.Text = "Valor:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 28);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Campo:";
             // 
             // btnPesquisar
             // 
             this.btnPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPesquisar.Location = new System.Drawing.Point(231, 203);
-            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPesquisar.Location = new System.Drawing.Point(173, 165);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(108, 44);
+            this.btnPesquisar.Size = new System.Drawing.Size(81, 36);
             this.btnPesquisar.TabIndex = 4;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
@@ -94,30 +89,27 @@
             // dtpMin
             // 
             this.dtpMin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpMin.Location = new System.Drawing.Point(16, 123);
-            this.dtpMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMin.Location = new System.Drawing.Point(12, 100);
             this.dtpMin.Name = "dtpMin";
-            this.dtpMin.Size = new System.Drawing.Size(127, 22);
+            this.dtpMin.Size = new System.Drawing.Size(96, 20);
             this.dtpMin.TabIndex = 5;
             this.dtpMin.Visible = false;
             // 
             // dtpMax
             // 
             this.dtpMax.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpMax.Location = new System.Drawing.Point(211, 123);
-            this.dtpMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMax.Location = new System.Drawing.Point(158, 100);
             this.dtpMax.Name = "dtpMax";
-            this.dtpMax.Size = new System.Drawing.Size(127, 22);
+            this.dtpMax.Size = new System.Drawing.Size(96, 20);
             this.dtpMax.TabIndex = 6;
             this.dtpMax.Visible = false;
             // 
             // lblData
             // 
             this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(160, 128);
-            this.lblData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblData.Location = new System.Drawing.Point(120, 104);
             this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(33, 17);
+            this.lblData.Size = new System.Drawing.Size(26, 13);
             this.lblData.TabIndex = 7;
             this.lblData.Text = "Até:";
             this.lblData.Visible = false;
@@ -126,19 +118,18 @@
             // 
             this.cboValor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboValor.FormattingEnabled = true;
-            this.cboValor.Location = new System.Drawing.Point(16, 123);
-            this.cboValor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboValor.Location = new System.Drawing.Point(12, 100);
             this.cboValor.Name = "cboValor";
-            this.cboValor.Size = new System.Drawing.Size(321, 24);
+            this.cboValor.Size = new System.Drawing.Size(242, 21);
             this.cboValor.TabIndex = 8;
             this.cboValor.Visible = false;
             // 
             // frmPesquisar
             // 
             this.AcceptButton = this.btnPesquisar;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 262);
+            this.ClientSize = new System.Drawing.Size(266, 213);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.dtpMax);
             this.Controls.Add(this.dtpMin);
@@ -148,8 +139,10 @@
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.cboCampos);
             this.Controls.Add(this.cboValor);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "frmPesquisar";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar";
             this.Load += new System.EventHandler(this.frmPesquisar_Load);

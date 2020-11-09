@@ -34,7 +34,7 @@ namespace DAL
                     SQL_.Append("INSERT INTO ");
                     SQL_.Append("FINANCEIRO ");
                     SQL_.Append("( ");
-                    SQL_.Append("FORMA_PAGAMENTO, ");
+                    //SQL_.Append("FORMA_PAGAMENTO, ");
                     SQL_.Append("PARCELAS, ");
                     SQL_.Append("CONSULTOR, ");
                     SQL_.Append("VALOR, ");
@@ -59,7 +59,7 @@ namespace DAL
                     SQL_.Append(") ");
                     SQL_.Append("VALUES ");
                     SQL_.Append("( ");
-                    SQL_.Append("@FORMA_PAGAMENTO, ");
+                    //SQL_.Append("@FORMA_PAGAMENTO, ");
                     SQL_.Append("@PARCELAS, ");
                     SQL_.Append("@CONSULTOR, ");
                     SQL_.Append("@VALOR, ");
@@ -90,6 +90,7 @@ namespace DAL
 
                     if ((DTO.ID = Convert.ToInt32(cmd.ExecuteScalar())) > 0)
                     {
+                        Registrar_Documento(DTO);
                         return DTO.ID;
                     }
 
@@ -148,7 +149,7 @@ namespace DAL
                     SQL_.Append("UPDATE ");
                     SQL_.Append("FINANCEIRO ");
                     SQL_.Append("SET ");
-                    SQL_.Append("FORMA_PAGAMENTO = @FORMA_PAGAMENTO, ");
+                    //SQL_.Append("FORMA_PAGAMENTO = @FORMA_PAGAMENTO, ");
                     SQL_.Append("PARCELAS = @PARCELAS, ");
                     SQL_.Append("CONSULTOR = @CONSULTOR, ");
                     SQL_.Append("VALOR = @VALOR, ");
@@ -201,7 +202,7 @@ namespace DAL
         public void PopularParametros(FINANCEIRO_DTO DTO, SqlCommand cmd)
         {
             cmd.Parameters.AddWithValue("@ID", DTO.ID);
-            cmd.Parameters.AddWithValue("@FORMA_PAGAMENTO", DTO.FORMA_PAGAMENTO);
+            //cmd.Parameters.AddWithValue("@FORMA_PAGAMENTO", DTO.FORMA_PAGAMENTO);
             cmd.Parameters.AddWithValue("@PARCELAS", DTO.PARCELAS);
             cmd.Parameters.AddWithValue("@CONSULTOR", DTO.CONSULTOR);
             cmd.Parameters.AddWithValue("@VALOR", DTO.VALOR);
@@ -319,7 +320,7 @@ namespace DAL
         {
             _DTO.ID = Convert.ToInt32(dtr["ID"]);
             //DADOS
-            _DTO.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
+            //_DTO.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
             _DTO.PARCELAS = Convert.ToInt32(dtr["PARCELAS"]);
             _DTO.DIA_VENCIMENTO = Convert.ToInt32(dtr["DIA_VENCIMENTO"]);
             _DTO.CONSULTOR = dtr["CONSULTOR"].ToString();
@@ -403,7 +404,7 @@ namespace DAL
 
                     sb.Append(" SELECT ");
                     sb.Append(" X.ID AS ID_FINANCEIRO, ");
-                    sb.Append(" X.FORMA_PAGAMENTO, ");
+                    //sb.Append(" X.FORMA_PAGAMENTO, ");
                     sb.Append(" X.PARCELAS, ");
                     sb.Append(" X.CONSULTOR, ");
                     sb.Append(" X.OBSERVACAO, ");
@@ -467,7 +468,7 @@ namespace DAL
                         Financeiro.ADMINISTRACAO = new List<ADMINISTRACAO_DTO>();
 
                         Financeiro.ID = Convert.ToInt32(dtr["ID_FINANCEIRO"]);
-                        Financeiro.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
+                        //Financeiro.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
                         Financeiro.PARCELAS = Convert.ToInt32(dtr["PARCELAS"]);
                         Financeiro.CONSULTOR = dtr["CONSULTOR"].ToString();
                         Financeiro.OBSERVACAO = dtr["OBSERVACAO"].ToString();
@@ -831,7 +832,7 @@ namespace DAL
 
                     sb.Append(" SELECT ");
                     sb.Append(" X.ID AS ID_FINANCEIRO, ");
-                    sb.Append(" X.FORMA_PAGAMENTO, ");
+                    //sb.Append(" X.FORMA_PAGAMENTO, ");
                     sb.Append(" X.PARCELAS, ");
                     sb.Append(" X.CONSULTOR, ");
                     sb.Append(" X.OBSERVACAO, ");
@@ -895,7 +896,7 @@ namespace DAL
                         Financeiro.ADMINISTRACAO = new List<ADMINISTRACAO_DTO>();
 
                         Financeiro.ID = Convert.ToInt32(dtr["ID_FINANCEIRO"]);
-                        Financeiro.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
+                        //Financeiro.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
                         Financeiro.PARCELAS = Convert.ToInt32(dtr["PARCELAS"]);
                         Financeiro.CONSULTOR = dtr["CONSULTOR"].ToString();
                         Financeiro.OBSERVACAO = dtr["OBSERVACAO"].ToString();
@@ -1203,6 +1204,64 @@ namespace DAL
         }
         #endregion
 
+        #region Classe Filha: Documentos Administração
+        public int? Registrar_Documento(FINANCEIRO_DTO DTO)
+        {
+
+            using (SqlConnection cn = new SqlConnection(strConnection))
+            {
+
+                try
+                {
+                    SqlDataReader dr = null;
+
+                    StringBuilder SQL_ = new StringBuilder();
+
+                    SQL_.Append("INSERT INTO ");
+                    SQL_.Append("DOCUMENTO_FINANCEIRO ");
+                    SQL_.Append("( ");
+                    SQL_.Append("ID_DOCUMENTO, ");
+                    SQL_.Append("ID_FINANCEIRO ");
+                    SQL_.Append(") ");
+
+                    SQL_.Append("SELECT ");
+                    SQL_.Append("ID, " + DTO.ID);
+                    SQL_.Append(" FROM ");
+                    SQL_.Append("DOCUMENTO ");
+                    SQL_.Append("WHERE ");
+                    SQL_.Append("ID IN ( ");
+                    SQL_.Append("    SELECT ");
+                    SQL_.Append("    ID_DOCUMENTO ");
+                    SQL_.Append("    FROM ");
+                    SQL_.Append("    DOCUMENTO_SERVICO");
+                    SQL_.Append("    WHERE ");
+                    SQL_.Append("    ID_SERVICO = " + DTO.ID_SERVICO);
+                    SQL_.Append("    ) ");
+                    SQL_.Append("SELECT SCOPE_IDENTITY()");
+                    cn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_.ToString(), cn);
+
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
+        #endregion
+
         public List<ComboItemDTO> Lista_Consultor()
         {
             using (SqlConnection scn = new SqlConnection(this.strConnection))
@@ -1224,6 +1283,48 @@ namespace DAL
                         ComboItemDTO DTO = new ComboItemDTO();
                         DTO.Value = dtr["CONSULTOR"].ToString();
                         DTO.Text = dtr["CONSULTOR"].ToString();
+                        ComboItemDTO.Add(DTO);
+                    }
+                    return ComboItemDTO;
+                }
+
+                catch (SqlException ex)
+                {
+                    throw ex;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (dtr != null) { dtr.Close(); }
+                    scn.Close();
+                }
+            }
+        }
+
+        public List<ComboItemDTO> Lista_Documento()
+        {
+            using (SqlConnection scn = new SqlConnection(this.strConnection))
+            {
+                SqlDataReader dtr = null;
+                List<ComboItemDTO> ComboItemDTO = new List<ComboItemDTO>();
+
+                try
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT * FROM DOCUMENTO ORDER BY DOCUMENTO");
+                    scn.Open();
+                    SqlCommand scm = new SqlCommand(sb.ToString(), scn);
+
+                    dtr = scm.ExecuteReader();
+
+                    while (dtr.Read())
+                    {
+                        ComboItemDTO DTO = new ComboItemDTO();
+                        DTO.Value = dtr["ID"].ToString();
+                        DTO.Text = dtr["DOCUMENTO"].ToString();
                         ComboItemDTO.Add(DTO);
                     }
                     return ComboItemDTO;
