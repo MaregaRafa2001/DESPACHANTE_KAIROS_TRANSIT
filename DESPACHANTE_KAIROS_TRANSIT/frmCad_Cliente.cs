@@ -206,7 +206,7 @@ namespace APP_UI
             txtRG.Text = CLIENTE_DTO.RG;
             mskNascimento.Text = CLIENTE_DTO.DATA_NASCIMENTO;
             mskNumeroCNH.Text = CLIENTE_DTO.CNH.ToString();
-            cbCategoriaA.Checked = CLIENTE_DTO.CNH_CATEGORIA.Contains("A");
+            radCategoriaA.Checked = CLIENTE_DTO.CNH_CATEGORIA.Contains("A");
             PopularRadioCategoriaCNH(CLIENTE_DTO.CNH_CATEGORIA);
             PopularRadioTipoCNH(CLIENTE_DTO.CNH_ID_TIPO);
             cboUFCNH.Text = CLIENTE_DTO.CNH_UF;
@@ -575,7 +575,7 @@ namespace APP_UI
             try
             {
                 string categoria = "";
-                categoria = cbCategoriaA.Checked ? "A" : "";
+                categoria = radCategoriaA.Checked ? "A" : "";
                 if (radCategoriaE.Checked)
                     categoria += "E";
                 else if (radCategoriaD.Checked)
@@ -1739,11 +1739,13 @@ namespace APP_UI
                 radCategoriaD.Checked = false;
                 radCategoriaC.Checked = false;
                 radCategoriaB.Checked = false;
+                radCategoriaA.Checked = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

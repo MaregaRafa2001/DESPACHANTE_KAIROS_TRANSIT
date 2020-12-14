@@ -66,7 +66,10 @@ namespace APP_UI
             mskDataVencimento.Text = (boleto_cheque.DATA_VENCTO == null ? "" : boleto_cheque.DATA_VENCTO.Value.ToShortDateString());
             cboStatusPagamento.Text = boleto_cheque.STATUS_PAGAMENTO;
             if (cboStatusPagamento.Text.ToLower() == "pago")
+            {
                 cboStatusPagamento.Enabled = false;
+                txtValor.ReadOnly = true;
+            }
             txtNumBolChe.Text = boleto_cheque.NUMERO;
             txtValor.Text = boleto_cheque.VALOR.ToString();
             if (boleto_cheque.ID_FORMA_PAGAMENTO != null)

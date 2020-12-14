@@ -74,7 +74,7 @@ namespace DAL
 
         public List<SERVICO_DTO> Lista_Servico(bool ContainsTodos = false)
         {
-            DataTable dtt = new PesquisaGeralDAL(this.strConnection).Pesquisa("SELECT * FROM SERVICOS ORDER BY NOME ");
+            DataTable dtt = new PesquisaGeralDAL(this.strConnection).Pesquisa("SELECT * FROM SERVICOS WHERE ATIVO = 1 ORDER BY NOME ");
 
             List<SERVICO_DTO> List = new List<SERVICO_DTO>();
 

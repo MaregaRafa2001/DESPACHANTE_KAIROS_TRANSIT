@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -128,7 +129,17 @@ namespace APP_UI
                     {
                         writer.WriteLine(MontaComprovante(DTO));
                     }
+                    
+                    
+                    
+                    writer.WriteLine("<script>");
+                    writer.WriteLine("  window.onload = function(){");
+                    writer.WriteLine("      window.print();");
+                    writer.WriteLine("  }");
+                    writer.WriteLine("</script>");
                 }
+
+                Process.Start(Directory.GetCurrentDirectory() + "//recibo.html");
 
                 return true;
             }

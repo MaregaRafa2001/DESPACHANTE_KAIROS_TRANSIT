@@ -1237,7 +1237,7 @@ namespace DAL
                     SQL_.Append("    WHERE ");
                     SQL_.Append("    ID_SERVICO = " + DTO.ID_SERVICO);
                     SQL_.Append("    ) ");
-                    SQL_.Append("SELECT SCOPE_IDENTITY()");
+                    SQL_.Append("SELECT 0");
                     cn.Open();
 
                     SqlCommand cmd = new SqlCommand(SQL_.ToString(), cn);

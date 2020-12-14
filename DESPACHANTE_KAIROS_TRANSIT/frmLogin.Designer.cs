@@ -39,47 +39,54 @@
             // txtLogin
             // 
             this.txtLogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtLogin.Location = new System.Drawing.Point(12, 28);
+            this.txtLogin.Location = new System.Drawing.Point(16, 34);
+            this.txtLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLogin.MaxLength = 50;
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(268, 20);
+            this.txtLogin.Size = new System.Drawing.Size(356, 22);
             this.txtLogin.TabIndex = 0;
+            this.txtLogin.Text = "admin";
             this.txtLogin.Enter += new System.EventHandler(this.TxtLogin_Enter);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(43, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Login";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 54);
+            this.label2.Location = new System.Drawing.Point(16, 66);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Senha";
             // 
             // txtSenha
             // 
             this.txtSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtSenha.Location = new System.Drawing.Point(12, 73);
+            this.txtSenha.Location = new System.Drawing.Point(16, 90);
+            this.txtSenha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSenha.MaxLength = 50;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '•';
-            this.txtSenha.Size = new System.Drawing.Size(268, 20);
+            this.txtSenha.Size = new System.Drawing.Size(356, 22);
             this.txtSenha.TabIndex = 2;
+            this.txtSenha.Text = "super";
             this.txtSenha.Enter += new System.EventHandler(this.TxtSenha_Enter);
             // 
             // btnEntrar
             // 
-            this.btnEntrar.Location = new System.Drawing.Point(100, 103);
+            this.btnEntrar.Location = new System.Drawing.Point(133, 127);
+            this.btnEntrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(87, 34);
+            this.btnEntrar.Size = new System.Drawing.Size(116, 42);
             this.btnEntrar.TabIndex = 4;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = true;
@@ -87,9 +94,10 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(193, 103);
+            this.btnSair.Location = new System.Drawing.Point(257, 127);
+            this.btnSair.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(87, 34);
+            this.btnSair.Size = new System.Drawing.Size(116, 42);
             this.btnSair.TabIndex = 5;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
@@ -98,10 +106,10 @@
             // frmLogin
             // 
             this.AcceptButton = this.btnEntrar;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(291, 139);
+            this.ClientSize = new System.Drawing.Size(388, 171);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.label2);
@@ -109,6 +117,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.ShowIcon = false;
