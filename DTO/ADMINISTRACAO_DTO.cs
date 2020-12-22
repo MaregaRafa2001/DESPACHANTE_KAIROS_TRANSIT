@@ -19,6 +19,7 @@ namespace DTO
         public DateTime? DATA { get; set; }
         public string FASE { get; set; }
         public string OBSERVACAO { get; set; }
+        public char? RECONHECER_FIRMA { get; set; }
 
         //LAYOUT TELA 1
         public DateTime? DATA_RECEBIMENTO_CONTRATO { get; set; }

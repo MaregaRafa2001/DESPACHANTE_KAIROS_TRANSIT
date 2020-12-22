@@ -91,6 +91,14 @@ namespace APP_UI
                     Layout5_mskInicio.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_INICIO);
                     Layout5_mskTermino.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_TERMINO);
                     Layout5_txtMesesDetran.Text = administracao_dto.MESES_DETRAN == (int?)null ? "0" : administracao_dto.MESES_DETRAN.ToString();
+
+                    if (administracao_dto.RECONHECER_FIRMA == null || administracao_dto.RECONHECER_FIRMA == 'N')
+                        radNenhum.Checked = true;
+                    else if (administracao_dto.RECONHECER_FIRMA == 'S')
+                        radSemelhanca.Checked = true;
+                    else
+                        radAutenticidade.Checked = true;
+
                     break;
                 case 6://PÓS VENDA \ CURSO DE CFC
                     Layout6_mskFechamentoCurso.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_FECHAMENTO_CURSO);
@@ -177,6 +185,7 @@ namespace APP_UI
                         administracao_dto.DATA_INICIO = FormFuncoes.GetMskDate(Layout5_mskInicio);
                         administracao_dto.DATA_TERMINO = FormFuncoes.GetMskDate(Layout5_mskTermino);
                         administracao_dto.MESES_DETRAN = string.IsNullOrEmpty(Layout5_txtMesesDetran.Text) ? (int?)null : Convert.ToInt32(Layout5_txtMesesDetran.Text);
+                        administracao_dto.RECONHECER_FIRMA = radNenhum.Checked ? 'N' : radAutenticidade.Checked ? 'A' : 'S';
 
                         break;
                     case 6://PÓS VENDA \ CURSO DE CFC
@@ -623,5 +632,7 @@ namespace APP_UI
                 Cursor.Current = Cursors.Default;
             }
         }
+
+      
     }
 }

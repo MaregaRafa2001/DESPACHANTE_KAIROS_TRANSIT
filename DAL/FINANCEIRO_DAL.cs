@@ -518,6 +518,7 @@ namespace DAL
                             ADMINISTRACAO.DATA_ENTREGA_DOCUMENTO = dtr["DATA_ENTREGA_DOCUMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_ENTREGA_DOCUMENTO"]);
                             ADMINISTRACAO.DATA_VENCIMENTO_DOCUMENTO = dtr["DATA_VENCIMENTO_DOCUMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_VENCIMENTO_DOCUMENTO"]);
                             ADMINISTRACAO.DATA_MONTAGEM_PROCESSO = dtr["DATA_MONTAGEM_PROCESSO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_MONTAGEM_PROCESSO"]);
+                            ADMINISTRACAO.RECONHECER_FIRMA = dtr["RECONHECER_FIRMA"] == DBNull.Value ? (char?)null : Convert.ToChar(dtr["RECONHECER_FIRMA"]);
                             ADMINISTRACAO.DATA_IDA_DETRAN = dtr["DATA_IDA_DETRAN"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_IDA_DETRAN"]);
                             ADMINISTRACAO.DATA_RETORNO_DETRAN = dtr["DATA_RETORNO_DETRAN"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_RETORNO_DETRAN"]);
                             ADMINISTRACAO.PROCURADOR = dtr["PROCURADOR"] == DBNull.Value ? "" : Convert.ToString(dtr["PROCURADOR"]);
@@ -591,6 +592,7 @@ namespace DAL
                             SQL_.Append("           ,[DATA_ENTREGA_DOCUMENTO]           ");
                             SQL_.Append("           ,[DATA_VENCIMENTO_DOCUMENTO]        ");
                             SQL_.Append("           ,[DATA_MONTAGEM_PROCESSO]           ");
+                            SQL_.Append("           ,[RECONHECER_FIRMA]           ");
                             SQL_.Append("           ,[DATA_IDA_DETRAN]                  ");
                             SQL_.Append("           ,[DATA_RETORNO_DETRAN]              ");
                             SQL_.Append("           ,[PROCURADOR]                       ");
@@ -694,6 +696,7 @@ namespace DAL
                             SQL_.Append("      ,DATA_ENTREGA_DOCUMENTO = @DATA_ENTREGA_DOCUMENTO                    ");
                             SQL_.Append("      ,DATA_VENCIMENTO_DOCUMENTO = @DATA_VENCIMENTO_DOCUMENTO              ");
                             SQL_.Append("      ,DATA_MONTAGEM_PROCESSO = @DATA_MONTAGEM_PROCESSO                    ");
+                            SQL_.Append("      ,RECONHECER_FIRMA = @RECONHECER_FIRMA                    ");
                             SQL_.Append("      ,DATA_IDA_DETRAN = @DATA_IDA_DETRAN                                  ");
                             SQL_.Append("      ,DATA_RETORNO_DETRAN = @DATA_RETORNO_DETRAN                          ");
                             SQL_.Append("      ,PROCURADOR = @PROCURADOR                                            ");
@@ -782,6 +785,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@DATA_ENTREGA_DOCUMENTO", fase.DATA_ENTREGA_DOCUMENTO);
             cmd.Parameters.AddWithValue("@DATA_VENCIMENTO_DOCUMENTO", fase.DATA_VENCIMENTO_DOCUMENTO);
             cmd.Parameters.AddWithValue("@DATA_MONTAGEM_PROCESSO", fase.DATA_MONTAGEM_PROCESSO);
+            cmd.Parameters.AddWithValue("@RECONHECER_FIRMA", fase.RECONHECER_FIRMA);
             cmd.Parameters.AddWithValue("@DATA_IDA_DETRAN", fase.DATA_IDA_DETRAN);
             cmd.Parameters.AddWithValue("@DATA_RETORNO_DETRAN", fase.DATA_RETORNO_DETRAN);
             cmd.Parameters.AddWithValue("@PROCURADOR", fase.PROCURADOR);
