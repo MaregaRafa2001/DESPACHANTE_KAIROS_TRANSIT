@@ -626,6 +626,7 @@ namespace DAL
                             SQL_.Append("           ,@DATA_ENTREGA_DOCUMENTO            ");
                             SQL_.Append("           ,@DATA_VENCIMENTO_DOCUMENTO         ");
                             SQL_.Append("           ,@DATA_MONTAGEM_PROCESSO            ");
+                            SQL_.Append("           ,@RECONHECER_FIRMA                   ");
                             SQL_.Append("           ,@DATA_IDA_DETRAN                   ");
                             SQL_.Append("           ,@DATA_RETORNO_DETRAN               ");
                             SQL_.Append("           ,@PROCURADOR                        ");
