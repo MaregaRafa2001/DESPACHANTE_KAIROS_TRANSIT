@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCad_Financeiro));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -83,6 +83,10 @@
             this.grpMaisDetalhes = new System.Windows.Forms.GroupBox();
             this.txtMaisDetalhes = new System.Windows.Forms.TextBox();
             this.dtgHistorico = new System.Windows.Forms.DataGridView();
+            this.txtRecebidoPor = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtUnidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picConsultor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPesquisarAdvogado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQtdParcela)).BeginInit();
@@ -100,7 +104,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(672, 633);
+            this.btnCancelar.Location = new System.Drawing.Point(681, 651);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 31);
             this.btnCancelar.TabIndex = 17;
@@ -111,7 +115,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistrar.Location = new System.Drawing.Point(585, 633);
+            this.btnRegistrar.Location = new System.Drawing.Point(594, 651);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(80, 31);
             this.btnRegistrar.TabIndex = 16;
@@ -122,7 +126,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 631);
+            this.label15.Location = new System.Drawing.Point(8, 651);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 531;
@@ -132,7 +136,7 @@
             // txtValorL
             // 
             this.txtValorL.AutoSize = true;
-            this.txtValorL.Location = new System.Drawing.Point(98, 631);
+            this.txtValorL.Location = new System.Drawing.Point(96, 651);
             this.txtValorL.Name = "txtValorL";
             this.txtValorL.Size = new System.Drawing.Size(73, 13);
             this.txtValorL.TabIndex = 530;
@@ -141,7 +145,7 @@
             // 
             // txtValorLi
             // 
-            this.txtValorLi.Location = new System.Drawing.Point(100, 648);
+            this.txtValorLi.Location = new System.Drawing.Point(98, 668);
             this.txtValorLi.MaxLength = 12;
             this.txtValorLi.Name = "txtValorLi";
             this.txtValorLi.Size = new System.Drawing.Size(83, 20);
@@ -152,7 +156,7 @@
             // 
             // txtValorB
             // 
-            this.txtValorB.Location = new System.Drawing.Point(13, 648);
+            this.txtValorB.Location = new System.Drawing.Point(11, 668);
             this.txtValorB.MaxLength = 12;
             this.txtValorB.Name = "txtValorB";
             this.txtValorB.Size = new System.Drawing.Size(83, 20);
@@ -253,7 +257,7 @@
             // mskData
             // 
             this.mskData.Location = new System.Drawing.Point(358, 66);
-            this.mskData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mskData.Margin = new System.Windows.Forms.Padding(2);
             this.mskData.Mask = "00/00/0000";
             this.mskData.Name = "mskData";
             this.mskData.Size = new System.Drawing.Size(86, 20);
@@ -273,7 +277,7 @@
             // 
             // txtObservacao
             // 
-            this.txtObservacao.Location = new System.Drawing.Point(10, 366);
+            this.txtObservacao.Location = new System.Drawing.Point(6, 439);
             this.txtObservacao.MaxLength = 250;
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
@@ -285,7 +289,7 @@
             // lblObservacao
             // 
             this.lblObservacao.AutoSize = true;
-            this.lblObservacao.Location = new System.Drawing.Point(8, 349);
+            this.lblObservacao.Location = new System.Drawing.Point(4, 422);
             this.lblObservacao.Name = "lblObservacao";
             this.lblObservacao.Size = new System.Drawing.Size(68, 13);
             this.lblObservacao.TabIndex = 475;
@@ -341,7 +345,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 311);
+            this.label1.Location = new System.Drawing.Point(82, 384);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 494;
@@ -349,7 +353,7 @@
             // 
             // txtMotoboy_os
             // 
-            this.txtMotoboy_os.Location = new System.Drawing.Point(88, 327);
+            this.txtMotoboy_os.Location = new System.Drawing.Point(84, 400);
             this.txtMotoboy_os.MaxLength = 100;
             this.txtMotoboy_os.Name = "txtMotoboy_os";
             this.txtMotoboy_os.Size = new System.Drawing.Size(287, 20);
@@ -380,7 +384,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label13.Location = new System.Drawing.Point(377, 311);
+            this.label13.Location = new System.Drawing.Point(373, 384);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
             this.label13.TabIndex = 509;
@@ -388,7 +392,7 @@
             // 
             // txtLocal_os
             // 
-            this.txtLocal_os.Location = new System.Drawing.Point(380, 327);
+            this.txtLocal_os.Location = new System.Drawing.Point(376, 400);
             this.txtLocal_os.MaxLength = 200;
             this.txtLocal_os.Name = "txtLocal_os";
             this.txtLocal_os.Size = new System.Drawing.Size(329, 20);
@@ -426,7 +430,7 @@
             // nudDiaVencimento
             // 
             this.nudDiaVencimento.Location = new System.Drawing.Point(680, 21);
-            this.nudDiaVencimento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudDiaVencimento.Margin = new System.Windows.Forms.Padding(2);
             this.nudDiaVencimento.Maximum = new decimal(new int[] {
             30,
             0,
@@ -454,9 +458,9 @@
             this.groupBox1.Controls.Add(this.dtgBoletosCheques);
             this.groupBox1.Controls.Add(this.btnAplicar);
             this.groupBox1.Location = new System.Drawing.Point(10, 80);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(700, 229);
             this.groupBox1.TabIndex = 526;
             this.groupBox1.TabStop = false;
@@ -484,14 +488,14 @@
             this.dtgBoletosCheques.Location = new System.Drawing.Point(14, 41);
             this.dtgBoletosCheques.Name = "dtgBoletosCheques";
             this.dtgBoletosCheques.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgBoletosCheques.RowHeadersWidth = 51;
             this.dtgBoletosCheques.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgBoletosCheques.Size = new System.Drawing.Size(673, 144);
@@ -503,7 +507,7 @@
             this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAplicar.Location = new System.Drawing.Point(620, 189);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(68, 32);
             this.btnAplicar.TabIndex = 517;
@@ -523,6 +527,10 @@
             // 
             // gpbDetalhes
             // 
+            this.gpbDetalhes.Controls.Add(this.txtUnidade);
+            this.gpbDetalhes.Controls.Add(this.label17);
+            this.gpbDetalhes.Controls.Add(this.label16);
+            this.gpbDetalhes.Controls.Add(this.txtRecebidoPor);
             this.gpbDetalhes.Controls.Add(this.label7);
             this.gpbDetalhes.Controls.Add(this.txtValorOS);
             this.gpbDetalhes.Controls.Add(this.label9);
@@ -543,7 +551,7 @@
             this.gpbDetalhes.Controls.Add(this.label6);
             this.gpbDetalhes.Location = new System.Drawing.Point(7, 9);
             this.gpbDetalhes.Name = "gpbDetalhes";
-            this.gpbDetalhes.Size = new System.Drawing.Size(717, 445);
+            this.gpbDetalhes.Size = new System.Drawing.Size(721, 521);
             this.gpbDetalhes.TabIndex = 10;
             this.gpbDetalhes.TabStop = false;
             this.gpbDetalhes.Text = "Dados";
@@ -551,7 +559,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 312);
+            this.label7.Location = new System.Drawing.Point(4, 385);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 531;
@@ -559,7 +567,7 @@
             // 
             // txtValorOS
             // 
-            this.txtValorOS.Location = new System.Drawing.Point(10, 327);
+            this.txtValorOS.Location = new System.Drawing.Point(6, 400);
             this.txtValorOS.MaxLength = 12;
             this.txtValorOS.Name = "txtValorOS";
             this.txtValorOS.Size = new System.Drawing.Size(74, 20);
@@ -590,7 +598,7 @@
             this.tabControl2.Location = new System.Drawing.Point(13, 92);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(742, 536);
+            this.tabControl2.Size = new System.Drawing.Size(742, 556);
             this.tabControl2.TabIndex = 533;
             // 
             // tabPage3
@@ -598,8 +606,8 @@
             this.tabPage3.Controls.Add(this.gpbDetalhes);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage3.Size = new System.Drawing.Size(734, 510);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(734, 530);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Financeiro";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -610,7 +618,7 @@
             this.tabHistórico.Controls.Add(this.dtgHistorico);
             this.tabHistórico.Location = new System.Drawing.Point(4, 22);
             this.tabHistórico.Name = "tabHistórico";
-            this.tabHistórico.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabHistórico.Padding = new System.Windows.Forms.Padding(3);
             this.tabHistórico.Size = new System.Drawing.Size(734, 510);
             this.tabHistórico.TabIndex = 3;
             this.tabHistórico.Text = "Histórico";
@@ -620,9 +628,9 @@
             // 
             this.grpMaisDetalhes.Controls.Add(this.txtMaisDetalhes);
             this.grpMaisDetalhes.Location = new System.Drawing.Point(4, 217);
-            this.grpMaisDetalhes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
             this.grpMaisDetalhes.Name = "grpMaisDetalhes";
-            this.grpMaisDetalhes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpMaisDetalhes.Padding = new System.Windows.Forms.Padding(4);
             this.grpMaisDetalhes.Size = new System.Drawing.Size(718, 285);
             this.grpMaisDetalhes.TabIndex = 362;
             this.grpMaisDetalhes.TabStop = false;
@@ -634,7 +642,7 @@
             this.txtMaisDetalhes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaisDetalhes.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaisDetalhes.Location = new System.Drawing.Point(8, 23);
-            this.txtMaisDetalhes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaisDetalhes.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaisDetalhes.Multiline = true;
             this.txtMaisDetalhes.Name = "txtMaisDetalhes";
             this.txtMaisDetalhes.ReadOnly = true;
@@ -647,15 +655,15 @@
             this.dtgHistorico.AllowUserToAddRows = false;
             this.dtgHistorico.AllowUserToDeleteRows = false;
             this.dtgHistorico.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgHistorico.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtgHistorico.ColumnHeadersHeight = 29;
             this.dtgHistorico.Location = new System.Drawing.Point(7, 7);
-            this.dtgHistorico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgHistorico.Margin = new System.Windows.Forms.Padding(4);
             this.dtgHistorico.Name = "dtgHistorico";
             this.dtgHistorico.ReadOnly = true;
             this.dtgHistorico.RowHeadersWidth = 51;
@@ -664,12 +672,48 @@
             this.dtgHistorico.TabIndex = 361;
             this.dtgHistorico.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgHistorico_CellClick);
             // 
+            // txtRecebidoPor
+            // 
+            this.txtRecebidoPor.Location = new System.Drawing.Point(10, 347);
+            this.txtRecebidoPor.MaxLength = 100;
+            this.txtRecebidoPor.Name = "txtRecebidoPor";
+            this.txtRecebidoPor.Size = new System.Drawing.Size(287, 20);
+            this.txtRecebidoPor.TabIndex = 532;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 322);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 13);
+            this.label16.TabIndex = 533;
+            this.label16.Text = "Recebido Por:";
+            this.label16.Click += new System.EventHandler(this.Label16_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(377, 322);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 13);
+            this.label17.TabIndex = 534;
+            this.label17.Text = "Unidade:";
+            // 
+            // txtUnidade
+            // 
+            this.txtUnidade.Location = new System.Drawing.Point(380, 347);
+            this.txtUnidade.MaxLength = 100;
+            this.txtUnidade.Name = "txtUnidade";
+            this.txtUnidade.Size = new System.Drawing.Size(275, 20);
+            this.txtUnidade.TabIndex = 535;
+            this.txtUnidade.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            // 
             // frmCad_Financeiro
             // 
             this.AcceptButton = this.btnRegistrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 687);
+            this.ClientSize = new System.Drawing.Size(771, 705);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.btnPesquisarAdvogado);
@@ -773,5 +817,9 @@
         private System.Windows.Forms.TextBox txtValorOS;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBanco;
+        private System.Windows.Forms.TextBox txtUnidade;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtRecebidoPor;
     }
 }

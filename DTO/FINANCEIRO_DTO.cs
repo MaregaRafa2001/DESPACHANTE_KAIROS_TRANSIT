@@ -24,6 +24,8 @@ namespace DTO
         public string INDICACAO { get; set; }
         public int ID_SERVICO { get; set; }
         public decimal VALOR { get; set; }
+        public string UNIDADE { get; set; }
+        public string RECEBIDO_POR { get; set; }
 
         public decimal? VALOR_OS { get; set; }
         public decimal? VALOR_BRUTO { get; set; }

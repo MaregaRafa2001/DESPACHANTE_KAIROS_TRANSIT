@@ -35,10 +35,14 @@
             this.cboFase = new System.Windows.Forms.ComboBox();
             this.pnlFase5 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RecoFirma = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.Layout5_mskProcurador = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.radNenhum = new System.Windows.Forms.RadioButton();
+            this.radAutenticidade = new System.Windows.Forms.RadioButton();
+            this.radSemelhanca = new System.Windows.Forms.RadioButton();
+            this.RecoFirma = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -125,13 +129,18 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.gpbObservacao = new System.Windows.Forms.GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.radSemelhanca = new System.Windows.Forms.RadioButton();
-            this.radAutenticidade = new System.Windows.Forms.RadioButton();
-            this.radNenhum = new System.Windows.Forms.RadioButton();
+            this.pnlFase14 = new System.Windows.Forms.Panel();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Layout14_mskProcurador = new System.Windows.Forms.TextBox();
+            this.Layout14_mskRetorno = new System.Windows.Forms.MaskedTextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.Layout14_mskIda = new System.Windows.Forms.MaskedTextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.pnlFase5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFase4.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -162,7 +171,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picVisualizarObservacao)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.gpbObservacao.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlFase14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -212,9 +222,9 @@
             // pnlFase5
             // 
             this.pnlFase5.Controls.Add(this.groupBox2);
-            this.pnlFase5.Location = new System.Drawing.Point(585, 7);
+            this.pnlFase5.Location = new System.Drawing.Point(566, 12);
             this.pnlFase5.Name = "pnlFase5";
-            this.pnlFase5.Size = new System.Drawing.Size(420, 198);
+            this.pnlFase5.Size = new System.Drawing.Size(369, 221);
             this.pnlFase5.TabIndex = 544;
             this.pnlFase5.Visible = false;
             // 
@@ -223,8 +233,6 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Controls.Add(this.RecoFirma);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.Layout5_mskProcurador);
             this.groupBox2.Controls.Add(this.groupBox7);
@@ -234,24 +242,15 @@
             this.groupBox2.Controls.Add(this.Fase5_0);
             this.groupBox2.Location = new System.Drawing.Point(5, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(412, 190);
+            this.groupBox2.Size = new System.Drawing.Size(361, 213);
             this.groupBox2.TabIndex = 544;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detran";
             // 
-            // RecoFirma
-            // 
-            this.RecoFirma.AutoSize = true;
-            this.RecoFirma.Location = new System.Drawing.Point(14, 15);
-            this.RecoFirma.Name = "RecoFirma";
-            this.RecoFirma.Size = new System.Drawing.Size(119, 13);
-            this.RecoFirma.TabIndex = 551;
-            this.RecoFirma.Text = "Reconhecimento Firma:";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 36);
+            this.label7.Location = new System.Drawing.Point(6, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 550;
@@ -259,13 +258,15 @@
             // 
             // Layout5_mskProcurador
             // 
-            this.Layout5_mskProcurador.Location = new System.Drawing.Point(9, 52);
+            this.Layout5_mskProcurador.Location = new System.Drawing.Point(9, 32);
             this.Layout5_mskProcurador.Name = "Layout5_mskProcurador";
             this.Layout5_mskProcurador.Size = new System.Drawing.Size(151, 20);
             this.Layout5_mskProcurador.TabIndex = 549;
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.panel2);
+            this.groupBox7.Controls.Add(this.RecoFirma);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.textBox1);
             this.groupBox7.Controls.Add(this.panel1);
@@ -275,14 +276,65 @@
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Controls.Add(this.Layout5_mskInicio);
             this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Location = new System.Drawing.Point(6, 75);
+            this.groupBox7.Location = new System.Drawing.Point(6, 55);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(394, 111);
+            this.groupBox7.Size = new System.Drawing.Size(350, 151);
             this.groupBox7.TabIndex = 548;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Penalidade";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.radNenhum);
+            this.panel2.Controls.Add(this.radAutenticidade);
+            this.panel2.Controls.Add(this.radSemelhanca);
+            this.panel2.Location = new System.Drawing.Point(10, 120);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(262, 21);
+            this.panel2.TabIndex = 558;
+            // 
+            // radNenhum
+            // 
+            this.radNenhum.AutoSize = true;
+            this.radNenhum.Checked = true;
+            this.radNenhum.Location = new System.Drawing.Point(189, 3);
+            this.radNenhum.Name = "radNenhum";
+            this.radNenhum.Size = new System.Drawing.Size(65, 17);
+            this.radNenhum.TabIndex = 2;
+            this.radNenhum.TabStop = true;
+            this.radNenhum.Text = "Nenhum";
+            this.radNenhum.UseVisualStyleBackColor = true;
+            // 
+            // radAutenticidade
+            // 
+            this.radAutenticidade.AutoSize = true;
+            this.radAutenticidade.Location = new System.Drawing.Point(89, 3);
+            this.radAutenticidade.Name = "radAutenticidade";
+            this.radAutenticidade.Size = new System.Drawing.Size(90, 17);
+            this.radAutenticidade.TabIndex = 1;
+            this.radAutenticidade.Text = "Autenticidade";
+            this.radAutenticidade.UseVisualStyleBackColor = true;
+            // 
+            // radSemelhanca
+            // 
+            this.radSemelhanca.AutoSize = true;
+            this.radSemelhanca.Location = new System.Drawing.Point(3, 2);
+            this.radSemelhanca.Name = "radSemelhanca";
+            this.radSemelhanca.Size = new System.Drawing.Size(84, 17);
+            this.radSemelhanca.TabIndex = 0;
+            this.radSemelhanca.Text = "Semelhança";
+            this.radSemelhanca.UseVisualStyleBackColor = true;
+            // 
+            // RecoFirma
+            // 
+            this.RecoFirma.AutoSize = true;
+            this.RecoFirma.Location = new System.Drawing.Point(9, 102);
+            this.RecoFirma.Name = "RecoFirma";
+            this.RecoFirma.Size = new System.Drawing.Size(119, 13);
+            this.RecoFirma.TabIndex = 557;
+            this.RecoFirma.Text = "Reconhecimento Firma:";
             // 
             // label31
             // 
@@ -345,7 +397,6 @@
             this.radImpedimentoSim.TabStop = true;
             this.radImpedimentoSim.Text = "Sim";
             this.radImpedimentoSim.UseVisualStyleBackColor = true;
-
             // 
             // label16
             // 
@@ -404,7 +455,7 @@
             // 
             // Layout5_mskRetorno
             // 
-            this.Layout5_mskRetorno.Location = new System.Drawing.Point(267, 52);
+            this.Layout5_mskRetorno.Location = new System.Drawing.Point(267, 32);
             this.Layout5_mskRetorno.Mask = "00/00/0000";
             this.Layout5_mskRetorno.Name = "Layout5_mskRetorno";
             this.Layout5_mskRetorno.Size = new System.Drawing.Size(89, 20);
@@ -415,7 +466,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(264, 36);
+            this.label6.Location = new System.Drawing.Point(264, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 544;
@@ -423,7 +474,7 @@
             // 
             // Layout5_mskIda
             // 
-            this.Layout5_mskIda.Location = new System.Drawing.Point(166, 52);
+            this.Layout5_mskIda.Location = new System.Drawing.Point(166, 32);
             this.Layout5_mskIda.Mask = "00/00/0000";
             this.Layout5_mskIda.Name = "Layout5_mskIda";
             this.Layout5_mskIda.Size = new System.Drawing.Size(95, 20);
@@ -434,7 +485,7 @@
             // Fase5_0
             // 
             this.Fase5_0.AutoSize = true;
-            this.Fase5_0.Location = new System.Drawing.Point(166, 36);
+            this.Fase5_0.Location = new System.Drawing.Point(166, 16);
             this.Fase5_0.Name = "Fase5_0";
             this.Fase5_0.Size = new System.Drawing.Size(25, 13);
             this.Fase5_0.TabIndex = 542;
@@ -1167,47 +1218,86 @@
             this.gpbObservacao.TabStop = false;
             this.gpbObservacao.Text = "Observação";
             // 
-            // panel2
+            // pnlFase14
             // 
-            this.panel2.Controls.Add(this.radNenhum);
-            this.panel2.Controls.Add(this.radAutenticidade);
-            this.panel2.Controls.Add(this.radSemelhanca);
-            this.panel2.Location = new System.Drawing.Point(75, 10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(313, 21);
-            this.panel2.TabIndex = 552;
+            this.pnlFase14.Controls.Add(this.groupBox13);
+            this.pnlFase14.Location = new System.Drawing.Point(472, 233);
+            this.pnlFase14.Name = "pnlFase14";
+            this.pnlFase14.Size = new System.Drawing.Size(369, 78);
+            this.pnlFase14.TabIndex = 545;
+            this.pnlFase14.Visible = false;
             // 
-            // radSemelhanca
+            // groupBox13
             // 
-            this.radSemelhanca.AutoSize = true;
-            this.radSemelhanca.Location = new System.Drawing.Point(3, 2);
-            this.radSemelhanca.Name = "radSemelhanca";
-            this.radSemelhanca.Size = new System.Drawing.Size(84, 17);
-            this.radSemelhanca.TabIndex = 0;
-            this.radSemelhanca.Text = "Semelhança";
-            this.radSemelhanca.UseVisualStyleBackColor = true;
+            this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox13.Controls.Add(this.label3);
+            this.groupBox13.Controls.Add(this.Layout14_mskProcurador);
+            this.groupBox13.Controls.Add(this.Layout14_mskRetorno);
+            this.groupBox13.Controls.Add(this.label32);
+            this.groupBox13.Controls.Add(this.Layout14_mskIda);
+            this.groupBox13.Controls.Add(this.label33);
+            this.groupBox13.Location = new System.Drawing.Point(5, 5);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(361, 70);
+            this.groupBox13.TabIndex = 544;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Detran";
             // 
-            // radAutenticidade
+            // label3
             // 
-            this.radAutenticidade.AutoSize = true;
-            this.radAutenticidade.Location = new System.Drawing.Point(89, 3);
-            this.radAutenticidade.Name = "radAutenticidade";
-            this.radAutenticidade.Size = new System.Drawing.Size(90, 17);
-            this.radAutenticidade.TabIndex = 1;
-            this.radAutenticidade.Text = "Autenticidade";
-            this.radAutenticidade.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 550;
+            this.label3.Text = "Procurador:";
             // 
-            // radNenhum
+            // Layout14_mskProcurador
             // 
-            this.radNenhum.AutoSize = true;
-            this.radNenhum.Checked = true;
-            this.radNenhum.Location = new System.Drawing.Point(189, 3);
-            this.radNenhum.Name = "radNenhum";
-            this.radNenhum.Size = new System.Drawing.Size(65, 17);
-            this.radNenhum.TabIndex = 2;
-            this.radNenhum.TabStop = true;
-            this.radNenhum.Text = "Nenhum";
-            this.radNenhum.UseVisualStyleBackColor = true;
+            this.Layout14_mskProcurador.Location = new System.Drawing.Point(9, 32);
+            this.Layout14_mskProcurador.Name = "Layout14_mskProcurador";
+            this.Layout14_mskProcurador.Size = new System.Drawing.Size(151, 20);
+            this.Layout14_mskProcurador.TabIndex = 549;
+            // 
+            // Layout14_mskRetorno
+            // 
+            this.Layout14_mskRetorno.Location = new System.Drawing.Point(267, 32);
+            this.Layout14_mskRetorno.Mask = "00/00/0000";
+            this.Layout14_mskRetorno.Name = "Layout14_mskRetorno";
+            this.Layout14_mskRetorno.Size = new System.Drawing.Size(89, 20);
+            this.Layout14_mskRetorno.TabIndex = 545;
+            this.Layout14_mskRetorno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Layout14_mskRetorno.ValidatingType = typeof(System.DateTime);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(264, 16);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(48, 13);
+            this.label32.TabIndex = 544;
+            this.label32.Text = "Retorno:";
+            // 
+            // Layout14_mskIda
+            // 
+            this.Layout14_mskIda.Location = new System.Drawing.Point(166, 32);
+            this.Layout14_mskIda.Mask = "00/00/0000";
+            this.Layout14_mskIda.Name = "Layout14_mskIda";
+            this.Layout14_mskIda.Size = new System.Drawing.Size(95, 20);
+            this.Layout14_mskIda.TabIndex = 543;
+            this.Layout14_mskIda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Layout14_mskIda.ValidatingType = typeof(System.DateTime);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(166, 16);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(25, 13);
+            this.label33.TabIndex = 542;
+            this.label33.Text = "Ida:";
             // 
             // frmCad_Administracao_Fases
             // 
@@ -1215,6 +1305,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 607);
+            this.Controls.Add(this.pnlFase14);
             this.Controls.Add(this.pnlFase3);
             this.Controls.Add(this.pnlFase5);
             this.Controls.Add(this.pnlFase6);
@@ -1244,6 +1335,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlFase4.ResumeLayout(false);
@@ -1288,8 +1381,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.gpbObservacao.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlFase14.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1392,10 +1486,18 @@
         private System.Windows.Forms.ToolStripButton tsbDocAdd;
         private System.Windows.Forms.ToolStripButton tsbDocEdit;
         private System.Windows.Forms.ToolStripButton tsbDocDel;
-        private System.Windows.Forms.Label RecoFirma;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton radNenhum;
         private System.Windows.Forms.RadioButton radAutenticidade;
         private System.Windows.Forms.RadioButton radSemelhanca;
+        private System.Windows.Forms.Label RecoFirma;
+        private System.Windows.Forms.Panel pnlFase14;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Layout14_mskProcurador;
+        private System.Windows.Forms.MaskedTextBox Layout14_mskRetorno;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.MaskedTextBox Layout14_mskIda;
+        private System.Windows.Forms.Label label33;
     }
 }

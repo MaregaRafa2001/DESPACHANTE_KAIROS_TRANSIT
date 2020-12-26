@@ -134,6 +134,11 @@ namespace APP_UI
                     Layout13_RetiradoPor.Text = administracao_dto.RETIRADO_POR;
                     break;
 
+                case 14://PROCURADORIA DETRAN
+                    Layout14_mskIda.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_IDA_DETRAN);
+                    Layout14_mskRetorno.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_RETORNO_DETRAN);
+                    Layout14_mskProcurador.Text = administracao_dto.PROCURADOR;
+                    break;
 
             }
         }
@@ -222,6 +227,11 @@ namespace APP_UI
                         administracao_dto.RETIRADO_POR = Layout13_RetiradoPor.Text;
                         break;
                     default:
+                        break;
+                    case 14://PROCURADORIA DETRAN
+                        administracao_dto.DATA_IDA_DETRAN = FormFuncoes.GetMskDate(Layout14_mskIda);
+                        administracao_dto.DATA_RETORNO_DETRAN = FormFuncoes.GetMskDate(Layout14_mskRetorno);
+                        administracao_dto.PROCURADOR = Layout14_mskProcurador.Text;
                         break;
                 }
 
@@ -314,6 +324,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase1.Location = new System.Drawing.Point(6, 50);
                     gpbObservacao.Location = new System.Drawing.Point(13, 132);
                     this.Size = new System.Drawing.Size(402, 397);
@@ -332,6 +343,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase2.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 314);
                     gpbObservacao.Location = new System.Drawing.Point(13, 50);
@@ -349,6 +361,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase3.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 487);
                     gpbObservacao.Location = new System.Drawing.Point(13, 222);
@@ -366,6 +379,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase4.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
                     gpbObservacao.Location = new System.Drawing.Point(13, 132);
@@ -383,9 +397,10 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase5.Location = new System.Drawing.Point(6, 50);
-                    this.Size = new System.Drawing.Size(402, 455);
-                    gpbObservacao.Location = new System.Drawing.Point(13, 184);
+                    this.Size = new System.Drawing.Size(402, 503);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 232);
                     break;
                 case 6: //PÓS VENDA  / CURSO DE CFC
                     pnlFase1.Visible = false;
@@ -400,6 +415,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase6.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
                     gpbObservacao.Location = new System.Drawing.Point(13, 132);
@@ -417,6 +433,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase7.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 455);
                     gpbObservacao.Location = new System.Drawing.Point(13, 184);
@@ -434,6 +451,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
                     pnlFase8.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 395);
                     gpbObservacao.Location = new System.Drawing.Point(13, 125);
@@ -451,6 +469,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
 
                     pnlLayout9.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
@@ -469,6 +488,7 @@ namespace APP_UI
                     pnlLayout11.Visible = true;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
 
                     pnlLayout11.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 397);
@@ -487,6 +507,7 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = true;
                     pnlLayout13.Visible = false;
+                    pnlFase14.Visible = false;
 
                     pnlLayout12.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 455);
@@ -505,10 +526,31 @@ namespace APP_UI
                     pnlLayout11.Visible = false;
                     pnlLayout12.Visible = false;
                     pnlLayout13.Visible = true;
+                    pnlFase14.Visible = false;
 
                     pnlLayout13.Location = new System.Drawing.Point(6, 50);
                     this.Size = new System.Drawing.Size(402, 455);
                     gpbObservacao.Location = new System.Drawing.Point(13, 184);
+                    break;
+
+                case 14: //FINALIZAÇÃO ENTREGA CNH
+                    pnlFase1.Visible = false;
+                    pnlFase2.Visible = false;
+                    pnlFase3.Visible = false;
+                    pnlFase4.Visible = false;
+                    pnlFase5.Visible = false;
+                    pnlFase6.Visible = false;
+                    pnlFase7.Visible = false;
+                    pnlFase8.Visible = false;
+                    pnlLayout9.Visible = false;
+                    pnlLayout11.Visible = false;
+                    pnlLayout12.Visible = false;
+                    pnlLayout13.Visible = false;
+                    pnlFase14.Visible = true;
+
+                    pnlFase14.Location = new System.Drawing.Point(6, 50);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 132);
+                    this.Size = new System.Drawing.Size(402, 397);
                     break;
             }
         }

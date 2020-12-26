@@ -55,7 +55,9 @@ namespace DAL
                     SQL_.Append("VALOR_LIQUIDO, ");
                     SQL_.Append("USUARIO, ");
                     SQL_.Append("ULT_ATUAL, ");
-                    SQL_.Append("BANCO_OS ");
+                    SQL_.Append("BANCO_OS, ");
+                    SQL_.Append("UNIDADE, ");
+                    SQL_.Append("RECEBIDO_POR ");
                     SQL_.Append(") ");
                     SQL_.Append("VALUES ");
                     SQL_.Append("( ");
@@ -80,7 +82,9 @@ namespace DAL
                     SQL_.Append("@VALOR_LIQUIDO, ");
                     SQL_.Append("@USUARIO, ");
                     SQL_.Append("GETDATE(), ");
-                    SQL_.Append("@BANCO_OS ");
+                    SQL_.Append("@BANCO_OS, ");
+                    SQL_.Append("@UNIDADE, ");
+                    SQL_.Append("@RECEBIDO_POR ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
 
@@ -169,7 +173,9 @@ namespace DAL
                     SQL_.Append("VALOR_LIQUIDO = @VALOR_LIQUIDO, ");
                     SQL_.Append("USUARIO = @USUARIO, ");
                     SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
-                    SQL_.Append("BANCO_OS = @BANCO_OS ");
+                    SQL_.Append("BANCO_OS = @BANCO_OS, ");
+                    SQL_.Append("UNIDADE = @UNIDADE, ");
+                    SQL_.Append("RECEBIDO_POR = @RECEBIDO_POR ");
                     SQL_.Append("WHERE ID = @ID ");
                     cn.Open();
 
@@ -218,6 +224,8 @@ namespace DAL
             cmd.Parameters.AddWithValue("@DIA_VENCIMENTO", DTO.DIA_VENCIMENTO);
             cmd.Parameters.AddWithValue("@MOTOBOY_OS", DTO.MOTOBOY_OS);
             cmd.Parameters.AddWithValue("@BANCO_OS", DTO.BANCO_OS);
+            cmd.Parameters.AddWithValue("@UNIDADE", DTO.UNIDADE);
+            cmd.Parameters.AddWithValue("@RECEBIDO_POR", DTO.RECEBIDO_POR);
             cmd.Parameters.AddWithValue("@VALOR_BRUTO", DTO.VALOR_BRUTO);
             cmd.Parameters.AddWithValue("@VALOR_LIQUIDO", DTO.VALOR_LIQUIDO);
             cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
@@ -339,6 +347,8 @@ namespace DAL
             _DTO.MOTOBOY_OS = dtr["MOTOBOY_OS"].ToString();
             _DTO.BANCO_OS = dtr["BANCO_OS"].ToString();
             _DTO.BANCO_OS = dtr["BANCO_OS"].ToString();
+            _DTO.UNIDADE = dtr["UNIDADE"].ToString();
+            _DTO.RECEBIDO_POR = dtr["RECEBIDO_POR"].ToString();
             _DTO.USUARIO = dtr["USUARIO"].ToString();
             _DTO.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
 

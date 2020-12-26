@@ -164,6 +164,10 @@ namespace APP_UI
                 txtValorLi.Text = FINANCEIRO_DTO.VALOR_LIQUIDO.ToString();
 
                 txtValorB.Text = FINANCEIRO_DTO.VALOR_BRUTO.ToString();
+
+                txtRecebidoPor.Text = FINANCEIRO_DTO.RECEBIDO_POR.ToString();
+
+                txtUnidade.Text = FINANCEIRO_DTO.UNIDADE.ToString();
             }
             catch (Exception ex)
             {
@@ -259,6 +263,8 @@ namespace APP_UI
                 FINANCEIRO_DTO.OBSERVACAO = txtObservacao.Text;
                 FINANCEIRO_DTO.ULT_ATUAL = DateTime.Now;
                 FINANCEIRO_DTO.USUARIO = SysBLL.UserLogin.NOME;
+                FINANCEIRO_DTO.RECEBIDO_POR = txtRecebidoPor.Text;
+                FINANCEIRO_DTO.UNIDADE = txtUnidade.Text;
 
                 FINANCEIRO_DTO.VALOR_LIQUIDO = Convert.ToDecimal(txtValorLi.Text);
                 FINANCEIRO_DTO.VALOR_BRUTO = Convert.ToDecimal(txtValorB.Text);
@@ -1022,5 +1028,15 @@ namespace APP_UI
             }
         }
         #endregion
+
+        private void Label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
