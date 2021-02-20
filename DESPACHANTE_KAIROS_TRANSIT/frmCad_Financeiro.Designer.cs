@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCad_Financeiro));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -73,6 +73,10 @@
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnAlterarValor = new System.Windows.Forms.Button();
             this.gpbDetalhes = new System.Windows.Forms.GroupBox();
+            this.txtUnidade = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtRecebidoPor = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtValorOS = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -83,10 +87,6 @@
             this.grpMaisDetalhes = new System.Windows.Forms.GroupBox();
             this.txtMaisDetalhes = new System.Windows.Forms.TextBox();
             this.dtgHistorico = new System.Windows.Forms.DataGridView();
-            this.txtRecebidoPor = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtUnidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picConsultor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPesquisarAdvogado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQtdParcela)).BeginInit();
@@ -488,14 +488,14 @@
             this.dtgBoletosCheques.Location = new System.Drawing.Point(14, 41);
             this.dtgBoletosCheques.Name = "dtgBoletosCheques";
             this.dtgBoletosCheques.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgBoletosCheques.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgBoletosCheques.RowHeadersWidth = 51;
             this.dtgBoletosCheques.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgBoletosCheques.Size = new System.Drawing.Size(673, 144);
@@ -556,6 +556,42 @@
             this.gpbDetalhes.TabStop = false;
             this.gpbDetalhes.Text = "Dados";
             // 
+            // txtUnidade
+            // 
+            this.txtUnidade.Location = new System.Drawing.Point(380, 347);
+            this.txtUnidade.MaxLength = 100;
+            this.txtUnidade.Name = "txtUnidade";
+            this.txtUnidade.Size = new System.Drawing.Size(275, 20);
+            this.txtUnidade.TabIndex = 535;
+            this.txtUnidade.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(377, 322);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 13);
+            this.label17.TabIndex = 534;
+            this.label17.Text = "Unidade:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 322);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 13);
+            this.label16.TabIndex = 533;
+            this.label16.Text = "Recebido Por:";
+            this.label16.Click += new System.EventHandler(this.Label16_Click);
+            // 
+            // txtRecebidoPor
+            // 
+            this.txtRecebidoPor.Location = new System.Drawing.Point(10, 347);
+            this.txtRecebidoPor.MaxLength = 100;
+            this.txtRecebidoPor.Name = "txtRecebidoPor";
+            this.txtRecebidoPor.Size = new System.Drawing.Size(287, 20);
+            this.txtRecebidoPor.TabIndex = 532;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -582,6 +618,7 @@
             this.label9.Size = new System.Drawing.Size(41, 13);
             this.label9.TabIndex = 529;
             this.label9.Text = "Banco:";
+            this.label9.Visible = false;
             // 
             // txtBanco
             // 
@@ -590,6 +627,7 @@
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(203, 20);
             this.txtBanco.TabIndex = 528;
+            this.txtBanco.Visible = false;
             // 
             // tabControl2
             // 
@@ -619,7 +657,7 @@
             this.tabHistórico.Location = new System.Drawing.Point(4, 22);
             this.tabHistórico.Name = "tabHistórico";
             this.tabHistórico.Padding = new System.Windows.Forms.Padding(3);
-            this.tabHistórico.Size = new System.Drawing.Size(734, 510);
+            this.tabHistórico.Size = new System.Drawing.Size(734, 530);
             this.tabHistórico.TabIndex = 3;
             this.tabHistórico.Text = "Histórico";
             this.tabHistórico.UseVisualStyleBackColor = true;
@@ -655,8 +693,8 @@
             this.dtgHistorico.AllowUserToAddRows = false;
             this.dtgHistorico.AllowUserToDeleteRows = false;
             this.dtgHistorico.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            this.dtgHistorico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -671,42 +709,6 @@
             this.dtgHistorico.Size = new System.Drawing.Size(715, 203);
             this.dtgHistorico.TabIndex = 361;
             this.dtgHistorico.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgHistorico_CellClick);
-            // 
-            // txtRecebidoPor
-            // 
-            this.txtRecebidoPor.Location = new System.Drawing.Point(10, 347);
-            this.txtRecebidoPor.MaxLength = 100;
-            this.txtRecebidoPor.Name = "txtRecebidoPor";
-            this.txtRecebidoPor.Size = new System.Drawing.Size(287, 20);
-            this.txtRecebidoPor.TabIndex = 532;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 322);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(75, 13);
-            this.label16.TabIndex = 533;
-            this.label16.Text = "Recebido Por:";
-            this.label16.Click += new System.EventHandler(this.Label16_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(377, 322);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(50, 13);
-            this.label17.TabIndex = 534;
-            this.label17.Text = "Unidade:";
-            // 
-            // txtUnidade
-            // 
-            this.txtUnidade.Location = new System.Drawing.Point(380, 347);
-            this.txtUnidade.MaxLength = 100;
-            this.txtUnidade.Name = "txtUnidade";
-            this.txtUnidade.Size = new System.Drawing.Size(275, 20);
-            this.txtUnidade.TabIndex = 535;
-            this.txtUnidade.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
             // 
             // frmCad_Financeiro
             // 

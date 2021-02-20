@@ -220,6 +220,7 @@ namespace APP_UI
             PopularRadios(radImpedimentoSim, radImpedimentoNao, CLIENTE_DTO.IMPEDIMENTO);
             PopularRadios(radCNHVencidaSim, radCNHVencidaNao, CLIENTE_DTO.CNH_VENCIDA);
             PopularRadios(radAtivRemuneradaSim, radAtivRemuneradaNao, CLIENTE_DTO.ATIV_REMUNERADA);
+            PopularRadios(radCNHDefinitivaSim, radCNHDefinitivaNao, CLIENTE_DTO.CNH_DEFINITIVA);
 
         }
 
@@ -412,6 +413,7 @@ namespace APP_UI
                     default:
                         radTipoCNH.Checked = true;
                         break;
+                   
                 }
             }
             catch (Exception ex)
@@ -456,6 +458,7 @@ namespace APP_UI
                 CLIENTE_DTO.CNH_DATA_EMISSAO = FormFuncoes.GetMskDate(mskCNHDataEmissao);
                 CLIENTE_DTO.CNH_VENCIDA = radCNHVencidaSim.Checked ? true : false;
                 CLIENTE_DTO.ATIV_REMUNERADA = radAtivRemuneradaSim.Checked ? true : false;
+                CLIENTE_DTO.CNH_DEFINITIVA= radCNHDefinitivaSim.Checked ? true : false;
                 CLIENTE_DTO.SIGLA_PCD = AtualizaSiglaPCD();
                 //ENDEREÇO
                 CLIENTE_DTO.CEP = mskCEP.Text.Replace("-", "");

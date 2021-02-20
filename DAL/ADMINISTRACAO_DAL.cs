@@ -123,5 +123,57 @@ namespace DAL
             }
         }
 
+
+
+        public List<STATUS_ADMINISTRACAO_FASES> Listar_Status_administracao_Fases()
+        {
+            using (SqlConnection cn = new SqlConnection(strConnection))
+            {
+                List<STATUS_ADMINISTRACAO_FASES> STATUS_ADMINISTRACAO_FASES = new List<STATUS_ADMINISTRACAO_FASES>();
+
+                try
+                {
+                    SqlDataReader dr = null;
+
+                    StringBuilder SQL_ = new StringBuilder();
+
+                    SQL_.Append("SELECT * FROM STATUS_ADMINISTRCAO_FASES   ");
+                    cn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_.ToString(), cn);
+                    dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        STATUS_ADMINISTRACAO_FASES DTO = new STATUS_ADMINISTRACAO_FASES();
+                        DTO.ID = Convert.ToInt32(dr["ID"]);
+                        DTO.DESCRICAO = Convert.ToString(dr["DESCRICAO"]);
+                        STATUS_ADMINISTRACAO_FASES.Add(DTO);
+                    }
+
+                    return STATUS_ADMINISTRACAO_FASES;
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
+
+
+
+
+
+
     }
 }

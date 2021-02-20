@@ -29,5 +29,9 @@ namespace BLL
         {
             return uDAO.Listar_FaseFinanceiro(ID_SERVICO);
         }
+        public List<STATUS_ADMINISTRACAO_FASES> Listar_Status_administracao_Fases()
+        {
+            return uDAO.Listar_Status_administracao_Fases();
+        }
     }
 }

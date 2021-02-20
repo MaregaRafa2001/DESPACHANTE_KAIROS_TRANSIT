@@ -45,6 +45,7 @@ namespace DAL
                     SQL_.Append("CNH_DATA_VENCIMENTO, ");
                     SQL_.Append("CNH_DATA_EMISSAO, ");
                     SQL_.Append("CNH_VENCIDA, ");
+                    SQL_.Append("CNH_DEFINITIVA, ");
                     SQL_.Append("ATIV_REMUNERADA, ");
                     SQL_.Append("SIGLA_PCD, ");
                     //ENDERECO
@@ -83,6 +84,7 @@ namespace DAL
                     SQL_.Append("@CNH_DATA_VENCIMENTO, ");
                     SQL_.Append("@CNH_DATA_EMISSAO, ");
                     SQL_.Append("@CNH_VENCIDA, ");
+                    SQL_.Append("@CNH_DEFINITIVA, ");
                     SQL_.Append("@ATIV_REMUNERADA, ");
                     SQL_.Append("@SIGLA_PCD, ");
                     //ENDERECO
@@ -168,6 +170,7 @@ namespace DAL
                     SQL_.Append("CNH_DATA_VENCIMENTO = @CNH_DATA_VENCIMENTO, ");
                     SQL_.Append("CNH_DATA_EMISSAO = @CNH_DATA_EMISSAO, ");
                     SQL_.Append("CNH_VENCIDA = @CNH_VENCIDA, ");
+                    SQL_.Append("CNH_DEFINITIVA = @CNH_DEFINITIVA ");
                     SQL_.Append("ATIV_REMUNERADA = @ATIV_REMUNERADA, ");
                     SQL_.Append("SIGLA_PCD = @SIGLA_PCD, ");
                     //ENDERECO
@@ -272,6 +275,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@CNH_DATA_VENCIMENTO", DTO.CNH_DATA_VENCIMENTO);
             cmd.Parameters.AddWithValue("@CNH_DATA_EMISSAO", DTO.CNH_DATA_EMISSAO);
             cmd.Parameters.AddWithValue("@CNH_VENCIDA", DTO.CNH_VENCIDA);
+            cmd.Parameters.AddWithValue("@CNH_DEFINITIVA", DTO.CNH_DEFINITIVA);
             cmd.Parameters.AddWithValue("@ATIV_REMUNERADA", DTO.ATIV_REMUNERADA);
             cmd.Parameters.AddWithValue("@SIGLA_PCD", DTO.SIGLA_PCD);
             //ENDEREÇO
@@ -385,6 +389,7 @@ namespace DAL
             Cliente.CNH_DATA_VENCIMENTO = dtr["CNH_DATA_VENCIMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["CNH_DATA_VENCIMENTO"]);
             Cliente.CNH_DATA_EMISSAO = dtr["CNH_DATA_EMISSAO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["CNH_DATA_EMISSAO"]);
             Cliente.CNH_VENCIDA = dtr["CNH_VENCIDA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["CNH_VENCIDA"]);
+            Cliente.CNH_DEFINITIVA = dtr["CNH_DEFINITVA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["CNH_DEFINITIVA"]);
             Cliente.ATIV_REMUNERADA = dtr["ATIV_REMUNERADA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["ATIV_REMUNERADA"]);
             Cliente.SIGLA_PCD = dtr["SIGLA_PCD"] == DBNull.Value ? "" : dtr["SIGLA_PCD"].ToString();
             //ENDERECO

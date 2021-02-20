@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RELATORIOS_DTO.cs" />
     <Compile Include="SERVICO_DTO.cs" />
+    <Compile Include="STATUS_ADMINISTRACAO_FASES.cs" />
     <Compile Include="STATUS_FINANCEIRO_DTO.cs" />
     <Compile Include="SysDTO.cs" />
     <Compile Include="SYS_MENU_DTO.cs" />

@@ -38,6 +38,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.Layout5_mskProcurador = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.radPreventivoNao = new System.Windows.Forms.RadioButton();
+            this.radPreventivoSim = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.radNenhum = new System.Windows.Forms.RadioButton();
             this.radAutenticidade = new System.Windows.Forms.RadioButton();
@@ -55,12 +59,19 @@
             this.label8 = new System.Windows.Forms.Label();
             this.Layout5_mskInicio = new System.Windows.Forms.MaskedTextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Layout5_mskRetorno = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Layout5_mskIda = new System.Windows.Forms.MaskedTextBox();
             this.Fase5_0 = new System.Windows.Forms.Label();
             this.pnlFase4 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.mskSMS = new System.Windows.Forms.MaskedTextBox();
+            this.mskSenha = new System.Windows.Forms.MaskedTextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.Layout4_mskDataMontagemProcesso = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlFase7 = new System.Windows.Forms.Panel();
@@ -137,12 +148,14 @@
             this.label32 = new System.Windows.Forms.Label();
             this.Layout14_mskIda = new System.Windows.Forms.MaskedTextBox();
             this.label33 = new System.Windows.Forms.Label();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.pnlFase5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.pnlFase4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.pnlFase7.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -178,7 +191,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(932, 566);
+            this.btnCancelar.Location = new System.Drawing.Point(1039, 590);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 32);
@@ -190,7 +203,7 @@
             // btnConfirmar
             // 
             this.btnConfirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmar.Location = new System.Drawing.Point(847, 566);
+            this.btnConfirmar.Location = new System.Drawing.Point(954, 590);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(80, 32);
@@ -215,7 +228,7 @@
             this.cboFase.Location = new System.Drawing.Point(13, 24);
             this.cboFase.Margin = new System.Windows.Forms.Padding(2);
             this.cboFase.Name = "cboFase";
-            this.cboFase.Size = new System.Drawing.Size(277, 21);
+            this.cboFase.Size = new System.Drawing.Size(221, 21);
             this.cboFase.TabIndex = 535;
             this.cboFase.SelectedIndexChanged += new System.EventHandler(this.cboFase_SelectedIndexChanged);
             // 
@@ -224,7 +237,7 @@
             this.pnlFase5.Controls.Add(this.groupBox2);
             this.pnlFase5.Location = new System.Drawing.Point(566, 12);
             this.pnlFase5.Name = "pnlFase5";
-            this.pnlFase5.Size = new System.Drawing.Size(369, 221);
+            this.pnlFase5.Size = new System.Drawing.Size(369, 344);
             this.pnlFase5.TabIndex = 544;
             this.pnlFase5.Visible = false;
             // 
@@ -242,7 +255,7 @@
             this.groupBox2.Controls.Add(this.Fase5_0);
             this.groupBox2.Location = new System.Drawing.Point(5, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(361, 213);
+            this.groupBox2.Size = new System.Drawing.Size(361, 260);
             this.groupBox2.TabIndex = 544;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detran";
@@ -265,6 +278,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.panel3);
             this.groupBox7.Controls.Add(this.panel2);
             this.groupBox7.Controls.Add(this.RecoFirma);
             this.groupBox7.Controls.Add(this.label31);
@@ -276,14 +290,60 @@
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Controls.Add(this.Layout5_mskInicio);
             this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Controls.Add(this.menuStrip1);
             this.groupBox7.Location = new System.Drawing.Point(6, 55);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(350, 151);
+            this.groupBox7.Size = new System.Drawing.Size(350, 174);
             this.groupBox7.TabIndex = 548;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Penalidade";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.radPreventivoNao);
+            this.panel3.Controls.Add(this.radPreventivoSim);
+            this.panel3.Location = new System.Drawing.Point(10, 143);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(191, 31);
+            this.panel3.TabIndex = 559;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(2, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Preventivo:";
+            // 
+            // radPreventivoNao
+            // 
+            this.radPreventivoNao.AutoSize = true;
+            this.radPreventivoNao.Location = new System.Drawing.Point(139, 7);
+            this.radPreventivoNao.Margin = new System.Windows.Forms.Padding(2);
+            this.radPreventivoNao.Name = "radPreventivoNao";
+            this.radPreventivoNao.Size = new System.Drawing.Size(45, 17);
+            this.radPreventivoNao.TabIndex = 38;
+            this.radPreventivoNao.Text = "Não";
+            this.radPreventivoNao.UseVisualStyleBackColor = true;
+            // 
+            // radPreventivoSim
+            // 
+            this.radPreventivoSim.AutoSize = true;
+            this.radPreventivoSim.Checked = true;
+            this.radPreventivoSim.Location = new System.Drawing.Point(95, 7);
+            this.radPreventivoSim.Margin = new System.Windows.Forms.Padding(2);
+            this.radPreventivoSim.Name = "radPreventivoSim";
+            this.radPreventivoSim.Size = new System.Drawing.Size(42, 17);
+            this.radPreventivoSim.TabIndex = 37;
+            this.radPreventivoSim.TabStop = true;
+            this.radPreventivoSim.Text = "Sim";
+            this.radPreventivoSim.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -453,6 +513,14 @@
             this.label15.TabIndex = 546;
             this.label15.Text = "Início:";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(2, 15);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(346, 24);
+            this.menuStrip1.TabIndex = 560;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // Layout5_mskRetorno
             // 
             this.Layout5_mskRetorno.Location = new System.Drawing.Point(267, 32);
@@ -493,7 +561,6 @@
             // 
             // pnlFase4
             // 
-            this.pnlFase4.Controls.Add(this.groupBox6);
             this.pnlFase4.Location = new System.Drawing.Point(496, 44);
             this.pnlFase4.Name = "pnlFase4";
             this.pnlFase4.Size = new System.Drawing.Size(379, 76);
@@ -502,21 +569,78 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.txtEmail);
+            this.groupBox6.Controls.Add(this.mskSMS);
+            this.groupBox6.Controls.Add(this.mskSenha);
+            this.groupBox6.Controls.Add(this.label27);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.label25);
             this.groupBox6.Controls.Add(this.Layout4_mskDataMontagemProcesso);
             this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Location = new System.Drawing.Point(7, 5);
+            this.groupBox6.Location = new System.Drawing.Point(405, 17);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(361, 68);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Montagem de processo";
             // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(113, 36);
+            this.txtEmail.MaxLength = 15;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(84, 20);
+            this.txtEmail.TabIndex = 556;
+            // 
+            // mskSMS
+            // 
+            this.mskSMS.Location = new System.Drawing.Point(271, 36);
+            this.mskSMS.Mask = "(99) 00000-0000";
+            this.mskSMS.Name = "mskSMS";
+            this.mskSMS.Size = new System.Drawing.Size(72, 20);
+            this.mskSMS.TabIndex = 553;
+            // 
+            // mskSenha
+            // 
+            this.mskSenha.Location = new System.Drawing.Point(203, 36);
+            this.mskSenha.Mask = "*************";
+            this.mskSenha.Name = "mskSenha";
+            this.mskSenha.Size = new System.Drawing.Size(43, 20);
+            this.mskSenha.TabIndex = 552;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(268, 20);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(75, 13);
+            this.label27.TabIndex = 548;
+            this.label27.Text = "TelefoneSMS:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(200, 20);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(41, 13);
+            this.label26.TabIndex = 547;
+            this.label26.Text = "Senha:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(139, 20);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(35, 13);
+            this.label25.TabIndex = 546;
+            this.label25.Text = "Email:";
+            // 
             // Layout4_mskDataMontagemProcesso
             // 
             this.Layout4_mskDataMontagemProcesso.Location = new System.Drawing.Point(8, 36);
             this.Layout4_mskDataMontagemProcesso.Mask = "00/00/0000";
             this.Layout4_mskDataMontagemProcesso.Name = "Layout4_mskDataMontagemProcesso";
-            this.Layout4_mskDataMontagemProcesso.Size = new System.Drawing.Size(110, 20);
+            this.Layout4_mskDataMontagemProcesso.Size = new System.Drawing.Size(95, 20);
             this.Layout4_mskDataMontagemProcesso.TabIndex = 545;
             this.Layout4_mskDataMontagemProcesso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Layout4_mskDataMontagemProcesso.ValidatingType = typeof(System.DateTime);
@@ -1299,12 +1423,34 @@
             this.label33.TabIndex = 542;
             this.label33.Text = "Ida:";
             // 
+            // cboStatus
+            // 
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(238, 21);
+            this.cboStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(162, 21);
+            this.cboStatus.TabIndex = 552;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(235, 4);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(40, 13);
+            this.label28.TabIndex = 551;
+            this.label28.Text = "Status:";
+            // 
             // frmCad_Administracao_Fases
             // 
             this.AcceptButton = this.btnConfirmar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 607);
+            this.ClientSize = new System.Drawing.Size(1131, 631);
+            this.Controls.Add(this.cboStatus);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.pnlFase14);
             this.Controls.Add(this.pnlFase3);
             this.Controls.Add(this.pnlFase5);
@@ -1324,6 +1470,7 @@
             this.Controls.Add(this.pnlLayout11);
             this.Controls.Add(this.pnlLayout9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmCad_Administracao_Fases";
@@ -1335,11 +1482,12 @@
             this.groupBox2.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnlFase4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.pnlFase7.ResumeLayout(false);
@@ -1499,5 +1647,18 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.MaskedTextBox Layout14_mskIda;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton radPreventivoNao;
+        private System.Windows.Forms.RadioButton radPreventivoSim;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.MaskedTextBox mskSMS;
+        private System.Windows.Forms.MaskedTextBox mskSenha;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cboStatus;
+        private System.Windows.Forms.Label label28;
     }
 }

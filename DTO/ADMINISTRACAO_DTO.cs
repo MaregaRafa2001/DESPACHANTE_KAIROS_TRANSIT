@@ -17,6 +17,7 @@ namespace DTO
         public int LAYOUT_TELA { get; set; }
         public int ID_FINANCEIRO { get; set; }
         public DateTime? DATA { get; set; }
+        public int ID_STATUS { get; set; }
         public string FASE { get; set; }
         public string OBSERVACAO { get; set; }
         public char? RECONHECER_FIRMA { get; set; }
@@ -38,6 +39,8 @@ namespace DTO
         public int? MESES_DETRAN { get; set; }
         public DateTime? DATA_INICIO { get; set; }
         public DateTime? DATA_TERMINO { get; set; }
+        public char? DOC_APREENDIDO { get; set; }
+        public char? PREVENTIVO { get; set; }
 
         //LAYOUT TELA 6
         public DateTime? DATA_FECHAMENTO_CURSO { get; set; }
