@@ -22,8 +22,8 @@ namespace APP_UI
         {
             InitializeComponent();
             this.ID_SERVICO = ID_SERVICO;
-            PopularCombos();
             this.administracao_dto = administracao_dto;
+            PopularCombos();
             if (this.administracao_dto.ID != null)
             {
                 PopularDados();
@@ -47,14 +47,25 @@ namespace APP_UI
                 {
                     throw new CustomException("Não foi identificado nenhuma fase para este serviço. Entre em contato com o suporte do sistema." + (administracao_dto == null ? "" : "\nID do registro: " + administracao_dto.ID), "Erro ao carregar fases");
                 }
+
+                List<FASE_FINANCEIRO_DTO> new_list = new List<FASE_FINANCEIRO_DTO>();
+                if (this.administracao_dto.ID == null)
+                {
+                    if (Lista_fases.FindIndex(x => x.LAYOUT_TELA == this.administracao_dto.LAYOUT_TELA) + 1 < Lista_fases.Count)
+                        new_list.Add(Lista_fases[Lista_fases.FindIndex(x => x.LAYOUT_TELA == this.administracao_dto.LAYOUT_TELA) + 1]);
+                    else
+                        throw new CustomException("Todas as fases já foram concluídas", "Não há próximas fases", "Não há próximas fases");
+                }
+                else
+                    new_list = Lista_fases;
                 cboFase.ValueMember = "LAYOUT_TELA";
                 cboFase.DisplayMember = "DESCRICAO";
-                cboFase.DataSource = Lista_fases;
+                cboFase.DataSource = new_list;
                 cboFase.SelectedIndex = 0;
                 cboFase.SelectedIndexChanged += cboFase_SelectedIndexChanged;
 
                 List<STATUS_ADMINISTRACAO_FASES> Lista_status = new ADMINISTRACAO_BLL().Listar_Status_administracao_Fases();
-                
+
                 cboStatus.ValueMember = "ID";
                 cboStatus.DisplayMember = "DESCRICAO";
                 cboStatus.DataSource = Lista_status;
@@ -71,11 +82,14 @@ namespace APP_UI
             cboFase.SelectedValue = administracao_dto.LAYOUT_TELA;
             lblDescricao.Text = administracao_dto.OBSERVACAO;
             ObservacaoClone = administracao_dto.OBSERVACAO;
-
+            cboStatus.SelectedValue = administracao_dto.ID_STATUS_ADMINISTRACAO_FASES.HasValue ? administracao_dto.ID_STATUS_ADMINISTRACAO_FASES : 0;
+            if (Convert.ToInt32(cboStatus.SelectedValue) == 2)
+                cboStatus.Enabled = false;
             if (cboFase.SelectedValue == null)
             {
                 throw new Exception("Não foi possível localizar a fase selecionada. Entre em contato com o suporte do sistema. \r\nID do registro: " + administracao_dto.ID);
             }
+
 
             loadTela(Convert.ToInt32(cboFase.SelectedValue));
             //POPULA A TELA COM O LAYOUT DA FASE
@@ -99,14 +113,14 @@ namespace APP_UI
                     Layout5_mskTermino.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_TERMINO);
                     Layout5_txtMesesDetran.Text = administracao_dto.MESES_DETRAN == (int?)null ? "0" : administracao_dto.MESES_DETRAN.ToString();
 
-                    if (administracao_dto.RECONHECER_FIRMA == null || administracao_dto.RECONHECER_FIRMA  == 'N')
+                    if (administracao_dto.RECONHECER_FIRMA == null || administracao_dto.RECONHECER_FIRMA == 'N')
                         radNenhum.Checked = true;
                     else if (administracao_dto.RECONHECER_FIRMA == 'S')
                         radSemelhanca.Checked = true;
                     else
                         radAutenticidade.Checked = true;
 
-             
+
 
                     if (administracao_dto.PREVENTIVO == 'N')
                         radPreventivoNao.Checked = true;
@@ -189,6 +203,7 @@ namespace APP_UI
 
                 administracao_dto.DATA = Convert.ToDateTime(DateTime.Now);
                 administracao_dto.FASE = cboFase.Text.ToString();
+                administracao_dto.ID_STATUS_ADMINISTRACAO_FASES = Convert.ToInt32(cboStatus.SelectedValue);
                 administracao_dto.LAYOUT_TELA = Convert.ToInt32(cboFase.SelectedValue);
                 if (txtObservacao.Text.Trim().Length > 0)
                     administracao_dto.OBSERVACAO = lblDescricao.Text + "\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " (" + SysBLL.UserLogin.NOME + ") - " + txtObservacao.Text;
@@ -698,6 +713,6 @@ namespace APP_UI
             }
         }
 
-        
+
     }
 }

@@ -47,6 +47,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.radCNHDefinitivaSim = new System.Windows.Forms.RadioButton();
+            this.radCNHDefinitivaNao = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.cbPCDd = new System.Windows.Forms.CheckBox();
             this.cbPCDx = new System.Windows.Forms.CheckBox();
@@ -167,13 +170,11 @@
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.radCNHDefinitivaSim = new System.Windows.Forms.RadioButton();
-            this.radCNHDefinitivaNao = new System.Windows.Forms.RadioButton();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -196,7 +197,6 @@
             this.tabHistórico.SuspendLayout();
             this.grpMaisDetalhes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgHistorico)).BeginInit();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -379,6 +379,41 @@
             this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "CNH";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.radCNHDefinitivaSim);
+            this.groupBox10.Controls.Add(this.radCNHDefinitivaNao);
+            this.groupBox10.Location = new System.Drawing.Point(9, 115);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(118, 47);
+            this.groupBox10.TabIndex = 472;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "CNH Definitiva";
+            // 
+            // radCNHDefinitivaSim
+            // 
+            this.radCNHDefinitivaSim.AutoSize = true;
+            this.radCNHDefinitivaSim.Location = new System.Drawing.Point(9, 21);
+            this.radCNHDefinitivaSim.Margin = new System.Windows.Forms.Padding(2);
+            this.radCNHDefinitivaSim.Name = "radCNHDefinitivaSim";
+            this.radCNHDefinitivaSim.Size = new System.Drawing.Size(42, 17);
+            this.radCNHDefinitivaSim.TabIndex = 37;
+            this.radCNHDefinitivaSim.Text = "Sim";
+            this.radCNHDefinitivaSim.UseVisualStyleBackColor = true;
+            // 
+            // radCNHDefinitivaNao
+            // 
+            this.radCNHDefinitivaNao.AutoSize = true;
+            this.radCNHDefinitivaNao.Checked = true;
+            this.radCNHDefinitivaNao.Location = new System.Drawing.Point(56, 21);
+            this.radCNHDefinitivaNao.Margin = new System.Windows.Forms.Padding(2);
+            this.radCNHDefinitivaNao.Name = "radCNHDefinitivaNao";
+            this.radCNHDefinitivaNao.Size = new System.Drawing.Size(45, 17);
+            this.radCNHDefinitivaNao.TabIndex = 38;
+            this.radCNHDefinitivaNao.TabStop = true;
+            this.radCNHDefinitivaNao.Text = "Não";
+            this.radCNHDefinitivaNao.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -804,9 +839,9 @@
             // 
             this.groupBox6.Controls.Add(this.radTipoCNH);
             this.groupBox6.Controls.Add(this.radTipoPGU);
-            this.groupBox6.Location = new System.Drawing.Point(6, 8);
+            this.groupBox6.Location = new System.Drawing.Point(6, 19);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(145, 55);
+            this.groupBox6.Size = new System.Drawing.Size(137, 44);
             this.groupBox6.TabIndex = 468;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Tipo";
@@ -815,7 +850,7 @@
             // 
             this.radTipoCNH.AutoSize = true;
             this.radTipoCNH.Checked = true;
-            this.radTipoCNH.Location = new System.Drawing.Point(7, 22);
+            this.radTipoCNH.Location = new System.Drawing.Point(17, 19);
             this.radTipoCNH.Margin = new System.Windows.Forms.Padding(2);
             this.radTipoCNH.Name = "radTipoCNH";
             this.radTipoCNH.Size = new System.Drawing.Size(48, 17);
@@ -827,7 +862,7 @@
             // radTipoPGU
             // 
             this.radTipoPGU.AutoSize = true;
-            this.radTipoPGU.Location = new System.Drawing.Point(59, 22);
+            this.radTipoPGU.Location = new System.Drawing.Point(69, 19);
             this.radTipoPGU.Margin = new System.Windows.Forms.Padding(2);
             this.radTipoPGU.Name = "radTipoPGU";
             this.radTipoPGU.Size = new System.Drawing.Size(48, 17);
@@ -940,10 +975,10 @@
             // 
             // mskNumeroCNH
             // 
-            this.mskNumeroCNH.Location = new System.Drawing.Point(6, 87);
+            this.mskNumeroCNH.Location = new System.Drawing.Point(9, 87);
             this.mskNumeroCNH.Mask = "00000000000";
             this.mskNumeroCNH.Name = "mskNumeroCNH";
-            this.mskNumeroCNH.Size = new System.Drawing.Size(98, 20);
+            this.mskNumeroCNH.Size = new System.Drawing.Size(101, 20);
             this.mskNumeroCNH.TabIndex = 465;
             this.mskNumeroCNH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskNumeroCNH.Leave += new System.EventHandler(this.MskNumeroCNH_Leave);
@@ -1001,7 +1036,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label18.Location = new System.Drawing.Point(269, 71);
+            this.label18.Location = new System.Drawing.Point(270, 71);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(106, 13);
             this.label18.TabIndex = 456;
@@ -1009,10 +1044,10 @@
             // 
             // mskDataVencimentoCNH
             // 
-            this.mskDataVencimentoCNH.Location = new System.Drawing.Point(272, 87);
+            this.mskDataVencimentoCNH.Location = new System.Drawing.Point(273, 87);
             this.mskDataVencimentoCNH.Mask = "00/00/0000";
             this.mskDataVencimentoCNH.Name = "mskDataVencimentoCNH";
-            this.mskDataVencimentoCNH.Size = new System.Drawing.Size(98, 20);
+            this.mskDataVencimentoCNH.Size = new System.Drawing.Size(97, 20);
             this.mskDataVencimentoCNH.TabIndex = 455;
             this.mskDataVencimentoCNH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskDataVencimentoCNH.ValidatingType = typeof(System.DateTime);
@@ -1032,7 +1067,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label13.Location = new System.Drawing.Point(3, 71);
+            this.label13.Location = new System.Drawing.Point(6, 71);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(104, 13);
             this.label13.TabIndex = 445;
@@ -1040,7 +1075,7 @@
             // 
             // nupPontuacao
             // 
-            this.nupPontuacao.Location = new System.Drawing.Point(205, 87);
+            this.nupPontuacao.Location = new System.Drawing.Point(208, 87);
             this.nupPontuacao.Name = "nupPontuacao";
             this.nupPontuacao.Size = new System.Drawing.Size(59, 20);
             this.nupPontuacao.TabIndex = 11;
@@ -1689,41 +1724,6 @@
             // 
             this.ContentPanel.Size = new System.Drawing.Size(1, 90);
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.radCNHDefinitivaSim);
-            this.groupBox10.Controls.Add(this.radCNHDefinitivaNao);
-            this.groupBox10.Location = new System.Drawing.Point(9, 115);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(118, 47);
-            this.groupBox10.TabIndex = 472;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "CNH Definitiva";
-            // 
-            // radCNHDefinitivaSim
-            // 
-            this.radCNHDefinitivaSim.AutoSize = true;
-            this.radCNHDefinitivaSim.Location = new System.Drawing.Point(9, 21);
-            this.radCNHDefinitivaSim.Margin = new System.Windows.Forms.Padding(2);
-            this.radCNHDefinitivaSim.Name = "radCNHDefinitivaSim";
-            this.radCNHDefinitivaSim.Size = new System.Drawing.Size(42, 17);
-            this.radCNHDefinitivaSim.TabIndex = 37;
-            this.radCNHDefinitivaSim.Text = "Sim";
-            this.radCNHDefinitivaSim.UseVisualStyleBackColor = true;
-            // 
-            // radCNHDefinitivaNao
-            // 
-            this.radCNHDefinitivaNao.AutoSize = true;
-            this.radCNHDefinitivaNao.Checked = true;
-            this.radCNHDefinitivaNao.Location = new System.Drawing.Point(56, 21);
-            this.radCNHDefinitivaNao.Margin = new System.Windows.Forms.Padding(2);
-            this.radCNHDefinitivaNao.Name = "radCNHDefinitivaNao";
-            this.radCNHDefinitivaNao.Size = new System.Drawing.Size(45, 17);
-            this.radCNHDefinitivaNao.TabIndex = 38;
-            this.radCNHDefinitivaNao.TabStop = true;
-            this.radCNHDefinitivaNao.Text = "Não";
-            this.radCNHDefinitivaNao.UseVisualStyleBackColor = true;
-            // 
             // frmCad_Cliente
             // 
             this.AcceptButton = this.btnRegistrar;
@@ -1756,6 +1756,8 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -1793,8 +1795,6 @@
             this.grpMaisDetalhes.ResumeLayout(false);
             this.grpMaisDetalhes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgHistorico)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

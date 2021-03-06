@@ -42,6 +42,7 @@ namespace DAL
                     {
                         ADMINISTRACAO_DTO DTO = new ADMINISTRACAO_DTO();
                         DTO.ID = Convert.ToInt32(dr["ID"]);
+                        DTO.ID_STATUS_ADMINISTRACAO_FASES = dr["ID_STATUS_ADMINISTRACAO_FASES"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ID_STATUS_ADMINISTRACAO_FASES"]);
                         DTO.FASE = Convert.ToString(dr["FASE"]);
                         DTO.OBSERVACAO = dr["OBSERVACAO"].ToString();
                         DTO.DATA = dr["COR"] == DBNull.Value? (DateTime?)null : Convert.ToDateTime(dr["COR"].ToString());
@@ -137,7 +138,7 @@ namespace DAL
 
                     StringBuilder SQL_ = new StringBuilder();
 
-                    SQL_.Append("SELECT * FROM STATUS_ADMINISTRCAO_FASES   ");
+                    SQL_.Append("SELECT * FROM STATUS_ADMINISTRACAO_FASES   ");
                     cn.Open();
 
                     SqlCommand cmd = new SqlCommand(SQL_.ToString(), cn);

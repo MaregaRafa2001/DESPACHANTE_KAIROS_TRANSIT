@@ -17,7 +17,7 @@ namespace DTO
         public int LAYOUT_TELA { get; set; }
         public int ID_FINANCEIRO { get; set; }
         public DateTime? DATA { get; set; }
-        public int ID_STATUS { get; set; }
+        public int? ID_STATUS_ADMINISTRACAO_FASES { get; set; }
         public string FASE { get; set; }
         public string OBSERVACAO { get; set; }
         public char? RECONHECER_FIRMA { get; set; }

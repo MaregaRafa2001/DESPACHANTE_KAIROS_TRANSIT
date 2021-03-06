@@ -58,6 +58,19 @@ namespace APP_UI
             try
             {
                 List<ADMINISTRACAO_DTO> new_list_ = new List<ADMINISTRACAO_DTO>();
+                if (list_fase_financeiro_dto.Count > 0)
+                {
+                    if (list_fase_financeiro_dto.LastOrDefault().ID_STATUS_ADMINISTRACAO_FASES == 2)
+                    {
+                        btnAdicionar.Enabled = true;
+                        tspMessage.Visible = false;
+                    }
+                    else
+                    {
+                        btnAdicionar.Enabled = false;
+                        tspMessage.Visible = true;
+                    }
+                }
                 var list_fase_financeiro = list_fase_financeiro_dto.OrderByDescending(x => x.DATA);
                 foreach (var item in list_fase_financeiro)
                 {
@@ -87,6 +100,13 @@ namespace APP_UI
             {
                 ADMINISTRACAO_DTO fase_financeiro = new ADMINISTRACAO_DTO();
                 fase_financeiro.ID_FINANCEIRO = (int)financeiro_dto.ID;
+                if (financeiro_dto.ADMINISTRACAO.Count > 0)
+                {
+                    var orderByDescending = financeiro_dto.ADMINISTRACAO.OrderByDescending(x => x.LAYOUT_TELA);
+                    fase_financeiro.LAYOUT_TELA = orderByDescending.FirstOrDefault().LAYOUT_TELA;
+                }
+                else
+                    fase_financeiro.LAYOUT_TELA = 0;
                 frmCad_Administracao_Fases frmCad_Financeiro_Fases = new frmCad_Administracao_Fases(fase_financeiro, financeiro_dto.ID_SERVICO);
                 DialogResult result = frmCad_Financeiro_Fases.ShowDialog();
                 if (result == DialogResult.OK)

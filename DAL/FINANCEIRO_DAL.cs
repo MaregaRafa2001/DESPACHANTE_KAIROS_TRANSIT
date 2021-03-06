@@ -522,6 +522,7 @@ namespace DAL
                             ADMINISTRACAO.DATA = dtr["Data"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["Data"]);
                             ADMINISTRACAO.ID_FINANCEIRO = dtr["ID_FINANCEIRO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_FINANCEIRO"]);
                             ADMINISTRACAO.LAYOUT_TELA = dtr["LAYOUT_TELA"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["LAYOUT_TELA"]);
+                            ADMINISTRACAO.ID_STATUS_ADMINISTRACAO_FASES = dtr["ID_STATUS_ADMINISTRACAO_FASES"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_STATUS_ADMINISTRACAO_FASES"]);
                             ADMINISTRACAO.FASE = dtr["FASE"].ToString();
                             ADMINISTRACAO.OBSERVACAO = dtr["OBSERVACAO"].ToString();
                             ADMINISTRACAO.DATA_RECEBIMENTO_CONTRATO = dtr["DATA_RECEBIMENTO_CONTRATO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_RECEBIMENTO_CONTRATO"]);
@@ -594,10 +595,10 @@ namespace DAL
                             SqlDataReader dr = null;
 
                             StringBuilder SQL_ = new StringBuilder();
-                            SQL_.Append("INSERT INTO [dbo].[ADMINISTRACAO]        ");
+                            SQL_.Append("INSERT INTO [dbo].[ADMINISTRACAO]              ");
                             SQL_.Append("           ([ID_FINANCEIRO]                    ");
                             SQL_.Append("           ,[LAYOUT_TELA]                      ");
-                            SQL_.Append("           ,[ID_STATUS]                             ");
+                            SQL_.Append("           ,[ID_STATUS_ADMINISTRACAO_FASES]    ");
                             SQL_.Append("           ,[FASE]                             ");
                             SQL_.Append("           ,[DATA]                             ");
                             SQL_.Append("           ,[OBSERVACAO]                       ");
@@ -605,9 +606,9 @@ namespace DAL
                             SQL_.Append("           ,[DATA_ENTREGA_DOCUMENTO]           ");
                             SQL_.Append("           ,[DATA_VENCIMENTO_DOCUMENTO]        ");
                             SQL_.Append("           ,[DATA_MONTAGEM_PROCESSO]           ");
-                            SQL_.Append("           ,[RECONHECER_FIRMA]           ");
-                            SQL_.Append("           ,[PREVENTIVO]           ");
-                            SQL_.Append("           ,[DOC_APREENDIDO]           ");
+                            SQL_.Append("           ,[RECONHECER_FIRMA]                 ");
+                            SQL_.Append("           ,[PREVENTIVO]                       ");
+                            SQL_.Append("           ,[DOC_APREENDIDO]                   ");
                             SQL_.Append("           ,[DATA_IDA_DETRAN]                  ");
                             SQL_.Append("           ,[DATA_RETORNO_DETRAN]              ");
                             SQL_.Append("           ,[PROCURADOR]                       ");
@@ -634,7 +635,7 @@ namespace DAL
                             SQL_.Append("     VALUES                                    ");
                             SQL_.Append("           (@ID_FINANCEIRO                     ");
                             SQL_.Append("           ,@LAYOUT_TELA                       ");
-                            SQL_.Append("           ,@ID_STATUS                          ");
+                            SQL_.Append("           ,@ID_STATUS_ADMINISTRACAO_FASES     ");
                             SQL_.Append("           ,@FASE                              ");
                             SQL_.Append("           ,@DATA                              ");
                             SQL_.Append("           ,@OBSERVACAO                        ");
@@ -642,7 +643,9 @@ namespace DAL
                             SQL_.Append("           ,@DATA_ENTREGA_DOCUMENTO            ");
                             SQL_.Append("           ,@DATA_VENCIMENTO_DOCUMENTO         ");
                             SQL_.Append("           ,@DATA_MONTAGEM_PROCESSO            ");
-                            SQL_.Append("           ,@RECONHECER_FIRMA                   ");
+                            SQL_.Append("           ,@RECONHECER_FIRMA                  ");
+                            SQL_.Append("           ,@PREVENTIVO                        ");
+                            SQL_.Append("           ,@DOC_APREENDIDO                    ");
                             SQL_.Append("           ,@DATA_IDA_DETRAN                   ");
                             SQL_.Append("           ,@DATA_RETORNO_DETRAN               ");
                             SQL_.Append("           ,@PROCURADOR                        ");
@@ -706,7 +709,7 @@ namespace DAL
                             SQL_.Append("   SET                                                                     ");
                             SQL_.Append("       ID_FINANCEIRO = @ID_FINANCEIRO                                      ");
                             SQL_.Append("      ,LAYOUT_TELA = @LAYOUT_TELA                                          ");
-                            SQL_.Append("      ,ID_STATUS = @ID_STATUS                                              ");
+                            SQL_.Append("      ,ID_STATUS_ADMINISTRACAO_FASES = @ID_STATUS_ADMINISTRACAO_FASES      ");
                             SQL_.Append("      ,FASE = @FASE                                                        ");
                             SQL_.Append("      ,DATA = @DATA                                                        ");
                             SQL_.Append("      ,OBSERVACAO = @OBSERVACAO                                            ");
@@ -795,9 +798,9 @@ namespace DAL
 
         void PopularParametrosFaseFinanceiro(SqlCommand cmd, ADMINISTRACAO_DTO fase)
         {
-            cmd.Parameters.AddWithValue("@ID", fase.ID);
+                cmd.Parameters.AddWithValue("@ID", fase.ID);
             cmd.Parameters.AddWithValue("@DATA", fase.DATA);
-            cmd.Parameters.AddWithValue("@ID_STATUS", fase.ID_STATUS);
+            cmd.Parameters.AddWithValue("@ID_STATUS_ADMINISTRACAO_FASES", fase.ID_STATUS_ADMINISTRACAO_FASES);
             cmd.Parameters.AddWithValue("@FASE", fase.FASE);
             cmd.Parameters.AddWithValue("@LAYOUT_TELA", fase.LAYOUT_TELA);
             cmd.Parameters.AddWithValue("@ID_FINANCEIRO", fase.ID_FINANCEIRO);
@@ -806,6 +809,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@DATA_ENTREGA_DOCUMENTO", fase.DATA_ENTREGA_DOCUMENTO);
             cmd.Parameters.AddWithValue("@DATA_VENCIMENTO_DOCUMENTO", fase.DATA_VENCIMENTO_DOCUMENTO);
             cmd.Parameters.AddWithValue("@DATA_MONTAGEM_PROCESSO", fase.DATA_MONTAGEM_PROCESSO);
+
             cmd.Parameters.AddWithValue("@RECONHECER_FIRMA", fase.RECONHECER_FIRMA);
             cmd.Parameters.AddWithValue("@PREVENTIVO", fase.PREVENTIVO);
             cmd.Parameters.AddWithValue("@DOC_APREENDIDO", fase.DOC_APREENDIDO);
@@ -815,6 +819,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@MESES_DETRAN", fase.MESES_DETRAN);
             cmd.Parameters.AddWithValue("@DATA_INICIO", fase.DATA_INICIO);
             cmd.Parameters.AddWithValue("@DATA_TERMINO", fase.DATA_TERMINO);
+
             cmd.Parameters.AddWithValue("@DATA_FECHAMENTO_CURSO", fase.DATA_FECHAMENTO_CURSO);
             cmd.Parameters.AddWithValue("@RECEBIMENTO_AUTO", fase.RECEBIMENTO_AUTO);
             cmd.Parameters.AddWithValue("@CURSO_FORA", fase.CURSO_FORA);
