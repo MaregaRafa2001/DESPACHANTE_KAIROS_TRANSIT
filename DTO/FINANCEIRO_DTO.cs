@@ -41,6 +41,10 @@ namespace DTO
         public string NUMBOLCHE { get; set; }
         public DateTime? DATA { get; set; }
         public int DIA_VENCIMENTO { get; set; }
+        public decimal? VALOR_DEVOLVER { get; set; }
+        public DateTime? DATA_AGENDAMENTO { get; set; }
+        public DateTime? DATA_PAGAMENTO { get; set; }
+        public DateTime? DATA_REQUISICAO { get; set; }
 
         private SERVICO_DTO S_DTO = new SERVICO_DTO();
         public SERVICO_DTO SERVICO

@@ -57,7 +57,11 @@ namespace DAL
                     SQL_.Append("ULT_ATUAL, ");
                     SQL_.Append("BANCO_OS, ");
                     SQL_.Append("UNIDADE, ");
-                    SQL_.Append("RECEBIDO_POR ");
+                    SQL_.Append("RECEBIDO_POR, ");
+                    SQL_.Append("VALOR_DEVOLVER, ");
+                    SQL_.Append("DATA_AGENDAMENTO, ");
+                    SQL_.Append("DATA_PAGAMENTO, ");
+                    SQL_.Append("DATA_REQUISICAO ");
                     SQL_.Append(") ");
                     SQL_.Append("VALUES ");
                     SQL_.Append("( ");
@@ -83,8 +87,13 @@ namespace DAL
                     SQL_.Append("@USUARIO, ");
                     SQL_.Append("GETDATE(), ");
                     SQL_.Append("@BANCO_OS, ");
-                    SQL_.Append("@UNIDADE, ");
-                    SQL_.Append("@RECEBIDO_POR ");
+                    SQL_.Append("@UNIDADE, "); 
+                    SQL_.Append("@RECEBIDO_POR, ");
+                    SQL_.Append("@VALOR_DEVOLVER, ");
+                    SQL_.Append("@DATA_AGENDAMENTO, ");
+                    SQL_.Append("@DATA_PAGAMENTO, ");
+                    SQL_.Append("@DATA_REQUISICAO ");
+                    
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
 
@@ -172,10 +181,14 @@ namespace DAL
                     SQL_.Append("VALOR_BRUTO = @VALOR_BRUTO, ");
                     SQL_.Append("VALOR_LIQUIDO = @VALOR_LIQUIDO, ");
                     SQL_.Append("USUARIO = @USUARIO, ");
-                    SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
+                    SQL_.Append("ULT_ATUAL = GETDATE(), ");
                     SQL_.Append("BANCO_OS = @BANCO_OS, ");
                     SQL_.Append("UNIDADE = @UNIDADE, ");
-                    SQL_.Append("RECEBIDO_POR = @RECEBIDO_POR ");
+                    SQL_.Append("RECEBIDO_POR = @RECEBIDO_POR, ");
+                    SQL_.Append("VALOR_DEVOLVER= @VALOR_DEVOLVER, ");
+                    SQL_.Append("DATA_AGENDAMENTO = @DATA_AGENDAMENTO, ");
+                    SQL_.Append("DATA_PAGAMENTO = @DATA_PAGAMENTO, ");
+                    SQL_.Append("DATA_REQUISICAO = @DATA_REQUISICAO ");
                     SQL_.Append("WHERE ID = @ID ");
                     cn.Open();
 
@@ -229,7 +242,11 @@ namespace DAL
             cmd.Parameters.AddWithValue("@VALOR_BRUTO", DTO.VALOR_BRUTO);
             cmd.Parameters.AddWithValue("@VALOR_LIQUIDO", DTO.VALOR_LIQUIDO);
             cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
-            cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
+
+            cmd.Parameters.AddWithValue("@VALOR_DEVOLVER", DTO.VALOR_DEVOLVER);
+            cmd.Parameters.AddWithValue("@DATA_AGENDAMENTO", DTO.DATA_AGENDAMENTO);
+            cmd.Parameters.AddWithValue("@DATA_PAGAMENTO", DTO.DATA_PAGAMENTO);
+            cmd.Parameters.AddWithValue("@DATA_REQUISICAO", DTO.DATA_REQUISICAO);
             //cmd.Parameters.AddWithValue("@DATA_ALTERACAO", DTO.DATA_ALTERACAO);
 
             //Substitui o null por DBnull
@@ -354,6 +371,14 @@ namespace DAL
 
             _DTO.VALOR_BRUTO = dtr["VALOR_BRUTO"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dtr["VALOR_BRUTO"]);
             _DTO.VALOR_LIQUIDO = dtr["VALOR_LIQUIDO"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dtr["VALOR_LIQUIDO"]);
+
+            _DTO.VALOR_DEVOLVER = dtr["VALOR_DEVOLVER"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dtr["VALOR_DEVOLVER"]);
+            _DTO.DATA_AGENDAMENTO = dtr["DATA_AGENDAMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_AGENDAMENTO"]);
+            _DTO.DATA_PAGAMENTO = dtr["DATA_PAGAMENTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_PAGAMENTO"]);
+            _DTO.DATA_REQUISICAO = dtr["DATA_REQUISICAO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_REQUISICAO"]);
+
+
+
         }
 
         public List<FINANCEIRO_DTO> Seleciona_By_Cliente(int ID_CLIENTE)
@@ -554,7 +579,8 @@ namespace DAL
                             ADMINISTRACAO.DATA_EMISSAO = dtr["DATA_EMISSAO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_EMISSAO"]);
                             ADMINISTRACAO.DATA_ENTREGA = dtr["DATA_ENTREGA"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_ENTREGA"]);
                             ADMINISTRACAO.RETIRADO_POR = dtr["RETIRADO_POR"] == DBNull.Value ? "" : Convert.ToString(dtr["RETIRADO_POR"]);
-
+                            ADMINISTRACAO.PONTUACAO = dtr["PONTUACAO"] == DBNull.Value ? (int?)null : Convert.ToInt32(dtr["PONTUACAO"]);
+                            ADMINISTRACAO.STATUS_CNH = dtr["STATUS_CNH"] == DBNull.Value ? (char?)null : Convert.ToChar(dtr["STATUS_CNH"]);
 
                             ADMINISTRACAO.OPERACAO = SysDTO.Operacoes.Leitura;
                             Financeiro.ADMINISTRACAO.Add(ADMINISTRACAO);
@@ -631,6 +657,8 @@ namespace DAL
                             SQL_.Append("           ,[DATA_EMISSAO]                     ");
                             SQL_.Append("           ,[DATA_ENTREGA]                     ");
                             SQL_.Append("           ,[RETIRADO_POR]                     ");
+                            SQL_.Append("           ,[PONTUACAO]                        ");
+                            SQL_.Append("           ,[STATUS_CNH]                       ");
                             SQL_.Append("           )                                   ");
                             SQL_.Append("     VALUES                                    ");
                             SQL_.Append("           (@ID_FINANCEIRO                     ");
@@ -668,6 +696,8 @@ namespace DAL
                             SQL_.Append("           ,@DATA_EMISSAO                      ");
                             SQL_.Append("           ,@DATA_ENTREGA                      ");
                             SQL_.Append("           ,@RETIRADO_POR                      ");
+                            SQL_.Append("           ,@PONTUACAO                         ");
+                            SQL_.Append("           ,@STATUS_CNH                        ");
                             SQL_.Append("           )                                   ");
                             SQL_.Append("SELECT SCOPE_IDENTITY();                       ");
 
@@ -742,6 +772,8 @@ namespace DAL
                             SQL_.Append("      ,DATA_EMISSAO = @DATA_EMISSAO                                        ");
                             SQL_.Append("      ,DATA_ENTREGA = @DATA_ENTREGA                                        ");
                             SQL_.Append("      ,RETIRADO_POR = @RETIRADO_POR                                        ");
+                            SQL_.Append("      ,PONTUACAO = @PONTUACAO                                              ");
+                            SQL_.Append("      ,STATUS_CNH = @STATUS_CNH                                            ");
                             SQL_.Append(" WHERE ID = @ID                          ");
 
                             cn.Open();
@@ -836,6 +868,8 @@ namespace DAL
             cmd.Parameters.AddWithValue("DATA_EMISSAO", fase.DATA_EMISSAO);
             cmd.Parameters.AddWithValue("DATA_ENTREGA", fase.DATA_ENTREGA);
             cmd.Parameters.AddWithValue("RETIRADO_POR", fase.RETIRADO_POR);
+            cmd.Parameters.AddWithValue("PONTUACAO", fase.PONTUACAO);
+            cmd.Parameters.AddWithValue("STATUS_CNH", fase.STATUS_CNH);
 
             //Substitui o null por DBnull
             foreach (SqlParameter Parameter in cmd.Parameters)

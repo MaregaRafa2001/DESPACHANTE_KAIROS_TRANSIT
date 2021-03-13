@@ -114,5 +114,17 @@ namespace APP_UI
                 throw ex;
             }
         }
+
+        public static DateTime? GetDate(string text)
+        {
+            try
+            {
+                return DateTime.Parse(text);
+            }
+            catch
+            {
+                return (DateTime?)null;
+            }
+        }
     }
 }

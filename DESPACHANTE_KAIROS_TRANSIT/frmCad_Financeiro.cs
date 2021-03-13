@@ -168,6 +168,11 @@ namespace APP_UI
                 txtRecebidoPor.Text = FINANCEIRO_DTO.RECEBIDO_POR.ToString();
 
                 txtUnidade.Text = FINANCEIRO_DTO.UNIDADE.ToString();
+
+                txtValorDevolver.Text = FINANCEIRO_DTO.VALOR_DEVOLVER.ToString();
+                mskDataAgendamento.Text = FINANCEIRO_DTO.DATA_AGENDAMENTO.ToString();
+                mskDataPagamento.Text = FINANCEIRO_DTO.DATA_PAGAMENTO.ToString();
+                mskDataRequisicao.Text = FINANCEIRO_DTO.DATA_REQUISICAO.ToString();
             }
             catch (Exception ex)
             {
@@ -268,6 +273,12 @@ namespace APP_UI
 
                 FINANCEIRO_DTO.VALOR_LIQUIDO = Convert.ToDecimal(txtValorLi.Text);
                 FINANCEIRO_DTO.VALOR_BRUTO = Convert.ToDecimal(txtValorB.Text);
+
+                FINANCEIRO_DTO.VALOR_DEVOLVER = Convert.ToDecimal(txtValorDevolver.Text);
+                FINANCEIRO_DTO.DATA_AGENDAMENTO = GLOBAL_FORMS.GetDate(mskDataAgendamento.Text);
+                FINANCEIRO_DTO.DATA_PAGAMENTO = GLOBAL_FORMS.GetDate(mskDataPagamento.Text);
+                FINANCEIRO_DTO.DATA_REQUISICAO = GLOBAL_FORMS.GetDate(mskDataRequisicao.Text);
+
                 try
                 {
                     FINANCEIRO_DTO.DATA = Convert.ToDateTime(mskData.Text);
@@ -372,11 +383,13 @@ namespace APP_UI
                     column.Visible = false;
                 }
 
-                dtgBoletosCheques.Columns["NUMERO"].Visible = true;
+                //dtgBoletosCheques.Columns["NUMERO"].Visible = true;
                 dtgBoletosCheques.Columns["PARCELA"].Visible = true;
                 dtgBoletosCheques.Columns["FORMA_PAGAMENTO"].Visible = true;
                 dtgBoletosCheques.Columns["VALOR"].Visible = true;
+                dtgBoletosCheques.Columns["VALOR_JUROS"].Visible = true;
                 dtgBoletosCheques.Columns["DATA_VENCTO"].Visible = true;
+                dtgBoletosCheques.Columns["DATA_PAGAMENTO"].Visible = true;
                 dtgBoletosCheques.Columns["STATUS_PAGAMENTO"].Visible = true;
                 dtgBoletosCheques.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.ColumnHeader); //Redimenciona as colunas de acordo com o conteúdo do campo
             }
@@ -590,11 +603,6 @@ namespace APP_UI
                 txtCliente.Text = DTO.NOME_COMPLETO;
                 CLIENTE_DTO = DTO;
             }
-        }
-
-        private void txtValorOS_TextChanged(object sender, EventArgs e)
-        {
-            Moeda(ref txtValorOS);
         }
 
         private void BtnAplicar_Click(object sender, EventArgs e)
@@ -1037,6 +1045,16 @@ namespace APP_UI
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtValorDevolver_TextChanged(object sender, EventArgs e)
+        {
+            Moeda(ref txtValorDevolver);
+        }
+
+        private void txtValorOS_TextChanged_1(object sender, EventArgs e)
+        {
+            Moeda(ref txtValorOS);
         }
     }
 }

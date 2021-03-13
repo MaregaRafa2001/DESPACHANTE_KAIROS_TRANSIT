@@ -73,12 +73,21 @@
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnAlterarValor = new System.Windows.Forms.Button();
             this.gpbDetalhes = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtValorOS = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtValorDevolver = new System.Windows.Forms.TextBox();
+            this.mskDataRequisicao = new System.Windows.Forms.MaskedTextBox();
+            this.mskDataPagamento = new System.Windows.Forms.MaskedTextBox();
+            this.mskDataAgendamento = new System.Windows.Forms.MaskedTextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.txtUnidade = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtRecebidoPor = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtValorOS = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBanco = new System.Windows.Forms.TextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -94,6 +103,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBoletosCheques)).BeginInit();
             this.gpbDetalhes.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabHistórico.SuspendLayout();
@@ -104,7 +114,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(681, 651);
+            this.btnCancelar.Location = new System.Drawing.Point(675, 637);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 31);
             this.btnCancelar.TabIndex = 17;
@@ -115,7 +125,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistrar.Location = new System.Drawing.Point(594, 651);
+            this.btnRegistrar.Location = new System.Drawing.Point(588, 637);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(80, 31);
             this.btnRegistrar.TabIndex = 16;
@@ -125,8 +135,9 @@
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 651);
+            this.label15.Location = new System.Drawing.Point(10, 631);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 531;
@@ -135,8 +146,9 @@
             // 
             // txtValorL
             // 
+            this.txtValorL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtValorL.AutoSize = true;
-            this.txtValorL.Location = new System.Drawing.Point(96, 651);
+            this.txtValorL.Location = new System.Drawing.Point(98, 631);
             this.txtValorL.Name = "txtValorL";
             this.txtValorL.Size = new System.Drawing.Size(73, 13);
             this.txtValorL.TabIndex = 530;
@@ -145,7 +157,8 @@
             // 
             // txtValorLi
             // 
-            this.txtValorLi.Location = new System.Drawing.Point(98, 668);
+            this.txtValorLi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtValorLi.Location = new System.Drawing.Point(100, 648);
             this.txtValorLi.MaxLength = 12;
             this.txtValorLi.Name = "txtValorLi";
             this.txtValorLi.Size = new System.Drawing.Size(83, 20);
@@ -156,7 +169,8 @@
             // 
             // txtValorB
             // 
-            this.txtValorB.Location = new System.Drawing.Point(11, 668);
+            this.txtValorB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtValorB.Location = new System.Drawing.Point(13, 648);
             this.txtValorB.MaxLength = 12;
             this.txtValorB.Name = "txtValorB";
             this.txtValorB.Size = new System.Drawing.Size(83, 20);
@@ -277,11 +291,11 @@
             // 
             // txtObservacao
             // 
-            this.txtObservacao.Location = new System.Drawing.Point(6, 439);
+            this.txtObservacao.Location = new System.Drawing.Point(11, 404);
             this.txtObservacao.MaxLength = 250;
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(699, 67);
+            this.txtObservacao.Size = new System.Drawing.Size(356, 67);
             this.txtObservacao.TabIndex = 15;
             this.txtObservacao.Enter += new System.EventHandler(this.TxtObservacao_Enter);
             this.txtObservacao.Leave += new System.EventHandler(this.TxtObservacao_Leave);
@@ -289,7 +303,7 @@
             // lblObservacao
             // 
             this.lblObservacao.AutoSize = true;
-            this.lblObservacao.Location = new System.Drawing.Point(4, 422);
+            this.lblObservacao.Location = new System.Drawing.Point(9, 388);
             this.lblObservacao.Name = "lblObservacao";
             this.lblObservacao.Size = new System.Drawing.Size(68, 13);
             this.lblObservacao.TabIndex = 475;
@@ -345,7 +359,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(82, 384);
+            this.label1.Location = new System.Drawing.Point(9, 349);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 494;
@@ -353,10 +367,10 @@
             // 
             // txtMotoboy_os
             // 
-            this.txtMotoboy_os.Location = new System.Drawing.Point(84, 400);
+            this.txtMotoboy_os.Location = new System.Drawing.Point(11, 365);
             this.txtMotoboy_os.MaxLength = 100;
             this.txtMotoboy_os.Name = "txtMotoboy_os";
-            this.txtMotoboy_os.Size = new System.Drawing.Size(287, 20);
+            this.txtMotoboy_os.Size = new System.Drawing.Size(151, 20);
             this.txtMotoboy_os.TabIndex = 12;
             // 
             // label3
@@ -384,7 +398,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label13.Location = new System.Drawing.Point(373, 384);
+            this.label13.Location = new System.Drawing.Point(165, 349);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
             this.label13.TabIndex = 509;
@@ -392,10 +406,10 @@
             // 
             // txtLocal_os
             // 
-            this.txtLocal_os.Location = new System.Drawing.Point(376, 400);
+            this.txtLocal_os.Location = new System.Drawing.Point(168, 365);
             this.txtLocal_os.MaxLength = 200;
             this.txtLocal_os.Name = "txtLocal_os";
-            this.txtLocal_os.Size = new System.Drawing.Size(329, 20);
+            this.txtLocal_os.Size = new System.Drawing.Size(126, 20);
             this.txtLocal_os.TabIndex = 13;
             // 
             // label8
@@ -527,14 +541,13 @@
             // 
             // gpbDetalhes
             // 
+            this.gpbDetalhes.Controls.Add(this.label7);
+            this.gpbDetalhes.Controls.Add(this.txtValorOS);
+            this.gpbDetalhes.Controls.Add(this.groupBox2);
             this.gpbDetalhes.Controls.Add(this.txtUnidade);
             this.gpbDetalhes.Controls.Add(this.label17);
             this.gpbDetalhes.Controls.Add(this.label16);
             this.gpbDetalhes.Controls.Add(this.txtRecebidoPor);
-            this.gpbDetalhes.Controls.Add(this.label7);
-            this.gpbDetalhes.Controls.Add(this.txtValorOS);
-            this.gpbDetalhes.Controls.Add(this.label9);
-            this.gpbDetalhes.Controls.Add(this.txtBanco);
             this.gpbDetalhes.Controls.Add(this.btnAlterarValor);
             this.gpbDetalhes.Controls.Add(this.groupBox1);
             this.gpbDetalhes.Controls.Add(this.txtLocal_os);
@@ -551,33 +564,144 @@
             this.gpbDetalhes.Controls.Add(this.label6);
             this.gpbDetalhes.Location = new System.Drawing.Point(7, 9);
             this.gpbDetalhes.Name = "gpbDetalhes";
-            this.gpbDetalhes.Size = new System.Drawing.Size(721, 521);
+            this.gpbDetalhes.Size = new System.Drawing.Size(721, 485);
             this.gpbDetalhes.TabIndex = 10;
             this.gpbDetalhes.TabStop = false;
             this.gpbDetalhes.Text = "Dados";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(298, 350);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 538;
+            this.label7.Text = "Valor O.S.:";
+            // 
+            // txtValorOS
+            // 
+            this.txtValorOS.Location = new System.Drawing.Point(300, 365);
+            this.txtValorOS.MaxLength = 12;
+            this.txtValorOS.Name = "txtValorOS";
+            this.txtValorOS.Size = new System.Drawing.Size(67, 20);
+            this.txtValorOS.TabIndex = 537;
+            this.txtValorOS.Text = "0.00";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtValorDevolver);
+            this.groupBox2.Controls.Add(this.mskDataRequisicao);
+            this.groupBox2.Controls.Add(this.mskDataPagamento);
+            this.groupBox2.Controls.Add(this.mskDataAgendamento);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Location = new System.Drawing.Point(386, 327);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(324, 145);
+            this.groupBox2.TabIndex = 536;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Devolução";
+            // 
+            // txtValorDevolver
+            // 
+            this.txtValorDevolver.Location = new System.Drawing.Point(10, 32);
+            this.txtValorDevolver.MaxLength = 12;
+            this.txtValorDevolver.Name = "txtValorDevolver";
+            this.txtValorDevolver.Size = new System.Drawing.Size(74, 20);
+            this.txtValorDevolver.TabIndex = 531;
+            this.txtValorDevolver.Text = "0.00";
+            this.txtValorDevolver.TextChanged += new System.EventHandler(this.txtValorDevolver_TextChanged);
+            // 
+            // mskDataRequisicao
+            // 
+            this.mskDataRequisicao.Location = new System.Drawing.Point(10, 77);
+            this.mskDataRequisicao.Mask = "00/00/0000";
+            this.mskDataRequisicao.Name = "mskDataRequisicao";
+            this.mskDataRequisicao.Size = new System.Drawing.Size(115, 20);
+            this.mskDataRequisicao.TabIndex = 7;
+            this.mskDataRequisicao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskDataRequisicao.ValidatingType = typeof(System.DateTime);
+            // 
+            // mskDataPagamento
+            // 
+            this.mskDataPagamento.Location = new System.Drawing.Point(218, 32);
+            this.mskDataPagamento.Mask = "00/00/0000";
+            this.mskDataPagamento.Name = "mskDataPagamento";
+            this.mskDataPagamento.Size = new System.Drawing.Size(100, 20);
+            this.mskDataPagamento.TabIndex = 6;
+            this.mskDataPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskDataPagamento.ValidatingType = typeof(System.DateTime);
+            // 
+            // mskDataAgendamento
+            // 
+            this.mskDataAgendamento.Location = new System.Drawing.Point(97, 32);
+            this.mskDataAgendamento.Mask = "00/00/0000";
+            this.mskDataAgendamento.Name = "mskDataAgendamento";
+            this.mskDataAgendamento.Size = new System.Drawing.Size(115, 20);
+            this.mskDataAgendamento.TabIndex = 5;
+            this.mskDataAgendamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskDataAgendamento.ValidatingType = typeof(System.DateTime);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(96, 16);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(116, 13);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "Data de agendamento:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 61);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(167, 13);
+            this.label20.TabIndex = 2;
+            this.label20.Text = "Recebimento de Termo Resilição:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(218, 16);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(104, 13);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Data de pagamento:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 16);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(87, 13);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Valor á devolver:";
+            // 
             // txtUnidade
             // 
-            this.txtUnidade.Location = new System.Drawing.Point(380, 347);
+            this.txtUnidade.Location = new System.Drawing.Point(163, 327);
             this.txtUnidade.MaxLength = 100;
             this.txtUnidade.Name = "txtUnidade";
-            this.txtUnidade.Size = new System.Drawing.Size(275, 20);
+            this.txtUnidade.Size = new System.Drawing.Size(204, 20);
             this.txtUnidade.TabIndex = 535;
             this.txtUnidade.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(377, 322);
+            this.label17.Location = new System.Drawing.Point(160, 311);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(50, 13);
+            this.label17.Size = new System.Drawing.Size(99, 13);
             this.label17.TabIndex = 534;
-            this.label17.Text = "Unidade:";
+            this.label17.Text = "Consultor/Unidade:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 322);
+            this.label16.Location = new System.Drawing.Point(8, 311);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(75, 13);
             this.label16.TabIndex = 533;
@@ -586,34 +710,16 @@
             // 
             // txtRecebidoPor
             // 
-            this.txtRecebidoPor.Location = new System.Drawing.Point(10, 347);
+            this.txtRecebidoPor.Location = new System.Drawing.Point(10, 327);
             this.txtRecebidoPor.MaxLength = 100;
             this.txtRecebidoPor.Name = "txtRecebidoPor";
-            this.txtRecebidoPor.Size = new System.Drawing.Size(287, 20);
+            this.txtRecebidoPor.Size = new System.Drawing.Size(147, 20);
             this.txtRecebidoPor.TabIndex = 532;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 385);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 531;
-            this.label7.Text = "Valor O.S.:";
-            // 
-            // txtValorOS
-            // 
-            this.txtValorOS.Location = new System.Drawing.Point(6, 400);
-            this.txtValorOS.MaxLength = 12;
-            this.txtValorOS.Name = "txtValorOS";
-            this.txtValorOS.Size = new System.Drawing.Size(74, 20);
-            this.txtValorOS.TabIndex = 530;
-            this.txtValorOS.Text = "0.00";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(509, 16);
+            this.label9.Location = new System.Drawing.Point(581, 20);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 13);
             this.label9.TabIndex = 529;
@@ -622,7 +728,7 @@
             // 
             // txtBanco
             // 
-            this.txtBanco.Location = new System.Drawing.Point(509, 31);
+            this.txtBanco.Location = new System.Drawing.Point(581, 35);
             this.txtBanco.MaxLength = 100;
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(203, 20);
@@ -636,7 +742,7 @@
             this.tabControl2.Location = new System.Drawing.Point(13, 92);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(742, 556);
+            this.tabControl2.Size = new System.Drawing.Size(742, 534);
             this.tabControl2.TabIndex = 533;
             // 
             // tabPage3
@@ -645,7 +751,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(734, 530);
+            this.tabPage3.Size = new System.Drawing.Size(734, 508);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Financeiro";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -657,7 +763,7 @@
             this.tabHistórico.Location = new System.Drawing.Point(4, 22);
             this.tabHistórico.Name = "tabHistórico";
             this.tabHistórico.Padding = new System.Windows.Forms.Padding(3);
-            this.tabHistórico.Size = new System.Drawing.Size(734, 530);
+            this.tabHistórico.Size = new System.Drawing.Size(734, 508);
             this.tabHistórico.TabIndex = 3;
             this.tabHistórico.Text = "Histórico";
             this.tabHistórico.UseVisualStyleBackColor = true;
@@ -715,13 +821,15 @@
             this.AcceptButton = this.btnRegistrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 705);
+            this.ClientSize = new System.Drawing.Size(771, 680);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.btnPesquisarAdvogado);
             this.Controls.Add(this.cboForma_Pagamento);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtValorL);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtBanco);
             this.Controls.Add(this.picConsultor);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.nudDiaVencimento);
@@ -755,6 +863,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgBoletosCheques)).EndInit();
             this.gpbDetalhes.ResumeLayout(false);
             this.gpbDetalhes.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabHistórico.ResumeLayout(false);
@@ -815,13 +925,22 @@
         private System.Windows.Forms.GroupBox grpMaisDetalhes;
         private System.Windows.Forms.TextBox txtMaisDetalhes;
         private System.Windows.Forms.DataGridView dtgHistorico;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtValorOS;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBanco;
         private System.Windows.Forms.TextBox txtUnidade;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtRecebidoPor;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.MaskedTextBox mskDataRequisicao;
+        private System.Windows.Forms.MaskedTextBox mskDataPagamento;
+        private System.Windows.Forms.MaskedTextBox mskDataAgendamento;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtValorDevolver;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtValorOS;
     }
 }

@@ -51,6 +51,9 @@ namespace DTO
         public string OBSERVACAO { get; set; }
         public bool PORTARIA { get; set; }
         public bool IMPEDIMENTO { get; set; }
+        public string LOGIN { get; set; }
+        public string SENHA { get; set; }
+
 
         public SysDTO.Operacoes OPERACAO { get; set; }
         public string USUARIO { get; set; }

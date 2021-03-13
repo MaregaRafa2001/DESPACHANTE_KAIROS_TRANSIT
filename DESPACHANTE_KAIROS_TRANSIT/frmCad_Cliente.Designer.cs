@@ -47,41 +47,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtSiglasPCD = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.txtLogin = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.radCNHDefinitivaSim = new System.Windows.Forms.RadioButton();
             this.radCNHDefinitivaNao = new System.Windows.Forms.RadioButton();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.cbPCDd = new System.Windows.Forms.CheckBox();
-            this.cbPCDx = new System.Windows.Forms.CheckBox();
-            this.cbPCDv = new System.Windows.Forms.CheckBox();
-            this.cbPCDu = new System.Windows.Forms.CheckBox();
-            this.cbPCDt = new System.Windows.Forms.CheckBox();
-            this.cbPCDs = new System.Windows.Forms.CheckBox();
-            this.cbPCDr = new System.Windows.Forms.CheckBox();
-            this.cbPCDq = new System.Windows.Forms.CheckBox();
-            this.cbPCDp = new System.Windows.Forms.CheckBox();
-            this.cbPCDo = new System.Windows.Forms.CheckBox();
-            this.cbPCDn = new System.Windows.Forms.CheckBox();
-            this.cbPCDm = new System.Windows.Forms.CheckBox();
-            this.cbPCDl = new System.Windows.Forms.CheckBox();
-            this.cbPCDk = new System.Windows.Forms.CheckBox();
-            this.cbPCDj = new System.Windows.Forms.CheckBox();
-            this.cbPCDi = new System.Windows.Forms.CheckBox();
-            this.cbPCDh = new System.Windows.Forms.CheckBox();
-            this.cbPCDg = new System.Windows.Forms.CheckBox();
-            this.cbPCDf = new System.Windows.Forms.CheckBox();
-            this.cbPCDe = new System.Windows.Forms.CheckBox();
-            this.cbPCDc = new System.Windows.Forms.CheckBox();
-            this.cbPCDb = new System.Windows.Forms.CheckBox();
-            this.cbPCDa = new System.Windows.Forms.CheckBox();
-            this.cbPCDcmtf = new System.Windows.Forms.CheckBox();
-            this.cbPCDcmtx = new System.Windows.Forms.CheckBox();
-            this.cbPCDcetci = new System.Windows.Forms.CheckBox();
-            this.cbPCDear = new System.Windows.Forms.CheckBox();
-            this.cbPCDcetve = new System.Windows.Forms.CheckBox();
-            this.cbPCDcetcp = new System.Windows.Forms.CheckBox();
-            this.cbPCDcete = new System.Windows.Forms.CheckBox();
-            this.cbPCDcetpp = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.radAtivRemuneradaSim = new System.Windows.Forms.RadioButton();
             this.radAtivRemuneradaNao = new System.Windows.Forms.RadioButton();
@@ -175,7 +149,6 @@
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -205,9 +178,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label1.Location = new System.Drawing.Point(9, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nome:";
+            this.label1.Text = "Nome:*";
             // 
             // label6
             // 
@@ -215,9 +188,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label6.Location = new System.Drawing.Point(583, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "RG:";
+            this.label6.Text = "RG:*";
             // 
             // label8
             // 
@@ -225,9 +198,10 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label8.Location = new System.Drawing.Point(487, 8);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 7;
-            this.label8.Text = "CPF:";
+            this.label8.Text = "CPF:*";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtNome
             // 
@@ -286,9 +260,9 @@
             this.txtData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtData.Location = new System.Drawing.Point(698, 8);
             this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(105, 13);
+            this.txtData.Size = new System.Drawing.Size(109, 13);
             this.txtData.TabIndex = 43;
-            this.txtData.Text = "Data de nascimento:";
+            this.txtData.Text = "Data de nascimento:*";
             // 
             // mskNascimento
             // 
@@ -355,8 +329,13 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label24);
+            this.groupBox4.Controls.Add(this.txtSiglasPCD);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.txtSenha);
+            this.groupBox4.Controls.Add(this.txtLogin);
             this.groupBox4.Controls.Add(this.groupBox10);
-            this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.groupBox6);
@@ -375,10 +354,64 @@
             this.groupBox4.Controls.Add(this.nupPontuacao);
             this.groupBox4.Location = new System.Drawing.Point(396, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(376, 331);
+            this.groupBox4.Size = new System.Drawing.Size(376, 300);
             this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "CNH";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label24.Location = new System.Drawing.Point(6, 248);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(63, 13);
+            this.label24.TabIndex = 478;
+            this.label24.Text = "Siglas PCD:";
+            // 
+            // txtSiglasPCD
+            // 
+            this.txtSiglasPCD.Location = new System.Drawing.Point(6, 264);
+            this.txtSiglasPCD.MaxLength = 80;
+            this.txtSiglasPCD.Name = "txtSiglasPCD";
+            this.txtSiglasPCD.Size = new System.Drawing.Size(364, 20);
+            this.txtSiglasPCD.TabIndex = 477;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label21.Location = new System.Drawing.Point(189, 209);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(41, 13);
+            this.label21.TabIndex = 476;
+            this.label21.Text = "Senha:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label15.Location = new System.Drawing.Point(6, 209);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(36, 13);
+            this.label15.TabIndex = 475;
+            this.label15.Text = "Login:";
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(192, 225);
+            this.txtSenha.MaxLength = 80;
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(178, 20);
+            this.txtSenha.TabIndex = 474;
+            // 
+            // txtLogin
+            // 
+            this.txtLogin.Location = new System.Drawing.Point(6, 225);
+            this.txtLogin.MaxLength = 80;
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(181, 20);
+            this.txtLogin.TabIndex = 473;
             // 
             // groupBox10
             // 
@@ -415,363 +448,13 @@
             this.radCNHDefinitivaNao.Text = "Não";
             this.radCNHDefinitivaNao.UseVisualStyleBackColor = true;
             // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.cbPCDd);
-            this.groupBox9.Controls.Add(this.cbPCDx);
-            this.groupBox9.Controls.Add(this.cbPCDv);
-            this.groupBox9.Controls.Add(this.cbPCDu);
-            this.groupBox9.Controls.Add(this.cbPCDt);
-            this.groupBox9.Controls.Add(this.cbPCDs);
-            this.groupBox9.Controls.Add(this.cbPCDr);
-            this.groupBox9.Controls.Add(this.cbPCDq);
-            this.groupBox9.Controls.Add(this.cbPCDp);
-            this.groupBox9.Controls.Add(this.cbPCDo);
-            this.groupBox9.Controls.Add(this.cbPCDn);
-            this.groupBox9.Controls.Add(this.cbPCDm);
-            this.groupBox9.Controls.Add(this.cbPCDl);
-            this.groupBox9.Controls.Add(this.cbPCDk);
-            this.groupBox9.Controls.Add(this.cbPCDj);
-            this.groupBox9.Controls.Add(this.cbPCDi);
-            this.groupBox9.Controls.Add(this.cbPCDh);
-            this.groupBox9.Controls.Add(this.cbPCDg);
-            this.groupBox9.Controls.Add(this.cbPCDf);
-            this.groupBox9.Controls.Add(this.cbPCDe);
-            this.groupBox9.Controls.Add(this.cbPCDc);
-            this.groupBox9.Controls.Add(this.cbPCDb);
-            this.groupBox9.Controls.Add(this.cbPCDa);
-            this.groupBox9.Controls.Add(this.cbPCDcmtf);
-            this.groupBox9.Controls.Add(this.cbPCDcmtx);
-            this.groupBox9.Controls.Add(this.cbPCDcetci);
-            this.groupBox9.Controls.Add(this.cbPCDear);
-            this.groupBox9.Controls.Add(this.cbPCDcetve);
-            this.groupBox9.Controls.Add(this.cbPCDcetcp);
-            this.groupBox9.Controls.Add(this.cbPCDcete);
-            this.groupBox9.Controls.Add(this.cbPCDcetpp);
-            this.groupBox9.Location = new System.Drawing.Point(7, 209);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(363, 112);
-            this.groupBox9.TabIndex = 471;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Siglas PcD";
-            // 
-            // cbPCDd
-            // 
-            this.cbPCDd.AutoSize = true;
-            this.cbPCDd.Location = new System.Drawing.Point(138, 92);
-            this.cbPCDd.Name = "cbPCDd";
-            this.cbPCDd.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDd.TabIndex = 31;
-            this.cbPCDd.Text = "D";
-            this.cbPCDd.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDx
-            // 
-            this.cbPCDx.AutoSize = true;
-            this.cbPCDx.Location = new System.Drawing.Point(314, 69);
-            this.cbPCDx.Name = "cbPCDx";
-            this.cbPCDx.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDx.TabIndex = 30;
-            this.cbPCDx.Text = "X";
-            this.cbPCDx.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDv
-            // 
-            this.cbPCDv.AutoSize = true;
-            this.cbPCDv.Location = new System.Drawing.Point(314, 45);
-            this.cbPCDv.Name = "cbPCDv";
-            this.cbPCDv.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDv.TabIndex = 29;
-            this.cbPCDv.Text = "V";
-            this.cbPCDv.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDu
-            // 
-            this.cbPCDu.AutoSize = true;
-            this.cbPCDu.Location = new System.Drawing.Point(314, 22);
-            this.cbPCDu.Name = "cbPCDu";
-            this.cbPCDu.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDu.TabIndex = 28;
-            this.cbPCDu.Text = "U";
-            this.cbPCDu.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDt
-            // 
-            this.cbPCDt.AutoSize = true;
-            this.cbPCDt.Location = new System.Drawing.Point(279, 92);
-            this.cbPCDt.Name = "cbPCDt";
-            this.cbPCDt.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDt.TabIndex = 27;
-            this.cbPCDt.Text = "T";
-            this.cbPCDt.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDs
-            // 
-            this.cbPCDs.AutoSize = true;
-            this.cbPCDs.Location = new System.Drawing.Point(279, 69);
-            this.cbPCDs.Name = "cbPCDs";
-            this.cbPCDs.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDs.TabIndex = 26;
-            this.cbPCDs.Text = "S";
-            this.cbPCDs.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDr
-            // 
-            this.cbPCDr.AutoSize = true;
-            this.cbPCDr.Location = new System.Drawing.Point(279, 45);
-            this.cbPCDr.Name = "cbPCDr";
-            this.cbPCDr.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDr.TabIndex = 25;
-            this.cbPCDr.Text = "R";
-            this.cbPCDr.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDq
-            // 
-            this.cbPCDq.AutoSize = true;
-            this.cbPCDq.Location = new System.Drawing.Point(279, 22);
-            this.cbPCDq.Name = "cbPCDq";
-            this.cbPCDq.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDq.TabIndex = 24;
-            this.cbPCDq.Text = "Q";
-            this.cbPCDq.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDp
-            // 
-            this.cbPCDp.AutoSize = true;
-            this.cbPCDp.Location = new System.Drawing.Point(244, 92);
-            this.cbPCDp.Name = "cbPCDp";
-            this.cbPCDp.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDp.TabIndex = 23;
-            this.cbPCDp.Text = "P";
-            this.cbPCDp.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDo
-            // 
-            this.cbPCDo.AutoSize = true;
-            this.cbPCDo.Location = new System.Drawing.Point(244, 69);
-            this.cbPCDo.Name = "cbPCDo";
-            this.cbPCDo.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDo.TabIndex = 21;
-            this.cbPCDo.Text = "O";
-            this.cbPCDo.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDn
-            // 
-            this.cbPCDn.AutoSize = true;
-            this.cbPCDn.Location = new System.Drawing.Point(244, 45);
-            this.cbPCDn.Name = "cbPCDn";
-            this.cbPCDn.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDn.TabIndex = 20;
-            this.cbPCDn.Text = "N";
-            this.cbPCDn.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDm
-            // 
-            this.cbPCDm.AutoSize = true;
-            this.cbPCDm.Location = new System.Drawing.Point(244, 22);
-            this.cbPCDm.Name = "cbPCDm";
-            this.cbPCDm.Size = new System.Drawing.Size(35, 17);
-            this.cbPCDm.TabIndex = 19;
-            this.cbPCDm.Text = "M";
-            this.cbPCDm.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDl
-            // 
-            this.cbPCDl.AutoSize = true;
-            this.cbPCDl.Location = new System.Drawing.Point(208, 92);
-            this.cbPCDl.Name = "cbPCDl";
-            this.cbPCDl.Size = new System.Drawing.Size(32, 17);
-            this.cbPCDl.TabIndex = 18;
-            this.cbPCDl.Text = "L";
-            this.cbPCDl.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDk
-            // 
-            this.cbPCDk.AutoSize = true;
-            this.cbPCDk.Location = new System.Drawing.Point(208, 69);
-            this.cbPCDk.Name = "cbPCDk";
-            this.cbPCDk.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDk.TabIndex = 17;
-            this.cbPCDk.Text = "K";
-            this.cbPCDk.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDj
-            // 
-            this.cbPCDj.AutoSize = true;
-            this.cbPCDj.Location = new System.Drawing.Point(208, 45);
-            this.cbPCDj.Name = "cbPCDj";
-            this.cbPCDj.Size = new System.Drawing.Size(31, 17);
-            this.cbPCDj.TabIndex = 16;
-            this.cbPCDj.Text = "J";
-            this.cbPCDj.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDi
-            // 
-            this.cbPCDi.AutoSize = true;
-            this.cbPCDi.Location = new System.Drawing.Point(208, 22);
-            this.cbPCDi.Name = "cbPCDi";
-            this.cbPCDi.Size = new System.Drawing.Size(29, 17);
-            this.cbPCDi.TabIndex = 15;
-            this.cbPCDi.Text = "I";
-            this.cbPCDi.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDh
-            // 
-            this.cbPCDh.AutoSize = true;
-            this.cbPCDh.Location = new System.Drawing.Point(173, 92);
-            this.cbPCDh.Name = "cbPCDh";
-            this.cbPCDh.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDh.TabIndex = 14;
-            this.cbPCDh.Text = "H";
-            this.cbPCDh.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDg
-            // 
-            this.cbPCDg.AutoSize = true;
-            this.cbPCDg.Location = new System.Drawing.Point(173, 69);
-            this.cbPCDg.Name = "cbPCDg";
-            this.cbPCDg.Size = new System.Drawing.Size(34, 17);
-            this.cbPCDg.TabIndex = 13;
-            this.cbPCDg.Text = "G";
-            this.cbPCDg.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDf
-            // 
-            this.cbPCDf.AutoSize = true;
-            this.cbPCDf.Location = new System.Drawing.Point(173, 45);
-            this.cbPCDf.Name = "cbPCDf";
-            this.cbPCDf.Size = new System.Drawing.Size(32, 17);
-            this.cbPCDf.TabIndex = 12;
-            this.cbPCDf.Text = "F";
-            this.cbPCDf.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDe
-            // 
-            this.cbPCDe.AutoSize = true;
-            this.cbPCDe.Location = new System.Drawing.Point(173, 22);
-            this.cbPCDe.Name = "cbPCDe";
-            this.cbPCDe.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDe.TabIndex = 11;
-            this.cbPCDe.Text = "E";
-            this.cbPCDe.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDc
-            // 
-            this.cbPCDc.AutoSize = true;
-            this.cbPCDc.Location = new System.Drawing.Point(138, 69);
-            this.cbPCDc.Name = "cbPCDc";
-            this.cbPCDc.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDc.TabIndex = 10;
-            this.cbPCDc.Text = "C";
-            this.cbPCDc.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDb
-            // 
-            this.cbPCDb.AutoSize = true;
-            this.cbPCDb.Location = new System.Drawing.Point(138, 45);
-            this.cbPCDb.Name = "cbPCDb";
-            this.cbPCDb.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDb.TabIndex = 9;
-            this.cbPCDb.Text = "B";
-            this.cbPCDb.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDa
-            // 
-            this.cbPCDa.AutoSize = true;
-            this.cbPCDa.Location = new System.Drawing.Point(138, 22);
-            this.cbPCDa.Name = "cbPCDa";
-            this.cbPCDa.Size = new System.Drawing.Size(33, 17);
-            this.cbPCDa.TabIndex = 8;
-            this.cbPCDa.Text = "A";
-            this.cbPCDa.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDcmtf
-            // 
-            this.cbPCDcmtf.AutoSize = true;
-            this.cbPCDcmtf.Location = new System.Drawing.Point(81, 92);
-            this.cbPCDcmtf.Name = "cbPCDcmtf";
-            this.cbPCDcmtf.Size = new System.Drawing.Size(55, 17);
-            this.cbPCDcmtf.TabIndex = 7;
-            this.cbPCDcmtf.Text = "CMTF";
-            this.cbPCDcmtf.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDcmtx
-            // 
-            this.cbPCDcmtx.AutoSize = true;
-            this.cbPCDcmtx.Location = new System.Drawing.Point(81, 68);
-            this.cbPCDcmtx.Name = "cbPCDcmtx";
-            this.cbPCDcmtx.Size = new System.Drawing.Size(56, 17);
-            this.cbPCDcmtx.TabIndex = 6;
-            this.cbPCDcmtx.Text = "CMTX";
-            this.cbPCDcmtx.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDcetci
-            // 
-            this.cbPCDcetci.AutoSize = true;
-            this.cbPCDcetci.Location = new System.Drawing.Point(81, 45);
-            this.cbPCDcetci.Name = "cbPCDcetci";
-            this.cbPCDcetci.Size = new System.Drawing.Size(63, 17);
-            this.cbPCDcetci.TabIndex = 5;
-            this.cbPCDcetci.Text = "CETCI  ";
-            this.cbPCDcetci.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDear
-            // 
-            this.cbPCDear.AutoSize = true;
-            this.cbPCDear.Location = new System.Drawing.Point(81, 22);
-            this.cbPCDear.Name = "cbPCDear";
-            this.cbPCDear.Size = new System.Drawing.Size(51, 17);
-            this.cbPCDear.TabIndex = 4;
-            this.cbPCDear.Text = "EAR ";
-            this.cbPCDear.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDcetve
-            // 
-            this.cbPCDcetve.AutoSize = true;
-            this.cbPCDcetve.Location = new System.Drawing.Point(21, 92);
-            this.cbPCDcetve.Name = "cbPCDcetve";
-            this.cbPCDcetve.Size = new System.Drawing.Size(64, 17);
-            this.cbPCDcetve.TabIndex = 3;
-            this.cbPCDcetve.Text = "CETVE ";
-            this.cbPCDcetve.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDcetcp
-            // 
-            this.cbPCDcetcp.AutoSize = true;
-            this.cbPCDcetcp.Location = new System.Drawing.Point(21, 69);
-            this.cbPCDcetcp.Name = "cbPCDcetcp";
-            this.cbPCDcetcp.Size = new System.Drawing.Size(64, 17);
-            this.cbPCDcetcp.TabIndex = 2;
-            this.cbPCDcetcp.Text = "CETCP ";
-            this.cbPCDcetcp.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDcete
-            // 
-            this.cbPCDcete.AutoSize = true;
-            this.cbPCDcete.Location = new System.Drawing.Point(21, 45);
-            this.cbPCDcete.Name = "cbPCDcete";
-            this.cbPCDcete.Size = new System.Drawing.Size(54, 17);
-            this.cbPCDcete.TabIndex = 1;
-            this.cbPCDcete.Text = "CETE";
-            this.cbPCDcete.UseVisualStyleBackColor = true;
-            // 
-            // cbPCDcetpp
-            // 
-            this.cbPCDcetpp.AutoSize = true;
-            this.cbPCDcetpp.Location = new System.Drawing.Point(21, 22);
-            this.cbPCDcetpp.Name = "cbPCDcetpp";
-            this.cbPCDcetpp.Size = new System.Drawing.Size(64, 17);
-            this.cbPCDcetpp.TabIndex = 0;
-            this.cbPCDcetpp.Text = "CETPP ";
-            this.cbPCDcetpp.UseVisualStyleBackColor = true;
-            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.radAtivRemuneradaSim);
             this.groupBox8.Controls.Add(this.radAtivRemuneradaNao);
-            this.groupBox8.Location = new System.Drawing.Point(260, 115);
+            this.groupBox8.Location = new System.Drawing.Point(270, 71);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(110, 47);
+            this.groupBox8.Size = new System.Drawing.Size(101, 47);
             this.groupBox8.TabIndex = 470;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Remunerada";
@@ -907,7 +590,7 @@
             // radCategoriaA
             // 
             this.radCategoriaA.AutoSize = true;
-            this.radCategoriaA.Location = new System.Drawing.Point(3, 5);
+            this.radCategoriaA.Location = new System.Drawing.Point(2, 2);
             this.radCategoriaA.Margin = new System.Windows.Forms.Padding(2);
             this.radCategoriaA.Name = "radCategoriaA";
             this.radCategoriaA.Size = new System.Drawing.Size(32, 17);
@@ -988,7 +671,7 @@
             this.txtCNHMunicipio.Location = new System.Drawing.Point(111, 181);
             this.txtCNHMunicipio.MaxLength = 15;
             this.txtCNHMunicipio.Name = "txtCNHMunicipio";
-            this.txtCNHMunicipio.Size = new System.Drawing.Size(260, 20);
+            this.txtCNHMunicipio.Size = new System.Drawing.Size(259, 20);
             this.txtCNHMunicipio.TabIndex = 459;
             // 
             // label22
@@ -1036,7 +719,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label18.Location = new System.Drawing.Point(270, 71);
+            this.label18.Location = new System.Drawing.Point(264, 121);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(106, 13);
             this.label18.TabIndex = 456;
@@ -1044,7 +727,7 @@
             // 
             // mskDataVencimentoCNH
             // 
-            this.mskDataVencimentoCNH.Location = new System.Drawing.Point(273, 87);
+            this.mskDataVencimentoCNH.Location = new System.Drawing.Point(267, 137);
             this.mskDataVencimentoCNH.Mask = "00/00/0000";
             this.mskDataVencimentoCNH.Name = "mskDataVencimentoCNH";
             this.mskDataVencimentoCNH.Size = new System.Drawing.Size(97, 20);
@@ -1280,9 +963,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label10.Location = new System.Drawing.Point(6, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.Size = new System.Drawing.Size(56, 13);
             this.label10.TabIndex = 9;
-            this.label10.Text = "Telefone:";
+            this.label10.Text = "Telefone:*";
             // 
             // label12
             // 
@@ -1337,9 +1020,9 @@
             // 
             this.Contratos.Controls.Add(this.dtgContrato);
             this.Contratos.Controls.Add(this.toolStripContainer1);
-            this.Contratos.Location = new System.Drawing.Point(396, 339);
+            this.Contratos.Location = new System.Drawing.Point(396, 308);
             this.Contratos.Name = "Contratos";
-            this.Contratos.Size = new System.Drawing.Size(375, 155);
+            this.Contratos.Size = new System.Drawing.Size(375, 186);
             this.Contratos.TabIndex = 39;
             this.Contratos.TabStop = false;
             this.Contratos.Text = "Contratos";
@@ -1359,7 +1042,7 @@
             this.dtgContrato.ReadOnly = true;
             this.dtgContrato.RowHeadersWidth = 51;
             this.dtgContrato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgContrato.Size = new System.Drawing.Size(334, 130);
+            this.dtgContrato.Size = new System.Drawing.Size(334, 161);
             this.dtgContrato.TabIndex = 41;
             this.dtgContrato.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgContrato_CellDoubleClick);
             // 
@@ -1370,7 +1053,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1, 90);
-            this.toolStripContainer1.Location = new System.Drawing.Point(345, 36);
+            this.toolStripContainer1.Location = new System.Drawing.Point(345, 67);
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
             // toolStripContainer1.RightToolStripPanel
@@ -1507,9 +1190,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label4.Location = new System.Drawing.Point(89, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 442;
-            this.label4.Text = "Bairro:";
+            this.label4.Text = "Bairro:*";
             // 
             // label7
             // 
@@ -1517,9 +1200,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label7.Location = new System.Drawing.Point(10, 61);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 443;
-            this.label7.Text = "Município:";
+            this.label7.Text = "Município:*";
             // 
             // txtBairro
             // 
@@ -1606,9 +1289,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label3.Location = new System.Drawing.Point(9, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 17;
-            this.label3.Text = "CEP:";
+            this.label3.Text = "CEP:*";
             // 
             // txtLogradouro
             // 
@@ -1624,9 +1307,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label2.Location = new System.Drawing.Point(10, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Logradouro:";
+            this.label2.Text = "Logradouro:*";
             // 
             // tabHistórico
             // 
@@ -1758,8 +1441,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1905,43 +1586,17 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.PictureBox picLimparCategoriaCNH;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.CheckBox cbPCDcmtf;
-        private System.Windows.Forms.CheckBox cbPCDcmtx;
-        private System.Windows.Forms.CheckBox cbPCDcetci;
-        private System.Windows.Forms.CheckBox cbPCDear;
-        private System.Windows.Forms.CheckBox cbPCDcetve;
-        private System.Windows.Forms.CheckBox cbPCDcetcp;
-        private System.Windows.Forms.CheckBox cbPCDcete;
-        private System.Windows.Forms.CheckBox cbPCDcetpp;
-        private System.Windows.Forms.CheckBox cbPCDx;
-        private System.Windows.Forms.CheckBox cbPCDv;
-        private System.Windows.Forms.CheckBox cbPCDu;
-        private System.Windows.Forms.CheckBox cbPCDt;
-        private System.Windows.Forms.CheckBox cbPCDs;
-        private System.Windows.Forms.CheckBox cbPCDr;
-        private System.Windows.Forms.CheckBox cbPCDq;
-        private System.Windows.Forms.CheckBox cbPCDp;
-        private System.Windows.Forms.CheckBox cbPCDo;
-        private System.Windows.Forms.CheckBox cbPCDn;
-        private System.Windows.Forms.CheckBox cbPCDm;
-        private System.Windows.Forms.CheckBox cbPCDl;
-        private System.Windows.Forms.CheckBox cbPCDk;
-        private System.Windows.Forms.CheckBox cbPCDj;
-        private System.Windows.Forms.CheckBox cbPCDi;
-        private System.Windows.Forms.CheckBox cbPCDh;
-        private System.Windows.Forms.CheckBox cbPCDg;
-        private System.Windows.Forms.CheckBox cbPCDf;
-        private System.Windows.Forms.CheckBox cbPCDe;
-        private System.Windows.Forms.CheckBox cbPCDc;
-        private System.Windows.Forms.CheckBox cbPCDb;
-        private System.Windows.Forms.CheckBox cbPCDa;
-        private System.Windows.Forms.CheckBox cbPCDd;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.RadioButton radCategoriaA;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.RadioButton radCNHDefinitivaSim;
         private System.Windows.Forms.RadioButton radCNHDefinitivaNao;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.TextBox txtLogin;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtSiglasPCD;
     }
 }
 

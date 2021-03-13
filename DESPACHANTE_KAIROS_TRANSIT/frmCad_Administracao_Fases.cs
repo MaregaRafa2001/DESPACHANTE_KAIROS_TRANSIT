@@ -150,7 +150,34 @@ namespace APP_UI
                 case 8://FINALIZAÇÃO
                     Layout8_mskDataFinalizacao.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_FINALIZACAO);
                     Layout8_mskDataBaixaDePontos.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_BAIXA_DE_PONTOS);
+                    Layout8_Pontuacao.Value = administracao_dto.PONTUACAO.HasValue ? administracao_dto.PONTUACAO.Value : 0;
+                    if (administracao_dto.STATUS_CNH.HasValue)
+                    {
+                        switch (administracao_dto.STATUS_CNH)
+                        {
+                            case 'C':
+                                Layout8_radCassada.Checked = true;
+                                break;
+
+                            case 'S':
+                                Layout8_radSuspensa.Checked = true;
+                                break;
+
+                            case 'R':
+                                Layout8_radRegularizada.Checked = true;
+                                break;
+
+                            default:
+                                Layout8_radRegularizada.Checked = true;
+
+                                break;
+
+                        }
+
+                       
+                    }
                     break;
+
                 case 9://CADASTRO DETRAN
                     Layout9_mskDataAgendamento.Text = FormFuncoes.PopularMskData(administracao_dto.DATA_AGENDAMENTO);
                     break;
@@ -245,6 +272,24 @@ namespace APP_UI
                     case 8://FINALIZAÇÃO
                         administracao_dto.DATA_FINALIZACAO = FormFuncoes.GetMskDate(Layout8_mskDataFinalizacao);
                         administracao_dto.DATA_BAIXA_DE_PONTOS = FormFuncoes.GetMskDate(Layout8_mskDataBaixaDePontos);
+                        try
+                        {
+                            administracao_dto.PONTUACAO = Convert.ToInt32(Layout8_Pontuacao.Value);
+                        }
+                        catch 
+                        {
+
+                            administracao_dto.PONTUACAO = 0;
+                        }
+
+                        if (Layout8_radCassada.Checked)
+                            administracao_dto.STATUS_CNH = 'C';
+                        else if (Layout8_radSuspensa.Checked)
+                            administracao_dto.STATUS_CNH = 'S';
+                        else
+                            administracao_dto.STATUS_CNH = 'R';
+                        
+
                         break;
                     case 9://CADASTRO DETRAN
                         administracao_dto.DATA_AGENDAMENTO = FormFuncoes.GetMskDate(Layout9_mskDataAgendamento);
@@ -491,8 +536,8 @@ namespace APP_UI
                     pnlLayout13.Visible = false;
                     pnlFase14.Visible = false;
                     pnlFase8.Location = new System.Drawing.Point(6, 50);
-                    this.Size = new System.Drawing.Size(402, 395);
-                    gpbObservacao.Location = new System.Drawing.Point(13, 125);
+                    this.Size = new System.Drawing.Size(402, 465);
+                    gpbObservacao.Location = new System.Drawing.Point(13, 195);
                     break;
                 case 9: //CADASTRO DETRAN
                     pnlFase1.Visible = false;
@@ -712,7 +757,5 @@ namespace APP_UI
                 Cursor.Current = Cursors.Default;
             }
         }
-
-
     }
 }

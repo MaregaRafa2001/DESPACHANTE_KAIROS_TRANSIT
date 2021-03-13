@@ -214,8 +214,10 @@ namespace APP_UI
             nupPontuacao.Value = CLIENTE_DTO.CNH_PONTUACAO == null ? 0 : Convert.ToInt32(CLIENTE_DTO.CNH_PONTUACAO);
             mskDataVencimentoCNH.Text = CLIENTE_DTO.CNH_DATA_VENCIMENTO.ToString();
             mskCNHDataEmissao.Text = CLIENTE_DTO.CNH_DATA_EMISSAO.ToString();
+            txtSiglasPCD.Text = CLIENTE_DTO.SIGLA_PCD;
+            txtLogin.Text = CLIENTE_DTO.LOGIN;
+            txtSenha.Text = CLIENTE_DTO.SENHA;
 
-            PopularSiglaPCD(CLIENTE_DTO.SIGLA_PCD);
             PopularRadios(radPortariaSim, radPortariaNao, CLIENTE_DTO.PORTARIA);
             PopularRadios(radImpedimentoSim, radImpedimentoNao, CLIENTE_DTO.IMPEDIMENTO);
             PopularRadios(radCNHVencidaSim, radCNHVencidaNao, CLIENTE_DTO.CNH_VENCIDA);
@@ -224,147 +226,6 @@ namespace APP_UI
 
         }
 
-        void PopularSiglaPCD(string PCD)
-        {
-            try
-            {
-                string[] pcds = PCD.Split(',');
-                foreach (string pcd in pcds)
-                {
-                    switch (pcd)
-                    {
-                        case "CETPP":
-                            cbPCDcetpp.Checked = true;
-                            break;
-
-                        case "CETE":
-                            cbPCDcete.Checked = true;
-                            break;
-
-                        case "CETCP":
-                            cbPCDcetcp.Checked = true;
-                            break;
-
-                        case "CETVE":
-                            cbPCDcetve.Checked = true;
-                            break;
-
-                        case "EAR":
-                            cbPCDear.Checked = true;
-                            break;
-
-                        case "CETCI":
-                            cbPCDcetci.Checked = true;
-                            break;
-
-                        case "CMTX":
-                            cbPCDcmtx.Checked = true;
-                            break;
-
-                        case "CMTF":
-                            cbPCDcmtf.Checked = true;
-                            break;
-
-                        case "A":
-                            cbPCDa.Checked = true;
-                            break;
-
-                        case "B":
-                            cbPCDb.Checked = true;
-                            break;
-
-                        case "C":
-                            cbPCDc.Checked = true;
-                            break;
-
-                        case "D":
-                            cbPCDd.Checked = true;
-                            break;
-
-                        case "E":
-                            cbPCDe.Checked = true;
-                            break;
-
-                        case "F":
-                            cbPCDf.Checked = true;
-                            break;
-
-                        case "G":
-                            cbPCDg.Checked = true;
-                            break;
-
-                        case "H":
-                            cbPCDh.Checked = true;
-                            break;
-
-                        case "I":
-                            cbPCDi.Checked = true;
-                            break;
-
-                        case "J":
-                            cbPCDj.Checked = true;
-                            break;
-
-                        case "K":
-                            cbPCDk.Checked = true;
-                            break;
-
-                        case "L":
-                            cbPCDl.Checked = true;
-                            break;
-
-                        case "M":
-                            cbPCDm.Checked = true;
-                            break;
-
-                        case "N":
-                            cbPCDn.Checked = true;
-                            break;
-
-                        case "O":
-                            cbPCDo.Checked = true;
-                            break;
-
-                        case "P":
-                            cbPCDp.Checked = true;
-                            break;
-
-                        case "Q":
-                            cbPCDq.Checked = true;
-                            break;
-
-                        case "R":
-                            cbPCDr.Checked = true;
-                            break;
-
-                        case "S":
-                            cbPCDs.Checked = true;
-                            break;
-
-                        case "T":
-                            cbPCDt.Checked = true;
-                            break;
-
-                        case "U":
-                            cbPCDu.Checked = true;
-                            break;
-
-                        case "V":
-                            cbPCDv.Checked = true;
-                            break;
-
-                        case "X":
-                            cbPCDx.Checked = true;
-                            break;
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         void PopularRadioCategoriaCNH(string categoria)
         {
@@ -459,7 +320,7 @@ namespace APP_UI
                 CLIENTE_DTO.CNH_VENCIDA = radCNHVencidaSim.Checked ? true : false;
                 CLIENTE_DTO.ATIV_REMUNERADA = radAtivRemuneradaSim.Checked ? true : false;
                 CLIENTE_DTO.CNH_DEFINITIVA= radCNHDefinitivaSim.Checked ? true : false;
-                CLIENTE_DTO.SIGLA_PCD = AtualizaSiglaPCD();
+                CLIENTE_DTO.SIGLA_PCD = txtSiglasPCD.Text;
                 //ENDEREÇO
                 CLIENTE_DTO.CEP = mskCEP.Text.Replace("-", "");
                 CLIENTE_DTO.BAIRRO = txtBairro.Text;
@@ -476,6 +337,8 @@ namespace APP_UI
                 //CLIENTE_DTO.CELULAR = mskCelular.Text;
                 //CLIENTE_DTO.TELEFONE = mskTelelefone.Text;
                 CLIENTE_DTO.OBSERVACAO = txtObs.Text;
+                CLIENTE_DTO.LOGIN = txtLogin.Text;
+                CLIENTE_DTO.SENHA = txtSenha.Text;
                 CLIENTE_DTO.PORTARIA = (radPortariaSim.Checked ? true : false);
                 CLIENTE_DTO.IMPEDIMENTO = (radImpedimentoSim.Checked ? true : false);
                 CLIENTE_DTO.ULT_ATUAL = DateTime.Now;
@@ -492,84 +355,6 @@ namespace APP_UI
             {
 
                 throw EX;
-            }
-        }
-
-        string AtualizaSiglaPCD()
-        {
-            try
-            {
-                
-                string pcd = "";
-
-                if (cbPCDcetpp.Checked)
-                    pcd += "CETPP,";
-                if (cbPCDcete.Checked)
-                    pcd += "CETE,";
-                if (cbPCDcetcp.Checked)
-                    pcd += "CETCP,";
-                if (cbPCDcetve.Checked)
-                    pcd += "CETVE,";
-                if (cbPCDear.Checked)
-                    pcd += "EAR,";
-                if (cbPCDcetci.Checked)
-                    pcd += "CETCI,";
-                if (cbPCDcmtx.Checked)
-                    pcd += "CMTX,";
-                if (cbPCDcmtf.Checked)
-                    pcd += "CMTF,";
-                if (cbPCDa.Checked)
-                    pcd += "A,";
-                if (cbPCDb.Checked)
-                    pcd += "B,";
-                if (cbPCDc.Checked)
-                    pcd += "C,";
-                if (cbPCDd.Checked)
-                    pcd += "D,";
-                if (cbPCDe.Checked)
-                    pcd += "E,";
-                if (cbPCDf.Checked)
-                    pcd += "F,";
-                if (cbPCDg.Checked)
-                    pcd += "G,";
-                if (cbPCDh.Checked)
-                    pcd += "H,";
-                if (cbPCDi.Checked)
-                    pcd += "I,";
-                if (cbPCDj.Checked)
-                    pcd += "J,";
-                if (cbPCDk.Checked)
-                    pcd += "K,";
-                if (cbPCDl.Checked)
-                    pcd += "L,";
-                if (cbPCDm.Checked)
-                    pcd += "M,";
-                if (cbPCDn.Checked)
-                    pcd += "N,";
-                if (cbPCDo.Checked)
-                    pcd += "O,";
-                if (cbPCDp.Checked)
-                    pcd += "P,";
-                if (cbPCDq.Checked)
-                    pcd += "Q,";
-                if (cbPCDr.Checked)
-                    pcd += "R,";
-                if (cbPCDs.Checked)
-                    pcd += "S,";
-                if (cbPCDt.Checked)
-                    pcd += "T,";
-                if (cbPCDu.Checked)
-                    pcd += "U,";
-                if (cbPCDv.Checked)
-                    pcd += "V,";
-                if (cbPCDx.Checked)
-                    pcd += "X,";
-
-                return pcd;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
 
@@ -1750,5 +1535,9 @@ namespace APP_UI
             }
         }
 
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

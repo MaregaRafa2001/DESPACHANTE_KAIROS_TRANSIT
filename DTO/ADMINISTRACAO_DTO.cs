@@ -56,6 +56,8 @@ namespace DTO
         //LAYOUT TELA 8
         public DateTime? DATA_FINALIZACAO { get; set; }
         public DateTime? DATA_BAIXA_DE_PONTOS { get; set; }
+        public int? PONTUACAO { get; set; }
+        public char? STATUS_CNH { get; set; }
 
         //LAYOUT TELA 9
         public DateTime? DATA_AGENDAMENTO { get; set; }

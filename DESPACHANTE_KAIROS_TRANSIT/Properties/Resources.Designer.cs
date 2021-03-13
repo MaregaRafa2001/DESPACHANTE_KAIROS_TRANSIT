@@ -63,6 +63,16 @@ namespace DESPACHANTE_KAIROS_TRANSIT.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _0001___cópia {
+            get {
+                object obj = ResourceManager.GetObject("0001 - cópia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap visualizar {
             get {
                 object obj = ResourceManager.GetObject("visualizar", resourceCulture);

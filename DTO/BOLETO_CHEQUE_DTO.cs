@@ -22,11 +22,18 @@ namespace DTO
         public int? PARCELA { get; set; }
         public int? ID_FORMA_PAGAMENTO { get; set; }
         public string FORMA_PAGAMENTO { get; set; }
+        public string FORMA_PAGAMENTO_JUROS { get; set; }
+        public int? ID_FORMA_PAGAMENTO_JUROS { get; set; }
         public bool? ATIVO { get; set; }
         public decimal? VALOR { get; set; }
+        public decimal? VALOR_JUROS { get; set; }
         public DateTime? DATA_VENCTO { get; set; }
+        public DateTime? DATA_PAGAMENTO { get; set; }
         public string STATUS_PAGAMENTO { get; set; }
-
+        public string COBRANCA { get; set; }
+        public DateTime? DATA_PROTESTO { get; set; }
+        public DateTime? CARTA_ANUENCIA { get; set; }
+        public string CARTORIO { get; set; }
 
         //CAMPOS PARA GERAR COMPROVANTE
         public bool GeraComprovante { get; set; }

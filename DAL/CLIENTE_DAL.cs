@@ -64,7 +64,9 @@ namespace DAL
                     SQL_.Append("IMPEDIMENTO, ");
                     SQL_.Append("USUARIO, ");
                     SQL_.Append("ULT_ATUAL, ");
-                    SQL_.Append("OBSERVACAO ");
+                    SQL_.Append("OBSERVACAO, ");
+                    SQL_.Append("LOGIN, ");
+                    SQL_.Append("SENHA ");
 
                     SQL_.Append(") ");
                     SQL_.Append("VALUES ");
@@ -104,7 +106,9 @@ namespace DAL
                     SQL_.Append("@IMPEDIMENTO, ");
                     SQL_.Append("@USUARIO, ");
                     SQL_.Append("@ULT_ATUAL, ");
-                    SQL_.Append("@OBSERVACAO ");
+                    SQL_.Append("@OBSERVACAO, ");
+                    SQL_.Append("@LOGIN, ");
+                    SQL_.Append("@SENHA ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
 
@@ -189,7 +193,9 @@ namespace DAL
                     SQL_.Append("IMPEDIMENTO = @IMPEDIMENTO, ");
                     SQL_.Append("USUARIO = @USUARIO, ");
                     SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
-                    SQL_.Append("OBSERVACAO = @OBSERVACAO ");
+                    SQL_.Append("OBSERVACAO = @OBSERVACAO, ");
+                    SQL_.Append("LOGIN = @LOGIN, ");
+                    SQL_.Append("SENHA = @SENHA ");
 
                     SQL_.Append("WHERE ID = @ID ");
                     cn.Open();
@@ -295,6 +301,8 @@ namespace DAL
             cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
             cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
             cmd.Parameters.AddWithValue("@OBSERVACAO", DTO.OBSERVACAO);
+            cmd.Parameters.AddWithValue("@LOGIN", DTO.LOGIN);
+            cmd.Parameters.AddWithValue("@SENHA", DTO.SENHA);
 
             //Substitui o null por DBnull
             foreach (SqlParameter Parameter in cmd.Parameters)
@@ -410,6 +418,8 @@ namespace DAL
             Cliente.PORTARIA = dtr["PORTARIA"] == DBNull.Value ? false : Convert.ToBoolean(dtr["PORTARIA"]);
             Cliente.IMPEDIMENTO = dtr["IMPEDIMENTO"] == DBNull.Value ? false : Convert.ToBoolean(dtr["IMPEDIMENTO"]);
             Cliente.OBSERVACAO = dtr["OBSERVACAO"].ToString();
+            Cliente.LOGIN = dtr["LOGIN"].ToString();
+            Cliente.SENHA = dtr["SENHA"].ToString();
         }
 
         #region CELULAR

@@ -427,6 +427,7 @@
     <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.dll" />
     <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.pdb" />
     <Content Include="packages\FontAwesomeIcons.1.0.3\lib\FontAwesomeIcons.XML" />
+    <None Include="Resources\0001 - cópia.jpg" />
     <None Include="Resources\visualizar-icon1.png" />
     <None Include="Resources\visualizar-icon.png" />
     <None Include="Resources\visualizar.png" />

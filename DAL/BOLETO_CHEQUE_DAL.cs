@@ -37,12 +37,20 @@ namespace DAL
                     SQL_.Append("PARCELA, ");
                     SQL_.Append("ID_FORMA_PAGAMENTO, ");
                     SQL_.Append("FORMA_PAGAMENTO, ");
+                    SQL_.Append("ID_FORMA_PAGAMENTO_JUROS, ");
+                    SQL_.Append("FORMA_PAGAMENTO_JUROS, ");
                     SQL_.Append("VALOR, ");
+                    SQL_.Append("VALOR_JUROS, ");
                     SQL_.Append("DATA_VENCTO, ");
+                    SQL_.Append("DATA_PAGAMENTO, ");
                     SQL_.Append("STATUS_PAGAMENTO, ");
                     SQL_.Append("USUARIO, ");
                     SQL_.Append("ULT_ATUAL, ");
-                    SQL_.Append("ATIVO ");
+                    SQL_.Append("ATIVO, ");
+                    SQL_.Append("COBRANCA, ");
+                    SQL_.Append("DATA_PROTESTO, ");
+                    SQL_.Append("CARTA_ANUENCIA, ");
+                    SQL_.Append("CARTORIO ");
 
                     SQL_.Append(") ");
                     SQL_.Append("VALUES ");
@@ -53,12 +61,20 @@ namespace DAL
                     SQL_.Append("@PARCELA, ");
                     SQL_.Append("@ID_FORMA_PAGAMENTO, ");
                     SQL_.Append("@FORMA_PAGAMENTO, ");
+                    SQL_.Append("@ID_FORMA_PAGAMENTO_JUROS, ");
+                    SQL_.Append("@FORMA_PAGAMENTO_JUROS, ");
                     SQL_.Append("@VALOR, ");
+                    SQL_.Append("@VALOR_JUROS, ");
                     SQL_.Append("@DATA_VENCTO, ");
+                    SQL_.Append("@DATA_PAGAMENTO, ");
                     SQL_.Append("@STATUS_PAGAMENTO, ");
                     SQL_.Append("@USUARIO, ");
                     SQL_.Append("@ULT_ATUAL, ");
-                    SQL_.Append("1 ");
+                    SQL_.Append("1, ");
+                    SQL_.Append("@COBRANCA, ");
+                    SQL_.Append("@DATA_PROTESTO, ");
+                    SQL_.Append("@CARTA_ANUENCIA, ");
+                    SQL_.Append("@CARTORIO ");
                     SQL_.Append("); SELECT SCOPE_IDENTITY(); ");
                     cn.Open();
 
@@ -108,12 +124,20 @@ namespace DAL
                     SQL_.Append("PARCELA = @PARCELA, ");
                     SQL_.Append("ID_FORMA_PAGAMENTO = @ID_FORMA_PAGAMENTO, ");
                     SQL_.Append("FORMA_PAGAMENTO = @FORMA_PAGAMENTO, ");
+                    SQL_.Append("ID_FORMA_PAGAMENTO_JUROS = @ID_FORMA_PAGAMENTO_JUROS, ");
+                    SQL_.Append("FORMA_PAGAMENTO_JUROS = @FORMA_PAGAMENTO_JUROS, ");
                     SQL_.Append("VALOR = @VALOR, ");
+                    SQL_.Append("VALOR_JUROS = @VALOR_JUROS, ");
                     SQL_.Append("DATA_VENCTO = @DATA_VENCTO, ");
+                    SQL_.Append("DATA_PAGAMENTO = @DATA_PAGAMENTO, ");
                     SQL_.Append("STATUS_PAGAMENTO = @STATUS_PAGAMENTO, ");
                     SQL_.Append("USUARIO = @USUARIO, ");
                     SQL_.Append("ULT_ATUAL = @ULT_ATUAL, ");
-                    SQL_.Append("ATIVO = @ATIVO ");
+                    SQL_.Append("ATIVO = @ATIVO, ");
+                    SQL_.Append("COBRANCA = @COBRANCA, ");
+                    SQL_.Append("DATA_PROTESTO = @DATA_PROTESTO, ");
+                    SQL_.Append("CARTA_ANUENCIA = @CARTA_ANUENCIA, ");
+                    SQL_.Append("CARTORIO = @CARTORIO ");
 
                     SQL_.Append("WHERE ID = @ID ");
                     cn.Open();
@@ -172,12 +196,20 @@ namespace DAL
             cmd.Parameters.AddWithValue("@PARCELA", DTO.PARCELA);
             cmd.Parameters.AddWithValue("@ID_FORMA_PAGAMENTO", DTO.ID_FORMA_PAGAMENTO);
             cmd.Parameters.AddWithValue("@FORMA_PAGAMENTO", DTO.FORMA_PAGAMENTO);
+            cmd.Parameters.AddWithValue("@ID_FORMA_PAGAMENTO_JUROS", DTO.ID_FORMA_PAGAMENTO_JUROS);
+            cmd.Parameters.AddWithValue("@FORMA_PAGAMENTO_JUROS", DTO.FORMA_PAGAMENTO_JUROS);
             cmd.Parameters.AddWithValue("@VALOR", DTO.VALOR);
+            cmd.Parameters.AddWithValue("@VALOR_JUROS", DTO.VALOR_JUROS);
             cmd.Parameters.AddWithValue("@DATA_VENCTO", DTO.DATA_VENCTO);
+            cmd.Parameters.AddWithValue("@DATA_PAGAMENTO", DTO.DATA_PAGAMENTO);
             cmd.Parameters.AddWithValue("@STATUS_PAGAMENTO", DTO.STATUS_PAGAMENTO);
             cmd.Parameters.AddWithValue("@USUARIO", DTO.USUARIO);
             cmd.Parameters.AddWithValue("@ULT_ATUAL", DTO.ULT_ATUAL);
             cmd.Parameters.AddWithValue("@ATIVO", DTO.ATIVO);
+            cmd.Parameters.AddWithValue("@COBRANCA", DTO.COBRANCA);
+            cmd.Parameters.AddWithValue("@DATA_PROTESTO", DTO.DATA_PROTESTO);
+            cmd.Parameters.AddWithValue("@CARTA_ANUENCIA", DTO.CARTA_ANUENCIA);
+            cmd.Parameters.AddWithValue("@CARTORIO", DTO.CARTORIO);
 
 
             //Substitui o null por DBnull
@@ -242,13 +274,21 @@ namespace DAL
                 DTO.NUMERO = dtr["NUMERO"].ToString();
                 DTO.ID_FORMA_PAGAMENTO = dtr["ID_FORMA_PAGAMENTO"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_FORMA_PAGAMENTO"]);
                 DTO.FORMA_PAGAMENTO = dtr["FORMA_PAGAMENTO"].ToString();
+                DTO.ID_FORMA_PAGAMENTO_JUROS = dtr["ID_FORMA_PAGAMENTO_JUROS"] == DBNull.Value ? 0 : Convert.ToInt32(dtr["ID_FORMA_PAGAMENTO_JUROS"]);
+                DTO.FORMA_PAGAMENTO_JUROS = dtr["FORMA_PAGAMENTO_JUROS"].ToString();
                 DTO.PARCELA = Convert.ToInt32(dtr["PARCELA"]);
                 DTO.VALOR = dtr["VALOR"] == DBNull.Value? (decimal?)null : Convert.ToDecimal(dtr["VALOR"]);
+                DTO.VALOR_JUROS = dtr["VALOR_JUROS"] == DBNull.Value? (decimal?)null : Convert.ToDecimal(dtr["VALOR_JUROS"]);
                 DTO.DATA_VENCTO = dtr["DATA_VENCTO"] == DBNull.Value? (DateTime?)null : Convert.ToDateTime(dtr["DATA_VENCTO"]);
+                DTO.DATA_PAGAMENTO = dtr["DATA_PAGAMENTO"] == DBNull.Value? (DateTime?)null : Convert.ToDateTime(dtr["DATA_PAGAMENTO"]);
                 DTO.STATUS_PAGAMENTO = dtr["STATUS_PAGAMENTO"] == DBNull.Value? "" : Convert.ToString(dtr["STATUS_PAGAMENTO"]);
                 DTO.USUARIO = dtr["USUARIO"].ToString();
                 DTO.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
                 DTO.ATIVO = Convert.ToBoolean(dtr["ATIVO"]);
+                DTO.COBRANCA = dtr["NUMERO"].ToString();
+                DTO.DATA_PROTESTO = dtr["DATA_PROTESTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_PROTESTO"]);
+                DTO.CARTA_ANUENCIA = dtr["CARTA_ANUENCIA"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["CARTA_ANUENCIA"]);
+                DTO.CARTORIO = dtr["NUMERO"].ToString();
             }
             catch (Exception ex)
             {

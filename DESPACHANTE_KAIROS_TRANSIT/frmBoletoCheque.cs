@@ -26,6 +26,12 @@ namespace APP_UI
             this.boleto_cheque = boleto_cheque;
             if (LastParcela)
                 txtValor.ReadOnly = true;
+            if (this.boleto_cheque.OPERACAO == SysDTO.Operacoes.Alteracao)
+            {
+                txtValor.ReadOnly = true;
+                cboForma_Pagamento.Enabled = false;
+                mskDataVencimento.ReadOnly = true;
+            }
             PopularCombos();
             PopularDados();
         }
@@ -52,6 +58,12 @@ namespace APP_UI
                 cboForma_Pagamento.DataSource = new FORMA_PAGAMENTO_BLL().Lista_Forma_Pagamento();
                 cboForma_Pagamento.SelectedIndex = -1;
 
+                //Forma pagamento juros
+                cboFormaPagamentoJuros.ValueMember = "ID";
+                cboFormaPagamentoJuros.DisplayMember = "DESCRICAO";
+                cboFormaPagamentoJuros.DataSource = new FORMA_PAGAMENTO_BLL().Lista_Forma_Pagamento();
+                cboForma_Pagamento.SelectedIndex = -1;
+
             }
             catch (Exception ex)
             {
@@ -65,6 +77,10 @@ namespace APP_UI
             txtParcela.Text = boleto_cheque.PARCELA.ToString();
             mskDataVencimento.Text = (boleto_cheque.DATA_VENCTO == null ? "" : boleto_cheque.DATA_VENCTO.Value.ToShortDateString());
             cboStatusPagamento.Text = boleto_cheque.STATUS_PAGAMENTO;
+            txtCobranca.Text = boleto_cheque.COBRANCA.ToString();
+            mskDataProtesto.Text = (boleto_cheque.DATA_PROTESTO == null ? "" : boleto_cheque.DATA_PROTESTO.Value.ToShortDateString());
+            mskCartaAnuencia.Text = (boleto_cheque.CARTA_ANUENCIA == null ? "" : boleto_cheque.CARTA_ANUENCIA.Value.ToShortDateString());
+            txtCartorio.Text = boleto_cheque.CARTORIO.ToString();
             if (cboStatusPagamento.Text.ToLower() == "pago")
             {
                 cboStatusPagamento.Enabled = false;
@@ -72,8 +88,14 @@ namespace APP_UI
             }
             txtNumBolChe.Text = boleto_cheque.NUMERO;
             txtValor.Text = boleto_cheque.VALOR.ToString();
+            txtValorJuros.Text = boleto_cheque.VALOR_JUROS.ToString();
+            mskDataPagamento.Text = boleto_cheque.DATA_PAGAMENTO.ToString();
+            
             if (boleto_cheque.ID_FORMA_PAGAMENTO != null)
                 cboForma_Pagamento.SelectedValue = boleto_cheque.ID_FORMA_PAGAMENTO;
+
+            if (boleto_cheque.ID_FORMA_PAGAMENTO_JUROS != null)
+                cboFormaPagamentoJuros.SelectedValue = boleto_cheque.ID_FORMA_PAGAMENTO_JUROS;
         }
 
 
@@ -105,11 +127,19 @@ namespace APP_UI
             if (boleto_cheque.STATUS_PAGAMENTO.ToLower() != "pago" && cboStatusPagamento.Text.ToLower() == "pago")
                 boleto_cheque.GeraComprovante = true;
             boleto_cheque.DATA_VENCTO = FormFuncoes.IsDate(mskDataVencimento.Text) ? Convert.ToDateTime(mskDataVencimento.Text) : (DateTime?)null;
+            boleto_cheque.DATA_PAGAMENTO = FormFuncoes.IsDate(mskDataPagamento.Text) ? Convert.ToDateTime(mskDataPagamento.Text) : (DateTime?)null;
             boleto_cheque.STATUS_PAGAMENTO = Convert.ToString(cboStatusPagamento.Text);
             boleto_cheque.NUMERO = txtNumBolChe.Text;
             boleto_cheque.VALOR = Convert.ToDecimal(txtValor.Text);
+            boleto_cheque.VALOR_JUROS = Convert.ToDecimal(txtValorJuros.Text);
             boleto_cheque.ID_FORMA_PAGAMENTO = Convert.ToInt32(cboForma_Pagamento.SelectedValue);
             boleto_cheque.FORMA_PAGAMENTO = cboForma_Pagamento.Text;
+            boleto_cheque.ID_FORMA_PAGAMENTO_JUROS = Convert.ToInt32(cboFormaPagamentoJuros.SelectedValue);
+            boleto_cheque.FORMA_PAGAMENTO_JUROS = cboFormaPagamentoJuros.Text;
+            boleto_cheque.COBRANCA = Convert.ToString(txtCobranca.Text);
+            boleto_cheque.DATA_PROTESTO = FormFuncoes.IsDate(mskDataProtesto.Text) ? Convert.ToDateTime(mskDataProtesto.Text) : (DateTime?)null;
+            boleto_cheque.CARTA_ANUENCIA = FormFuncoes.IsDate(mskCartaAnuencia.Text) ? Convert.ToDateTime(mskCartaAnuencia.Text) : (DateTime?)null;
+            boleto_cheque.CARTORIO = Convert.ToString(txtCobranca.Text);
         }
 
         void ValidarDados()
@@ -141,6 +171,28 @@ namespace APP_UI
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtValorJuros_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GLOBAL_FORMS.Moeda(ref txtValorJuros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void lblBoletoCheque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }
