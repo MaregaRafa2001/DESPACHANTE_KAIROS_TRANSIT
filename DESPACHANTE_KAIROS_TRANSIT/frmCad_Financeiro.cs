@@ -372,7 +372,7 @@ namespace APP_UI
 
                 foreach (DataGridViewRow row in dtgBoletosCheques.Rows)
                 {
-                    row.Cells["VALOR"].Value = Convert.ToDecimal(row.Cells["VALOR"].Value.ToString()).ToString("#0.00");
+                    row.Cells["VALOR"].Value = Convert.ToDecimal(row.Cells["VALOR"].Value.ToString() == "" ? "0" : row.Cells["VALOR"].Value.ToString()).ToString("#0.00");
                     if (row.Cells["OPERACAO"].Value.ToString() == "3")
                     {
                         dtgBoletosCheques.Rows.Remove(row);
@@ -704,6 +704,7 @@ namespace APP_UI
                         _DTO.DATA_VENCTO = RetornaDataValida(data.Year, data.Month, data.Day);
                         _DTO.PARCELA = i + 1;
                         //  _DTO.PRECO = Convert.toDecimal;
+                        _DTO.VALOR = 0;
                         _DTO.OPERACAO = SysDTO.Operacoes.Inclusao;
                         lista_boleto_cheque.Add(_DTO);
                     }
@@ -949,6 +950,14 @@ namespace APP_UI
                     DTO.VALOR = Convert.ToDecimal(Convert.ToDecimal(valorTotal / Qtd).ToString("#0.00"));
                     if (DTO.OPERACAO == SysDTO.Operacoes.Leitura)
                         DTO.OPERACAO = SysDTO.Operacoes.Alteracao;
+                }
+                decimal valorTotalEmParcela = 0;
+                lista_boleto_cheque.ForEach(x => valorTotalEmParcela += x.VALOR.Value);
+                if (valorTotalEmParcela > Convert.ToDecimal(txtValor.Text))
+                {
+                    lista_boleto_cheque[lista_boleto_cheque.Count - 1].VALOR = valorTotalEmParcela - Convert.ToDecimal(txtValor.Text);
+                    if (lista_boleto_cheque[lista_boleto_cheque.Count - 1].OPERACAO == SysDTO.Operacoes.Leitura)
+                        lista_boleto_cheque[lista_boleto_cheque.Count - 1].OPERACAO = SysDTO.Operacoes.Alteracao;
                 }
 
                 if (FINANCEIRO_DTO.OPERACAO != SysDTO.Operacoes.Inclusao)

@@ -42,6 +42,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.radPreventivoNao = new System.Windows.Forms.RadioButton();
             this.radPreventivoSim = new System.Windows.Forms.RadioButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.radNenhum = new System.Windows.Forms.RadioButton();
             this.radAutenticidade = new System.Windows.Forms.RadioButton();
@@ -105,6 +109,17 @@
             this.pnlFase2 = new System.Windows.Forms.Panel();
             this.pnlFase8 = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.Layout8_radRegularizada = new System.Windows.Forms.RadioButton();
+            this.Layout8_radSuspensa = new System.Windows.Forms.RadioButton();
+            this.Layout8_radCassada = new System.Windows.Forms.RadioButton();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.label34 = new System.Windows.Forms.Label();
+            this.Layout8_Pontuacao = new System.Windows.Forms.NumericUpDown();
+            this.label29 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Layout8_mskDataBaixaDePontos = new System.Windows.Forms.MaskedTextBox();
@@ -150,25 +165,11 @@
             this.label33 = new System.Windows.Forms.Label();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.Layout8_Pontuacao = new System.Windows.Forms.NumericUpDown();
-            this.label34 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.Layout8_radRegularizada = new System.Windows.Forms.RadioButton();
-            this.Layout8_radSuspensa = new System.Windows.Forms.RadioButton();
-            this.Layout8_radCassada = new System.Windows.Forms.RadioButton();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.pnlFase5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFase4.SuspendLayout();
@@ -187,6 +188,9 @@
             this.groupBox3.SuspendLayout();
             this.pnlFase8.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Layout8_Pontuacao)).BeginInit();
             this.pnlLayout9.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.pnlLayout12.SuspendLayout();
@@ -202,17 +206,13 @@
             this.gpbObservacao.SuspendLayout();
             this.pnlFase14.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Layout8_Pontuacao)).BeginInit();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.Location = new System.Drawing.Point(1039, 590);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 32);
             this.btnCancelar.TabIndex = 532;
@@ -224,7 +224,7 @@
             // 
             this.btnConfirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfirmar.Location = new System.Drawing.Point(937, 566);
-            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(80, 32);
             this.btnConfirmar.TabIndex = 531;
@@ -246,7 +246,7 @@
             this.cboFase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFase.FormattingEnabled = true;
             this.cboFase.Location = new System.Drawing.Point(13, 24);
-            this.cboFase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboFase.Margin = new System.Windows.Forms.Padding(2);
             this.cboFase.Name = "cboFase";
             this.cboFase.Size = new System.Drawing.Size(221, 21);
             this.cboFase.TabIndex = 535;
@@ -315,9 +315,9 @@
             this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Controls.Add(this.menuStrip1);
             this.groupBox7.Location = new System.Drawing.Point(6, 18);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox7.Size = new System.Drawing.Size(350, 162);
             this.groupBox7.TabIndex = 548;
             this.groupBox7.TabStop = false;
@@ -329,7 +329,7 @@
             this.panel3.Controls.Add(this.radPreventivoNao);
             this.panel3.Controls.Add(this.radPreventivoSim);
             this.panel3.Location = new System.Drawing.Point(4, 128);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(191, 31);
             this.panel3.TabIndex = 559;
@@ -348,7 +348,7 @@
             // 
             this.radPreventivoNao.AutoSize = true;
             this.radPreventivoNao.Location = new System.Drawing.Point(139, 7);
-            this.radPreventivoNao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radPreventivoNao.Margin = new System.Windows.Forms.Padding(2);
             this.radPreventivoNao.Name = "radPreventivoNao";
             this.radPreventivoNao.Size = new System.Drawing.Size(45, 17);
             this.radPreventivoNao.TabIndex = 38;
@@ -360,13 +360,55 @@
             this.radPreventivoSim.AutoSize = true;
             this.radPreventivoSim.Checked = true;
             this.radPreventivoSim.Location = new System.Drawing.Point(95, 7);
-            this.radPreventivoSim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radPreventivoSim.Margin = new System.Windows.Forms.Padding(2);
             this.radPreventivoSim.Name = "radPreventivoSim";
             this.radPreventivoSim.Size = new System.Drawing.Size(42, 17);
             this.radPreventivoSim.TabIndex = 37;
             this.radPreventivoSim.TabStop = true;
             this.radPreventivoSim.Text = "Sim";
             this.radPreventivoSim.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.radioButton1);
+            this.panel4.Controls.Add(this.radioButton2);
+            this.panel4.Controls.Add(this.radioButton3);
+            this.panel4.Location = new System.Drawing.Point(152, 102);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(182, 21);
+            this.panel4.TabIndex = 558;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(104, 2);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(65, 17);
+            this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Nenhum";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(54, 2);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(44, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Aut.";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(3, 2);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(49, 17);
+            this.radioButton3.TabIndex = 0;
+            this.radioButton3.Text = "Sem.";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -442,7 +484,7 @@
             this.panel1.Controls.Add(this.radImpedimentoNao);
             this.panel1.Controls.Add(this.radImpedimentoSim);
             this.panel1.Location = new System.Drawing.Point(152, 66);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(191, 31);
             this.panel1.TabIndex = 552;
@@ -461,7 +503,7 @@
             // 
             this.radImpedimentoNao.AutoSize = true;
             this.radImpedimentoNao.Location = new System.Drawing.Point(139, 7);
-            this.radImpedimentoNao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radImpedimentoNao.Margin = new System.Windows.Forms.Padding(2);
             this.radImpedimentoNao.Name = "radImpedimentoNao";
             this.radImpedimentoNao.Size = new System.Drawing.Size(45, 17);
             this.radImpedimentoNao.TabIndex = 38;
@@ -473,7 +515,7 @@
             this.radImpedimentoSim.AutoSize = true;
             this.radImpedimentoSim.Checked = true;
             this.radImpedimentoSim.Location = new System.Drawing.Point(95, 7);
-            this.radImpedimentoSim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radImpedimentoSim.Margin = new System.Windows.Forms.Padding(2);
             this.radImpedimentoSim.Name = "radImpedimentoSim";
             this.radImpedimentoSim.Size = new System.Drawing.Size(42, 17);
             this.radImpedimentoSim.TabIndex = 37;
@@ -615,7 +657,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(113, 36);
+            this.txtEmail.Location = new System.Drawing.Point(109, 36);
             this.txtEmail.MaxLength = 15;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(84, 20);
@@ -626,15 +668,14 @@
             this.mskSMS.Location = new System.Drawing.Point(271, 36);
             this.mskSMS.Mask = "(99) 00000-0000";
             this.mskSMS.Name = "mskSMS";
-            this.mskSMS.Size = new System.Drawing.Size(72, 20);
+            this.mskSMS.Size = new System.Drawing.Size(84, 20);
             this.mskSMS.TabIndex = 553;
             // 
             // mskSenha
             // 
-            this.mskSenha.Location = new System.Drawing.Point(203, 36);
-            this.mskSenha.Mask = "*************";
+            this.mskSenha.Location = new System.Drawing.Point(199, 36);
             this.mskSenha.Name = "mskSenha";
-            this.mskSenha.Size = new System.Drawing.Size(43, 20);
+            this.mskSenha.Size = new System.Drawing.Size(66, 20);
             this.mskSenha.TabIndex = 552;
             // 
             // label27
@@ -649,7 +690,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(200, 20);
+            this.label26.Location = new System.Drawing.Point(195, 20);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(41, 13);
             this.label26.TabIndex = 547;
@@ -658,7 +699,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(139, 20);
+            this.label25.Location = new System.Drawing.Point(111, 20);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(35, 13);
             this.label25.TabIndex = 546;
@@ -870,7 +911,7 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1, 95);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1, 90);
             this.toolStripContainer1.Location = new System.Drawing.Point(329, 71);
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
@@ -1000,7 +1041,7 @@
             // 
             this.pnlFase8.Controls.Add(this.groupBox8);
             this.pnlFase8.Location = new System.Drawing.Point(397, 337);
-            this.pnlFase8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFase8.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFase8.Name = "pnlFase8";
             this.pnlFase8.Size = new System.Drawing.Size(379, 145);
             this.pnlFase8.TabIndex = 1;
@@ -1022,6 +1063,117 @@
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Finalização";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.Layout8_radRegularizada);
+            this.panel5.Controls.Add(this.Layout8_radSuspensa);
+            this.panel5.Controls.Add(this.Layout8_radCassada);
+            this.panel5.Location = new System.Drawing.Point(10, 84);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(238, 21);
+            this.panel5.TabIndex = 559;
+            // 
+            // Layout8_radRegularizada
+            // 
+            this.Layout8_radRegularizada.AutoSize = true;
+            this.Layout8_radRegularizada.Checked = true;
+            this.Layout8_radRegularizada.Location = new System.Drawing.Point(149, 2);
+            this.Layout8_radRegularizada.Name = "Layout8_radRegularizada";
+            this.Layout8_radRegularizada.Size = new System.Drawing.Size(87, 17);
+            this.Layout8_radRegularizada.TabIndex = 2;
+            this.Layout8_radRegularizada.TabStop = true;
+            this.Layout8_radRegularizada.Text = "Regularizada";
+            this.Layout8_radRegularizada.UseVisualStyleBackColor = true;
+            // 
+            // Layout8_radSuspensa
+            // 
+            this.Layout8_radSuspensa.AutoSize = true;
+            this.Layout8_radSuspensa.Location = new System.Drawing.Point(71, 2);
+            this.Layout8_radSuspensa.Name = "Layout8_radSuspensa";
+            this.Layout8_radSuspensa.Size = new System.Drawing.Size(72, 17);
+            this.Layout8_radSuspensa.TabIndex = 1;
+            this.Layout8_radSuspensa.Text = "Suspensa";
+            this.Layout8_radSuspensa.UseVisualStyleBackColor = true;
+            // 
+            // Layout8_radCassada
+            // 
+            this.Layout8_radCassada.AutoSize = true;
+            this.Layout8_radCassada.Location = new System.Drawing.Point(3, 2);
+            this.Layout8_radCassada.Name = "Layout8_radCassada";
+            this.Layout8_radCassada.Size = new System.Drawing.Size(66, 17);
+            this.Layout8_radCassada.TabIndex = 0;
+            this.Layout8_radCassada.Text = "Cassada";
+            this.Layout8_radCassada.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.radioButton7);
+            this.panel6.Controls.Add(this.radioButton8);
+            this.panel6.Controls.Add(this.radioButton9);
+            this.panel6.Location = new System.Drawing.Point(7, 84);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(182, 21);
+            this.panel6.TabIndex = 560;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Checked = true;
+            this.radioButton7.Location = new System.Drawing.Point(104, 2);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(65, 17);
+            this.radioButton7.TabIndex = 2;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.Text = "Nenhum";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(54, 2);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(44, 17);
+            this.radioButton8.TabIndex = 1;
+            this.radioButton8.Text = "Aut.";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(3, 2);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(49, 17);
+            this.radioButton9.TabIndex = 0;
+            this.radioButton9.Text = "Sem.";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(5, 64);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(66, 13);
+            this.label34.TabIndex = 10;
+            this.label34.Text = "Status CNH:";
+            // 
+            // Layout8_Pontuacao
+            // 
+            this.Layout8_Pontuacao.Location = new System.Drawing.Point(277, 36);
+            this.Layout8_Pontuacao.Name = "Layout8_Pontuacao";
+            this.Layout8_Pontuacao.Size = new System.Drawing.Size(40, 20);
+            this.Layout8_Pontuacao.TabIndex = 9;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(273, 19);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(62, 13);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "Pontuação:";
             // 
             // label13
             // 
@@ -1046,7 +1198,7 @@
             // Layout8_mskDataBaixaDePontos
             // 
             this.Layout8_mskDataBaixaDePontos.Location = new System.Drawing.Point(135, 35);
-            this.Layout8_mskDataBaixaDePontos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Layout8_mskDataBaixaDePontos.Margin = new System.Windows.Forms.Padding(2);
             this.Layout8_mskDataBaixaDePontos.Mask = "00/00/0000";
             this.Layout8_mskDataBaixaDePontos.Name = "Layout8_mskDataBaixaDePontos";
             this.Layout8_mskDataBaixaDePontos.Size = new System.Drawing.Size(124, 20);
@@ -1057,7 +1209,7 @@
             // Layout8_mskDataFinalizacao
             // 
             this.Layout8_mskDataFinalizacao.Location = new System.Drawing.Point(7, 35);
-            this.Layout8_mskDataFinalizacao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Layout8_mskDataFinalizacao.Margin = new System.Windows.Forms.Padding(2);
             this.Layout8_mskDataFinalizacao.Mask = "00/00/0000";
             this.Layout8_mskDataFinalizacao.Name = "Layout8_mskDataFinalizacao";
             this.Layout8_mskDataFinalizacao.Size = new System.Drawing.Size(124, 20);
@@ -1319,7 +1471,7 @@
             this.tabDetalhe.Controls.Add(this.lblDescricao);
             this.tabDetalhe.Location = new System.Drawing.Point(4, 22);
             this.tabDetalhe.Name = "tabDetalhe";
-            this.tabDetalhe.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabDetalhe.Padding = new System.Windows.Forms.Padding(3);
             this.tabDetalhe.Size = new System.Drawing.Size(341, 126);
             this.tabDetalhe.TabIndex = 0;
             this.tabDetalhe.Text = "Histórico";
@@ -1352,7 +1504,7 @@
             this.tabPage2.Controls.Add(this.txtObservacao);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(341, 126);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Adicionar";
@@ -1462,7 +1614,7 @@
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Location = new System.Drawing.Point(238, 24);
-            this.cboStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(136, 21);
             this.cboStatus.TabIndex = 552;
@@ -1475,159 +1627,6 @@
             this.label28.Size = new System.Drawing.Size(40, 13);
             this.label28.TabIndex = 551;
             this.label28.Text = "Status:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(273, 19);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(62, 13);
-            this.label29.TabIndex = 8;
-            this.label29.Text = "Pontuação:";
-            // 
-            // Layout8_Pontuacao
-            // 
-            this.Layout8_Pontuacao.Location = new System.Drawing.Point(277, 36);
-            this.Layout8_Pontuacao.Name = "Layout8_Pontuacao";
-            this.Layout8_Pontuacao.Size = new System.Drawing.Size(40, 20);
-            this.Layout8_Pontuacao.TabIndex = 9;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(5, 64);
-            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(66, 13);
-            this.label34.TabIndex = 10;
-            this.label34.Text = "Status CNH:";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.radioButton1);
-            this.panel4.Controls.Add(this.radioButton2);
-            this.panel4.Controls.Add(this.radioButton3);
-            this.panel4.Location = new System.Drawing.Point(152, 102);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(182, 21);
-            this.panel4.TabIndex = 558;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(104, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(65, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Nenhum";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(54, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(44, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Aut.";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(3, 2);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(49, 17);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.Text = "Sem.";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.Layout8_radRegularizada);
-            this.panel5.Controls.Add(this.Layout8_radSuspensa);
-            this.panel5.Controls.Add(this.Layout8_radCassada);
-            this.panel5.Location = new System.Drawing.Point(10, 84);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(238, 21);
-            this.panel5.TabIndex = 559;
-            // 
-            // Layout8_radRegularizada
-            // 
-            this.Layout8_radRegularizada.AutoSize = true;
-            this.Layout8_radRegularizada.Checked = true;
-            this.Layout8_radRegularizada.Location = new System.Drawing.Point(149, 2);
-            this.Layout8_radRegularizada.Name = "Layout8_radRegularizada";
-            this.Layout8_radRegularizada.Size = new System.Drawing.Size(87, 17);
-            this.Layout8_radRegularizada.TabIndex = 2;
-            this.Layout8_radRegularizada.TabStop = true;
-            this.Layout8_radRegularizada.Text = "Regularizada";
-            this.Layout8_radRegularizada.UseVisualStyleBackColor = true;
-            // 
-            // Layout8_radSuspensa
-            // 
-            this.Layout8_radSuspensa.AutoSize = true;
-            this.Layout8_radSuspensa.Location = new System.Drawing.Point(71, 2);
-            this.Layout8_radSuspensa.Name = "Layout8_radSuspensa";
-            this.Layout8_radSuspensa.Size = new System.Drawing.Size(72, 17);
-            this.Layout8_radSuspensa.TabIndex = 1;
-            this.Layout8_radSuspensa.Text = "Suspensa";
-            this.Layout8_radSuspensa.UseVisualStyleBackColor = true;
-            // 
-            // Layout8_radCassada
-            // 
-            this.Layout8_radCassada.AutoSize = true;
-            this.Layout8_radCassada.Location = new System.Drawing.Point(3, 2);
-            this.Layout8_radCassada.Name = "Layout8_radCassada";
-            this.Layout8_radCassada.Size = new System.Drawing.Size(66, 17);
-            this.Layout8_radCassada.TabIndex = 0;
-            this.Layout8_radCassada.Text = "Cassada";
-            this.Layout8_radCassada.UseVisualStyleBackColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.radioButton7);
-            this.panel6.Controls.Add(this.radioButton8);
-            this.panel6.Controls.Add(this.radioButton9);
-            this.panel6.Location = new System.Drawing.Point(7, 84);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(182, 21);
-            this.panel6.TabIndex = 560;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(104, 2);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(65, 17);
-            this.radioButton7.TabIndex = 2;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Nenhum";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(54, 2);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(44, 17);
-            this.radioButton8.TabIndex = 1;
-            this.radioButton8.Text = "Aut.";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(3, 2);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(49, 17);
-            this.radioButton9.TabIndex = 0;
-            this.radioButton9.Text = "Sem.";
-            this.radioButton9.UseVisualStyleBackColor = true;
             // 
             // frmCad_Administracao_Fases
             // 
@@ -1657,7 +1656,7 @@
             this.Controls.Add(this.pnlLayout9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmCad_Administracao_Fases";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1670,6 +1669,8 @@
             this.groupBox7.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1698,6 +1699,11 @@
             this.pnlFase8.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Layout8_Pontuacao)).EndInit();
             this.pnlLayout9.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
@@ -1719,13 +1725,6 @@
             this.pnlFase14.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Layout8_Pontuacao)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

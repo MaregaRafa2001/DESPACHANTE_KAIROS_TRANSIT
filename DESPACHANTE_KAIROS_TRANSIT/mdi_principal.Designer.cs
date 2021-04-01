@@ -182,6 +182,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "mdi_principal";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Mdi_principal_Load);
             this.menuStrip1.ResumeLayout(false);

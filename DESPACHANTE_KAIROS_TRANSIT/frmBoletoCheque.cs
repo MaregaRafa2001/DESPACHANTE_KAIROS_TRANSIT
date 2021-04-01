@@ -26,7 +26,7 @@ namespace APP_UI
             this.boleto_cheque = boleto_cheque;
             if (LastParcela)
                 txtValor.ReadOnly = true;
-            if (this.boleto_cheque.OPERACAO == SysDTO.Operacoes.Alteracao)
+            if (this.boleto_cheque.OPERACAO != SysDTO.Operacoes.Inclusao)
             {
                 txtValor.ReadOnly = true;
                 cboForma_Pagamento.Enabled = false;
@@ -53,15 +53,20 @@ namespace APP_UI
                 cboStatusPagamento.SelectedIndex = 0;
 
                 //Forma pagamento
+                List<FORMA_PAGAMENTO_DTO> Lista_FormaPagamento = new FORMA_PAGAMENTO_BLL().Lista_Forma_Pagamento();
+
                 cboForma_Pagamento.ValueMember = "ID";
                 cboForma_Pagamento.DisplayMember = "DESCRICAO";
-                cboForma_Pagamento.DataSource = new FORMA_PAGAMENTO_BLL().Lista_Forma_Pagamento();
+                cboForma_Pagamento.DataSource = Lista_FormaPagamento;
                 cboForma_Pagamento.SelectedIndex = -1;
 
                 //Forma pagamento juros
+                List<FORMA_PAGAMENTO_DTO> NewLista_FormaPagamento = new List<FORMA_PAGAMENTO_DTO>();
+                NewLista_FormaPagamento.AddRange(Lista_FormaPagamento);
+                NewLista_FormaPagamento.Insert(0, new FORMA_PAGAMENTO_DTO() { DESCRICAO = "Nenhum", ID = null });
                 cboFormaPagamentoJuros.ValueMember = "ID";
                 cboFormaPagamentoJuros.DisplayMember = "DESCRICAO";
-                cboFormaPagamentoJuros.DataSource = new FORMA_PAGAMENTO_BLL().Lista_Forma_Pagamento();
+                cboFormaPagamentoJuros.DataSource = NewLista_FormaPagamento;
                 cboForma_Pagamento.SelectedIndex = -1;
 
             }
@@ -77,10 +82,10 @@ namespace APP_UI
             txtParcela.Text = boleto_cheque.PARCELA.ToString();
             mskDataVencimento.Text = (boleto_cheque.DATA_VENCTO == null ? "" : boleto_cheque.DATA_VENCTO.Value.ToShortDateString());
             cboStatusPagamento.Text = boleto_cheque.STATUS_PAGAMENTO;
-            txtCobranca.Text = boleto_cheque.COBRANCA.ToString();
+            txtCobranca.Text = boleto_cheque.COBRANCA == null ? "" : boleto_cheque.COBRANCA.ToString();
             mskDataProtesto.Text = (boleto_cheque.DATA_PROTESTO == null ? "" : boleto_cheque.DATA_PROTESTO.Value.ToShortDateString());
             mskCartaAnuencia.Text = (boleto_cheque.CARTA_ANUENCIA == null ? "" : boleto_cheque.CARTA_ANUENCIA.Value.ToShortDateString());
-            txtCartorio.Text = boleto_cheque.CARTORIO.ToString();
+            txtCartorio.Text = boleto_cheque.CARTORIO == null ? "" : boleto_cheque.CARTORIO.ToString();
             if (cboStatusPagamento.Text.ToLower() == "pago")
             {
                 cboStatusPagamento.Enabled = false;

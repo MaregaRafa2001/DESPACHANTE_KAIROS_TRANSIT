@@ -1172,9 +1172,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label9.Location = new System.Drawing.Point(9, 139);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.Size = new System.Drawing.Size(47, 13);
             this.label9.TabIndex = 449;
-            this.label9.Text = "Número";
+            this.label9.Text = "Número:";
             // 
             // txtNumeroResidencial
             // 

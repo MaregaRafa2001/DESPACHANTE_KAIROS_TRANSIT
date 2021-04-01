@@ -7,13 +7,6 @@ namespace DTO
 {
     public static class globalDTO
     {
-        public enum Operacoes
-        {
-            Inclusao,
-            Alteracao,
-            Exclusao,
-            Leitura,
-            ReInclusao
-        }
+        
     }
 }

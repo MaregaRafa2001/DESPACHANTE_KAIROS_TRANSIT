@@ -124,5 +124,31 @@ namespace DTO
             this.Atributo = Atributo;
             this.Valor = Valor;
         }
-    }    
+    }
+
+    public enum Operacoes
+    {
+        Inclusao,
+        Alteracao,
+        Exclusao,
+        Leitura,
+        ReInclusao
+    }
+
+    public enum Campos
+    {
+        TextBox,
+        MaskedBox,
+        ComboBox,
+        NumericUpDown,
+    }
+
+    public enum TipoCampo
+    {
+        SemFormatacao,
+        DateTime,
+        CPF,
+        CEP,
+        Int,
+    }
 }

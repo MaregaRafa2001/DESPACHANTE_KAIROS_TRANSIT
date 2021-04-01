@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -125,6 +127,74 @@ namespace APP_UI
             {
                 return (DateTime?)null;
             }
+        }
+
+        public static bool ValidarCampo(List<string> CamposInvalidos, string nome, string valor, Campos campo, TipoCampo tipoCampo = TipoCampo.SemFormatacao, bool obrigatorio = true)
+        {
+            switch (campo)
+            {
+                case Campos.TextBox:
+                    if (obrigatorio && string.IsNullOrEmpty(valor))
+                    {
+                        CamposInvalidos.Add(nome);
+                        return false;
+                    }
+                    break;
+                case Campos.MaskedBox:
+                    string valorFormatado = valor.Replace("/", "").Replace("_", "").Replace("-", "").Replace(" ", "").Replace(",", "").Replace(".", "");
+                    switch (tipoCampo)
+                    {
+                        case TipoCampo.SemFormatacao:
+                            break;
+                        case TipoCampo.DateTime:
+                            if ((obrigatorio && string.IsNullOrEmpty(valorFormatado)) || (!string.IsNullOrEmpty(valorFormatado) && !GLOBAL_BLL.IsDate(valor)))
+                            {
+                                CamposInvalidos.Add(nome);
+                                return false;
+                            }
+                            break;
+                        case TipoCampo.CPF:
+                            if ((obrigatorio && string.IsNullOrEmpty(valorFormatado)) || (!string.IsNullOrEmpty(valorFormatado) && !GLOBAL_BLL.IsCpf(valor.Replace(",", "."))))
+                            {
+                                CamposInvalidos.Add(nome);
+                                return false;
+                            }
+                            break;
+                        case TipoCampo.CEP:
+                            if ((obrigatorio && string.IsNullOrEmpty(valorFormatado)) || (!string.IsNullOrEmpty(valorFormatado) && !GLOBAL_BLL.IsCep(valor)))
+                            {
+                                CamposInvalidos.Add(nome);
+                                return false;
+                            }
+                            break;
+                        case TipoCampo.Int:
+                            if (!GLOBAL_BLL.IsNumeric(valor))
+                                return false;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    break;
+                case Campos.ComboBox:
+                    if (string.IsNullOrEmpty(valor))
+                    {
+                        CamposInvalidos.Add(nome);
+                        return false;
+                    }
+                    break;
+                case Campos.NumericUpDown:
+                    if (string.IsNullOrEmpty(valor))
+                    {
+                        CamposInvalidos.Add(nome);
+                        return false;
+                    }
+                    break;
+                default:
+                    CamposInvalidos.Add(nome);
+                    return false;
+            }
+            return true;
         }
     }
 }

@@ -285,10 +285,10 @@ namespace DAL
                 DTO.USUARIO = dtr["USUARIO"].ToString();
                 DTO.ULT_ATUAL = dtr["ULT_ATUAL"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["ULT_ATUAL"]);
                 DTO.ATIVO = Convert.ToBoolean(dtr["ATIVO"]);
-                DTO.COBRANCA = dtr["NUMERO"].ToString();
+                DTO.COBRANCA = dtr["COBRANCA"] == DBNull.Value? "" : dtr["COBRANCA"].ToString();
                 DTO.DATA_PROTESTO = dtr["DATA_PROTESTO"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["DATA_PROTESTO"]);
                 DTO.CARTA_ANUENCIA = dtr["CARTA_ANUENCIA"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dtr["CARTA_ANUENCIA"]);
-                DTO.CARTORIO = dtr["NUMERO"].ToString();
+                DTO.CARTORIO = dtr["CARTORIO"] == DBNull.Value ? "" : dtr["CARTORIO"].ToString();
             }
             catch (Exception ex)
             {

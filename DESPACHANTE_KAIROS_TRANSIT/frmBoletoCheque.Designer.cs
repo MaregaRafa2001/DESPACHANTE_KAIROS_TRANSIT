@@ -60,17 +60,17 @@
             // 
             // txtNumBolChe
             // 
-            this.txtNumBolChe.Location = new System.Drawing.Point(7, 201);
+            this.txtNumBolChe.Location = new System.Drawing.Point(10, 267);
             this.txtNumBolChe.MaxLength = 200;
             this.txtNumBolChe.Multiline = true;
             this.txtNumBolChe.Name = "txtNumBolChe";
-            this.txtNumBolChe.Size = new System.Drawing.Size(421, 102);
+            this.txtNumBolChe.Size = new System.Drawing.Size(314, 86);
             this.txtNumBolChe.TabIndex = 10;
             // 
             // lblBoletoCheque
             // 
             this.lblBoletoCheque.AutoSize = true;
-            this.lblBoletoCheque.Location = new System.Drawing.Point(7, 185);
+            this.lblBoletoCheque.Location = new System.Drawing.Point(10, 251);
             this.lblBoletoCheque.Name = "lblBoletoCheque";
             this.lblBoletoCheque.Size = new System.Drawing.Size(73, 13);
             this.lblBoletoCheque.TabIndex = 479;
@@ -81,16 +81,16 @@
             // 
             this.cboStatusPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatusPagamento.FormattingEnabled = true;
-            this.cboStatusPagamento.Location = new System.Drawing.Point(280, 32);
+            this.cboStatusPagamento.Location = new System.Drawing.Point(60, 31);
             this.cboStatusPagamento.Margin = new System.Windows.Forms.Padding(2);
             this.cboStatusPagamento.Name = "cboStatusPagamento";
-            this.cboStatusPagamento.Size = new System.Drawing.Size(149, 21);
+            this.cboStatusPagamento.Size = new System.Drawing.Size(264, 21);
             this.cboStatusPagamento.TabIndex = 523;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(277, 16);
+            this.label1.Location = new System.Drawing.Point(62, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 524;
@@ -102,7 +102,7 @@
             this.txtParcela.Margin = new System.Windows.Forms.Padding(2);
             this.txtParcela.Name = "txtParcela";
             this.txtParcela.ReadOnly = true;
-            this.txtParcela.Size = new System.Drawing.Size(97, 20);
+            this.txtParcela.Size = new System.Drawing.Size(46, 20);
             this.txtParcela.TabIndex = 525;
             // 
             // label2
@@ -117,7 +117,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistrar.Location = new System.Drawing.Point(490, 410);
+            this.btnRegistrar.Location = new System.Drawing.Point(159, 370);
             this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(80, 32);
@@ -129,7 +129,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(575, 410);
+            this.btnCancelar.Location = new System.Drawing.Point(244, 370);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 32);
@@ -144,7 +144,7 @@
             this.mskDataVencimento.Margin = new System.Windows.Forms.Padding(2);
             this.mskDataVencimento.Mask = "00/00/0000";
             this.mskDataVencimento.Name = "mskDataVencimento";
-            this.mskDataVencimento.Size = new System.Drawing.Size(119, 20);
+            this.mskDataVencimento.Size = new System.Drawing.Size(147, 20);
             this.mskDataVencimento.TabIndex = 530;
             this.mskDataVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskDataVencimento.ValidatingType = typeof(System.DateTime);
@@ -152,7 +152,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(10, 55);
+            this.label19.Location = new System.Drawing.Point(7, 56);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(66, 13);
             this.label19.TabIndex = 529;
@@ -160,7 +160,7 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(264, 71);
+            this.txtValor.Location = new System.Drawing.Point(245, 109);
             this.txtValor.MaxLength = 12;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(79, 20);
@@ -171,7 +171,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(261, 55);
+            this.label3.Location = new System.Drawing.Point(242, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 532;
@@ -180,7 +180,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(108, 17);
+            this.label4.Location = new System.Drawing.Point(7, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 536;
@@ -190,16 +190,16 @@
             // 
             this.cboForma_Pagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboForma_Pagamento.FormattingEnabled = true;
-            this.cboForma_Pagamento.Location = new System.Drawing.Point(111, 32);
+            this.cboForma_Pagamento.Location = new System.Drawing.Point(10, 109);
             this.cboForma_Pagamento.Margin = new System.Windows.Forms.Padding(2);
             this.cboForma_Pagamento.Name = "cboForma_Pagamento";
-            this.cboForma_Pagamento.Size = new System.Drawing.Size(165, 21);
+            this.cboForma_Pagamento.Size = new System.Drawing.Size(230, 21);
             this.cboForma_Pagamento.TabIndex = 535;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(346, 55);
+            this.label5.Location = new System.Drawing.Point(242, 131);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 538;
@@ -207,7 +207,7 @@
             // 
             // txtValorJuros
             // 
-            this.txtValorJuros.Location = new System.Drawing.Point(349, 71);
+            this.txtValorJuros.Location = new System.Drawing.Point(245, 147);
             this.txtValorJuros.MaxLength = 12;
             this.txtValorJuros.Name = "txtValorJuros";
             this.txtValorJuros.Size = new System.Drawing.Size(79, 20);
@@ -217,11 +217,11 @@
             // 
             // mskDataPagamento
             // 
-            this.mskDataPagamento.Location = new System.Drawing.Point(133, 71);
+            this.mskDataPagamento.Location = new System.Drawing.Point(161, 71);
             this.mskDataPagamento.Margin = new System.Windows.Forms.Padding(2);
             this.mskDataPagamento.Mask = "00/00/0000";
             this.mskDataPagamento.Name = "mskDataPagamento";
-            this.mskDataPagamento.Size = new System.Drawing.Size(126, 20);
+            this.mskDataPagamento.Size = new System.Drawing.Size(163, 20);
             this.mskDataPagamento.TabIndex = 540;
             this.mskDataPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskDataPagamento.ValidatingType = typeof(System.DateTime);
@@ -229,7 +229,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(130, 55);
+            this.label6.Location = new System.Drawing.Point(162, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 13);
             this.label6.TabIndex = 539;
@@ -238,33 +238,33 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 93);
+            this.label7.Location = new System.Drawing.Point(7, 132);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(152, 13);
+            this.label7.Size = new System.Drawing.Size(149, 13);
             this.label7.TabIndex = 542;
-            this.label7.Text = "Forma de pagamento:, c/ juros";
+            this.label7.Text = "Forma de pagamento c/ juros:";
             // 
             // cboFormaPagamentoJuros
             // 
             this.cboFormaPagamentoJuros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFormaPagamentoJuros.FormattingEnabled = true;
-            this.cboFormaPagamentoJuros.Location = new System.Drawing.Point(15, 108);
+            this.cboFormaPagamentoJuros.Location = new System.Drawing.Point(10, 147);
             this.cboFormaPagamentoJuros.Margin = new System.Windows.Forms.Padding(2);
             this.cboFormaPagamentoJuros.Name = "cboFormaPagamentoJuros";
-            this.cboFormaPagamentoJuros.Size = new System.Drawing.Size(165, 21);
+            this.cboFormaPagamentoJuros.Size = new System.Drawing.Size(230, 21);
             this.cboFormaPagamentoJuros.TabIndex = 541;
             // 
             // txtCobranca
             // 
-            this.txtCobranca.Location = new System.Drawing.Point(185, 109);
+            this.txtCobranca.Location = new System.Drawing.Point(10, 186);
             this.txtCobranca.Name = "txtCobranca";
-            this.txtCobranca.Size = new System.Drawing.Size(100, 20);
+            this.txtCobranca.Size = new System.Drawing.Size(190, 20);
             this.txtCobranca.TabIndex = 543;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(182, 93);
+            this.label8.Location = new System.Drawing.Point(7, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 544;
@@ -272,7 +272,7 @@
             // 
             // mskDataProtesto
             // 
-            this.mskDataProtesto.Location = new System.Drawing.Point(290, 109);
+            this.mskDataProtesto.Location = new System.Drawing.Point(205, 186);
             this.mskDataProtesto.Margin = new System.Windows.Forms.Padding(2);
             this.mskDataProtesto.Mask = "00/00/0000";
             this.mskDataProtesto.Name = "mskDataProtesto";
@@ -284,7 +284,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(287, 94);
+            this.label9.Location = new System.Drawing.Point(202, 171);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 546;
@@ -292,11 +292,11 @@
             // 
             // mskCartaAnuencia
             // 
-            this.mskCartaAnuencia.Location = new System.Drawing.Point(413, 109);
+            this.mskCartaAnuencia.Location = new System.Drawing.Point(203, 228);
             this.mskCartaAnuencia.Margin = new System.Windows.Forms.Padding(2);
             this.mskCartaAnuencia.Mask = "00/00/0000";
             this.mskCartaAnuencia.Name = "mskCartaAnuencia";
-            this.mskCartaAnuencia.Size = new System.Drawing.Size(119, 20);
+            this.mskCartaAnuencia.Size = new System.Drawing.Size(121, 20);
             this.mskCartaAnuencia.TabIndex = 547;
             this.mskCartaAnuencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskCartaAnuencia.ValidatingType = typeof(System.DateTime);
@@ -305,7 +305,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(410, 94);
+            this.label10.Location = new System.Drawing.Point(200, 213);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 13);
             this.label10.TabIndex = 548;
@@ -313,15 +313,15 @@
             // 
             // txtCartorio
             // 
-            this.txtCartorio.Location = new System.Drawing.Point(537, 109);
+            this.txtCartorio.Location = new System.Drawing.Point(10, 228);
             this.txtCartorio.Name = "txtCartorio";
-            this.txtCartorio.Size = new System.Drawing.Size(100, 20);
+            this.txtCartorio.Size = new System.Drawing.Size(188, 20);
             this.txtCartorio.TabIndex = 549;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(534, 93);
+            this.label11.Location = new System.Drawing.Point(7, 213);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 13);
             this.label11.TabIndex = 550;
@@ -331,7 +331,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 453);
+            this.ClientSize = new System.Drawing.Size(335, 413);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtCartorio);
             this.Controls.Add(this.label10);

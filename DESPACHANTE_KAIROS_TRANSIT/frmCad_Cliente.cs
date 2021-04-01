@@ -429,94 +429,97 @@ namespace APP_UI
         {
             //VALIDAR CAMPOS VAZIOS
             List<string> result = new List<string>();
-            if (string.IsNullOrEmpty(txtNome.Text))
+
+            GLOBAL_FORMS.ValidarCampo(result, "Nome completo", txtNome.Text, Campos.TextBox, TipoCampo.SemFormatacao);
+            GLOBAL_FORMS.ValidarCampo(result, "Cpf", mskCPF.Text, Campos.MaskedBox, TipoCampo.CPF);
+            GLOBAL_FORMS.ValidarCampo(result, "Rg", txtRG.Text, Campos.TextBox, TipoCampo.SemFormatacao);
+            GLOBAL_FORMS.ValidarCampo(result, "Data de nascimento", mskNascimento.Text, Campos.MaskedBox, TipoCampo.DateTime);
+            GLOBAL_FORMS.ValidarCampo(result, "Bairro", txtBairro.Text, Campos.TextBox, TipoCampo.SemFormatacao);
+            GLOBAL_FORMS.ValidarCampo(result, "Cep", mskCEP.Text, Campos.MaskedBox, TipoCampo.CEP);
+            GLOBAL_FORMS.ValidarCampo(result, "Municipio", txtMunicipio.Text, Campos.TextBox, TipoCampo.SemFormatacao);
+            GLOBAL_FORMS.ValidarCampo(result, "Logradouro", txtLogradouro.Text, Campos.TextBox, TipoCampo.SemFormatacao);
+            GLOBAL_FORMS.ValidarCampo(result, "Data de vencimento da Cnh", mskDataVencimentoCNH.Text, Campos.TextBox, TipoCampo.DateTime);
+            #region Código antigo
+            if (false)
             {
-                result.Add("NOME COMPLETO");
-                txtNome.ForeColor = System.Drawing.Color.Red;
-            }
-            //if (string.IsNullOrEmpty(mskCelular.Text))
-            //{
-            //    result.Add("CELULAR");
-            //    txtRG.ForeColor = System.Drawing.Color.Red;
-            //}
-            if (string.IsNullOrEmpty(txtBairro.Text))
-            {
-                result.Add("BAIRRO");
-                txtBairro.ForeColor = System.Drawing.Color.Red;
-            }
-            if (string.IsNullOrEmpty(mskCEP.Text))
-            {
-                result.Add("CEP");
-                mskCEP.ForeColor = System.Drawing.Color.Red;
-            }
-            if (string.IsNullOrEmpty(mskCPF.Text))
-            {
-                result.Add("CPF");
-                mskCPF.ForeColor = System.Drawing.Color.Red;
-            }
-            //if (string.IsNullOrEmpty(cboUF.Text))
-            //{
-            //    result.Add("UF");
-            //    cboUF.ForeColor = System.Drawing.Color.Red;
-            //}
-            if (string.IsNullOrEmpty(mskNascimento.Text))
-            {
-                result.Add("NASCIMENTO");
-                cboUF.ForeColor = System.Drawing.Color.Red;
-            }
-            if (string.IsNullOrEmpty(txtMunicipio.Text))
-            {
-                result.Add("MUNICIPIO");
-                txtMunicipio.ForeColor = System.Drawing.Color.Red;
-            }
-            if (string.IsNullOrEmpty(txtRG.Text))
-            {
-                result.Add("RG");
-                txtRG.ForeColor = System.Drawing.Color.Red;
-            }
-            if (string.IsNullOrEmpty(txtLogradouro.Text))
-            {
-                result.Add("LOGRADOURO");
-                txtLogradouro.ForeColor = System.Drawing.Color.Red;
-            }
-            if (string.IsNullOrEmpty(txtRG.Text))
-            {
-                result.Add("RG");
-                txtRG.ForeColor = System.Drawing.Color.Red;
-            }
+                if (string.IsNullOrEmpty(txtNome.Text))
+                {
+                    result.Add("NOME COMPLETO");
+                    txtNome.ForeColor = System.Drawing.Color.Red;
+                }
+                if (string.IsNullOrEmpty(txtBairro.Text))
+                {
+                    result.Add("BAIRRO");
+                    txtBairro.ForeColor = System.Drawing.Color.Red;
+                }
+                if (string.IsNullOrEmpty(mskCEP.Text))
+                {
+                    result.Add("CEP");
+                    mskCEP.ForeColor = System.Drawing.Color.Red;
+                }
+                if (string.IsNullOrEmpty(mskCPF.Text))
+                {
+                    result.Add("CPF");
+                    mskCPF.ForeColor = System.Drawing.Color.Red;
+                }
+                if (string.IsNullOrEmpty(mskNascimento.Text))
+                {
+                    result.Add("NASCIMENTO");
+                    cboUF.ForeColor = System.Drawing.Color.Red;
+                }
+                if (string.IsNullOrEmpty(txtMunicipio.Text))
+                {
+                    result.Add("MUNICIPIO");
+                    txtMunicipio.ForeColor = System.Drawing.Color.Red;
+                }
+                if (string.IsNullOrEmpty(txtRG.Text))
+                {
+                    result.Add("RG");
+                    txtRG.ForeColor = System.Drawing.Color.Red;
+                }
+                if (string.IsNullOrEmpty(txtLogradouro.Text))
+                {
+                    result.Add("LOGRADOURO");
+                    txtLogradouro.ForeColor = System.Drawing.Color.Red;
+                }
 
 
-            //VALIDAR CAMPOS COM ERROS
-            List<string> erros = new List<string>();
-            if (mskNascimento.Text.Replace("/", "").Trim().Length > 0)
-            {
-                try
+                //VALIDAR CAMPOS COM ERROS
+                List<string> erros = new List<string>();
+                if (mskNascimento.Text.Replace("/", "").Trim().Length > 0)
                 {
-                    Convert.ToDateTime(mskNascimento.Text);
+                    try
+                    {
+                        Convert.ToDateTime(mskNascimento.Text);
+                    }
+                    catch
+                    {
+                        erros.Add("DATA DE NASCIMENTO");
+                        mskNascimento.ForeColor = System.Drawing.Color.Red;
+                    }
                 }
-                catch
+
+                if (mskDataVencimentoCNH.Text.Replace("/", "").Trim().Length > 0)
                 {
-                    erros.Add("DATA DE NASCIMENTO");
-                    mskNascimento.ForeColor = System.Drawing.Color.Red;
+                    try
+                    {
+                        Convert.ToDateTime(mskDataVencimentoCNH.Text);
+                    }
+                    catch
+                    {
+                        erros.Add("DATA DE VENCIMENTO");
+                        mskDataVencimentoCNH.ForeColor = System.Drawing.Color.Red;
+                    }
                 }
+                if (result.Count == 0 && erros.Count == 0)
+                    return true;
+
             }
 
-            if (mskDataVencimentoCNH.Text.Replace("/", "").Trim().Length > 0)
-            {
-                try
-                {
-                    Convert.ToDateTime(mskDataVencimentoCNH.Text);
-                }
-                catch
-                {
-                    erros.Add("DATA DE VENCIMENTO");
-                    mskDataVencimentoCNH.ForeColor = System.Drawing.Color.Red;
-                }
-            }
-            if (result.Count == 0 && erros.Count == 0)
+            #endregion
+
+            if (result.Count == 0)
                 return true;
-
-
             var msg = "";
             foreach (var item in result)
             {
@@ -529,30 +532,12 @@ namespace APP_UI
                     msg = msg.Substring(0, msg.LastIndexOf(',')) + " e" + msg.Substring(msg.LastIndexOf(',') + 1, (msg.Length - msg.LastIndexOf(',')) - 1);
             }
             if (result.Count > 1)
-                MessageBox.Show("Campos " + msg + " são obrigatórios!", "Campos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Campos " + msg + " inválidos!", "Campos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (result.Count == 1)
-                MessageBox.Show("Campo " + msg + " é obrigatório!", "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-
-            msg = "";
-            foreach (var item in erros)
-            {
-                msg += item + ", ";
-            }
-            if (msg.Length > 2)
-            {
-                msg = msg.Substring(0, msg.Length - 2);
-                if (erros.Count > 1)
-                    msg = msg.Substring(0, msg.LastIndexOf(',')) + " e" + msg.Substring(msg.LastIndexOf(',') + 1, (msg.Length - msg.LastIndexOf(',')) - 1);
-            }
-            if (erros.Count > 1)
-                MessageBox.Show("Campos " + msg + " estão com valores inválidos!", "Campos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            else if (erros.Count == 1)
-                MessageBox.Show("Campo " + msg + " está com valor inválido!", "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Campo " + msg + " inválido!", "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             return false;
         }
-
 
         #region CEP
         private void btnPesquisarCep_Click(object sender, EventArgs e)
